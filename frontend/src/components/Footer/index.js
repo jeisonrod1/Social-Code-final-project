@@ -3,6 +3,7 @@ import logo_fb from "../../images/icons/svgs/facebook.svg";
 import logo_twit from "../../images/icons/svgs/twitter.svg";
 import logo_goog from "../../images/icons/svgs/googleplus.svg";
 import logo_insta from "../../images/icons/svgs/instagram.svg";
+import "./Footer.css";
 
 // STYLED COMPONENTS -start
 
@@ -58,7 +59,10 @@ const Footer = () => {
           <a className="plain">iOS</a>
           <a className="plain">Android</a>
         </div>
-        <div className="right-nav">
+        <div className="pacman"></div>
+          <div className="dot"></div>
+        <div>
+
           <img src={logo_fb}></img>
           <img src={logo_twit}></img>
           <img src={logo_goog}></img>
