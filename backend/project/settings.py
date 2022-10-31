@@ -51,6 +51,13 @@ INSTALLED_APPS = [
 
     # User apps
 
+    #own apps
+    "answers",
+    "code_post",
+    "comments",
+    "general_posts",
+    "registration",
+    "user",
 ]
 
 MIDDLEWARE = [
