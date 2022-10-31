@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import Posts from "./components/Posts";
+import PostsPage from "./components/PostPage";
+import Userprofile from "./components/Userprofile";
+import Editor from "./components/Editor";
+import Registration from "./components/Registration";
+import Login from "./components/Login";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <main>
+        <Header /> {/* Mads */}
+        <Routes>
+          <Route path="posts" element={<Posts />} /> {/* Mads */}
+          <Route path="postpage" element={<PostsPage />} />
+          {/* Mads */}
+          <Route path="editor" element={<Editor />} />
+          {/* Mads */}
+          <Route path="userprofile" element={<Userprofile />} /> {/* Mads */}
+          <Route path="login" element={<Login />} /> {/* Mads */}
+          <Route path="registration" element={<Registration />} /> {/* Mads */}
+        </Routes>
+        <Footer /> {/* Mads */}
+      </main>
+    </BrowserRouter>
   );
 }
 
