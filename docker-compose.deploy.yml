@@ -1,5 +1,12 @@
 version: '3'
 
+x-logging:
+  &default-logging
+  logging:
+    driver: json-file
+    options:
+      max-size: 100m
+
 services:
   backend:
     image: registry.gitlab.propulsion-home.ch/full-stack/batch-21-aug-2022/final-projects/code-media:master
@@ -7,8 +14,8 @@ services:
       - ./envs/prod.env
     command: "sh /scripts/prod.sh"
     volumes:
-      - static_files:/static-files
-      - media_files:/media-files
+      - static-files:/static-files
+      - media-files:/media-files
       - build:/frontend/build
     depends_on:
       - postgres
@@ -18,7 +25,7 @@ services:
     env_file:
       - ./envs/prod.env
     volumes:
-      - postgres_db:/var/lib/postgresql/data
+      - postgres-db:/var/lib/postgresql/data
 
 
   nginx:
@@ -29,15 +36,55 @@ services:
       - "443:443"
     volumes:
       - ./nginx:/etc/nginx/conf.d/
-      - static_files:/static-files
-      - media_files:/media-files
+      - static-files:/static-files
+      - media-files:/media-files
       - /etc/letsencrypt:/etc/letsencrypt
       - build:/build
 
+  server:
+    image: judge0/judge0:1.13.0
+    environment:
+      - VIRTUAL_HOST=code-media.propulsion-learn.ch
+    volumes:
+      - ./judge0.conf:/judge0.conf:ro
+    privileged: true
+    <<: *default-logging
+    restart: always
+
+  workers:
+    image: judge0/judge0:1.13.0
+    command: [ "./scripts/workers" ]
+    volumes:
+      - ./judge0.conf:/judge0.conf:ro
+    privileged: true
+    <<: *default-logging
+    restart: always
+
+  judge_db:
+    image: postgres:13.0
+    env_file: judge0.conf
+    volumes:
+      - postgres-data:/var/lib/postgresql/judge-data/
+    <<: *default-logging
+    restart: always
+
+  redis:
+    image: redis:6.0
+    command: [
+      "bash", "-c",
+      'docker-entrypoint.sh --appendonly yes --requirepass "$$REDIS_PASSWORD"'
+    ]
+    env_file: judge0.conf
+    volumes:
+      - redis-data:/data
+    <<: *default-logging
+    restart: always
 
 volumes:
   postgres_db:
-  media_files:
-  static_files:
+  media-files:
+  static-files:
   build:
+  postgres-data:
+  redis-data:
 

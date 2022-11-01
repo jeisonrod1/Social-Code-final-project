@@ -1,5 +1,12 @@
 version: '3'
 
+x-logging:
+  &default-logging
+  logging:
+    driver: json-file
+    options:
+      max-size: 100m
+
 services:
   backend:
     image: registry.gitlab.propulsion-home.ch/full-stack/batch-21-aug-2022/final-projects/code-media:latest
@@ -25,6 +32,45 @@ services:
     volumes:
       - postgres_db:/var/lib/postgresql/data
 
+  server:
+    image: judge0/judge0:1.13.0
+    volumes:
+      - ./judge0.conf:/judge0.conf:ro
+    ports:
+      - "2358:2358"
+    privileged: true
+    <<: *default-logging
+    restart: always
+
+  workers:
+    image: judge0/judge0:1.13.0
+    command: [ "./scripts/workers" ]
+    volumes:
+      - ./judge0.conf:/judge0.conf:ro
+    privileged: true
+    <<: *default-logging
+    restart: always
+
+  judge_db:
+    image: postgres:13.0
+    env_file: judge0.conf
+    volumes:
+      - postgres-data:/var/lib/postgresql/judge-data/
+    <<: *default-logging
+    restart: always
+
+
+  redis:
+    image: redis:6.0
+    command: [
+      "bash", "-c",
+      'docker-entrypoint.sh --appendonly yes --requirepass "$$REDIS_PASSWORD"'
+    ]
+    env_file: judge0.conf
+    volumes:
+      - redis-data:/data
+    <<: *default-logging
+    restart: always
 
 
 
@@ -33,3 +79,5 @@ volumes:
   postgres_db:
   media-files:
   static-files:
+  postgres-data:
+  redis-data:
