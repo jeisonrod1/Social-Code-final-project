@@ -1,4 +1,4 @@
-version: '3'
+version: '2'
 
 x-logging:
   &default-logging
@@ -8,43 +8,35 @@ x-logging:
       max-size: 100m
 
 services:
-  backend:
-    image: registry.gitlab.propulsion-home.ch/full-stack/batch-21-aug-2022/final-projects/code-media:master
-    env_file:
-      - ./envs/prod.env
-    command: "sh /scripts/prod.sh"
-    volumes:
-      - static-files:/static-files
-      - media-files:/media-files
-      - build:/frontend/build
-    depends_on:
-      - postgres
-
-  postgres:
-    image: postgres:latest
-    env_file:
-      - ./envs/prod.env
-    volumes:
-      - postgres-db:/var/lib/postgresql/data
-
-
   nginx:
-    image: nginx:latest
-    restart: always
+    image: judge0/jwilder-nginx-proxy:latest-2020-10-30
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+      - ./srv/nginx/vhost.d:/etc/nginx/vhost.d
+      - ./srv/nginx/html:/usr/share/nginx/html
+      - ./srv/ssl_certs:/etc/nginx/certs:ro
     ports:
       - "80:80"
       - "443:443"
+    <<: *default-logging
+    restart: always
+
+  letsencrypt:
+    image: judge0/jrcs-letsencrypt-nginx-proxy-companion:2.0
     volumes:
-      - ./nginx:/etc/nginx/conf.d/
-      - static-files:/static-files
-      - media-files:/media-files
-      - /etc/letsencrypt:/etc/letsencrypt
-      - build:/build
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./srv/ssl_certs:/etc/nginx/certs:rw
+    volumes_from:
+      - nginx
+    <<: *default-logging
+    restart: always
 
   server:
     image: judge0/judge0:1.13.0
     environment:
-      - VIRTUAL_HOST=code-media.propulsion-learn.ch
+      - VIRTUAL_HOST=example.com
+      - LETSENCRYPT_HOST=example.com
+      - LETSENCRYPT_EMAIL=john.doe@gmail.com
     volumes:
       - ./judge0.conf:/judge0.conf:ro
     privileged: true
@@ -53,18 +45,18 @@ services:
 
   workers:
     image: judge0/judge0:1.13.0
-    command: [ "./scripts/workers" ]
+    command: ["./scripts/workers"]
     volumes:
       - ./judge0.conf:/judge0.conf:ro
     privileged: true
     <<: *default-logging
     restart: always
 
-  judge_db:
+  db:
     image: postgres:13.0
     env_file: judge0.conf
     volumes:
-      - postgres-data:/var/lib/postgresql/judge-data/
+      - postgres-data:/var/lib/postgresql/data/
     <<: *default-logging
     restart: always
 
@@ -81,10 +73,5 @@ services:
     restart: always
 
 volumes:
-  postgres-db:
-  media-files:
-  static-files:
-  build:
   postgres-data:
   redis-data:
-
