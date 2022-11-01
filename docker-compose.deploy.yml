@@ -43,6 +43,7 @@ services:
 
   server:
     image: judge0/judge0:1.13.0
+#    image: judge-0-experiment:latest
     environment:
       - VIRTUAL_HOST=code-media.propulsion-learn.ch
     volumes:
@@ -53,6 +54,7 @@ services:
 
   workers:
     image: judge0/judge0:1.13.0
+#    image: judge-0-experiment:latest
     command: [ "./scripts/workers" ]
     volumes:
       - ./judge0.conf:/judge0.conf:ro
