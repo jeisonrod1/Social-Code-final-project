@@ -7,11 +7,11 @@ import Userprofile from "./components/Userprofile";
 import Editor from "./components/Editor";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
-<<<<<<< HEAD
+
 import JudgeLanding from "./components/Judge/components/Landing"
-=======
+
 import NavTest from "./components/NavTest";
->>>>>>> a89a6fa1e6e24bb107c41d4debe446550cdfc077
+
 import "./App.css";
 
 function App() {

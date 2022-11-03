@@ -5,7 +5,7 @@ import some_audio_source from "../../images/audio/audio-crack.mp3";
 import logo_twit from "../../images/icons/svgs/twitter.svg";
 import logo_goog from "../../images/icons/svgs/googleplus.svg";
 import logo_insta from "../../images/icons/svgs/instagram.svg";
-import PlayButton from 'simple-play-button';
+
 import "./pacman.css";
 
 // STYLED COMPONENTS -start
@@ -68,7 +68,7 @@ const Footer = () => {
         </div>
         <div className="pacman"></div>
           <div className="dot"></div>
-        <PlayButton src={some_audio_source}/>
+        {/*<PlayButton src={some_audio_source}/>*/}
         <div>
           <img src={logo_fb}></img>
           <img src={logo_twit}></img>
