@@ -1,9 +1,12 @@
 import styled from "styled-components";
+import React, { Component } from 'react'
 import logo_fb from "../../images/icons/svgs/facebook.svg";
+import some_audio_source from "../../images/audio/audio-crack.mp3";
 import logo_twit from "../../images/icons/svgs/twitter.svg";
 import logo_goog from "../../images/icons/svgs/googleplus.svg";
 import logo_insta from "../../images/icons/svgs/instagram.svg";
-import "./Footer.css";
+import PlayButton from 'simple-play-button';
+import "./pacman.css";
 
 // STYLED COMPONENTS -start
 
@@ -19,8 +22,9 @@ const HeaderComponent = styled.div`
     font-size: 12px;
   }
   img {
-    height: 14px;
-    margin: 16px;
+    height: 24px;
+    margin: 8px;
+    filter: invert(100);
   }
   .left-nav {
     display: flex;
@@ -48,6 +52,9 @@ const HeaderComponent = styled.div`
 
 // STYLED COMPONENTS -end
 
+
+
+
 const Footer = () => {
   return (
     <>
@@ -61,8 +68,8 @@ const Footer = () => {
         </div>
         <div className="pacman"></div>
           <div className="dot"></div>
+        <PlayButton src={some_audio_source}/>
         <div>
-
           <img src={logo_fb}></img>
           <img src={logo_twit}></img>
           <img src={logo_goog}></img>

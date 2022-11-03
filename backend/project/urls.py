@@ -14,10 +14,13 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework import permissions
 from drf_yasg.views import get_schema_view
 from drf_yasg import openapi
-from rest_framework import permissions
+
+
+from rest_framework_simplejwt import views
 
 schema_view = get_schema_view(
    openapi.Info(
@@ -33,9 +36,18 @@ schema_view = get_schema_view(
 )
 
 
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('backend/api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
+    path('codepost/', include('code_post.urls')),
+    path('answers/', include('answers.urls')),
+    path('comments/', include('comments.urls')),
+    path('generalposts/', include('general_posts.urls')),
 
+# JWT
+    path('token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('token/refresh/', views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('token/verify/', views.TokenVerifyView.as_view(), name='token_verify'),
 ]

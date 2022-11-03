@@ -1,12 +1,9 @@
 import styled from "styled-components";
-import { useEffect, useState } from "react";
 import card1 from "../../images/restaurants/card-1.jpg";
 import card2 from "../../images/restaurants/card-2.jpg";
 import card3 from "../../images/restaurants/card-3.jpg";
 import card4 from "../../images/restaurants/card-4.jpg";
 import Card_restaurant from "./Card_restaurant/index.js";
-import Card_review from "./Card_reviews/index.js";
-import Card_user from "./Card_users/index.js";
 
 // STYLED COMPONENTS -start
 
@@ -38,22 +35,20 @@ const Navbar = styled.div`
 // STYLED COMPONENTS -end
 
 const Posts = () => {
-  const [active, setActive] = useState("Container_restau");
-  const [restaurants, setRestaurants] = useState([])
+
   return (
     <>
       <h1>Posts</h1>
       <h1>Posts</h1>
       <h1>Posts</h1>
-      <Navbar>
-        <p onClick={() => setActive("Container_restau")}>Newest</p>
-        <p onClick={() => setActive("Container_review")}>Most liked</p>
-        <p onClick={() => setActive("Container_users")}>Biggest projects</p>     
-      </Navbar>
       <CardContainer>
-        {active == "Container_restau" && <Card_restaurant />} 
-        {active == "Container_review" && <Card_review />}
-        {active == "Container_users" && <Card_user />}
+        <Card_restaurant />
+        <Card_restaurant />
+        <Card_restaurant />
+        <Card_restaurant />
+        <Card_restaurant />
+        <Card_restaurant />
+        <Card_restaurant />
       </CardContainer>
     </>
   );

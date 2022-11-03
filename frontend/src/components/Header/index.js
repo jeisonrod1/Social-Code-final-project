@@ -70,6 +70,14 @@ const Header = () => {
           <img src={logo}></img>
         </div>
         <div className="right-nav">
+        <a
+            className="plain"
+            onClick={() => {
+              navigate("../navtest");
+            }}
+          >
+            NavTest
+          </a>
           <a
             className="plain"
             onClick={() => {
