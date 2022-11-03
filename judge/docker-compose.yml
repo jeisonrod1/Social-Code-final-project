@@ -19,7 +19,7 @@ services:
     restart: always
 
   workers:
-    image: judge0/judge0:1.13.0
+    image: judge:judge
     command: ["./scripts/workers"]
     volumes:
       - ./judge0.conf:/judge0.conf:ro

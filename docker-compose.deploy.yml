@@ -42,7 +42,7 @@ services:
       - build:/build
 
   server:
-    image: registry.gitlab.propulsion-home.ch/full-stack/batch-21-aug-2022/final-projects/code-media/judge:master
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-21-aug-2022/final-projects/code-media/judge:latest
     environment:
       - VIRTUAL_HOST=code-media.propulsion-learn.ch
     volumes:
@@ -52,7 +52,7 @@ services:
     restart: always
 
   workers:
-    image: judge0/judge0:1.13.0
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-21-aug-2022/final-projects/code-media/judge:latest
     command: [ "./scripts/workers" ]
     volumes:
       - ./judge0.conf:/judge0.conf:ro
