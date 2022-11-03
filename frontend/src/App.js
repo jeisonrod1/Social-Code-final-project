@@ -3,17 +3,20 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Posts from "./components/Posts";
 import PostsPage from "./components/PostPage";
-import Userprofile from "./components/Userprofile";
+import Userprofile from "./components/Userprofile/Profile/index";
 import Editor from "./components/Editor";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import "./App.css";
+
+
 
 function App() {
   return (
     <BrowserRouter>
       <main>
         <Header /> {/* Mads */}
+        <Userprofile/>
         <Routes>
           <Route path="posts" element={<Posts />} /> {/* Mads */}
           <Route path="postpage" element={<PostsPage />} />
