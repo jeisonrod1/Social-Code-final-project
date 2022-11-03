@@ -29,7 +29,7 @@ function App() {
           <Route path="userprofile" element={<Userprofile />} /> {/* Mads */}
           <Route path="login" element={<Login />} /> {/* Mads */}
           <Route path="registration" element={<Registration />} /> {/* Mads */}
-          <Route path="judge/" element={<JudgeLanding />} /> {/* Mads */}
+          <Route path="judgeeditor/" element={<JudgeLanding />} /> {/* Mads */}
         </Routes>
         <Footer /> {/* Mads */}
       </main>
