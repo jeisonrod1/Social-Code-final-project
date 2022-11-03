@@ -7,6 +7,11 @@ import Userprofile from "./components/Userprofile/Profile/index";
 import Editor from "./components/Editor";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
+
+import JudgeLanding from "./components/Judge/components/Landing"
+
+import NavTest from "./components/NavTest";
+
 import "./App.css";
 
 
@@ -18,6 +23,7 @@ function App() {
         <Header /> {/* Mads */}
         <Userprofile/>
         <Routes>
+          <Route path="navtest" element={<NavTest />} /> {/* Mads */}
           <Route path="posts" element={<Posts />} /> {/* Mads */}
           <Route path="postpage" element={<PostsPage />} />
           {/* Mads */}
@@ -26,6 +32,7 @@ function App() {
           <Route path="userprofile" element={<Userprofile />} /> {/* Mads */}
           <Route path="login" element={<Login />} /> {/* Mads */}
           <Route path="registration" element={<Registration />} /> {/* Mads */}
+          <Route path="judge/" element={<JudgeLanding />} /> {/* Mads */}
         </Routes>
         <Footer /> {/* Mads */}
       </main>
