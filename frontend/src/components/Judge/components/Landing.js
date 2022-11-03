@@ -129,7 +129,7 @@ const JudgeLanding = () => {
         formData.append('stdin', btoa(customInput))
         const config = {
             method: "POST",
-            url: "http://localhost:2358/submissions/",
+            url: "https://code-media.propulsion-learn.ch/judge/submissions/",
             params: { base64_encoded: "true", wait: "false" },
             header: {
                 "Content-Type": "application/json",
@@ -161,7 +161,7 @@ const JudgeLanding = () => {
     const checkStatus = async (token) => {
         const config = {
             method: "GET",
-            url:`http://localhost:2358/submissions/` + token,
+            url:`https://code-media.propulsion-learn.ch/judge/submissions/` + token,
             params: { base64_encoded: "true", fields: "*" },
             header: {
                 "X-Auth-Token": "f6583e60-b13b-4228-b554-2eb332ca64e7"
