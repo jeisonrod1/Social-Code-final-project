@@ -15,10 +15,15 @@ pull:
   script:
     - docker pull "$CI_REGISTRY_IMAGE":latest
 
-build:
+build-backend:
   stage: build
   script:
     - docker build --tag="$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" --cache-from="$CI_REGISTRY_IMAGE":latest .
+
+build-judge:
+  stage: build
+  script:
+    - docker build --tag="$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME"/judge --cache-from="$CI_REGISTRY_IMAGE"/judge:latest .
 
 lint:
   stage: lint
@@ -44,6 +49,11 @@ push latest:
     - docker tag "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE":latest
     - docker push "$CI_REGISTRY_IMAGE":latest
 
+push judge:
+  stage: push
+  script: :
+    - docker tag "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE"/judge:latest
+    - docker push "$CI_REGISTRY_IMAGE"/judge:latest
 cleanup:
   stage: cleanup
   when: always
