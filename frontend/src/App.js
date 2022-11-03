@@ -7,6 +7,7 @@ import Userprofile from "./components/Userprofile";
 import Editor from "./components/Editor";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
+import JudgeLanding from "./components/Judge/components/Landing"
 import "./App.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="userprofile" element={<Userprofile />} /> {/* Mads */}
           <Route path="login" element={<Login />} /> {/* Mads */}
           <Route path="registration" element={<Registration />} /> {/* Mads */}
+          <Route path="judge/" element={<JudgeLanding />} /> {/* Mads */}
         </Routes>
         <Footer /> {/* Mads */}
       </main>
