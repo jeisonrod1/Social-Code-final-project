@@ -42,7 +42,7 @@ services:
       - build:/build
 
   server:
-    image: judge0/judge0:1.13.0
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-21-aug-2022/final-projects/code-media/judge:master
     environment:
       - VIRTUAL_HOST=code-media.propulsion-learn.ch
     volumes:
