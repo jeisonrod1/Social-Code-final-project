@@ -3,7 +3,7 @@ import card1 from "../../images/restaurants/card-1.jpg";
 import card2 from "../../images/restaurants/card-2.jpg";
 import card3 from "../../images/restaurants/card-3.jpg";
 import card4 from "../../images/restaurants/card-4.jpg";
-import Card_restaurant from "./Card_restaurant/index.js";
+import CardPost from "./CardPost/index.js";
 
 // STYLED COMPONENTS -start
 
@@ -35,20 +35,30 @@ const Navbar = styled.div`
 // STYLED COMPONENTS -end
 
 const Posts = () => {
-
   return (
     <>
       <h1>Posts</h1>
       <h1>Posts</h1>
       <h1>Posts</h1>
       <CardContainer>
-        <Card_restaurant />
-        <Card_restaurant />
-        <Card_restaurant />
-        <Card_restaurant />
-        <Card_restaurant />
-        <Card_restaurant />
-        <Card_restaurant />
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
+        <CardPost/>
       </CardContainer>
     </>
   );

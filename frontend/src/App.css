@@ -4,7 +4,11 @@ body {
 }
 
 main {
+  background-color: #2e3138; 
+  /* #13141 */
+}
 
+html {
   background-color: #2e3138; 
   /* #13141 */
 }
