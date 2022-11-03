@@ -7,6 +7,7 @@ import Userprofile from "./components/Userprofile";
 import Editor from "./components/Editor";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
+import NavTest from "./components/NavTest";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <main>
         <Header /> {/* Mads */}
         <Routes>
+          <Route path="navtest" element={<NavTest />} /> {/* Mads */}
           <Route path="posts" element={<Posts />} /> {/* Mads */}
           <Route path="postpage" element={<PostsPage />} />
           {/* Mads */}
