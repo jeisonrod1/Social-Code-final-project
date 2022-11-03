@@ -14,6 +14,7 @@ pull:
   allow_failure: true
   script:
     - docker pull "$CI_REGISTRY_IMAGE":latest
+    - docker pull "$CI_REGISTRY_IMAGE"/judge:latest
 
 build:
   stage: build
