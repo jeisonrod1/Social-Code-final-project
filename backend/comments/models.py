@@ -6,7 +6,9 @@ from code_post.models import CodePost
 
 class Comments(models.Model):
     content = models.TextField()
-    code_post = models.ForeignKey(to=CodePost, on_delete=models.CASCADE, related_name='comments')
-    answers = models.ManyToManyField(to=Answers, on_delete=models.CASCADE, related_name='answers')
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+    code_post = models.ForeignKey(to=CodePost, on_delete=models.CASCADE, related_name='answersToComments')
+    answers = models.ManyToManyField(to=Answers, blank=True, related_name='commentsToAnswers')
 
 
