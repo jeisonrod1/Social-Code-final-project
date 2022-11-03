@@ -33,7 +33,7 @@ services:
       - postgres_db:/var/lib/postgresql/data
 
   server:
-    image: judge0/judge0:1.13.0
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-21-aug-2022/final-projects/code-media/judge:latest
     volumes:
       - ./judge0.conf:/judge0.conf:ro
     ports:
@@ -43,7 +43,7 @@ services:
     restart: always
 
   workers:
-    image: judge0/judge0:1.13.0
+    image: registry.gitlab.propulsion-home.ch/full-stack/batch-21-aug-2022/final-projects/code-media/judge:latest
     command: [ "./scripts/workers" ]
     volumes:
       - ./judge0.conf:/judge0.conf:ro
