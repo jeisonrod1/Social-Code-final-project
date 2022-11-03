@@ -20,16 +20,18 @@ function App() {
       <main>
         <Header /> {/* Mads */}
         <Routes>
-          <Route path="navtest" element={<NavTest />} /> {/* Mads */}
-          <Route path="posts" element={<Posts />} /> {/* Mads */}
-          <Route path="postpage" element={<PostsPage />} />
-          {/* Mads */}
-          <Route path="editor" element={<Editor />} />
-          {/* Mads */}
-          <Route path="userprofile" element={<Userprofile />} /> {/* Mads */}
-          <Route path="login" element={<Login />} /> {/* Mads */}
-          <Route path="registration" element={<Registration />} /> {/* Mads */}
-          <Route path="judge/" element={<JudgeLanding />} /> {/* Mads */}
+          <>          
+            <Route path="navtest" element={<NavTest />} /> {/* Mads */}
+            <Route path="posts" element={<Posts />} /> {/* Mads */}
+            <Route path="postpage" element={<PostsPage />} />
+            {/* Mads */}
+            <Route path="editor" element={<Editor />} />
+            {/* Mads */}
+            <Route path="userprofile" element={<Userprofile />} /> {/* Mads */}
+            <Route path="login" element={<Login />} /> {/* Mads */}
+            <Route path="registration" element={<Registration />} /> {/* Mads */}
+            <Route path="judge/" element={<JudgeLanding />} /> {/* Mads */}
+          </>
         </Routes>
         <Footer /> {/* Mads */}
       </main>
