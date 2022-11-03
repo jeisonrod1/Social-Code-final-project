@@ -131,7 +131,7 @@ const JudgeLanding = () => {
             method: "POST",
             url: "https://code-media.propulsion-learn.ch/judge/submissions/",
             params: { base64_encoded: "true", wait: "false" },
-            header: {
+            headers: {
                 "Content-Type": "application/json",
                 "X-Auth-Token": "f6583e60-b13b-4228-b554-2eb332ca64e7"
 
@@ -163,7 +163,7 @@ const JudgeLanding = () => {
             method: "GET",
             url:`https://code-media.propulsion-learn.ch/judge/submissions/` + token,
             params: { base64_encoded: "true", fields: "*" },
-            header: {
+            headers: {
                 "X-Auth-Token": "f6583e60-b13b-4228-b554-2eb332ca64e7"
             },
         };
