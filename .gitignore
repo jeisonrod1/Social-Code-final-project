@@ -5,4 +5,4 @@ __pycache__
 *.sqlite3
 static-files
 media-files
-/judge0-master/
+/judge/
