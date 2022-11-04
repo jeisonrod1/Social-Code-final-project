@@ -48,8 +48,8 @@ push latest:
 push judge:
   stage: push
   script:
-    - docker tag "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE"/judge:"$CI_COMMIT_REF_NAME"
-    - docker push "$CI_REGISTRY_IMAGE"/judge:"$CI_COMMIT_REF_NAME"
+    - docker tag "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE"/judge:latest
+    - docker push "$CI_REGISTRY_IMAGE"/judge:latest
 
 cleanup:
   stage: cleanup
