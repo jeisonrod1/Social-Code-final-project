@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "general_posts",
     "registration",
     "user",
+    "badges",
 ]
 
 MIDDLEWARE = [
@@ -145,7 +146,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static-files') if DEBUG else '/static-file
 print('static root', STATIC_ROOT)
 
 
-MEDIA_URL = "/backend/media-files/" if DEBUG else "https://code-media.propulsion-learn.ch//media-files/"
+MEDIA_URL = "/backend/media-files/" if DEBUG else "https://code-media.propulsion-learn.ch/media-files/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media-files') if DEBUG else '/media-files/'
 print('media root', MEDIA_ROOT)
 
@@ -154,6 +155,8 @@ print('media root', MEDIA_ROOT)
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = 'user.User'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
@@ -184,5 +187,5 @@ SWAGGER_SETTINGS = {
     }
 }
 
-AUTH_USER_MODEL = 'user.User'
+
 
