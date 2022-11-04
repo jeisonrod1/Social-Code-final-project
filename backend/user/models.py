@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
+
 class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
@@ -31,6 +32,7 @@ class PersonalProfile(models.Model):
     logged_in_user_is_following = models.ManyToManyField('self', symmetrical=False, related_name='following', blank= True)
     logged_in_user_is_friends = models.ManyToManyField('self', symmetrical=True, blank=True)
     user = models.OneToOneField(to='user.User', related_name='personal_profile',on_delete=models.CASCADE, blank=True)
+
 
 
 
