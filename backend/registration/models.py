@@ -25,3 +25,4 @@ class Registration(models.Model):
         profile, created = Registration.objects.get_or_create(user=instance)
         if created:
             profile.save()
+
