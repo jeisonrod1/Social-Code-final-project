@@ -7,8 +7,7 @@ from drf_yasg import openapi
 
 
 from rest_framework_simplejwt import views
-
-from backend.project import settings
+from project import settings
 
 schema_view = get_schema_view(
    openapi.Info(

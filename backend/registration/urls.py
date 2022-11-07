@@ -1,8 +1,9 @@
 from django.urls import path
 
-from backend.registration.views import ActivateAccountView
+from registration.views import UserRegistration
+from registration.views import Validation
 
 urlpatterns = [
-    path(r'^activate_account/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})/$',
-         ActivateAccountView.as_view(), name='activate_account'),
+    path('', UserRegistration.as_view()),
+    path('validation/', Validation.as_view()),
 ]

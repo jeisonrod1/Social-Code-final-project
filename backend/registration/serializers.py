@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from backend.registration.models import Registration
+from registration.models import Registration
 
 
 class RegistrationSerializer(serializers.ModelSerializer):
