@@ -21,4 +21,35 @@ html {
 span, a, p, h1, h2, h3, h4, h5, h6 {
   color: rgb(199, 191, 213);
 }
+
+label {
+  color: white;
+}
     
+button {
+  border: none;
+  margin: 0 16px 0 0;
+  padding: 8px 18px 8px 18px;
+}
+
+button:hover {
+  border: none;
+  background-color: #515160;
+}
+
+input {
+    background-color: #2d2d38;
+    border: none;
+    border-radius: 8px;
+    color: white;
+  }
+
+input[type=submit] {
+  background-color: #492d71;
+  color: white;
+  width: 100px;
+  height: 28px;
+  margin-left: 16px;
+  border-radius: 30px;
+  border: none;
+}
