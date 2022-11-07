@@ -13,4 +13,5 @@ dependencies:
       - flake8==5.0.4
       - gunicorn==20.1.0
       - django-cors-headers==3.13.0
+      - django-utils-six==2.0
 
