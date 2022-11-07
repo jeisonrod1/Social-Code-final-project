@@ -32,6 +32,7 @@ urlpatterns = [
     path('comments/', include('comments.urls')),
     path('generalposts/', include('general_posts.urls')),
     path('registration/', include('registration.urls')),
+    path('backend/api/social/', include('user.urls')),
 
 # JWT
     path('token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
