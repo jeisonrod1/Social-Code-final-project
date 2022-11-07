@@ -21,7 +21,6 @@ function App() {
     <BrowserRouter>
       <main>
         <Header /> {/* Mads */}
-        <Userprofile/>
         <Routes>
           <Route path="navtest" element={<NavTest />} /> {/* Mads */}
           <Route path="posts" element={<Posts />} /> {/* Mads */}
