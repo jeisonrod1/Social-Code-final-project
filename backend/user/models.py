@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.conf import settings
 
 
 def user_directory_path(instance, filename):
@@ -26,8 +27,8 @@ class User(AbstractUser):
     amount_of_posts = models.IntegerField(default=0)
     amount_of_friends = models.IntegerField(default=0)
     amount_following = models.IntegerField(default=0)
-    logged_in_user_is_following = models.ManyToManyField('self', symmetrical=False, related_name='following', blank= True)
-    logged_in_user_is_friends = models.ManyToManyField('self', symmetrical=True, blank=True)
+    friends = models.ManyToManyField(to=settings.AUTH_USER_MODEL, related_name="my_friends", blank=True)
+    following = models.ManyToManyField(to=settings.AUTH_USER_MODEL, related_name='followers', blank=True)
     user_invited = models.BooleanField(default=False)
     # junior = models.ForeignKey('self', related_name='Senior', on_delete=models.PROTECT, blank=True, default=1)
 
