@@ -7,7 +7,6 @@ from drf_yasg import openapi
 
 
 from rest_framework_simplejwt import views
-
 from project import settings
 
 schema_view = get_schema_view(
@@ -24,7 +23,6 @@ schema_view = get_schema_view(
 )
 
 
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('backend/api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
@@ -33,6 +31,8 @@ urlpatterns = [
     path('answers/', include('answers.urls')),
     path('comments/', include('comments.urls')),
     path('generalposts/', include('general_posts.urls')),
+    path('registration/', include('registration.urls')),
+    path('backend/api/social/', include('user.urls')),
 
 # JWT
     path('token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
