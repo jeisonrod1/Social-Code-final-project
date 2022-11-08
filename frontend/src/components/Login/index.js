@@ -67,7 +67,7 @@ const Login = () => {
         const tokenJsObject = JSON.parse(tokenFromLs)
 
         const jsBody = {
-            "username": email,
+            "email": email,
             "password": password,
         }
 
