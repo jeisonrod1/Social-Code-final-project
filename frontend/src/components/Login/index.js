@@ -42,8 +42,72 @@ import SocialCode from "../../images/icons/svgs/logo_socialcode.jpg"
 import IconFB from "../../images/icons/icon/facebook.png"
 import IconTW from "../../images/icons/icon/twitter.png"
 import IconIG from "../../images/icons/icon/instagram.png"
+import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
 
 const Login = () => {
+
+  const navigate = useNavigate()
+
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [token, setToken] = useState("")
+
+  const handleEmailChange = (e) => {
+        setEmail(e.target.value)
+    }
+    const handlePasswordChange = (e) => {
+        setPassword(e.target.value)
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const url = "https://code-media.propulsion-learn.ch/token/"
+        const tokenFromLs = localStorage.getItem("auth")
+        const tokenJsObject = JSON.parse(tokenFromLs)
+
+        const jsBody = {
+            "username": email,
+            "password": password,
+        }
+
+        const config = {
+            method: "POST",
+            headers: new Headers({
+                "Content-Type": "application/json",
+            }),
+            body: JSON.stringify(jsBody)
+        }
+
+        fetch(url, config)
+        .then((response) => {
+            console.log(response)
+            if (response.status === 200) {
+                console.log("fetch worked")
+                const json = response.json();
+                return json
+            }
+            else {
+                console.log(response.json())
+            }
+        })
+        .then(data => { setToken(data.access)
+            console.log(token)});
+    }
+
+     useEffect(() => {
+        const jsObject = {
+            Token: token
+        }
+        if (token) {
+            localStorage.setItem("auth", JSON.stringify(jsObject));
+            console.log("the token was stored to local storage");
+            navigate("/")
+        }
+      }, [token]);
+
+
+
   return (
     <LoginContainer>
       <LeftSide>
@@ -70,15 +134,16 @@ const Login = () => {
           <SignInIcon src={LoginIcon} />
         </RightTopContainer>
         <RightMiddleContainer>
-          <SignInForm>
+          <SignInForm onSubmit={handleSubmit}>
             <SignInTitle>Sign in</SignInTitle>
             <Inputs>
               <EmailLabel src={LoginIcon} />
-              <EmailInput placeholder="enter your email" type="email" />
+              <EmailInput placeholder="enter your email" type="email" onChange={handleEmailChange}/>
               <PasswordLabel src={PasswordIcon} />
               <PasswordInput
                 placeholder="enter your password"
                 type="password"
+                onChange={handlePasswordChange}
               />
 
             </Inputs>
