@@ -54,7 +54,9 @@ const Editor_HTML_CSS_JS_Page = props => {
   const [cssState, setCssState] = useLocalStorage("", "#hello {\ncolor:red\n}");
   const [jsState, setJsState] = useLocalStorage(
     "",
-    "const hello = document.getElementById('hello')\nhello.document.body.style.background-color = 'blue'"
+    `const hello = document.getElementById('hello')
+  hello.document.body.style.background-color = 'blue'
+  document.body.style.background = '#f3f url('logo_socialcode.jpg') no-repeat top'`
   );
 
   useEffect(() => {
