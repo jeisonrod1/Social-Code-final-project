@@ -4,31 +4,41 @@ import card1 from "../../../images/restaurants/card-1.jpg";
 import heart from "../../../images/icons/svgs/heart.svg";
 import share from "../../../images/icons/svgs/share.svg";
 import meme from "../../../images/memes/ten-sec.jpg";
+import profile from "../../../images/users/profile-face.png";
+import profile1 from "../../../images/users/profile1.jpg";
+import profile2 from "../../../images/users/profile2.jpg";
+import content from "../../../images/content/hooray.jpg";
 
 // STYLED COMPONENTS -start
 
 const QCard = styled.div`
   border-top: 5px solid #492d71;
   margin: 8px;
-  width: 410px;
+  padding: 16px;
+  width: 600px;
   height: 100%;
   background-color: #1e1f26;
   display: flex;
-  justify-content: start;
   justify-content: space-between;
   flex-direction: column;
   border: 1px solid #505263;
   border-radius: 8px;
   .wrapper {
     display: flex;
+    justify-content: start;
   }
-  spac p {
-    margin: 8px;
-    font-size: 12px;
+  .left img {
+    margin-right: 8px;
+    height: 40px;
+    width: 40px;
   }
   .image {
-    width: 150px;
-    margin: 16px;
+    width: 100%;
+    margin: 0;
+  }
+  .subtitle {
+    color: grey;
+    font-size: 12px;
   }
   p,
   h5 {
@@ -47,6 +57,8 @@ const QCard = styled.div`
       margin: 16px 0 16px 16px;
       display: inline-flex;
     }
+      img {
+        border-radius: 100%;
   }
   .right {
     justify-content: flex-end;
@@ -82,29 +94,21 @@ const SocialButtons = styled.div`
 
 // STYLED COMPONENTS -end
 
-const CardPost = () => {
+const CardMidPost = () => {
   return (
     <QCard>
       <div className="wrapper">
         <div className="left">
-          <p>👾 Is JCenter down permanently (31 Oct)?</p>
-          <div className="tags">
-            <h5>javascript</h5>
-            <h5>react</h5>
-          </div>
+          <img className="image" src={profile2}></img>
         </div>
         <div className="right">
           <h5>User123</h5>
-          <h5>70 votes</h5>
-          <h5>17 answers</h5>
-          <h5>15k views </h5>
+          <p className="subtitle">70 votes</p>
         </div>
       </div>
       <p>This is a very usefull code snippet: </p>
-      <code>
-
-      </code>
-      <img className="image" src={meme}></img>
+      <code></code>
+      <img className="image" src={content}></img>
       <p>Comments:</p>
       <p>Peter3202:</p>
       <p>👾 Is JCenter down permanently (31 Oct)?</p>
@@ -125,4 +129,4 @@ const CardPost = () => {
     </QCard>
   );
 };
-export default CardPost;
+export default CardMidPost;
