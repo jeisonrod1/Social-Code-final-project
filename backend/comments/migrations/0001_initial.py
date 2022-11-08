@@ -9,8 +9,8 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('answers', '0001_initial'),
         ('code_post', '0001_initial'),
+        ('answers', '0001_initial'),
     ]
 
     operations = [

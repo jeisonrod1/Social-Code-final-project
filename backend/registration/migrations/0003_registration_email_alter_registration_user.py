@@ -16,8 +16,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='registration',
             name='email',
-            field=models.EmailField(default='alex@email.com', max_length=254),
-            preserve_default=False,
+            field=models.EmailField(blank=True, max_length=254),
         ),
         migrations.AlterField(
             model_name='registration',
