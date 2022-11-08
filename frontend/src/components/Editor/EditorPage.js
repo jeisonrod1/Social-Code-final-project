@@ -75,6 +75,8 @@ const Editor_HTML_CSS_JS_Page = props => {
     }, 250);
   }, [htmlState, cssState, jsState]);
 
+  // Setting up a Room for specific user
+
   return (
     <>
       <br />
@@ -91,9 +93,7 @@ const Editor_HTML_CSS_JS_Page = props => {
             </div>
             <h3>Connected</h3>
             <div className="clientsList">
-              {/* {Client.map(client => (
-                <Client key={client.socketId} username={client.username} />
-              ))} */}
+              <h6> Clients: </h6>
             </div>
           </div>
           <button className="btn copyBtn">Copy ROOM ID</button>
