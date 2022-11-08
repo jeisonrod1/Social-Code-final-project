@@ -11,6 +11,6 @@ def code_generator(length=5):
 
 
 class Registration(models.Model):
-    email = models.EmailField()
+    email = models.EmailField(blank=True)
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE)
     code = models.CharField(max_length=5, default=code_generator)
