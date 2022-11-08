@@ -35,9 +35,9 @@ urlpatterns = [
     path('backend/api/social/', include('user.urls')),
 
 # JWT
-    path('token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('token/refresh/', views.TokenRefreshView.as_view(), name='token_refresh'),
-    path('token/verify/', views.TokenVerifyView.as_view(), name='token_verify'),
+    path('backend/auth/token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('backend/auth/token/refresh/', views.TokenRefreshView.as_view(), name='token_refresh'),
+    path('backend/auth/token/verify/', views.TokenVerifyView.as_view(), name='token_verify'),
 ]
 
 if settings.DEBUG:

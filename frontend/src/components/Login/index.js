@@ -62,7 +62,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const url = "https://code-media.propulsion-learn.ch/token/"
+        const url = "https://code-media.propulsion-learn.ch/backend/auth/token/"
         const tokenFromLs = localStorage.getItem("auth")
         const tokenJsObject = JSON.parse(tokenFromLs)
 
@@ -97,7 +97,7 @@ const Login = () => {
 
      useEffect(() => {
         const jsObject = {
-            Token: token
+            socialToken: token
         }
         if (token) {
             localStorage.setItem("auth", JSON.stringify(jsObject));
