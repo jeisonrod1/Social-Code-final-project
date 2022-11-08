@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure--48f5ng%++^e*xdfoe*bsmd09lzbc0gth7n&pxzo-hjj+%=i0-
 DEBUG = os.environ.get('DJANGO_DEBUG', "True") == "True"
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["https://code-media.propulsion-learn.ch/", 'http://127.0.0.1', "http://localhost:3000"]
+CSRF_TRUSTED_ORIGINS = ["https://code-media.propulsion-learn.ch", 'http://127.0.0.1', "http://localhost:3000"]
 CORS_ALLOW_ALL_ORIGINS = True
 
 
@@ -67,10 +67,11 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
