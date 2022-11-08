@@ -97,7 +97,7 @@ const Login = () => {
 
      useEffect(() => {
         const jsObject = {
-            Token: token
+            socialToken: token
         }
         if (token) {
             localStorage.setItem("auth", JSON.stringify(jsObject));
