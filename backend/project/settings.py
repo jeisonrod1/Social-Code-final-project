@@ -58,6 +58,12 @@ INSTALLED_APPS = [
     "general_posts",
     "registration",
     "user",
+    "badges",
+    "handler_answers",
+    "handler_code",
+    "handler_comments",
+    "handler_posts",
+    "handler_users",
 ]
 
 MIDDLEWARE = [
