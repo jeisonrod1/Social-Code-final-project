@@ -6,7 +6,6 @@ from django.conf import settings
 def user_directory_path(instance, filename):
     return f'avatar {instance.id}/{filename}'
 
-
 class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']

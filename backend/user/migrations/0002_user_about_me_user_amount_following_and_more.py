@@ -50,24 +50,18 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='user',
-            name='junior',
-            field=models.ForeignKey(blank=True, default=1, on_delete=django.db.models.deletion.PROTECT, related_name='Senior', to=settings.AUTH_USER_MODEL),
-            preserve_default=False,
+            name='following',
+            field=models.ManyToManyField(blank=True, related_name='followers', to=settings.AUTH_USER_MODEL),
+        ),
+        migrations.AddField(
+            model_name='user',
+            name='friends',
+            field=models.ManyToManyField(blank=True, related_name='my_friends', to=settings.AUTH_USER_MODEL),
         ),
         migrations.AddField(
             model_name='user',
             name='location',
             field=models.CharField(blank=True, max_length=100),
-        ),
-        migrations.AddField(
-            model_name='user',
-            name='logged_in_user_is_following',
-            field=models.ManyToManyField(blank=True, related_name='following', to=settings.AUTH_USER_MODEL),
-        ),
-        migrations.AddField(
-            model_name='user',
-            name='logged_in_user_is_friends',
-            field=models.ManyToManyField(blank=True, to=settings.AUTH_USER_MODEL),
         ),
         migrations.AddField(
             model_name='user',

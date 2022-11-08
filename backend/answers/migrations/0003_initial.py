@@ -10,8 +10,8 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('answers', '0002_initial'),
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('answers', '0002_initial'),
     ]
 
     operations = [
