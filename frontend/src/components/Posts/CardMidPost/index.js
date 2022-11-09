@@ -55,6 +55,9 @@ const QCard = styled.div`
     }
   }
   .body {
+    .form {
+      margin-top: 32px;
+    }
     .comment {
       border-top: 1px solid #505263;
       border-bottom: 1px solid #505263;
@@ -152,7 +155,7 @@ const CardMidPost = () => {
           <p>Comment 2 this is the second comment</p>
         </div>
 
-        <form>
+        <form className="form">
           <label>
             <input type="text" name="name" placeholder="Post a comment" />
           </label>
