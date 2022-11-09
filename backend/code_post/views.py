@@ -1,4 +1,4 @@
-from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
+from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView, GenericAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
 
 from code_post.models import CodePost
@@ -43,11 +43,17 @@ class FollowedCodePosts(ListAPIView):
         followed_posts = CodePost.objects.filter(user__in=friends)
         return followed_posts
 
+
 class LikedPosts(ListAPIView):
     serializer_class = CreateCodePostSerializer
-
 
     def get_queryset(self):
         return CodePost.objects.filter(likes=self.request.user)
 
+
+class TestCreateCodePosts(GenericAPIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def get(self, request, *args, **kwargs):
+        user = self.request.user.id
 
