@@ -33,6 +33,7 @@ urlpatterns = [
     path('backend/generalposts/', include('general_posts.urls')),
     path('backend/registration/', include('registration.urls')),
     path('backend/api/social/', include('user.urls')),
+    path('backend/badges/', include('badges.urls')),
 
 # JWT
     path('backend/auth/token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),

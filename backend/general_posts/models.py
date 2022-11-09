@@ -13,5 +13,5 @@ class GeneralPosts(models.Model):
     content = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    userGeneralPost = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='generalPosts')
+    userGeneralPost = models.ForeignKey(to=User, on_delete=models.PROTECT, related_name='generalPosts')
     commentsToGeneralPost = models.ManyToManyField(to=Comments, blank=True, related_name='commentsToGeneralPosts')

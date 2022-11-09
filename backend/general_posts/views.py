@@ -7,9 +7,12 @@ from general_posts.serializers import GeneralPostsSerializer
 
 
 class ListCreateGeneralPostsView(ListCreateAPIView):
-    queryset = GeneralPosts.objects.all()
     serializer_class = GeneralPostsSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    queryset = GeneralPosts.objects.all()
+
+    def perform_create(self, serializer):
+        serializer.save(userGeneralPost=self.request.user)
 
 
 class RetrieveUpdateDestroyGeneralPostsView(RetrieveUpdateDestroyAPIView):
