@@ -52,6 +52,7 @@ cleanup:
   script:
     - docker-compose -p "$CI_PIPELINE_ID" -f docker-compose.ci.yml down --remove-orphans
     - docker rmi -f "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME"
+    - docker container prune -f
     - docker images -q --filter=dangling=true | xargs -r docker rmi
 
 deploy:
