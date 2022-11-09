@@ -36,8 +36,10 @@ push master:
   only:
     - master
   script:
-    - docker tag "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE":"$CI_COMMIT_REF_NAME"
-    - docker push "$CI_REGISTRY_IMAGE":"$CI_COMMIT_REF_NAME"
+#    - docker tag "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE":"$CI_COMMIT_REF_NAME"
+    - docker tag "$CI_PIPELINE_ID":"$CI_COMMIT_REF_NAME" "$CI_REGISTRY_IMAGE":intermediate
+#    - docker push "$CI_REGISTRY_IMAGE":"$CI_COMMIT_REF_NAME"
+    - docker push "$CI_REGISTRY_IMAGE":intermediate
 
 push latest:
   stage: push
@@ -61,5 +63,6 @@ deploy:
   script:
     - docker-compose -f docker-compose.deploy.yml pull
     - docker-compose -f docker-compose.deploy.yml down --remove-orphans
+    - docker tag "$CI_REGISTRY_IMAGE":intermediate "$CI_REGISTRY_IMAGE":"$CI_COMMIT_REF_NAME"
     - docker volume rm code-media_build
     - docker-compose -f docker-compose.deploy.yml up -d
