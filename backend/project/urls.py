@@ -27,11 +27,11 @@ urlpatterns = [
     path('backend/admin/', admin.site.urls),
     path('backend/api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 
-    path('codepost/', include('code_post.urls')),
-    path('answers/', include('answers.urls')),
-    path('comments/', include('comments.urls')),
-    path('generalposts/', include('general_posts.urls')),
-    path('registration/', include('registration.urls')),
+    path('backend/codepost/', include('code_post.urls')),
+    path('backend/answers/', include('answers.urls')),
+    path('backend/comments/', include('comments.urls')),
+    path('backend/generalposts/', include('general_posts.urls')),
+    path('backend/registration/', include('registration.urls')),
     path('backend/api/social/', include('user.urls')),
 
 # JWT
