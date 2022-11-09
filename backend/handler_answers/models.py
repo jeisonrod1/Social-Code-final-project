@@ -4,6 +4,6 @@ from answers.models import Answers
 
 
 class HandlerAnswers(models.Model):
-    answers = models.ForeignKey(to=Answers, on_delete=models.PROTECT, related_name="handler")
+    answers = models.ManyToManyField(to=Answers, related_name="handler", blank=True)
     badges = models.ForeignKey(to=Badge, on_delete=models.PROTECT, related_name="handler_answers")
     amount = models.IntegerField(default=0)

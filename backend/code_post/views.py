@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView, ListAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAdminUser
 
@@ -11,6 +10,7 @@ class ListCreateCodePostView(ListCreateAPIView):
     queryset = CodePost.objects.all()
     serializer_class = CodePostSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+
 
 class RetrieveUpdateDestroyCodePostView(RetrieveUpdateDestroyAPIView):
     queryset = CodePost.objects.all()

@@ -7,6 +7,6 @@ User = get_user_model()
 
 
 class HandlerUsers(models.Model):
-    users = models.ForeignKey(to=User, on_delete=models.PROTECT, related_name="handler")
+    users = models.ManyToManyField(to=User, related_name="handler", blank=True)
     badges = models.ForeignKey(to=Badge, on_delete=models.PROTECT, related_name="handler_users")
     amount = models.IntegerField(default=0)
