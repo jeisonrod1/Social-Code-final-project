@@ -1,12 +1,13 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+from badges.serializers import UserBadgesSerializer
 
 User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-
+    badges = UserBadgesSerializer(many=True)
     class Meta:
         model = User
         exclude = ['password', 'last_login', "is_superuser", "is_staff", "is_active", "groups", "user_permissions"]
