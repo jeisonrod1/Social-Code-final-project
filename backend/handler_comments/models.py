@@ -4,6 +4,6 @@ from comments.models import Comments
 
 
 class HandlerComments(models.Model):
-    comments = models.ForeignKey(to=Comments, on_delete=models.PROTECT, related_name="handler")
+    comments = models.ManyToManyField(to=Comments, related_name="handler", blank=True)
     badges = models.ForeignKey(to=Badge, on_delete=models.PROTECT, related_name="handler_comments")
     amount = models.IntegerField(default=0)
