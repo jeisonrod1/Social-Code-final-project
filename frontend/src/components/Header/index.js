@@ -12,6 +12,7 @@ const HeaderComponent = styled.div`
   width: 100%;
   box-shadow: -6px -6px 13px 0px;
   height: 42px;
+  z-index: 1000;
   a {
     font-size: 12px;
     &:hover {

@@ -13,6 +13,7 @@ import JudgeLanding from "./components/Judge/components/Landing";
 import NavTest from "./components/NavTest";
 
 import "./App.css";
+import "./App-light.css";
 
 function App() {
   return (
