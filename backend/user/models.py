@@ -6,7 +6,6 @@ from django.conf import settings
 def user_directory_path(instance, filename):
     return f'avatar {instance.id}/{filename}'
 
-
 class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
@@ -29,9 +28,7 @@ class User(AbstractUser):
     amount_following = models.IntegerField(default=0)
     friends = models.ManyToManyField(to=settings.AUTH_USER_MODEL, related_name="my_friends", blank=True)
     following = models.ManyToManyField(to=settings.AUTH_USER_MODEL, related_name='followers', blank=True)
-    user_invited = models.BooleanField(default=False)
-    # junior = models.ForeignKey('self', related_name='Senior', on_delete=models.PROTECT, blank=True, default=1)
-
+    points = models.IntegerField(default=0)
 
     def __str__(self):
         return f'ID {self.id} : {self.username}'

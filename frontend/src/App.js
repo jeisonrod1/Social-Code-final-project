@@ -4,11 +4,11 @@ import Footer from "./components/Footer";
 import Posts from "./components/Posts";
 import PostsPage from "./components/PostPage";
 import Userprofile from "./components/Userprofile/Profile/index";
-import Editor from "./components/Editor";
+import EditorPage from "./components/Editor/EditorPage";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 
-import JudgeLanding from "./components/Judge/components/Landing"
+import JudgeLanding from "./components/Judge/components/Landing";
 
 import NavTest from "./components/NavTest";
 
@@ -24,7 +24,7 @@ function App() {
           <Route path="posts" element={<Posts />} /> {/* Mads */}
           <Route path="postpage" element={<PostsPage />} />
           {/* Mads */}
-          <Route path="editor" element={<Editor />} />
+          <Route path="editor" element={<EditorPage />} />
           {/* Mads */}
           <Route path="userprofile" element={<Userprofile />} /> {/* Mads */}
           <Route path="login" element={<Login />} /> {/* Mads */}
