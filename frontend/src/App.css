@@ -4,21 +4,29 @@ body {
 }
 
 main {
-  background-color: #2e3138; 
+  background-color: #2e3138;
   /* #13141 */
 }
 
 html {
-  background-color: #2e3138; 
+  background-color: #2e3138;
   /* #13141 */
 }
 
 * {
   margin: 0;
   padding: 0;
-    }
+}
 
-span, a, p, h1, h2, h3, h4, h5, h6 {
+span,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: rgb(199, 191, 213);
   margin: 8px 0 8px 8px;
 }
@@ -26,7 +34,7 @@ span, a, p, h1, h2, h3, h4, h5, h6 {
 label {
   color: white;
 }
-    
+
 button {
   border: none;
   margin: 0 16px 0 0;
@@ -35,17 +43,17 @@ button {
 
 button:hover {
   border: none;
-  background-color: #515160;
+  /* background-color: #515160; */
 }
 
 input {
-    background-color: #2d2d38;
-    border: none;
-    border-radius: 8px;
-    color: white;
-  }
+  background-color: #2d2d38;
+  border: none;
+  border-radius: 8px;
+  /* color: white; */
+}
 
-input[type=submit] {
+input[type="submit"] {
   background-color: #492d71;
   color: white;
   width: 100px;
@@ -55,19 +63,17 @@ input[type=submit] {
   border: none;
 }
 
-
-
-
 /* fallback */
 @font-face {
-  font-family: 'Material Symbols Outlined';
+  font-family: "Material Symbols Outlined";
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v68/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsLjBuVY.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v68/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsLjBuVY.woff2)
+    format("woff2");
 }
 
 .material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
+  font-family: "Material Symbols Outlined";
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -78,6 +84,6 @@ input[type=submit] {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }

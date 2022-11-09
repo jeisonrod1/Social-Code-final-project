@@ -1,4 +1,4 @@
-/* Editor HomePage */
+/* Editor AccessPage */
 
 .homePageWrapper {
   display: flex;
@@ -51,7 +51,7 @@ footer a {
   font-weight: bold;
 }
 
-.btn {
+.Editorbtns {
   border: none;
   padding: 10px;
   border-radius: 5px;
@@ -180,8 +180,8 @@ footer a:hover {
 
 .expand-collapse-btn {
   margin-left: 1rem;
-  background: none;
-  border: none;
+  background: none !important;
+  border: none !important;
   color: white;
   cursor: pointer;
 }

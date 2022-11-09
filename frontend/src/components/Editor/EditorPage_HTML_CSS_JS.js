@@ -1,5 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  useLocation,
+  useNavigate,
+  Navigate,
+  useParams,
+} from "react-router-dom";
+
+import toast, { Toaster } from "react-hot-toast";
 import styled from "styled-components";
+
+// Socket Actions
+import { initSocket } from "./socket";
+import ACTIONS from "./socketActions";
 
 // STYLED COMPONENTS -start
 import "./Editor_HTML_CSS_JS.css";
@@ -39,43 +51,118 @@ import {
   xcodeDark,
   xcodeLight,
 } from "@uiw/codemirror-themes-all";
-import { useState } from "react";
 import { faHelicopterSymbol } from "@fortawesome/free-solid-svg-icons";
 
-const Page = styled.div``;
+// const Page = styled.div``;
 
-const Editor_HTML_CSS_JS_Page = props => {
-  const [srcDoc, setSrcDoc] = useState(``);
-
+const EditorPage_HTML_CSS_JS = props => {
+  // Editor
+  const [srcDoc, setSrcDoc] = useState("");
   const [htmlState, setHtmlState] = useLocalStorage(
     "",
     "<h1 id='hello'> hello world </h1>"
   );
-  const [cssState, setCssState] = useLocalStorage("", "#hello {\ncolor:red\n}");
+  const [cssState, setCssState] = useLocalStorage(
+    "",
+    "#hello {\ncolor: red\n}"
+  );
   const [jsState, setJsState] = useLocalStorage(
     "",
-    `const hello = document.getElementById('hello')
-  hello.document.body.style.background-color = 'blue'
-  document.body.style.background = '#f3f url('logo_socialcode.jpg') no-repeat top'`
+    "document.body.style.background = '#f3f'"
   );
+  // Editor
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setSrcDoc(`
     <html>
-    <body>${htmlState}
+    <body>${htmlState}</body>
     <style>${cssState}</style>
     <script>${jsState}</script>
-    </body>
     </html>
     `);
       console.log(htmlState);
       console.log(cssState);
       console.log(jsState);
     }, 250);
+
+    return () => clearTimeout(timeout);
   }, [htmlState, cssState, jsState]);
 
-  // Setting up a Room for specific user
+  //  // Room
+  const socketRef = useRef(null);
+  const codeRef = useRef(null);
+  const location = useLocation();
+  const { roomId } = useParams();
+  const reactNavigator = useNavigate();
+  const [clients, setClients] = useState([""]);
+
+  // useEffect(() => {
+  //   const init = async () => {
+  //     socketRef.current = await initSocket();
+  //     socketRef.current.on("connect_error", err => handleErrors(err));
+  //     socketRef.current.on("connect_failed", err => handleErrors(err));
+
+  //     function handleErrors(e) {
+  //       console.log("socket error", e);
+  //       toast.error("Socket connection failed, try again later.");
+  //       // reactNavigator("/editor/:roomId");
+  //     }
+
+  //     socketRef.current.emit(ACTIONS.JOIN, {
+  //       roomId,
+  //       username: location.state?.username,
+  //     });
+
+  //     // Listening for joined event
+  //     socketRef.current.on(
+  //       ACTIONS.JOINED,
+  //       ({ clients, username, socketId }) => {
+  //         if (username !== location.state?.username) {
+  //           toast.success(`${username} joined the room.`);
+  //           console.log(`${username} joined`);
+  //         }
+  //         setClients(clients);
+  //         socketRef.current.emit(ACTIONS.SYNC_CODE, {
+  //           code: codeRef.current,
+  //           socketId,
+  //         });
+  //       }
+  //     );
+
+  //     // Listening for disconnected
+  //     socketRef.current.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
+  //       toast.success(`${username} left the room.`);
+  //       setClients(prev => {
+  //         return prev.filter(client => client.socketId !== socketId);
+  //       });
+  //     });
+  //   };
+  //   init();
+  //   return () => {
+  //     socketRef.current.disconnect();
+  //     socketRef.current.off(ACTIONS.JOINED);
+  //     socketRef.current.off(ACTIONS.DISCONNECTED);
+  //   };
+  // }, []);
+
+  async function copyRoomId() {
+    try {
+      await navigator.clipboard.writeText(roomId);
+      toast.success("Room ID has been copied to your clipboard");
+    } catch (err) {
+      toast.error("Could not copy the Room ID");
+      console.error(err);
+    }
+  }
+
+  function leaveRoom() {
+    reactNavigator("/");
+  }
+
+  if (!location.state) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <>
@@ -93,11 +180,17 @@ const Editor_HTML_CSS_JS_Page = props => {
             </div>
             <h3>Connected</h3>
             <div className="clientsList">
-              <h6> Clients: </h6>
+              {clients.map(client => (
+                <Client key={client.socketId} username={client.username} />
+              ))}
             </div>
           </div>
-          <button className="btn copyBtn">Copy ROOM ID</button>
-          <button className="btn leaveBtn">Leave</button>
+          <button className="Editorbtns copyBtn" onClick={copyRoomId}>
+            Copy ROOM ID
+          </button>
+          <button className="Editorbtns leaveBtn" onClick={leaveRoom}>
+            Leave
+          </button>
         </div>
         <div className="editorWrap">
           <div className="pane top-pane">
@@ -151,4 +244,4 @@ const Editor_HTML_CSS_JS_Page = props => {
     </>
   );
 };
-export default Editor_HTML_CSS_JS_Page;
+export default EditorPage_HTML_CSS_JS;
