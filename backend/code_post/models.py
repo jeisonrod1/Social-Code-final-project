@@ -5,6 +5,7 @@ from user.models import User
 
 User = get_user_model()
 
+
 class CodePost(models.Model):
     title = models.CharField(max_length=250)
     tags = models.CharField(max_length=300)
@@ -16,3 +17,4 @@ class CodePost(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='codePost')
+
