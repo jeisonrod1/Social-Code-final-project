@@ -25,7 +25,6 @@ const QCard = styled.div`
   }
   p,
   h5 {
-    margin: 8px 8px 0 0;
     font-weight: 500;
   }
 `;

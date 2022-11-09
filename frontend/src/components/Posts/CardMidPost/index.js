@@ -23,9 +23,67 @@ const QCard = styled.div`
   flex-direction: column;
   border: 1px solid #505263;
   border-radius: 8px;
-  .wrapper {
+  .header {
     display: flex;
     justify-content: start;
+    margin-bottom: 16px;
+    .left {
+      justify-content: flex-start;
+      p {
+        margin: 16px 0 0 16px;
+      }
+      h5 {
+        background-color: #492d71;
+        border-radius: 20px;
+        padding: 8px 16px;
+        margin: 16px 0 16px 16px;
+        display: inline-flex;
+      }
+      img {
+        border-radius: 100%;
+      }
+    }
+    .right {
+      justify-content: flex-start;
+      text-align: left;
+      p {
+        margin: 0 8px 0 8px;
+      }
+      h5 {
+        margin: 4px 8px 0 8px;
+      }
+    }
+  }
+  .body {
+    .comment {
+      border-top: 1px solid #505263;
+      border-bottom: 1px solid #505263;
+    }
+    p {
+      margin: 8px 8px 8px 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: #ababab;
+    }
+    h5 {
+      margin: 8px 8px 8px 8px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    span {
+      margin-top: 6px;
+    }
+    .expander {
+      margin-top: 16px;
+      display: flex;
+      justify-items: center;
+    }
+    input[type="text"] {
+      height: 30px;
+      width: 70%;
+      margin-left: 8px;
+      padding-left: 8px;
+    }
   }
   .left img {
     margin-right: 8px;
@@ -40,30 +98,6 @@ const QCard = styled.div`
     color: grey;
     font-size: 12px;
   }
-  p,
-  h5 {
-    margin: 8px 8px 0 8px;
-    font-weight: 500;
-  }
-  .left {
-    justify-content: flex-start;
-    p {
-      margin: 16px 0 0 16px;
-    }
-    h5 {
-      background-color: #492d71;
-      border-radius: 20px;
-      padding: 8px 16px;
-      margin: 16px 0 16px 16px;
-      display: inline-flex;
-    }
-      img {
-        border-radius: 100%;
-  }
-  .right {
-    justify-content: flex-end;
-    text-align: right;
-  }
 `;
 
 const SocialButtons = styled.div`
@@ -71,7 +105,6 @@ const SocialButtons = styled.div`
   justify-content: space-between;
   align-items: center;
   margin: 8px;
-  border-top: 1px dashed lightgrey;
   padding-top: 16px;
   button {
     background-color: #492d71;
@@ -97,34 +130,49 @@ const SocialButtons = styled.div`
 const CardMidPost = () => {
   return (
     <QCard>
-      <div className="wrapper">
+      <div className="header">
         <div className="left">
           <img className="image" src={profile2}></img>
         </div>
         <div className="right">
-          <h5>User123</h5>
-          <p className="subtitle">70 votes</p>
+          <h5>Best React.js snippets</h5>
+          <p className="subtitle">Asked 16.07.19 - Views 339k</p>
         </div>
       </div>
-      <p>This is a very usefull code snippet: </p>
-      <code></code>
-      <img className="image" src={content}></img>
-      <p>Comments:</p>
-      <p>Peter3202:</p>
-      <p>👾 Is JCenter down permanently (31 Oct)?</p>
-      <p>Comment2:</p>
-      <p>👾 Is JCenter down permanently (31 Oct)?</p>
-      <p>expand comments ⏬</p>
+      <div className="body">
+        <p>This is a very usefull code snippet: </p>
+        <img className="image" src={content}></img>
+        <h6>Comments:</h6>
+        <div className="comment">
+          <h5>Peter3202:</h5>
+          <p>Comment 1 this is the first comment</p>
+        </div>
+        <div className="comment">
+          <h5>Tina20000:</h5>
+          <p>Comment 2 this is the second comment</p>
+        </div>
+
+        <form>
+          <label>
+            <input type="text" name="name" placeholder="Post a comment" />
+          </label>
+          <input type="submit" value="Post It" />
+        </form>
+      </div>
       <SocialButtons>
         <div>
           <img src={heart}></img>
           <button>Like</button>
+          <span>[ 34 ]</span>
         </div>
         <div>
           <img src={share}></img>
           <button>Share</button>
         </div>
-        <span>[ 34 ] Likes</span>
+        <div className="expander">
+          <h5>View more comments</h5>
+          <span class="material-symbols-outlined">expand_more</span>
+        </div>
       </SocialButtons>
     </QCard>
   );
