@@ -1,13 +1,11 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
-from handler_users.serializers import HandlerUserSerializer
 
 User = get_user_model()
 
 
 class UserSerializer(serializers.ModelSerializer):
-    handler = HandlerUserSerializer(many=True)
 
     class Meta:
         model = User
