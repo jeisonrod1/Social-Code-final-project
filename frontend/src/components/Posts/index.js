@@ -7,6 +7,7 @@ import CardMidPost from "./CardMidPost/index.js";
 import CardMidNewPost from "./CardMidNewPost/index.js";
 import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
+import {useEffect} from "react";
 
 // STYLED COMPONENTS -start
 
@@ -69,6 +70,7 @@ const Navbar = styled.div`
 // STYLED COMPONENTS -end
 
 const Posts = () => {
+
   return (
     <>
       <RowWrapper>
