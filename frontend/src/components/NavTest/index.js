@@ -37,7 +37,6 @@ const Navbar = styled.div`
 
 // STYLED COMPONENTS -end
 
-
 // STYLED COMPONENTS -start
 
 const QCard = styled.div`
@@ -60,7 +59,8 @@ const QCard = styled.div`
   img {
     width: 100px;
   }
-  p, h5 {
+  p,
+  h5 {
     margin: 8px 8px 0 8px;
     font-weight: 500;
   }
@@ -75,10 +75,9 @@ const QCard = styled.div`
       padding: 8px 16px;
       margin: 16px 0 16px 16px;
       display: inline-flex;
-  } 
-  .tags {
-
+    }
   }
+
   .right {
     justify-content: flex-end;
     text-align: right;
@@ -89,7 +88,7 @@ const QCard = styled.div`
 
 const NavTest = () => {
   const [active, setActive] = useState("Container_restau");
-  const [restaurants, setRestaurants] = useState([])
+  const [restaurants, setRestaurants] = useState([]);
   return (
     <>
       <h1>Posts</h1>
@@ -98,10 +97,10 @@ const NavTest = () => {
       <Navbar>
         <p onClick={() => setActive("Container_restau")}>Newest</p>
         <p onClick={() => setActive("Container_review")}>Most liked</p>
-        <p onClick={() => setActive("Container_users")}>Biggest projects</p>     
+        <p onClick={() => setActive("Container_users")}>Biggest projects</p>
       </Navbar>
       <CardContainer>
-        {active == "Container_restau" && <Card_restaurant />} 
+        {active == "Container_restau" && <Card_restaurant />}
         {active == "Container_review" && <Card_review />}
         {active == "Container_users" && <Card_user />}
       </CardContainer>
