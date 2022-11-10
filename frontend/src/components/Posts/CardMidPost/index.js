@@ -18,7 +18,6 @@ const QCard = styled.div`
   padding: 16px;
   width: 600px;
   height: 100%;
-  background-color: #1e1f26;
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -67,7 +66,6 @@ const QCard = styled.div`
       margin: 8px 8px 8px 8px;
       font-size: 14px;
       font-weight: 500;
-      color: #ababab;
     }
     h5 {
       margin: 8px 8px 8px 8px;
@@ -99,7 +97,6 @@ const QCard = styled.div`
     margin: 0;
   }
   .subtitle {
-    color: grey;
     font-size: 12px;
   }
 `;
