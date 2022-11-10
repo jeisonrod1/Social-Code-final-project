@@ -16,6 +16,18 @@ const RowWrapper = styled.div`
   width: 1000px;
   margin: auto;
   padding-top: 10px;
+  span,
+  a,
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: rgb(199, 191, 213);
+    margin: 8px 0 8px 8px;
+  }
 `;
 
 const CardContainerLeft = styled.div`

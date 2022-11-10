@@ -12,7 +12,6 @@ import "./pacman.css";
 
 const HeaderComponent = styled.div`
   display: flex;
-  background-color: #1e1f26;
   position: fixed;
   box-shadow: 6px 6px 13px 0px;
   width: 100%;

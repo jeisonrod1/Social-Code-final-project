@@ -14,7 +14,7 @@ import {
   CODE_CHANGE,
   SYNC_CODE,
   DISCONNECTED,
-} from "./components/Editor/socketActions";
+} from "./frontend/src/components/Editor/socketActions";
 
 const server = createServer(app);
 const io = new Server(server);
