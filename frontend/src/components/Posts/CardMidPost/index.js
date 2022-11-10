@@ -8,6 +8,7 @@ import profile from "../../../images/users/profile-face.png";
 import profile1 from "../../../images/users/profile1.jpg";
 import profile2 from "../../../images/users/profile2.jpg";
 import content from "../../../images/content/hooray.jpg";
+import { useState } from "react";
 
 // STYLED COMPONENTS -start
 
@@ -32,7 +33,6 @@ const QCard = styled.div`
         margin: 16px 0 0 16px;
       }
       h5 {
-        background-color: #492d71;
         border-radius: 20px;
         padding: 8px 16px;
         margin: 16px 0 16px 16px;
@@ -85,6 +85,16 @@ const QCard = styled.div`
       margin-left: 8px;
       padding-left: 8px;
     }
+    .comments-fold {
+      height: 200px;
+      overflow: hidden;
+      transition: height 0.4s all;
+    }
+    .comments-unfold {
+      height: 100%;
+      transition: height 0.4s all;
+    }
+    
   }
   .left img {
     margin-right: 8px;
@@ -107,7 +117,6 @@ const SocialButtons = styled.div`
   margin: 8px;
   padding-top: 16px;
   button {
-    background-color: #492d71;
     color: white;
     padding: 6px;
     border-radius: 16px;
@@ -123,11 +132,20 @@ const SocialButtons = styled.div`
     display: flex;
     align-items: center;
   }
+  .comments-unfold .material-symbols-outlined {
+    transform: rotate(180deg);
+
+  }
 `;
 
 // STYLED COMPONENTS -end
 
 const CardMidPost = () => {
+  const [btnState, setBtnState] = useState(false);
+  function handleClick() {
+    setBtnState((btnState) => !btnState);
+  }
+  let toggleClassCheck = btnState ? " comments-fold" : " comments-unfold";
   return (
     <QCard>
       <div className="header">
@@ -142,14 +160,28 @@ const CardMidPost = () => {
       <div className="body">
         <p>This is a very usefull code snippet: </p>
         <img className="image" src={content}></img>
-        <h6>Comments:</h6>
-        <div className="comment">
-          <h5>Peter3202:</h5>
-          <p>Comment 1 this is the first comment</p>
-        </div>
-        <div className="comment">
-          <h5>Tina20000:</h5>
-          <p>Comment 2 this is the second comment</p>
+        <div className={`${toggleClassCheck}`}>
+          <h6>Comments:</h6>
+          <div className="comment">
+            <h5>Peter3202:</h5>
+            <p>Comment 1 this is the first comment</p>
+          </div>
+          <div className="comment">
+            <h5>Tina20000:</h5>
+            <p>Comment 2 this is the second comment</p>
+          </div>
+          <div className="comment">
+            <h5>Tina20000:</h5>
+            <p>Comment 2 this is the second comment</p>
+          </div>
+          <div className="comment">
+            <h5>Tina20000:</h5>
+            <p>Comment 2 this is the second comment</p>
+          </div>
+          <div className="comment">
+            <h5>Tina20000:</h5>
+            <p>Comment 2 this is the second comment</p>
+          </div>
         </div>
 
         <form className="form">
@@ -169,9 +201,9 @@ const CardMidPost = () => {
           <img src={share}></img>
           <button>Share</button>
         </div>
-        <div className="expander">
-          <h5>View more comments</h5>
-          <span class="material-symbols-outlined">expand_more</span>
+        <div className={`expander${toggleClassCheck}`} onClick={handleClick}>
+          <h5>{`${toggleClassCheck}`}</h5>
+          <span className="material-symbols-outlined">expand_more</span>
         </div>
       </SocialButtons>
     </QCard>

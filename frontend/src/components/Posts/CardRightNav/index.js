@@ -13,7 +13,6 @@ const QCard = styled.div`
   padding: 8px 8px 32px 8px;
   width: 100%;
   height: 100%;
-  background-color: #1e1f26;
   display: flex;
   justify-content: start;
   justify-content: space-between;

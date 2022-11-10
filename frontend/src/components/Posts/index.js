@@ -25,7 +25,6 @@ const RowWrapper = styled.div`
   h4,
   h5,
   h6 {
-    color: rgb(199, 191, 213);
     margin: 8px 0 8px 8px;
   }
 `;

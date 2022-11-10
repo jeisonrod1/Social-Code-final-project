@@ -27,7 +27,7 @@ function App() {
   return (
     <BrowserRouter>
       <main className={`xtxt${toggleClassCheck}`}>
-        <Header /> {/* Mads */}
+        <Header className="header" /> {/* Mads */}
         <Routes>
           <Route path="navtest" element={<NavTest />} /> {/* Mads */}
           <Route path="posts" element={<Posts />} /> {/* Mads */}
@@ -43,7 +43,7 @@ function App() {
         <button className={`btn-x${toggleClassCheck}`} onClick={handleClick}>
           Theme ={`${toggleClassCheck}`}
         </button>
-        <Footer /> {/* Mads */}
+        <Footer className="footer" /> {/* Mads */}
       </main>
     </BrowserRouter>
   );
