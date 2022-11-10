@@ -87,7 +87,18 @@ const Posts = () => {
   });
 
   const fetchPosts =() => {
-    console.log('Hello')
+      const myHeaders = new Headers();
+
+        const myInit = {
+             method: 'GET',
+            headers: myHeaders
+    };
+
+    fetch('http://localhost:8001/backend/codepost/', myInit)
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+
   }
 
   return (
