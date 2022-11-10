@@ -1,4 +1,4 @@
-/* Editor HomePage */
+/* Editor AccessPage */
 
 .homePageWrapper {
   display: flex;
@@ -51,7 +51,7 @@ footer a {
   font-weight: bold;
 }
 
-.btn {
+.Editorbtns {
   border: none;
   padding: 10px;
   border-radius: 5px;
@@ -180,8 +180,8 @@ footer a:hover {
 
 .expand-collapse-btn {
   margin-left: 1rem;
-  background: none;
-  border: none;
+  background: none !important;
+  border: none !important;
   color: white;
   cursor: pointer;
 }
@@ -205,6 +205,15 @@ footer a:hover {
   min-width: 10px;
   height: 100%;
   /* border: 2.5px solid red; */
+}
+
+.iFrame {
+  display: flex;
+  z-index: 0;
+  padding-top: 20px;
+  width: 100%;
+  height: 74.5%;
+  /* height: 100%; */
 }
 
 .code-mirror-wrapper {

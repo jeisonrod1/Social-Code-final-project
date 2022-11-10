@@ -7,7 +7,7 @@ body {
   position: fixed;
   top: 4px;
   left: 134px;
-  color:white;
+  /* color:white; */
   background-color: #2e3138;
   border-radius: 20px;
 }
@@ -21,36 +21,58 @@ body {
 }
 
 main {
-  background-color: #2e3138; 
+  background-color: #2e3138;
+  /* #13141 */
   transition: all 1s;
 }
 
 main.light {
-  background-color: #c6c6c6; 
+  background-color: #c6c6c6;
   transition: all 1s;
 }
 
 html {
-  background-color: #2e3138; 
+  background-color: #2e3138;
   /* #13141 */
 }
 
 html.light {
-  background-color: #ebebeb; 
+  background-color: #ebebeb;
+  /* #13141 */
+}
+
+html.light {
+  background-color: #ebebeb;
   /* #13141 */
 }
 
 * {
   margin: 0;
   padding: 0;
-    }
+}
 
-span, a, p, h1, h2, h3, h4, h5, h6 {
+span,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: rgb(199, 191, 213);
   transition: all 1s;
 }
 
-.light span, .light a, .light p, .light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
+.light span,
+.light a,
+.light p,
+.light h1,
+.light h2,
+.light h3,
+.light h4,
+.light h5,
+.light h6 {
   color: #302e34 !important;
   transition: all 1s;
 }
@@ -58,7 +80,7 @@ span, a, p, h1, h2, h3, h4, h5, h6 {
 label {
   color: white;
 }
-    
+
 button {
   border: none;
   margin: 0 16px 0 0;
@@ -67,17 +89,17 @@ button {
 
 .dark button:hover {
   border: none;
-  background-color: #515160;
+  /* background-color: #515160; */
 }
 
 input {
-    background-color: #2d2d38;
-    border: none;
-    border-radius: 8px;
-    color: white;
-  }
+  background-color: #2d2d38;
+  border: none;
+  border-radius: 8px;
+  /* color: white; */
+}
 
-input[type=submit] {
+input[type="submit"] {
   background-color: #492d71;
   color: white;
   width: 100px;
@@ -87,19 +109,19 @@ input[type=submit] {
   border: none;
 }
 
-
-
+/* fallback */
 
 /* MATERIAL DESIGN SYMBOL -start */
 @font-face {
-  font-family: 'Material Symbols Outlined';
+  font-family: "Material Symbols Outlined";
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v68/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsLjBuVY.woff2) format('woff2');
+  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v68/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsLjBuVY.woff2)
+    format("woff2");
 }
 
 .material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
+  font-family: "Material Symbols Outlined";
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -110,7 +132,7 @@ input[type=submit] {
   white-space: nowrap;
   word-wrap: normal;
   direction: ltr;
-  -webkit-font-feature-settings: 'liga';
+  -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
 
