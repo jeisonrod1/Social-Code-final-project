@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import logo_fb from "../../images/icons/svgs/facebook.svg";
 import some_audio_source from "../../images/audio/audio-crack.mp3";
 import logo_twit from "../../images/icons/svgs/twitter.svg";
@@ -60,9 +60,6 @@ const HeaderComponent = styled.div`
 
 // STYLED COMPONENTS -end
 
-
-
-
 const Footer = () => {
   return (
     <>
@@ -75,7 +72,7 @@ const Footer = () => {
           <a className="plain">Android</a>
         </div>
         <div className="pacman"></div>
-          <div className="dot"></div>
+        <div className="dot"></div>
         {/*<PlayButton src={some_audio_source}/>*/}
         <div>
           <img src={logo_fb}></img>

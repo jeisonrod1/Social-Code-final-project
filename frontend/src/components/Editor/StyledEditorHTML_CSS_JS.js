@@ -73,6 +73,7 @@ export const leaveBtn = styled.button`
   background: #4aed88;
   width: 100px;
   margin-left: auto;
+  margin-top: 20px;
   && :hover {
     background: #2b824c;
   }
@@ -135,11 +136,6 @@ export const logo = styled.img`
 
 export const logoImage = styled.img`
   height: 45px;
-`;
-
-export const leaveBtn = styled.button`
-  width: 100%;
-  margin-top: 20px;
 `;
 
 // Styled Editor Wrappers

@@ -1,4 +1,12 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import {
+  useLocation,
+  useNavigate,
+  Navigate,
+  useParams,
+} from "react-router-dom";
+
+import toast, { Toaster } from "react-hot-toast";
 import styled from "styled-components";
 
 // STYLED COMPONENTS -start
@@ -39,43 +47,66 @@ import {
   xcodeDark,
   xcodeLight,
 } from "@uiw/codemirror-themes-all";
-import { useState } from "react";
 import { faHelicopterSymbol } from "@fortawesome/free-solid-svg-icons";
 
-const Page = styled.div``;
+// const Page = styled.div``;
 
-const Editor_HTML_CSS_JS_Page = props => {
-  const [srcDoc, setSrcDoc] = useState(``);
-
+const EditorPage_HTML_CSS_JS = props => {
+  const { handleUsername } = props;
+  // Editor
+  const [srcDoc, setSrcDoc] = useState("");
   const [htmlState, setHtmlState] = useLocalStorage(
     "",
     "<h1 id='hello'> hello world </h1>"
   );
-  const [cssState, setCssState] = useLocalStorage("", "#hello {\ncolor:red\n}");
+  const [cssState, setCssState] = useLocalStorage(
+    "",
+    "#hello {\ncolor: red\n}"
+  );
   const [jsState, setJsState] = useLocalStorage(
     "",
-    `const hello = document.getElementById('hello')
-  hello.document.body.style.background-color = 'blue'
-  document.body.style.background = '#f3f url('logo_socialcode.jpg') no-repeat top'`
+    "document.body.style.background = '#f3f'"
   );
+  // Editor
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       setSrcDoc(`
     <html>
-    <body>${htmlState}
+    <body>${htmlState}</body>
     <style>${cssState}</style>
     <script>${jsState}</script>
-    </body>
     </html>
     `);
-      console.log(htmlState);
-      console.log(cssState);
-      console.log(jsState);
     }, 250);
+
+    return () => clearTimeout(timeout);
   }, [htmlState, cssState, jsState]);
 
-  // Setting up a Room for specific user
+  //  // Room
+  const location = useLocation();
+  const { roomId } = useParams();
+  const reactNavigator = useNavigate();
+  const [clients, setClients] = useState([]);
+  let usernames = ["Gio", "Alex", "Kitti", "Jeison", "Mads"];
+
+  async function copyRoomId() {
+    try {
+      await navigator.clipboard.writeText(roomId);
+      toast.success("Room ID has been copied to your clipboard");
+    } catch (err) {
+      toast.error("Could not copy the Room ID");
+      console.error(err);
+    }
+  }
+
+  function leaveRoom() {
+    reactNavigator("/editor");
+  }
+
+  if (!location.state) {
+    return <Navigate to="/editor" />;
+  }
 
   return (
     <>
@@ -93,11 +124,22 @@ const Editor_HTML_CSS_JS_Page = props => {
             </div>
             <h3>Connected</h3>
             <div className="clientsList">
-              <h6> Clients: </h6>
+              {/* For usernames */}
+              {usernames.map(client => (
+                <Client
+                  // onChange={handleUsername}
+                  key={client}
+                  username={client}
+                />
+              ))}
             </div>
           </div>
-          <button className="btn copyBtn">Copy ROOM ID</button>
-          <button className="btn leaveBtn">Leave</button>
+          <button className="Editorbtns copyBtn" onClick={copyRoomId}>
+            Copy ROOM ID
+          </button>
+          <button className="Editorbtns leaveBtn" onClick={leaveRoom}>
+            Leave
+          </button>
         </div>
         <div className="editorWrap">
           <div className="pane top-pane">
@@ -137,13 +179,11 @@ const Editor_HTML_CSS_JS_Page = props => {
           </div>
           <div className="pane">
             <iframe
-              style={{ paddingTop: "10px" }}
+              className="iFrame"
               srcDoc={srcDoc}
               title="output"
               sandbox="allow-scripts"
-              frameBorder="1"
-              width="100%"
-              height="100%"
+              frameBorder="0"
             />
           </div>
         </div>
@@ -151,4 +191,4 @@ const Editor_HTML_CSS_JS_Page = props => {
     </>
   );
 };
-export default Editor_HTML_CSS_JS_Page;
+export default EditorPage_HTML_CSS_JS;
