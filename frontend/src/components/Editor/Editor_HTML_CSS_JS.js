@@ -29,10 +29,8 @@ export const Editor_HTML_CSS_JS = props => {
     displayName,
     value,
     theme,
-    onChange,
     socketRef,
     roomId,
-    onCodeChange,
     extensions,
     handleEditorChange,
   } = props;
@@ -43,7 +41,11 @@ export const Editor_HTML_CSS_JS = props => {
       <div className={`editor-container ${open ? "" : "collapsed"}`}>
         <div className="editor-title">
           {displayName}
-          <button type="button" onClick={() => setOpen(prevOpen => !prevOpen)}>
+          <button
+            className="expand-collapse-btn"
+            type="button"
+            onClick={() => setOpen(prevOpen => !prevOpen)}
+          >
             <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} />
           </button>
         </div>
@@ -57,6 +59,7 @@ export const Editor_HTML_CSS_JS = props => {
             width="100%"
             extensions={extensions}
             theme={theme}
+            roomId={roomId}
           />
         </div>
       </div>
