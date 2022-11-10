@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     "registration",
     "user",
     "badges",
+    "wallet",
+    "post_wallet",
 
 ]
 
