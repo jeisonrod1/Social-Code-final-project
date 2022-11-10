@@ -19,10 +19,11 @@ import {
   Questions,
   AboutContainer,
   AboutTitle,
-  About
+  About,
 } from "./index.styled";
 import ProfileBadges from "../ProfileBadges";
 import TopPosts from "../TopPosts";
+import { useParams } from "react-router";
 
 // STYLED COMPONENTS -start
 
@@ -31,6 +32,93 @@ const ExampleComponent = styled.div``;
 // STYLED COMPONENTS -end
 
 const Userprofile = () => {
+  // creating local states to control the input fields
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
+
+  // handle inputs
+  const handleUsernameChange = e => {
+    setUsername(e.target.value);
+  };
+  const handlePasswordChange = e => {
+    setPassword(e.target.value);
+  };
+
+  // Handle Submit
+  const handleSubmit = e => {
+    e.preventDefault();
+    const url = "http://localhost:8001/backend/api/social/users/me/";
+    const tokenFromLs = localStorage.getItem("auth");
+    const tokenJsObject = JSON.parse(tokenFromLs);
+
+    const jsBody = {
+      email: email,
+      password: password,
+    };
+
+    const config = {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify(jsBody),
+    };
+
+    fetch(url, config)
+      .then(response => {
+        console.log(response);
+        if (response.status === 200) {
+          console.log("fetch worked");
+          const json = response.json();
+          return json;
+        } else {
+          console.log(response.json());
+        }
+      })
+      .then(data => {
+        setToken(data.access);
+        console.log(token);
+      });
+  };
+
+  useEffect(() => {
+    const jsObject = {
+      lunaToken: token,
+    };
+    if (token) {
+      localStorage.setItem("auth", JSON.stringify(jsObject));
+      console.log("the token was stored to local storage");
+      navigate("/");
+    }
+  }, [token]);
+
+  const userID = useParams().userID;
+
+  const fetchUserProfile = () => {
+    fetch(
+      // "https://code-media.propulsion-learn.ch/backend/api/social/users/me/" +
+      "http://localhost:8001/backend/api/social/users/me/" + userID,
+      makeConfigNoAuth("GET")
+    )
+      .then(response => response.json())
+      .then(data => {
+        // console.log("set current user");
+        console.log(data);
+        // setCurrentUserStatus(data);
+        // console.log(data.image);
+        // reviewUser(userID);
+      })
+      .catch(error => {
+        console.error(error);
+        console.log("---eror from restaurant page---");
+      });
+  };
+  useEffect(() => {
+    fetchUserProfile();
+  }, []);
+
   return (
     <ProfilePage>
       <UserHeader>
@@ -60,10 +148,9 @@ const Userprofile = () => {
         </About>
       </AboutContainer>
       <div></div>
-    <ProfileBadges/>
-    <div>
-    </div>
-    <TopPosts/>
+      <ProfileBadges />
+      <div></div>
+      <TopPosts />
     </ProfilePage>
   );
 };
