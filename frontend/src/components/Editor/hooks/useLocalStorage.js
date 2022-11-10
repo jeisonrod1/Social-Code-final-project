@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const PREFIX = "codepen-clone-";
+const PREFIX = "social-code-";
 
 export function useLocalStorage(key, initialValue) {
   const prefixedKey = PREFIX + key;

@@ -9,10 +9,6 @@ import {
 import toast, { Toaster } from "react-hot-toast";
 import styled from "styled-components";
 
-// Socket Actions
-import { initSocket } from "./socket";
-import ACTIONS from "./socketActions";
-
 // STYLED COMPONENTS -start
 import "./Editor_HTML_CSS_JS.css";
 
@@ -81,70 +77,16 @@ const EditorPage_HTML_CSS_JS = props => {
     <script>${jsState}</script>
     </html>
     `);
-      console.log(htmlState);
-      console.log(cssState);
-      console.log(jsState);
     }, 250);
 
     return () => clearTimeout(timeout);
   }, [htmlState, cssState, jsState]);
 
   //  // Room
-  const socketRef = useRef(null);
-  const codeRef = useRef(null);
   const location = useLocation();
   const { roomId } = useParams();
   const reactNavigator = useNavigate();
-  const [clients, setClients] = useState([""]);
-
-  // useEffect(() => {
-  //   const init = async () => {
-  //     socketRef.current = await initSocket();
-  //     socketRef.current.on("connect_error", err => handleErrors(err));
-  //     socketRef.current.on("connect_failed", err => handleErrors(err));
-
-  //     function handleErrors(e) {
-  //       console.log("socket error", e);
-  //       toast.error("Socket connection failed, try again later.");
-  //       // reactNavigator("/editor/:roomId");
-  //     }
-
-  //     socketRef.current.emit(ACTIONS.JOIN, {
-  //       roomId,
-  //       username: location.state?.username,
-  //     });
-
-  //     // Listening for joined event
-  //     socketRef.current.on(
-  //       ACTIONS.JOINED,
-  //       ({ clients, username, socketId }) => {
-  //         if (username !== location.state?.username) {
-  //           toast.success(`${username} joined the room.`);
-  //           console.log(`${username} joined`);
-  //         }
-  //         setClients(clients);
-  //         socketRef.current.emit(ACTIONS.SYNC_CODE, {
-  //           code: codeRef.current,
-  //           socketId,
-  //         });
-  //       }
-  //     );
-
-  //     // Listening for disconnected
-  //     socketRef.current.on(ACTIONS.DISCONNECTED, ({ socketId, username }) => {
-  //       toast.success(`${username} left the room.`);
-  //       setClients(prev => {
-  //         return prev.filter(client => client.socketId !== socketId);
-  //       });
-  //     });
-  //   };
-  //   init();
-  //   return () => {
-  //     socketRef.current.disconnect();
-  //     socketRef.current.off(ACTIONS.JOINED);
-  //     socketRef.current.off(ACTIONS.DISCONNECTED);
-  //   };
-  // }, []);
+  const [clients, setClients] = useState([]);
 
   async function copyRoomId() {
     try {
@@ -157,12 +99,14 @@ const EditorPage_HTML_CSS_JS = props => {
   }
 
   function leaveRoom() {
-    reactNavigator("/");
+    reactNavigator("/editor");
   }
 
   if (!location.state) {
-    return <Navigate to="/" />;
+    return <Navigate to="/editor" />;
   }
+
+  let usernames = ["Gio", "Alex", "Kitti", "Jeison", "Mads"];
 
   return (
     <>
@@ -180,8 +124,9 @@ const EditorPage_HTML_CSS_JS = props => {
             </div>
             <h3>Connected</h3>
             <div className="clientsList">
-              {clients.map(client => (
-                <Client key={client.socketId} username={client.username} />
+              {/* For usernames */}
+              {usernames.map(client => (
+                <Client key={client} username={client} />
               ))}
             </div>
           </div>
@@ -230,13 +175,11 @@ const EditorPage_HTML_CSS_JS = props => {
           </div>
           <div className="pane">
             <iframe
-              style={{ paddingTop: "10px" }}
+              className="iFrame"
               srcDoc={srcDoc}
               title="output"
               sandbox="allow-scripts"
-              frameBorder="1"
-              width="100%"
-              height="100%"
+              frameBorder="0"
             />
           </div>
         </div>

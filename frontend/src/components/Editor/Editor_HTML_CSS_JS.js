@@ -29,10 +29,8 @@ export const Editor_HTML_CSS_JS = props => {
     displayName,
     value,
     theme,
-    onChange,
     socketRef,
     roomId,
-    onCodeChange,
     extensions,
     handleEditorChange,
   } = props;
@@ -61,7 +59,6 @@ export const Editor_HTML_CSS_JS = props => {
             width="100%"
             extensions={extensions}
             theme={theme}
-            socketRef={socketRef}
             roomId={roomId}
           />
         </div>
