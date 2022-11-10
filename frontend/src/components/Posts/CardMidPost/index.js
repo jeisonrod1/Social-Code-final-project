@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import card1 from "../../../images/restaurants/card-1.jpg";
 import heart from "../../../images/icons/svgs/heart.svg";
@@ -8,6 +8,7 @@ import profile from "../../../images/users/profile-face.png";
 import profile1 from "../../../images/users/profile1.jpg";
 import profile2 from "../../../images/users/profile2.jpg";
 import content from "../../../images/content/hooray.jpg";
+
 
 // STYLED COMPONENTS -start
 
@@ -128,6 +129,7 @@ const SocialButtons = styled.div`
 // STYLED COMPONENTS -end
 
 const CardMidPost = () => {
+
   return (
     <QCard>
       <div className="header">
