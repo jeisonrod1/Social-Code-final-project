@@ -17,8 +17,17 @@ const HeaderComponent = styled.div`
   width: 100%;
   bottom: 0;
   height: 42px;
+  .light &{
+    background-color: #e2e2e2;
+    transition: all 1s;
+  }
+  .dark &{
+    background-color: #2e3138;
+    transition: all 1s;
+  }
   a {
     font-size: 12px;
+    cursor: pointer;
   }
   img {
     height: 24px;

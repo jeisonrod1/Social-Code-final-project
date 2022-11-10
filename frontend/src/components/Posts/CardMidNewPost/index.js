@@ -51,8 +51,6 @@ const NewPostButtons = styled.div`
   margin: 8px;
   padding-top: 16px;
   button {
-    background-color: #492d71;
-    color: white;
     border-radius: 30px;
     align-items: center;
     display: flex;
