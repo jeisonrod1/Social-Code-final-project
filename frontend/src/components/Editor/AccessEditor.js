@@ -3,8 +3,10 @@ import { v4 as uuidV4 } from "uuid";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import "./Editor_HTML_CSS_JS.css";
+import EditorPage_HTML_CSS_JS from "./EditorPage_HTML_CSS_JS";
 
-const AccessEditor = () => {
+const AccessEditor = props => {
+  // const { handleUsername, usernames = username } = props;
   const navigate = useNavigate();
 
   const [roomId, setRoomId] = useState("");
@@ -13,7 +15,7 @@ const AccessEditor = () => {
     e.preventDefault();
     const id = uuidV4();
     setRoomId(id);
-    toast.success("Created a new room");
+    toast.success("Created a new room\n");
   };
 
   const joinRoom = () => {
@@ -57,8 +59,10 @@ const AccessEditor = () => {
             type="text"
             className="inputBox"
             placeholder="USERNAME"
+            // onChange={e => setUsername(e.target.value)}
             onChange={e => setUsername(e.target.value)}
             value={username}
+            // usernames={usernames}
             onKeyUp={handleInputEnter}
           />
           <button className="Editorbtns joinBtn" onClick={joinRoom}>
@@ -72,9 +76,6 @@ const AccessEditor = () => {
           </span>
         </div>
       </div>
-      <footer>
-        <h4>Social-Code</h4>
-      </footer>
     </div>
   );
 };

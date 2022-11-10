@@ -52,6 +52,7 @@ import { faHelicopterSymbol } from "@fortawesome/free-solid-svg-icons";
 // const Page = styled.div``;
 
 const EditorPage_HTML_CSS_JS = props => {
+  const { handleUsername } = props;
   // Editor
   const [srcDoc, setSrcDoc] = useState("");
   const [htmlState, setHtmlState] = useLocalStorage(
@@ -87,6 +88,7 @@ const EditorPage_HTML_CSS_JS = props => {
   const { roomId } = useParams();
   const reactNavigator = useNavigate();
   const [clients, setClients] = useState([]);
+  let usernames = ["Gio", "Alex", "Kitti", "Jeison", "Mads"];
 
   async function copyRoomId() {
     try {
@@ -106,8 +108,6 @@ const EditorPage_HTML_CSS_JS = props => {
     return <Navigate to="/editor" />;
   }
 
-  let usernames = ["Gio", "Alex", "Kitti", "Jeison", "Mads"];
-
   return (
     <>
       <br />
@@ -126,7 +126,11 @@ const EditorPage_HTML_CSS_JS = props => {
             <div className="clientsList">
               {/* For usernames */}
               {usernames.map(client => (
-                <Client key={client} username={client} />
+                <Client
+                  // onChange={handleUsername}
+                  key={client}
+                  username={client}
+                />
               ))}
             </div>
           </div>

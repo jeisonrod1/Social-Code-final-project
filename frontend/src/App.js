@@ -17,6 +17,8 @@ import AccessEditor from "./components/Editor/AccessEditor";
 import EditorPage_HTML_CSS_JS from "./components/Editor/EditorPage_HTML_CSS_JS";
 import React from "react";
 
+import { Toaster } from "react-hot-toast";
+
 function App() {
   const [btnState, setBtnState] = useState(false);
   function handleClick() {
@@ -27,6 +29,18 @@ function App() {
 
   return (
     <BrowserRouter>
+      <div>
+        <Toaster
+          position="top-center"
+          toastOptions={{
+            success: {
+              theme: {
+                primary: "#4aed88",
+              },
+            },
+          }}
+        />
+      </div>
       <main className={`xtxt${toggleClassCheck}`}>
         <Header /> {/* Mads */}
         <Routes>
