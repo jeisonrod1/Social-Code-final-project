@@ -70,6 +70,13 @@ const Navbar = styled.div`
 // STYLED COMPONENTS -end
 
 const Posts = () => {
+  useEffect(() => {
+    fetchPosts()
+  });
+
+  const fetchPosts =() => {
+    console.log('Hello')
+  }
 
   return (
     <>
