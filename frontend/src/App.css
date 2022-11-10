@@ -32,10 +32,21 @@ main.light {
   transition: all 1s;
 }
 
-* {
-  margin: 0;
-  padding: 0;
+html {
+  background-color: #2e3138;
+  /* #13141 */
 }
+
+html.light {
+  background-color: #ebebeb;
+  /* #13141 */
+}
+
+html.light {
+  background-color: #ebebeb;
+  /* #13141 */
+}
+
 
 span,
 a,
@@ -91,7 +102,14 @@ button {
 
 .dark button:hover {
   border: none;
-  background-color: #51516074;
+  /* background-color: #515160; */
+}
+
+input {
+  background-color: #2d2d38;
+  border: none;
+  border-radius: 8px;
+  /* color: white; */
 }
 
 input {
@@ -110,7 +128,6 @@ input[type="submit"] {
   border-radius: 30px;
   border: none;
 }
-
 
 /* MATERIAL DESIGN SYMBOL -start */
 @font-face {
