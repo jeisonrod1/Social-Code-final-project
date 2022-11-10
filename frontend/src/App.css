@@ -2,14 +2,41 @@ body {
   overflow: scroll;
   overflow-x: hidden;
 }
+.btn-x {
+  z-index: 3000;
+  position: fixed;
+  top: 4px;
+  left: 134px;
+  color:white;
+  background-color: #2e3138;
+  border-radius: 20px;
+}
+
+.light .btn-x {
+  background-color: #2e3138;
+}
+
+.btn-x:hover {
+  /* background-color: transparent(0.5); */
+}
 
 main {
   background-color: #2e3138; 
-  /* #13141 */
+  transition: all 1s;
+}
+
+main.light {
+  background-color: #c6c6c6; 
+  transition: all 1s;
 }
 
 html {
   background-color: #2e3138; 
+  /* #13141 */
+}
+
+html.light {
+  background-color: #ebebeb; 
   /* #13141 */
 }
 
@@ -20,6 +47,12 @@ html {
 
 span, a, p, h1, h2, h3, h4, h5, h6 {
   color: rgb(199, 191, 213);
+  transition: all 1s;
+}
+
+.light span, .light a, .light p, .light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
+  color: #302e34 !important;
+  transition: all 1s;
 }
 
 label {
@@ -32,7 +65,7 @@ button {
   padding: 8px 18px 8px 18px;
 }
 
-button:hover {
+.dark button:hover {
   border: none;
   background-color: #515160;
 }
@@ -57,7 +90,7 @@ input[type=submit] {
 
 
 
-/* fallback */
+/* MATERIAL DESIGN SYMBOL -start */
 @font-face {
   font-family: 'Material Symbols Outlined';
   font-style: normal;
@@ -80,3 +113,5 @@ input[type=submit] {
   -webkit-font-feature-settings: 'liga';
   -webkit-font-smoothing: antialiased;
 }
+
+/* MATERIAL DESIGN SYMBOL -end */

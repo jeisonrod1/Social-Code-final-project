@@ -7,7 +7,6 @@ import logo from "../../images/icons/svgs/logo_socialcode.jpg";
 
 const HeaderComponent = styled.div`
   display: flex;
-  background-color: #1e1f26;
   position: fixed;
   width: 100%;
   box-shadow: -6px -6px 13px 0px;
@@ -71,7 +70,7 @@ const Header = () => {
           <img src={logo}></img>
         </div>
         <div className="right-nav">
-        <a
+          <a
             className="plain"
             onClick={() => {
               navigate("../navtest");

@@ -7,18 +7,26 @@ import Userprofile from "./components/Userprofile/Profile/index";
 import EditorPage from "./components/Editor/EditorPage";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
+import { useState } from "react";
 
 import JudgeLanding from "./components/Judge/components/Landing";
 
 import NavTest from "./components/NavTest";
 
 import "./App.css";
-import "./App-light.css";
+import React from "react";
 
 function App() {
+  const [btnState, setBtnState] = useState(false);
+  function handleClick() {
+    setBtnState((btnState) => !btnState);
+  }
+
+  let toggleClassCheck = btnState ? " light" : " dark";
+
   return (
     <BrowserRouter>
-      <main>
+      <main className={`xtxt${toggleClassCheck}`}>
         <Header /> {/* Mads */}
         <Routes>
           <Route path="navtest" element={<NavTest />} /> {/* Mads */}
@@ -32,6 +40,9 @@ function App() {
           <Route path="registration" element={<Registration />} /> {/* Mads */}
           <Route path="judgeeditor/" element={<JudgeLanding />} /> {/* Mads */}
         </Routes>
+        <button className={`btn-x${toggleClassCheck}`} onClick={handleClick}>
+          Theme ={`${toggleClassCheck}`}
+        </button>
         <Footer /> {/* Mads */}
       </main>
     </BrowserRouter>
