@@ -51,9 +51,4 @@ class LikedPosts(ListAPIView):
         return CodePost.objects.filter(likes=self.request.user)
 
 
-class TestCreateCodePosts(GenericAPIView):
-    permission_classes = [IsAuthenticatedOrReadOnly]
-
-    def get(self, request, *args, **kwargs):
-        user = self.request.user.id
 

@@ -32,8 +32,6 @@ main.light {
   transition: all 1s;
 }
 
-<<<<<<< HEAD
-=======
 html {
   background-color: #2e3138;
   /* #13141 */
@@ -49,11 +47,6 @@ html.light {
   /* #13141 */
 }
 
->>>>>>> f1c035f87abe23467988e8d5d09d35e0c59a1945
-* {
-  margin: 0;
-  padding: 0;
-}
 
 span,
 a,
@@ -68,7 +61,6 @@ h6 {
   transition: all 1s;
 }
 
-<<<<<<< HEAD
 .light .footer {
   background-color: #e2e2e2 !important; 
 }
@@ -78,17 +70,6 @@ h6 {
 }
 
 .light span, .light button, .light a, .light p, .light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
-=======
-.light span,
-.light a,
-.light p,
-.light h1,
-.light h2,
-.light h3,
-.light h4,
-.light h5,
-.light h6 {
->>>>>>> f1c035f87abe23467988e8d5d09d35e0c59a1945
   color: #302e34 !important;
   transition: all 1s;
 }
@@ -121,17 +102,6 @@ button {
 
 .dark button:hover {
   border: none;
-<<<<<<< HEAD
-  background-color: #51516074;
-}
-
-input {
-    background-color: transparent;
-    border: 1px solid grey;
-    border-radius: 8px;
-    color: white;
-  }
-=======
   /* background-color: #515160; */
 }
 
@@ -141,7 +111,13 @@ input {
   border-radius: 8px;
   /* color: white; */
 }
->>>>>>> f1c035f87abe23467988e8d5d09d35e0c59a1945
+
+input {
+    background-color: transparent;
+    border: 1px solid grey;
+    border-radius: 8px;
+    color: white;
+  }
 
 input[type="submit"] {
   background-color: #492d71;
@@ -152,7 +128,6 @@ input[type="submit"] {
   border-radius: 30px;
   border: none;
 }
-
 
 /* MATERIAL DESIGN SYMBOL -start */
 @font-face {
