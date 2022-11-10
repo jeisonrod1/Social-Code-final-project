@@ -7,7 +7,11 @@ body {
   position: fixed;
   top: 4px;
   left: 134px;
+<<<<<<< HEAD
   color: white;
+=======
+  color:white;
+>>>>>>> cb449c16e7eddeecb04d93675469a4a7bdcbd33d
   background-color: #2e3138;
   border-radius: 20px;
 }
@@ -21,14 +25,22 @@ body {
 }
 
 main {
+<<<<<<< HEAD
   background-color: #2e3138;
   /* #13141 */
   background-color: #2e3138;
+=======
+  background-color: #2e3138; 
+>>>>>>> cb449c16e7eddeecb04d93675469a4a7bdcbd33d
   transition: all 1s;
 }
 
 main.light {
+<<<<<<< HEAD
   background-color: #c6c6c6;
+=======
+  background-color: #c6c6c6; 
+>>>>>>> cb449c16e7eddeecb04d93675469a4a7bdcbd33d
   transition: all 1s;
 }
 
@@ -39,6 +51,11 @@ html {
 
 html.light {
   background-color: #ebebeb;
+  /* #13141 */
+}
+
+html.light {
+  background-color: #ebebeb; 
   /* #13141 */
 }
 
@@ -60,15 +77,7 @@ h6 {
   transition: all 1s;
 }
 
-.light span,
-.light a,
-.light p,
-.light h1,
-.light h2,
-.light h3,
-.light h4,
-.light h5,
-.light h6 {
+.light span, .light a, .light p, .light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
   color: #302e34 !important;
   transition: all 1s;
 }
