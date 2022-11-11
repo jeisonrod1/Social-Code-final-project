@@ -142,7 +142,7 @@ const SocialButtons = styled.div`
 
 // STYLED COMPONENTS -end
 
-const CardMidPost = () => {
+const CardMidPost = ({post}) => {
   const [btnState, setBtnState] = useState(false);
   function handleClick() {
     setBtnState((btnState) => !btnState);
@@ -153,17 +153,20 @@ const CardMidPost = () => {
       <div className="header">
         <div className="left">
           <img className="image" src={profile2}></img>
+          {/*TODO: needs work with the image*/}
         </div>
         <div className="right">
-          <h5>Best React.js snippets</h5>
+          <h5>{post.title}</h5>
           <p className="subtitle">Asked 16.07.19 - Views 339k</p>
         </div>
       </div>
       <div className="body">
-        <p>This is a very usefull code snippet: </p>
+        <p>{post.description}</p>
+        {/*TODO: needs to be replaced with editor*/}
         <img className="image" src={content}></img>
         <div className={`${toggleClassCheck}`}>
           <h6>Comments:</h6>
+          {/*TODO: needs to be replaced with comment div*/}
           <div className="comment">
             <h5>Peter3202:</h5>
             <p>Comment 1 this is the first comment</p>
