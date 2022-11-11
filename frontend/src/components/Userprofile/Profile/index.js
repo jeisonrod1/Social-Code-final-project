@@ -24,7 +24,6 @@ import {
 import ProfileBadges from "../ProfileBadges";
 import TopPosts from "../TopPosts";
 import {useEffect, useState} from "react";
-import axios from "axios";
 
 // STYLED COMPONENTS -start
 
@@ -53,7 +52,7 @@ const Userprofile = () => {
         const config = {
             method: "GET",
             headers: new Headers({
-                "Autorization": `Bearer ${token}`
+                "Autorization": token
             })
         }
 
