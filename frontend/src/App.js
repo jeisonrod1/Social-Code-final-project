@@ -24,7 +24,7 @@ import { Toaster } from "react-hot-toast";
 function App() {
   const [btnState, setBtnState] = useState(false);
   function handleClick() {
-    setBtnState(btnState => !btnState);
+    setBtnState((btnState) => !btnState);
   }
 
   let toggleClassCheck = btnState ? " light" : " dark";

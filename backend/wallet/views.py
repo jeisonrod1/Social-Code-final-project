@@ -3,6 +3,7 @@ from rest_framework.generics import ListCreateAPIView, UpdateAPIView, RetrieveAP
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 
+from badges.models import Badge
 from user.serializers import UserSerializer
 from wallet.models import Wallet
 from wallet.serializers import CreateWalletSerializer, BuyBadgeSerializer, GetWalletSerializer
@@ -18,24 +19,38 @@ class ListCreateWalletView(ListCreateAPIView):
         serializer.save(user=self.request.user)
 
 
-class BuyBadge(UpdateAPIView):
-    serializer_class = BuyBadgeSerializer
-    queryset = Wallet.objects.all()
-    permission_classes = [IsAuthenticatedOrReadOnly]
-    lookup_field = 'id'
-
-
 class Payment(GenericAPIView):
-    queryset = User.objects.all()
+    queryset = Badge.objects.all()
     serializer_class = UserSerializer
 
     def patch(self, request, *args, **kwargs):
-        instance = self.request.user
-        serializer = UserSerializer(instance, data=request.data, partial=True)
+        user = self.request.user
+        points = user.points
+        name = self.request.data.get('name')
+        cost = Badge.objects.filter(name=name)
+        cost = cost.cost
+        amount = cost.amount
+        cost = cost * amount
+        points = points - cost
+        serializer = UserSerializer(user, data=points, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(serializer.data)
 
+class BuyBadge(GenericAPIView):
+    serializer_class = BuyBadgeSerializer
+    queryset = Wallet.objects.all()
+    permission_classes = [IsAuthenticatedOrReadOnly]
+
+    def patch(self, request, *args, **kwargs):
+        user = self.request.user
+        queryset = Wallet.objects.filter(user=user)
+        name = self.request.data.get('name')
+        queryset = queryset.filter(name=name).first()
+        serializer = BuyBadgeSerializer(queryset, data=request.data, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data)
 
 class GetCurrentWalletAmount(ListAPIView):
     serializer_class = GetWalletSerializer
