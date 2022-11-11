@@ -10,7 +10,7 @@ def badge_image_directory_path(instance, filename):
 
 
 class Badge(models.Model):
-    type = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     icon = models.ImageField(blank=True, upload_to=badge_image_directory_path)
     cost = models.IntegerField(default=0)
     reward = models.IntegerField(default=0)
