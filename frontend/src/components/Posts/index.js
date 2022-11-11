@@ -7,7 +7,7 @@ import CardMidPost from "./CardMidPost/index.js";
 import CardMidNewPost from "./CardMidNewPost/index.js";
 import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 // STYLED COMPONENTS -start
 
@@ -81,23 +81,27 @@ const Navbar = styled.div`
 // STYLED COMPONENTS -end
 
 const Posts = () => {
+
+  const [posts, setPosts] = useState([])
+
   useEffect(() => {
     fetchPosts()
-  });
+  }, []);
 
-  const fetchPosts =() => {
-      const myHeaders = new Headers();
+  const fetchPosts = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Cookie", "csrftoken=P5a0t1xsSr5oyG3RWjUVpWo4BCzKYNkF");
 
-        const myInit = {
-             method: 'GET',
-            headers: myHeaders
+    var requestOptions = {
+      method: 'GET',
+      headers: myHeaders,
+      redirect: 'follow'
     };
 
-    fetch('http://localhost:8001/backend/codepost/', myInit)
-    .then(response => response.json())
-    .then(json => console.log(json))
-
-
+    fetch("https://code-media.propulsion-learn.ch/posts", requestOptions)
+        .then(response => response.json())
+        .then(result => setPosts(result))
+        .catch(error => console.log('error', error));
   }
 
   return (
@@ -108,11 +112,7 @@ const Posts = () => {
         </CardContainerLeft>
         <CardContainerMid>
           <CardMidNewPost />
-          <CardMidPost />
-          <CardMidPost />
-          <CardMidPost />
-          <CardMidPost />
-          <CardMidPost />
+          {posts.map(post => <CardMidPost post={post}/>)}
         </CardContainerMid>
         <CardContainerRight>
           <CardRightNav />
