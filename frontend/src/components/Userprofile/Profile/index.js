@@ -49,70 +49,65 @@ const Userprofile = () => {
 
   const currentToken = useSelector(state => state.loginData.token);
 
-  useEffect(() => {
-    const url =
-      "https://code-media.propulsion-home.ch/backend/api/social/users/me/";
-    // const url = "http://localhost:8001/backend/api/social/users/me/";
+  // useEffect(() => {
+  //   const url =
+  //     "https://code-media.propulsion-home.ch/backend/api/social/users/me/";
+  //   // const url = "http://localhost:8001/backend/api/social/users/me/";
 
-    const tokenUser = localStorage.getItem("auth");
-    const tokenJsObject = JSON.parse(tokenUser);
-
-    const config = {
-      method: "GET",
-      headers: new Headers({
-        Authorization: `Bearer ${tokenJsObject.token}`,
-      }),
-    };
-
-    fetch(url, config)
-      .then(response => response.json())
-      .then(data => setUserData(data), console.log(userData));
-  }, []);
-
-  // handle inputs
-  const handleUsernameChange = e => {
-    setUsername(e.target.value);
-  };
-  const handlePasswordChange = e => {
-    setPassword(e.target.value);
-  };
-
-  // // Handle Submit
-  // const handleSubmit = e => {
-  //   e.preventDefault();
-  //   const url = "http://localhost:8001/backend/api/social/users/me/";
-  //   const tokenFromLs = localStorage.getItem("auth");
-  //   const tokenJsObject = JSON.parse(tokenFromLs);
-
-  //   const jsBody = {
-  //     email: email,
-  //     password: password,
-  //   };
+  //   const tokenUser = localStorage.getItem("auth");
+  //   const tokenJsObject = JSON.parse(tokenUser);
 
   //   const config = {
   //     method: "GET",
   //     headers: new Headers({
-  //       "Content-Type": "application/json",
+  //       Authorization: `Bearer ${tokenJsObject.token}`,
   //     }),
-  //     body: JSON.stringify(jsBody),
   //   };
 
   //   fetch(url, config)
-  //     .then(response => {
-  //       console.log(response);
-  //       if (response.status === 200) {
-  //         console.log("fetch worked");
-  //         const json = response.json();
-  //         return json;
-  //       } else {
-  //         console.log(response.json());
-  //       }
-  //     })
-  //     .then(data => {
-  //       setToken(data.access);
-  //       console.log(token);
-  //     });
-  // };
+  //     .then(response => response.json())
+  //     .then(data => setUserData(data), console.log(userData));
+  // }, []);
+
+  // Handle Submit
+  useEffect(() => {
+    const url = "http://localhost:8001/backend/api/social/users/me/";
+    // const url =
+    // "https://code-media.propulsion-home.ch/backend/api/social/users/me/";
+    const tokenUser = localStorage.getItem("auth");
+    const tokenJsObject = JSON.parse(tokenUser);
+
+    const jsBody = {
+      email: email,
+      password: password,
+    };
+
+    const config = {
+      method: "GET",
+      headers: new Headers({
+        "Content-Type": "application/json",
+      }),
+      body: JSON.stringify(jsBody),
+    };
+
+    fetch(url, config)
+      .then(response => {
+        console.log(response);
+        if (response.status === 200) {
+          console.log("fetch worked");
+          const json = response.json();
+          console.log(json);
+          return json;
+        } else {
+          console.log(response.json());
+        }
+      })
+      .then(data => {
+        console.log(data);
+        setToken(data.access);
+        console.log(token);
+      });
+  }, []);
 
   // useEffect(() => {
   //   const jsObject = {
