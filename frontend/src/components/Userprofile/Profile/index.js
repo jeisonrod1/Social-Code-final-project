@@ -39,7 +39,7 @@ const Userprofile = () => {
 
     const fetchProfile = () => {
 
-        const url = "http://localhost:8001/backend/api/social/users/me/"
+        const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/"
 
 
         const config = {
@@ -74,7 +74,7 @@ const Userprofile = () => {
         return (
             <ProfilePage>
                 <UserHeader>
-                    <ProfilePicture src={`https://code-media.propulsion-learn.ch/${user.avatar}`}/>
+                    <ProfilePicture src={`https://code-media.propulsion-learn.ch${user.avatar}`}/>
                     <UserInfo>
                         <UserName>{user.username}</UserName>
                         <UserOccupation>Software Engineer</UserOccupation>
