@@ -62,7 +62,7 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const url = "https://code-media.propulsion-learn.ch/backend/auth/token/"
+        const url = "http://localhost:8001/backend/auth/token/"
 
         const jsBody = {
             "email": email,
