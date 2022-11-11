@@ -99,7 +99,7 @@ const Login = () => {
 
 
         if (token) {
-            localStorage.setItem("auth", token);
+            localStorage.setItem("auth",`Bearer ${token}`);
             console.log("the token was stored to local storage");
             navigate("/")
         }
