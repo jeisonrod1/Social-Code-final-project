@@ -63,8 +63,6 @@ const Login = () => {
     const handleSubmit = (e) => {
         e.preventDefault()
         const url = "https://code-media.propulsion-learn.ch/backend/auth/token/"
-        const tokenFromLs = localStorage.getItem("auth")
-        const tokenJsObject = JSON.parse(tokenFromLs)
 
         const jsBody = {
             "email": email,
@@ -79,20 +77,16 @@ const Login = () => {
             body: JSON.stringify(jsBody)
         }
 
-        fetch(url, config)
-        .then((response) => {
-            console.log(response)
-            if (response.status === 200) {
-                console.log("fetch worked")
-                const json = response.json();
-                return json
-            }
-            else {
-                console.log(response.json())
-            }
-        })
-        .then(data => { setToken(data.access)
-            console.log(token)});
+       fetch(url, config)
+            .then(response => response.json())
+            .then(data => {
+                localStorage.setItem("auth", data.access)
+                setToken(data.access)
+
+
+            })
+            .catch(error => console.log(error))
+
     }
 
      useEffect(() => {
