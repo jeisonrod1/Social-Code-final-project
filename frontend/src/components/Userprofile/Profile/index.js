@@ -23,7 +23,12 @@ import {
 } from "./index.styled";
 import ProfileBadges from "../ProfileBadges";
 import TopPosts from "../TopPosts";
+// Manu's imports ------------------------------------------
+
+//
 import { useParams } from "react-router";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 
 // STYLED COMPONENTS -start
 
@@ -38,6 +43,32 @@ const Userprofile = () => {
   const [password, setPassword] = useState("");
   const [token, setToken] = useState("");
 
+  // Using Redux
+  const [userData, setUserData] = useState([]);
+  const dispatch = useDispatch();
+
+  const currentToken = useSelector(state => state.loginData.token);
+
+  useEffect(() => {
+    const url =
+      "https://code-media.propulsion-home.ch/backend/api/social/users/me/";
+    // const url = "http://localhost:8001/backend/api/social/users/me/";
+
+    const tokenUser = localStorage.getItem("auth");
+    const tokenJsObject = JSON.parse(tokenUser);
+
+    const config = {
+      method: "GET",
+      headers: new Headers({
+        Authorization: `Bearer ${tokenJsObject.token}`,
+      }),
+    };
+
+    fetch(url, config)
+      .then(response => response.json())
+      .then(data => setUserData(data), console.log(userData));
+  }, []);
+
   // handle inputs
   const handleUsernameChange = e => {
     setUsername(e.target.value);
@@ -46,78 +77,78 @@ const Userprofile = () => {
     setPassword(e.target.value);
   };
 
-  // Handle Submit
-  const handleSubmit = e => {
-    e.preventDefault();
-    const url = "http://localhost:8001/backend/api/social/users/me/";
-    const tokenFromLs = localStorage.getItem("auth");
-    const tokenJsObject = JSON.parse(tokenFromLs);
+  // // Handle Submit
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   const url = "http://localhost:8001/backend/api/social/users/me/";
+  //   const tokenFromLs = localStorage.getItem("auth");
+  //   const tokenJsObject = JSON.parse(tokenFromLs);
 
-    const jsBody = {
-      email: email,
-      password: password,
-    };
+  //   const jsBody = {
+  //     email: email,
+  //     password: password,
+  //   };
 
-    const config = {
-      method: "GET",
-      headers: new Headers({
-        "Content-Type": "application/json",
-      }),
-      body: JSON.stringify(jsBody),
-    };
+  //   const config = {
+  //     method: "GET",
+  //     headers: new Headers({
+  //       "Content-Type": "application/json",
+  //     }),
+  //     body: JSON.stringify(jsBody),
+  //   };
 
-    fetch(url, config)
-      .then(response => {
-        console.log(response);
-        if (response.status === 200) {
-          console.log("fetch worked");
-          const json = response.json();
-          return json;
-        } else {
-          console.log(response.json());
-        }
-      })
-      .then(data => {
-        setToken(data.access);
-        console.log(token);
-      });
-  };
+  //   fetch(url, config)
+  //     .then(response => {
+  //       console.log(response);
+  //       if (response.status === 200) {
+  //         console.log("fetch worked");
+  //         const json = response.json();
+  //         return json;
+  //       } else {
+  //         console.log(response.json());
+  //       }
+  //     })
+  //     .then(data => {
+  //       setToken(data.access);
+  //       console.log(token);
+  //     });
+  // };
 
-  useEffect(() => {
-    const jsObject = {
-      lunaToken: token,
-    };
-    if (token) {
-      localStorage.setItem("auth", JSON.stringify(jsObject));
-      console.log("the token was stored to local storage");
-      navigate("/");
-    }
-  }, [token]);
+  // useEffect(() => {
+  //   const jsObject = {
+  //     lunaToken: token,
+  //   };
+  //   if (token) {
+  //     localStorage.setItem("auth", JSON.stringify(jsObject));
+  //     console.log("the token was stored to local storage");
+  //     navigate("/");
+  //   }
+  // }, [token]);
 
-  const userID = useParams().userID;
+  // const userID = useParams().userID;
 
-  const fetchUserProfile = () => {
-    fetch(
-      // "https://code-media.propulsion-learn.ch/backend/api/social/users/me/" +
-      "http://localhost:8001/backend/api/social/users/me/" + userID,
-      makeConfigNoAuth("GET")
-    )
-      .then(response => response.json())
-      .then(data => {
-        // console.log("set current user");
-        console.log(data);
-        // setCurrentUserStatus(data);
-        // console.log(data.image);
-        // reviewUser(userID);
-      })
-      .catch(error => {
-        console.error(error);
-        console.log("---eror from restaurant page---");
-      });
-  };
-  useEffect(() => {
-    fetchUserProfile();
-  }, []);
+  // const fetchUserProfile = () => {
+  //   fetch(
+  //     // "https://code-media.propulsion-learn.ch/backend/api/social/users/me/" +
+  //     "http://localhost:8001/backend/api/social/users/me/" + userID,
+  //     makeConfigNoAuth("GET")
+  //   )
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       // console.log("set current user");
+  //       console.log(data);
+  //       // setCurrentUserStatus(data);
+  //       // console.log(data.image);
+  //       // reviewUser(userID);
+  //     })
+  //     .catch(error => {
+  //       console.error(error);
+  //       console.log("---eror from restaurant page---");
+  //     });
+  // };
+  // useEffect(() => {
+  //   fetchUserProfile();
+  // }, []);
 
   return (
     <ProfilePage>
