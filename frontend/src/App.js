@@ -4,7 +4,7 @@ import Footer from "./components/Footer";
 import Posts from "./components/Posts";
 import PostsPage from "./components/PostPage";
 import Userprofile from "./components/Userprofile/Profile/index";
-import Registration from "./components/Registration";
+import Registration from "./components/Registration/Registration";
 import Login from "./components/Login";
 import { useState } from "react";
 import { Provider } from "react-redux";
@@ -24,7 +24,7 @@ import { Toaster } from "react-hot-toast";
 function App() {
   const [btnState, setBtnState] = useState(false);
   function handleClick() {
-    setBtnState((btnState) => !btnState);
+    setBtnState(btnState => !btnState);
   }
 
   let toggleClassCheck = btnState ? " light" : " dark";
