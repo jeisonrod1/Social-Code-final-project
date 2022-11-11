@@ -7,6 +7,8 @@ import Userprofile from "./components/Userprofile/Profile/index";
 import Registration from "./components/Registration";
 import Login from "./components/Login";
 import { useState } from "react";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 import JudgeLanding from "./components/Judge/components/Landing";
 
@@ -28,43 +30,53 @@ function App() {
   let toggleClassCheck = btnState ? " light" : " dark";
 
   return (
-    <BrowserRouter>
-      <div>
-        <Toaster
-          position="top-center"
-          toastOptions={{
-            success: {
-              theme: {
-                primary: "#4aed88",
-              },
-            },
-          }}
-        />
-      </div>
-      <main className={`xtxt${toggleClassCheck}`}>
-        <Header /> {/* Mads */}
-        <Routes>
-          <Route path="navtest" element={<NavTest />} /> {/* Mads */}
-          <Route path="posts" element={<Posts />} /> {/* Mads */}
-          <Route path="postpage" element={<PostsPage />} />
-          {/* Mads */}
-          <Route path="/editor" element={<AccessEditor />}></Route>
-          <Route
-            path="/editor/:roomId"
-            element={<EditorPage_HTML_CSS_JS />}
-          ></Route>
-          {/* Mads */}
-          <Route path="userprofile" element={<Userprofile />} /> {/* Mads */}
-          <Route path="login" element={<Login />} /> {/* Mads */}
-          <Route path="registration" element={<Registration />} /> {/* Mads */}
-          <Route path="judgeeditor/" element={<JudgeLanding />} /> {/* Mads */}
-        </Routes>
-        <button className={`btn-x${toggleClassCheck}`} onClick={handleClick}>
-          Theme ={`${toggleClassCheck}`}
-        </button>
-        <Footer /> {/* Mads */}
-      </main>
-    </BrowserRouter>
+    <>
+      <Provider store={store}>
+        <BrowserRouter>
+          <div>
+            <Toaster
+              position="top-center"
+              toastOptions={{
+                success: {
+                  theme: {
+                    primary: "#4aed88",
+                  },
+                },
+              }}
+            />
+          </div>
+          <main className={`xtxt${toggleClassCheck}`}>
+            <Header /> {/* Mads */}
+            <Routes>
+              <Route path="navtest" element={<NavTest />} /> {/* Mads */}
+              <Route path="posts" element={<Posts />} /> {/* Mads */}
+              <Route path="postpage" element={<PostsPage />} />
+              {/* Mads */}
+              <Route path="/editor" element={<AccessEditor />}></Route>
+              <Route
+                path="/editor/:roomId"
+                element={<EditorPage_HTML_CSS_JS />}
+              ></Route>
+              {/* Mads */}
+              <Route path="userprofile" element={<Userprofile />} />{" "}
+              {/* Mads */}
+              <Route path="login" element={<Login />} /> {/* Mads */}
+              <Route path="registration" element={<Registration />} />{" "}
+              {/* Mads */}
+              <Route path="judgeeditor/" element={<JudgeLanding />} />{" "}
+              {/* Mads */}
+            </Routes>
+            <button
+              className={`btn-x${toggleClassCheck}`}
+              onClick={handleClick}
+            >
+              Theme ={`${toggleClassCheck}`}
+            </button>
+            <Footer /> {/* Mads */}
+          </main>
+        </BrowserRouter>
+      </Provider>
+    </>
   );
 }
 
