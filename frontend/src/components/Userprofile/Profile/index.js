@@ -52,7 +52,7 @@ const Userprofile = () => {
         const config = {
             method: "GET",
             headers: new Headers({
-                "Autorization": token
+                "Authorization": token
             })
         }
 
