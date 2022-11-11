@@ -7,6 +7,7 @@ import CardMidPost from "./CardMidPost/index.js";
 import CardMidNewPost from "./CardMidNewPost/index.js";
 import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
+import {useEffect} from "react";
 
 // STYLED COMPONENTS -start
 
@@ -25,7 +26,6 @@ const RowWrapper = styled.div`
   h4,
   h5,
   h6 {
-    color: rgb(199, 191, 213);
     margin: 8px 0 8px 8px;
   }
 `;
@@ -81,6 +81,25 @@ const Navbar = styled.div`
 // STYLED COMPONENTS -end
 
 const Posts = () => {
+  useEffect(() => {
+    fetchPosts()
+  });
+
+  const fetchPosts =() => {
+      const myHeaders = new Headers();
+
+        const myInit = {
+             method: 'GET',
+            headers: myHeaders
+    };
+
+    fetch('http://localhost:8001/backend/codepost/', myInit)
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+
+  }
+
   return (
     <>
       <RowWrapper>

@@ -13,7 +13,6 @@ const QCard = styled.div`
   padding: 8px 8px 32px 8px;
   width: 100%;
   height: 100%;
-  background-color: #1e1f26;
   display: flex;
   justify-content: start;
   justify-content: space-between;
@@ -32,6 +31,11 @@ const QCard = styled.div`
   h3 {
     margin: 8px 8px 0 8px;
     font-weight: 500;
+  }
+  p:hover {
+    font-weight: 700;
+    transition: all 0.2s;
+    cursor: pointer;
   }
 `;
 

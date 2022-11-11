@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import React, { Component } from "react";
 import logo_fb from "../../images/icons/svgs/facebook.svg";
-import some_audio_source from "../../images/audio/audio-crack.mp3";
 import logo_twit from "../../images/icons/svgs/twitter.svg";
 import logo_goog from "../../images/icons/svgs/googleplus.svg";
 import logo_insta from "../../images/icons/svgs/instagram.svg";
-
+import mySound from '../../images/audio/audio-crack.mp3'
+import useSound from 'use-sound'
 import "./pacman.css";
 
 // STYLED COMPONENTS -start
@@ -17,8 +17,22 @@ const HeaderComponent = styled.div`
   width: 100%;
   bottom: 0;
   height: 42px;
+  .light &{
+    background-color: #e2e2e2;
+    transition: all 1s;
+  }
+  .dark &{
+    background-color: #2e3138;
+    transition: all 1s;
+  }  
+  .music {
+    border-radius: 20px;
+    height: 33px;
+    margin: auto 0;
+  }
   a {
     font-size: 12px;
+    cursor: pointer;
   }
   img {
     height: 24px;
@@ -52,6 +66,7 @@ const HeaderComponent = styled.div`
 // STYLED COMPONENTS -end
 
 const Footer = () => {
+  const [playSound] = useSound(mySound)
   return (
     <>
       <HeaderComponent>
@@ -64,7 +79,9 @@ const Footer = () => {
         </div>
         <div className="pacman"></div>
         <div className="dot"></div>
-        {/*<PlayButton src={some_audio_source}/>*/}
+        <button className="music" onClick={() => playSound()}>
+       MaxVolume!
+    </button>
         <div>
           <img src={logo_fb}></img>
           <img src={logo_twit}></img>

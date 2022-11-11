@@ -12,11 +12,20 @@ const HeaderComponent = styled.div`
   box-shadow: -6px -6px 13px 0px;
   height: 42px;
   z-index: 1000;
+  .light &{
+    background-color: #e2e2e2;
+    transition: all 1s;
+  }
+  .dark &{
+    background-color: #2e3138;
+    transition: all 1s;
+  }
   a {
     font-size: 12px;
     &:hover {
-      background-color: #4e4e4e;
+      background-color: #4e4e4e70;
       border-radius: 8px;
+      cursor: pointer;
     }
   }
   img {
@@ -70,14 +79,6 @@ const Header = () => {
           <img src={logo}></img>
         </div>
         <div className="right-nav">
-          <a
-            className="plain"
-            onClick={() => {
-              navigate("../navtest");
-            }}
-          >
-            NavTest
-          </a>
           <a
             className="plain"
             onClick={() => {

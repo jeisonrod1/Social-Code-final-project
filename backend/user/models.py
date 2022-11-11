@@ -1,6 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
+from django.contrib.postgres.fields import ArrayField
 
 
 def user_directory_path(instance, filename):
@@ -29,6 +30,8 @@ class User(AbstractUser):
     friends = models.ManyToManyField(to=settings.AUTH_USER_MODEL, related_name="my_friends", blank=True)
     following = models.ManyToManyField(to=settings.AUTH_USER_MODEL, related_name='followers', blank=True)
     points = models.IntegerField(default=0)
+
+
 
     def __str__(self):
         return f'ID {self.id} : {self.username}'
