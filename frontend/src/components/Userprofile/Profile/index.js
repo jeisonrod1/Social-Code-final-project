@@ -74,7 +74,7 @@ const Userprofile = () => {
         return (
             <ProfilePage>
                 <UserHeader>
-                    <ProfilePicture src={`https://code-media.propulsion-learn.ch${user.avatar}`}/>
+                    <ProfilePicture src={user.avatar}/>
                     <UserInfo>
                         <UserName>{user.username}</UserName>
                         <UserOccupation>Software Engineer</UserOccupation>
