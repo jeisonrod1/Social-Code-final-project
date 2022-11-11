@@ -96,11 +96,10 @@ const Login = () => {
     }
 
      useEffect(() => {
-        const jsObject = {
-            socialToken: token
-        }
+
+
         if (token) {
-            localStorage.setItem("auth", JSON.stringify(jsObject));
+            localStorage.setItem("auth", token);
             console.log("the token was stored to local storage");
             navigate("/")
         }

@@ -23,12 +23,8 @@ import {
 } from "./index.styled";
 import ProfileBadges from "../ProfileBadges";
 import TopPosts from "../TopPosts";
-// Manu's imports ------------------------------------------
-
-//
-import { useParams } from "react-router";
-import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 // STYLED COMPONENTS -start
 
@@ -37,123 +33,66 @@ const ExampleComponent = styled.div``;
 // STYLED COMPONENTS -end
 
 const Userprofile = () => {
-  // creating local states to control the input fields
-  const [email, setEmail] = useState("");
+  const [token, setToken] = useState(localStorage.getItem("auth"));
   const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
+  const [first_name, setFirst_Name] = useState("");
+  const [last_name, setLast_Name] = useState("");
+  const [email, setEmail] = useState("");
+  const [location, setLocation] = useState("");
+  const [phone, setPhone] = useState("");
+  const [about_me, setAbout_Me] = useState("");
+  const [avatar, setAvatar] = useState("");
+  const [points, setPoints] = useState("");
+  const [company, setCompany] = useState("");
 
-  // Using Redux
-  const [userData, setUserData] = useState([]);
-  const dispatch = useDispatch();
-
-  const currentToken = useSelector(state => state.loginData.token);
-
-  // useEffect(() => {
-  //   const url =
-  //     "https://code-media.propulsion-home.ch/backend/api/social/users/me/";
-  //   // const url = "http://localhost:8001/backend/api/social/users/me/";
-
-  //   const tokenUser = localStorage.getItem("auth");
-  //   const tokenJsObject = JSON.parse(tokenUser);
-
-  //   const config = {
-  //     method: "GET",
-  //     headers: new Headers({
-  //       Authorization: `Bearer ${tokenJsObject.token}`,
-  //     }),
-  //   };
-
-  //   fetch(url, config)
-  //     .then(response => response.json())
-  //     .then(data => setUserData(data), console.log(userData));
-  // }, []);
-
-  // Handle Submit
-  useEffect(() => {
-    const url = "http://localhost:8001/backend/api/social/users/me/";
-    // const url =
-    // "https://code-media.propulsion-home.ch/backend/api/social/users/me/";
-    const tokenUser = localStorage.getItem("auth");
-    const tokenJsObject = JSON.parse(tokenUser);
-
-    const jsBody = {
-      email: email,
-      password: password,
-    };
+  const fetchProfile = () => {
+    const url =
+      "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
 
     const config = {
       method: "GET",
       headers: new Headers({
-        "Content-Type": "application/json",
+        Autorization: `Bearer ${token}`,
       }),
-      body: JSON.stringify(jsBody),
     };
 
     fetch(url, config)
       .then(response => {
-        console.log(response);
         if (response.status === 200) {
-          console.log("fetch worked");
-          const json = response.json();
-          console.log(json);
-          return json;
+          const data = response.json();
+          setUsername(data.get("username"));
+          setFirst_Name(data.get("first_name"));
+          setLast_Name(data.get("last_name"));
+          setEmail(data.get("email"));
+          setLocation(data.get("location"));
+          setPhone(data.get("phone"));
+          setAbout_Me(data.get("about_me"));
+          setAvatar(data.get("avatar"));
+          setPoints(data.get("points"));
+          setCompany(data.get("company"));
         } else {
           console.log(response.json());
         }
       })
       .then(data => {
-        console.log(data);
         setToken(data.access);
         console.log(token);
       });
-  }, []);
+  };
 
-  // useEffect(() => {
-  //   const jsObject = {
-  //     lunaToken: token,
-  //   };
-  //   if (token) {
-  //     localStorage.setItem("auth", JSON.stringify(jsObject));
-  //     console.log("the token was stored to local storage");
-  //     navigate("/");
-  //   }
-  // }, [token]);
-
-  // const userID = useParams().userID;
-
-  // const fetchUserProfile = () => {
-  //   fetch(
-  //     // "https://code-media.propulsion-learn.ch/backend/api/social/users/me/" +
-  //     "http://localhost:8001/backend/api/social/users/me/" + userID,
-  //     makeConfigNoAuth("GET")
-  //   )
-  //     .then(response => response.json())
-  //     .then(data => {
-  //       // console.log("set current user");
-  //       console.log(data);
-  //       // setCurrentUserStatus(data);
-  //       // console.log(data.image);
-  //       // reviewUser(userID);
-  //     })
-  //     .catch(error => {
-  //       console.error(error);
-  //       console.log("---eror from restaurant page---");
-  //     });
-  // };
-  // useEffect(() => {
-  //   fetchUserProfile();
-  // }, []);
+  useEffect(() => {
+    fetchProfile();
+  }, [token]);
 
   return (
     <ProfilePage>
       <UserHeader>
-        <ProfilePicture src={ProfileAvatar} />
+        <ProfilePicture src={avatar} />
         <UserInfo>
-          <UserName>Victor Kaufmann</UserName>
+          <UserName>{username}</UserName>
           <UserOccupation>Software Engineer</UserOccupation>
-          <UserLocation>Zürich, CH.</UserLocation>
-          <UserEmail>victor.fmann@gmail.com</UserEmail>
+          <UserLocation>{location}</UserLocation>
+          <UserEmail>{email}</UserEmail>
         </UserInfo>
       </UserHeader>
       <StatsContainer>
@@ -167,11 +106,7 @@ const Userprofile = () => {
       </StatsContainer>
       <AboutContainer>
         <AboutTitle>About</AboutTitle>
-        <About>
-          I am a computer science graduate and a programmer, I like to take up
-          projects for learning 😅 , kinds geeky, and trying to get my hands in
-          python.
-        </About>
+        <About>{about_me}</About>
       </AboutContainer>
       <div></div>
       <ProfileBadges />
