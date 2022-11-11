@@ -47,7 +47,7 @@ const Userprofile = () => {
 
     const fetchProfile = () => {
 
-        const url = "https://code-media.propulsion-learn.ch//backend/api/social/users/me/"
+        const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/"
 
 
         const config = {
