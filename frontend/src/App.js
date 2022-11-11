@@ -44,7 +44,7 @@ function App() {
       <main className={`xtxt${toggleClassCheck}`}>
         <Header className="header" /> {/* Mads */}
         <Routes>
-          <Route path="navtest" element={<NavTest />} /> {/* Mads */}
+          {/* <Route path="navtest" element={<NavTest />} />  Mads -Disabled */}
           <Route path="posts" element={<Posts />} /> {/* Mads */}
           <Route path="postpage" element={<PostsPage />} />
           {/* Mads */}

@@ -2,6 +2,12 @@ body {
   overflow: scroll;
   overflow-x: hidden;
 }
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .btn-x {
   z-index: 3000;
   position: fixed;
@@ -37,16 +43,10 @@ html {
   /* #13141 */
 }
 
-html.light {
+html .light {
   background-color: #ebebeb;
   /* #13141 */
 }
-
-html.light {
-  background-color: #ebebeb;
-  /* #13141 */
-}
-
 
 span,
 a,

@@ -82,14 +82,6 @@ const Header = () => {
           <a
             className="plain"
             onClick={() => {
-              navigate("../navtest");
-            }}
-          >
-            NavTest
-          </a>
-          <a
-            className="plain"
-            onClick={() => {
               navigate("../posts");
             }}
           >

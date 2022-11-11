@@ -32,6 +32,11 @@ const QCard = styled.div`
     margin: 8px 8px 0 8px;
     font-weight: 500;
   }
+  p:hover {
+    font-weight: 700;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
 `;
 
 const SocialButtons = styled.div`
