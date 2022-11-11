@@ -20,10 +20,12 @@ const HeaderComponent = styled.div`
   .light &{
     background-color: #e2e2e2;
     transition: all 1s;
+    box-shadow: 0px 7px 23px 7px rgba(180, 168, 255, 0.63);
   }
   .dark &{
     background-color: #2e3138;
     transition: all 1s;
+    box-shadow: 0px 7px 23px 6px rgba(140,0,0,0.63);
   }  
   .music {
     border-radius: 20px;
