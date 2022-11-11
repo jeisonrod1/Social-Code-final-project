@@ -53,7 +53,7 @@ const Userprofile = () => {
         const config = {
             method: "GET",
             headers: new Headers({
-                "Autorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjY4NjA4ODQzLCJpYXQiOjE2NjgxNzY4NDMsImp0aSI6ImQ5MWU4ZmM0YWM4NDQwNDA5ZjdkNDY4MTc1MzQ0NmZjIiwidXNlcl9pZCI6MX0.Qf_-28v18BwVVq92Cn8sjKTDFPY8DzpNopR1WbM2p3o"
+                "Autorization": `Bearer ${token}`
             })
         }
 
