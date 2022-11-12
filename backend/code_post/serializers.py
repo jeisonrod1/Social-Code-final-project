@@ -14,7 +14,7 @@ class CodePostSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
     user = UserSerializer(read_only=True)
-    answersToComments = CommentsSerializer(many=True)
+    answersToComments = CommentsSerializer(many=True, read_only=True)
 
 
 class CreateCodePostSerializer(serializers.ModelSerializer):
