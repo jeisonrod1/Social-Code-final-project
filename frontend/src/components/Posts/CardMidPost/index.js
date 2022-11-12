@@ -144,6 +144,42 @@ const SocialButtons = styled.div`
 
 const CardMidPost = ({post}) => {
   const [btnState, setBtnState] = useState(false);
+  const [comment, setComment] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("auth"))
+
+  const handleCommentSubmit = (e) => {
+        e.preventDefault()
+
+        const url = "https://code-media.propulsion-learn.ch/backend/codepost/"
+        const fd= new FormData()
+        fd.append("title",title)
+        fd.append("tags",tags)
+
+
+
+        const config = {
+            method: "POST",
+            headers: new Headers({
+                "Authorization": token
+
+            }),
+            body: fd
+        }
+
+        fetch(url, config)
+        .then((response) => {
+            if (response.status === 200) {
+                console.log(response)
+            }
+            else {
+                console.log(response.json())
+            }
+        }).then(
+            setTimeout(()=>navigate("/posts"),1000)
+        )
+    }
+
+
   function handleClick() {
     setBtnState((btnState) => !btnState);
   }
@@ -173,9 +209,9 @@ const CardMidPost = ({post}) => {
             <p>Comment 1 this is the first comment</p>
           </div>
 
-        <form className="form">
+        <form className="form" onSubmit={handleCommentSubmit}>
           <label>
-            <input type="text" name="name" placeholder="Post a comment" />
+            <input type="text" name="name" value={comment} placeholder="Post a comment" />
           </label>
           <input type="submit" value="Post It" />
         </form>

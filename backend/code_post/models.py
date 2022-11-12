@@ -10,8 +10,8 @@ def code_directory_path(instance, filename):
 
 class CodePost(models.Model):
     LANGUAGE_CHOICES = (
-        ('python', 'Python'),
-        ('javascript', 'Javascript'),
+        ('python', 'python'),
+        ('javascript', 'javascript'),
     )
     title = models.CharField(max_length=250)
     tags = models.CharField(max_length=300, blank=True)

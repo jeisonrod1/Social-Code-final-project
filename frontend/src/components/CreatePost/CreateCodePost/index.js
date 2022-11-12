@@ -1,4 +1,4 @@
-import React, {useState, useEffect, startTransition} from "react"
+import React, {useState, useEffect} from "react"
 
 // Image import
 
@@ -20,7 +20,7 @@ import Editor from "@monaco-editor/react";
 import {defineTheme} from "../../Judge/lib/defineTheme";
 
 
-function CreateRestaurant() {
+function CreatePost() {
 
 // Logic
 
@@ -171,4 +171,4 @@ function CreateRestaurant() {
   );
 }
 
-export default CreateRestaurant;
+export default CreatePost;

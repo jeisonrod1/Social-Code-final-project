@@ -5,6 +5,7 @@ import heart from "../../../images/icons/svgs/heart.svg";
 import share from "../../../images/icons/svgs/share.svg";
 import meme from "../../../images/memes/ten-sec.jpg";
 import profile1 from "../../../images/users/profile1.jpg";
+import CreatePost from "../../CreatePost/CreateCodePost";
 
 // STYLED COMPONENTS -start
 
@@ -72,6 +73,8 @@ const NewPostButtons = styled.div`
   }
 `;
 
+
+
 // STYLED COMPONENTS -end
 
 const CardMidNewPost = () => {
@@ -85,6 +88,7 @@ const CardMidNewPost = () => {
           </label>
           <input type="submit" value="Post It" />
         </form>
+
       </div>
 
       <NewPostButtons>
