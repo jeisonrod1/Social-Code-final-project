@@ -1,7 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
-from django.contrib.postgres.fields import ArrayField
 
 
 def user_directory_path(instance, filename):
