@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  update_email,
-  change_page,
-  update_password,
-} from "../../redux/slices/login-slice";
+import { update_email, update_password } from "../../redux/slices/login-slice";
 
 import styled from "styled-components";
 
@@ -65,7 +61,7 @@ const RegistrationPageContainer = styled.div`
 
 const Registration = () => {
   // Registration Musts
-  const [email, setEmail] = useState("");
+  const email = useSelector(state => state.loginData.email);
   const [code, setCode] = useState("");
   const [password, setPassword] = useState("");
   const [userToken, setUserToken] = useState("");
@@ -91,7 +87,6 @@ const Registration = () => {
   const handleEmailChange = e => {
     e.preventDefault();
     dispatch(update_email(e.target.value));
-    setEmail(e.target.value);
   };
   const handlePassword = e => {
     e.preventDefault();
@@ -121,8 +116,7 @@ const Registration = () => {
     fetch(url, config).then(response => {
       if (response.status === 200) {
         console.log("code successfully sent");
-        console.log(response);
-        return dispatch(change_page("registration/validation"));
+        return response;
       } else {
         return response.json();
       }

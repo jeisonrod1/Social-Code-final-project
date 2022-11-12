@@ -5,8 +5,15 @@ export const LoginSlice = createSlice({
   initialState: {
     email: "",
     username: "",
+    password: "",
     token: "",
-    page: "",
+    first_name: "",
+    last_name: "",
+    phone: "",
+    location: "",
+    about: "",
+    points: 1,
+    company: "",
   },
   reducers: {
     update_email: (state, action) => {
@@ -35,8 +42,26 @@ export const LoginSlice = createSlice({
     update_username: (state, action) => {
       state.username = action.payload;
     },
-    change_page: (state, action) => {
-      state.page = action.payload;
+    update_firstName: (state, action) => {
+      state.first_name = action.payload;
+    },
+    update_lastName: (state, action) => {
+      state.last_name = action.payload;
+    },
+    update_phone: (state, action) => {
+      state.phone = action.payload;
+    },
+    update_company: (state, action) => {
+      state.company = action.payload;
+    },
+    update_location: (state, action) => {
+      state.location = action.payload;
+    },
+    update_aboutMe: (state, action) => {
+      state.about = action.payload;
+    },
+    update_points: (state, action) => {
+      state.points = action.payload;
     },
   },
 });
@@ -46,6 +71,12 @@ export const {
   update_password,
   update_token,
   update_username,
-  change_page,
+  update_firstName,
+  update_lastName,
+  update_phone,
+  update_location,
+  update_aboutMe,
+  update_points,
+  update_company,
 } = LoginSlice.actions;
 export default LoginSlice.reducer;

@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
   update_email,
-  change_page,
   update_password,
+  update_token,
   update_username,
+  update_firstName,
+  update_lastName,
+  update_phone,
+  update_location,
+  update_aboutMe,
+  update_points,
+  update_company,
 } from "../../redux/slices/login-slice";
 
 import styled from "styled-components";
@@ -48,6 +55,7 @@ import IconFB from "../../images/icons/icon/facebook.png";
 import IconTW from "../../images/icons/icon/twitter.png";
 import IconIG from "../../images/icons/icon/instagram.png";
 import { Left } from "../Userprofile/TopPosts/index.styled";
+import { faTachographDigital } from "@fortawesome/free-solid-svg-icons";
 
 // STYLED COMPONENTS -start
 
@@ -65,16 +73,22 @@ const RegistrationPageContainer = styled.div`
 
 const RegistrationUsername = () => {
   const dispatch = useDispatch();
-  const currentEmail = useSelector(state => state.loginData.email);
-  const currentUsername = useSelector(state => state.loginData.username);
+  const [code, setCode] = useEffect("");
+  const email = useSelector(state => state.loginData.email);
+  const username = useSelector(state => state.loginData.username);
+  const password = useSelector(state => state.loginData.password);
 
-  const [feedback, setFeedback] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordRep, setPasswordRep] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [code, setCode] = useState("");
+  const first_name = useSelector(state => state.loginData.first_name);
+  const last_name = useSelector(state => state.loginData.last_name);
+  const location = useSelector(state => state.loginData.location);
+  const phone = useSelector(state => state.loginData.phone);
+  const about_me = useSelector(state => state.loginData.about_me);
+  const points = useSelector(state => state.loginData.points);
+  const company = useSelector(state => state.loginData.company);
 
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [showPassword, setShowPassword] = useState("");
+  const [hidePassword, setHidePassword] = useState("password");
   // makes the "Email" and Username Input controlled. Sends the input to the Login-Redux-Slice.
   const handleEmail = e => {
     dispatch(update_email(e.target.value));
@@ -87,31 +101,55 @@ const RegistrationUsername = () => {
     setCode(e.target.value);
   };
   const handlePasswordChange = e => {
-    setPassword(e.target.value);
+    dispatch(update_password(e.target.value));
   };
-  const handlePasswordRepChange = e => {
-    setPasswordRep(e.target.value);
+  const handlePasswordConfirm = e => {
+    setPasswordConfirm(e.target.value);
   };
   const handleFirstNameChange = e => {
-    setFirstName(e.target.value);
+    dispatch(update_firstName(e.target.value));
   };
   const handleLastNameChange = e => {
-    setLastName(e.target.value);
+    dispatch(update_lastName(e.target.value));
+  };
+  const handlePhone = e => {
+    dispatch(update_phone(e.target.value));
+  };
+  const handleLocation = e => {
+    dispatch(update_location(e.target.value));
+  };
+  const handleAboutMe = e => {
+    dispatch(update_aboutMe(e.target.value));
+  };
+  const handlePoints = e => {
+    dispatch(update_points(e.target.value));
+  };
+
+  const handleCompany = e => {
+    dispatch(update_company(e.target.value));
+  };
+
+  const handleAvatar = e => {
+    console.log("help");
   };
 
   const handleSignUp = e => {
     e.preventDefault();
-    const url =
-      "https://motion.propulsion-home.ch/backend/api/auth/registration/validation/";
-
+    const url = "http://localhost:8001/backend/registration/validation";
+    // "https://code-media.propulsion-learn.ch/backend/registration/validation";
     const jsBody = {
-      email: currentEmail,
-      username: currentUsername,
+      email: email,
+      username: username,
       code: code,
       password: password,
-      password_repeat: passwordRep,
-      first_name: firstName,
-      last_name: lastName,
+      password_confirm: passwordConfirm,
+      first_name: first_name,
+      last_name: last_name,
+      location: location,
+      phone: phone,
+      company: company,
+      points: points,
+      about: about_me,
     };
 
     const config = {
@@ -125,15 +163,14 @@ const RegistrationUsername = () => {
     fetch(url, config)
       .then(response => {
         if (response.status === 200) {
-          // ???
-          dispatch(change_page("Login"));
+          console.log("Good");
         } else {
           return response.json();
         }
       })
       .then(data => {
         if (data.email) {
-          setFeedback("There was a Problem with the registration");
+          console.log("Problem");
         }
       });
   };
@@ -141,72 +178,86 @@ const RegistrationUsername = () => {
   return (
     <>
       <RegistrationPageContainer>
-        <SignInForm onSubmit={handleSignUp}>
+        <SignInForm
+          style={{ width: "70%", height: "100%" }}
+          onSubmit={handleSignUp}
+        >
           <SignInTitle>Sign Up</SignInTitle>
-          <Inputs type={"text"} value={currentEmail} onChange={handleEmail}>
+          <Inputs type={"text"} onChange={handleAvatar}>
             <EmailLabel />
-            <EmailInput placeholder="enter your username" />
+            <EmailInput placeholder="IDK how to setUp an avatar" />
           </Inputs>
-          <Inputs type={"text"} value={currentEmail} onChange={handleEmail}>
-            <EmailLabel />
-            <EmailInput placeholder="enter your username" />
-          </Inputs>
-          <Inputs type={"text"} value={currentEmail} onChange={handleEmail}>
-            <EmailLabel />
-            <EmailInput placeholder="enter your username" />
-          </Inputs>
-          <Inputs type={"text"} value={currentEmail} onChange={handleEmail}>
-            <EmailLabel />
-            <EmailInput placeholder="enter your username" />
-          </Inputs>
-          <Inputs type={"text"} value={currentEmail} onChange={handleEmail}>
-            <EmailLabel />
-            <EmailInput placeholder="enter your username" />
-          </Inputs>
-          <Inputs type={"text"} value={currentEmail} onChange={handleEmail}>
-            <EmailLabel />
-            <EmailInput placeholder="enter your username" />
-          </Inputs>
-          <Inputs type={"text"} value={currentEmail} onChange={handleEmail}>
-            <EmailLabel />
-            <EmailInput placeholder="enter your username" />
-          </Inputs>
-          <Inputs type={"text"} value={currentEmail} onChange={handleEmail}>
-            <EmailLabel />
-            <EmailInput placeholder="enter your username" />
-          </Inputs>
-
-          <Inputs
-            type={"text"}
-            value={currentUsername}
-            onChange={handleUsername}
-          />
-          <p>validation code</p>
-          <Inputs type={"text"} value={code} onChange={handleCodeChange} />
-          <p>password</p>
-          <Inputs
-            type={"password"}
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <p>repeat password</p>
-          <Inputs
-            type={"password"}
-            value={passwordRep}
-            onChange={handlePasswordRepChange}
-          />
-          <p>first name</p>
-          <Inputs
-            type={"text"}
-            value={firstName}
-            onChange={handleFirstNameChange}
-          />
-          <p>last name</p>
-          <Inputs
-            type={"text"}
-            value={lastName}
-            onChange={handleLastNameChange}
-          />
+          <LoginContainer>
+            <LeftSide>
+              <Inputs
+                type={"text"}
+                value={code}
+                onChange={e => setCode(e.target.value)}
+              >
+                <EmailLabel />
+                <EmailInput placeholder="enter your code" />
+              </Inputs>
+              <Inputs type={"email"} value={email} onChange={handleEmail}>
+                <EmailLabel />
+                <EmailInput placeholder="enter your email" />
+              </Inputs>
+              <Inputs
+                type={"text"}
+                value={email}
+                onChange={handleFirstNameChange}
+              >
+                <EmailLabel />
+                <EmailInput placeholder="enter your first name" />
+              </Inputs>
+              <Inputs
+                type={"text"}
+                value={first_name}
+                onChange={handleLastNameChange}
+              >
+                <EmailLabel />
+                <EmailInput placeholder="enter your last name" />
+              </Inputs>
+              <Inputs
+                type={"text"}
+                value={last_name}
+                onChange={handleLastNameChange}
+              >
+                <EmailLabel />
+                <EmailInput placeholder="enter your username" />
+              </Inputs>
+              <Inputs value={password} onChange={handlePasswordChange}>
+                <PasswordLabel />
+                <PasswordInput
+                  onChange={handlePasswordChange}
+                  placeholder="set your password"
+                  type={showPassword ? "password" : "text"}
+                />
+                <input
+                  type="checkbox"
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              </Inputs>
+            </LeftSide>
+            <RightSide>
+              <Inputs type={"text"} value={location} onChange={handleLocation}>
+                <EmailLabel />
+                <EmailInput placeholder="enter your location" />
+              </Inputs>
+              <Inputs type={"text"} value={phone} onChange={handlePhone}>
+                <EmailLabel />
+                <EmailInput type="tel" placeholder="enter your phone" />
+              </Inputs>
+              <Inputs type={"text"} value={company} onChange={handleCompany}>
+                <EmailLabel />
+                <EmailInput placeholder="enter your company" />
+              </Inputs>
+              <Inputs type={"text"} value={about_me} onChange={handleAboutMe}>
+                <EmailLabel />
+                <EmailInput placeholder="enter About info" />
+              </Inputs>
+            </RightSide>
+          </LoginContainer>
+          <button>Sign Up</button>
         </SignInForm>
       </RegistrationPageContainer>
     </>

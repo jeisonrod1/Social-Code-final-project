@@ -6,7 +6,6 @@ export const LoginContainer = styled.div`
   height: 100vh;
   display: flex;
   font-family: "Monaco";
-
 `;
 
 export const LeftSide = styled.div`
@@ -39,7 +38,7 @@ export const RightBackground = styled.img`
 
 export const LeftTopContainer = styled.div`
   position: relative;
-  scale: .9;
+  scale: 0.9;
 `;
 
 export const AppName = styled.p`
@@ -47,16 +46,14 @@ export const AppName = styled.p`
   font-size: 4.5em;
   text-align: center;
   color: #fff;
-  scale: .9;
-
+  scale: 0.9;
 `;
 export const Slogan = styled.p`
   padding: 20px 60px 0;
   font-size: 1.8em;
   text-align: center;
   color: #fff;
-  scale: .9;
-
+  scale: 0.9;
 `;
 export const LeftBottomContainer = styled.div`
   position: absolute;
@@ -106,7 +103,6 @@ export const RightTopContainer = styled.div`
   bottom: 20px;
   right: 60px;
   scale: 1.1;
-
 `;
 export const SignInText = styled.button`
   border: none;
@@ -123,73 +119,69 @@ export const RightMiddleContainer = styled.div`
   margin: 0 auto;
 `;
 export const SignInForm = styled.form`
-  text-align:center;
+  text-align: center;
   width: 350px;
   height: 480px;
   background-color: #48367e;
-  border-radius:8px;
-  scale: .9;
+  border-radius: 8px;
+  scale: 0.9;
 
-  button{
-    margin-top:75px;
+  button {
+    margin-top: 75px;
     width: 180px;
     padding: 8px 12px;
     font-size: 18px;
     font-weight: 550;
     color: black;
-    border-radius:12px;
+    border-radius: 12px;
     border: none;
     cursor: pointer;
   }
 `;
 export const SignInTitle = styled.div`
-font-size: 1.6em;
-font-weight:600;
-letter-spacing:2px;
-padding:25px 0 40px;
+  font-size: 1.6em;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: 25px 0 40px;
 `;
 export const Inputs = styled.div`
-padding:25px;
-
+  padding: 25px;
 `;
 export const EmailLabel = styled.img`
-position: relative;
-padding-right: 25px;
-top: 35px;
-left: 125px;
-z-index: 100;
+  position: relative;
+  padding-right: 25px;
+  top: 35px;
+  left: 125px;
+  z-index: 100;
 `;
 export const EmailInput = styled.input`
-width:80%;
-height: 22px;
-padding: 8px 12px;
-border-radius: 8px;
-border: none;
-outline: none;
-font-size: 15px;
-position: relative;
-top: -4px;
+  width: 80%;
+  height: 22px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  position: relative;
+  top: -4px;
 `;
 export const PasswordLabel = styled.img`
-position: relative;
-padding-right: 25px;
-top: 35px;
-left: 125px;
-z-index: 100;
-
-
-`
+  position: relative;
+  padding-right: 25px;
+  top: 35px;
+  left: 125px;
+  z-index: 100;
+`;
 export const PasswordInput = styled.input`
-width:80%;
-height: 22px;
-padding: 8px 12px;
-border-radius: 8px;
-border: none;
-outline: none;
-font-size: 15px;
-position: relative;
-top: -4px;
-
+  width: 80%;
+  height: 22px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  position: relative;
+  top: -4px;
 `;
 export const RightBottomContainer = styled.div`
   position: relative;
@@ -199,22 +191,21 @@ export const RightBottomContainer = styled.div`
   gap: 20px;
 `;
 export const SocialMediaIcons = styled.div`
-
-width: 100%;
-display: flex;
-justify-content: center;
-gap: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
 `;
 export const FacebookLink = styled.a``;
 export const FacebookIcon = styled.img`
-width: 20px;
+  width: 20px;
 `;
 
 export const TwitterLink = styled.a``;
 export const TwitterIcon = styled.img`
-width: 20px;
+  width: 20px;
 `;
 export const InstagramLink = styled.a``;
 export const InstagramIcon = styled.img`
-width: 20px;
+  width: 20px;
 `;
