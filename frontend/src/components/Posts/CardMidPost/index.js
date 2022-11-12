@@ -9,7 +9,8 @@ import { useState } from "react";
 import Comment from "../Comment";
 import Answers from "../Answers";
 import {useNavigate} from "react-router-dom";
-
+import Editor from "@monaco-editor/react";
+import {defineTheme} from "../../Judge/lib/defineTheme";
 
 // STYLED COMPONENTS -start
 
@@ -146,6 +147,7 @@ const CardMidPost = ({post}) => {
   const [btnState, setBtnState] = useState(false);
   const [comment, setComment] = useState(false);
   const [token, setToken] = useState(localStorage.getItem("auth"))
+    const [theme, setTheme] = useState("");
 
 
     const navigate = useNavigate()
@@ -186,6 +188,11 @@ const CardMidPost = ({post}) => {
         setComment(e)
 
     };
+      useEffect(() => {
+        defineTheme("oceanic-next").then((_) =>
+            setTheme({value: "oceanic-next", label: "Oceanic Next"})
+        );
+    }, []);
 
   function handleClick() {
     setBtnState((btnState) => !btnState);
@@ -197,6 +204,14 @@ const CardMidPost = ({post}) => {
         <div className="left">
           <img className="image" src={post.user.avatar}></img>
           {/*TODO: needs work with the image*/}
+            <Editor
+                    height="30vh"
+                    width="30vw"
+                    language={post.language || "javascript"}
+                    theme={theme.value}
+                    defaultValue={post.code}
+
+                  />
         </div>
         <div className="right">
           <h5>{post.title}</h5>
@@ -206,14 +221,13 @@ const CardMidPost = ({post}) => {
       <div className="body">
         <p>{post.description}</p>
         {/*TODO: needs to be replaced with editor*/}
-        <img className="image" src={content}></img>
+        <img className="image" style={{width: "400px",}} src={post.image}></img>
         {/*<div className={`${toggleClassCheck}`}>*/}
           <h6>Comments:</h6>
         {post.answersToComments.map(comment => <Comment comment={comment}/> )}
         </div>
           <div className="comment">
-            <p>{console.log(post.answersToComments)}</p>
-            <p>Comment 1 this is the first comment</p>
+
           </div>
 
 
