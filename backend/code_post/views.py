@@ -11,6 +11,9 @@ class ListCreateCodePostView(ListCreateAPIView):
     serializer_class = CodePostSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class RetrieveUpdateDestroyCodePostView(RetrieveUpdateDestroyAPIView):
     queryset = CodePost.objects.all()
