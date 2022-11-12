@@ -5,6 +5,9 @@ const Comment = ({comment}) => {
     return (
         <>
             <p>
+               Username
+            </p>
+            <p>
                 {comment.content}
             </p>
         </>

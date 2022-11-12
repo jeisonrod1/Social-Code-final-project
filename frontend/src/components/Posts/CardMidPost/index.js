@@ -1,16 +1,16 @@
 import React, {useEffect} from "react";
 import styled from "styled-components";
-import card1 from "../../../images/restaurants/card-1.jpg";
+
 import heart from "../../../images/icons/svgs/heart.svg";
 import share from "../../../images/icons/svgs/share.svg";
-import meme from "../../../images/memes/ten-sec.jpg";
-import profile from "../../../images/users/profile-face.png";
-import profile1 from "../../../images/users/profile1.jpg";
-import profile2 from "../../../images/users/profile2.jpg";
+
 import content from "../../../images/content/hooray.jpg";
 import { useState } from "react";
 import Comment from "../Comment";
-
+import Answers from "../Answers";
+import {useNavigate} from "react-router-dom";
+import Editor from "@monaco-editor/react";
+import {defineTheme} from "../../Judge/lib/defineTheme";
 
 // STYLED COMPONENTS -start
 
@@ -145,6 +145,55 @@ const SocialButtons = styled.div`
 
 const CardMidPost = ({post}) => {
   const [btnState, setBtnState] = useState(false);
+  const [comment, setComment] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("auth"))
+    const [theme, setTheme] = useState("");
+
+
+    const navigate = useNavigate()
+
+  const handleCommentSubmit = (e) => {
+        e.preventDefault()
+
+        const url = "https://code-media.propulsion-learn.ch/backend/codepost/"
+        const fd= new FormData()
+        fd.append("content",comment.content)
+
+
+
+
+        const config = {
+            method: "POST",
+            headers: new Headers({
+                "Authorization": token
+
+            }),
+            body: fd
+        }
+
+        fetch(url, config)
+        .then((response) => {
+            if (response.status === 200) {
+                console.log(response)
+            }
+            else {
+                console.log(response.json())
+            }
+        }).then(
+            setTimeout(()=>navigate("/posts"),1000)
+        )
+    }
+
+    const handleCommentChange = (e) => {
+        setComment(e)
+
+    };
+      useEffect(() => {
+        defineTheme("oceanic-next").then((_) =>
+            setTheme({value: "oceanic-next", label: "Oceanic Next"})
+        );
+    }, []);
+
   function handleClick() {
     setBtnState((btnState) => !btnState);
   }
@@ -153,34 +202,46 @@ const CardMidPost = ({post}) => {
     <QCard>
       <div className="header">
         <div className="left">
-          <img className="image" src={profile2}></img>
+          <img className="image" src={post.user.avatar}></img>
           {/*TODO: needs work with the image*/}
+            <Editor
+                    height="30vh"
+                    width="30vw"
+                    language={post.language || "javascript"}
+                    theme={theme.value}
+                    defaultValue={post.code}
+
+                  />
         </div>
         <div className="right">
           <h5>{post.title}</h5>
-          <p className="subtitle">Asked 16.07.19 - Views 339k</p>
+          <p className="subtitle">Asked {post.created}</p>
         </div>
       </div>
       <div className="body">
         <p>{post.description}</p>
         {/*TODO: needs to be replaced with editor*/}
-        <img className="image" src={content}></img>
+        <img className="image" style={{width: "400px",}} src={post.image}></img>
         {/*<div className={`${toggleClassCheck}`}>*/}
           <h6>Comments:</h6>
         {post.answersToComments.map(comment => <Comment comment={comment}/> )}
         </div>
           <div className="comment">
-            <p>{console.log(post.answersToComments)}</p>
-            <p>Comment 1 this is the first comment</p>
+
           </div>
+
+
         <div>
-        <form className="form">
+        <form className="form" onSubmit={handleCommentSubmit}>
+
           <label>
-            <input type="text" name="name" placeholder="Post a comment" />
+            <input type="text" name="name" value={comment} onChange={handleCommentChange} placeholder="Post a comment" />
           </label>
           <input type="submit" value="Post It" />
         </form>
       </div>
+        <h3>Answers:</h3>
+        {post.answersToCodePost.map(answers => <Answers answers={answers}/>)}
       <SocialButtons>
         <div>
           <img src={heart}></img>

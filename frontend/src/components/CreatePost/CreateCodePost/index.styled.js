@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const BodyForm = styled.form`
-    height: 110vh;
+    height: 100px;
     background-color: grey;
     ;
 
