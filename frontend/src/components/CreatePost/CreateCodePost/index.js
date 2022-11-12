@@ -76,7 +76,7 @@ function CreateRestaurant() {
     const handleSubmit = (e) => {
         e.preventDefault()
 
-        const url = "https://code-media.propulsion-learn.ch//backend/codepost/"
+        const url = "https://code-media.propulsion-learn.ch/backend/codepost/"
         const fd= new FormData()
         fd.append("title",title)
         fd.append("tags",tags)
