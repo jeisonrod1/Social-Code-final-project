@@ -1,5 +1,6 @@
 from rest_framework import serializers
 
+from answers.serializers import AnswersSerializer
 from code_post.models import CodePost
 from comments.serializers import CommentsSerializer
 
@@ -15,6 +16,7 @@ class CodePostSerializer(serializers.ModelSerializer):
 
     user = UserSerializer(read_only=True)
     answersToComments = CommentsSerializer(many=True)
+    answersToCodePost = AnswersSerializer(many=True)
 
 
 class CreateCodePostSerializer(serializers.ModelSerializer):
