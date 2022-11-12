@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from rest_framework import serializers
 
+
 from wallet.serializers import CreateWalletSerializer
 
 User = get_user_model()
@@ -8,6 +9,7 @@ User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
     wallet = CreateWalletSerializer(many=True, read_only=True)
+
 
     class Meta:
         model = User
