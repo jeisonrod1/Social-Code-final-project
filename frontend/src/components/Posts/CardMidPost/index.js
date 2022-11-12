@@ -167,27 +167,11 @@ const CardMidPost = ({post}) => {
         <div className={`${toggleClassCheck}`}>
           <h6>Comments:</h6>
           {/*TODO: needs to be replaced with comment div*/}
+        </div>
           <div className="comment">
-            <h5>Peter3202:</h5>
+            <p>{console.log(post.answersToComments)}</p>
             <p>Comment 1 this is the first comment</p>
           </div>
-          <div className="comment">
-            <h5>Tina20000:</h5>
-            <p>Comment 2 this is the second comment</p>
-          </div>
-          <div className="comment">
-            <h5>Tina20000:</h5>
-            <p>Comment 2 this is the second comment</p>
-          </div>
-          <div className="comment">
-            <h5>Tina20000:</h5>
-            <p>Comment 2 this is the second comment</p>
-          </div>
-          <div className="comment">
-            <h5>Tina20000:</h5>
-            <p>Comment 2 this is the second comment</p>
-          </div>
-        </div>
 
         <form className="form">
           <label>
