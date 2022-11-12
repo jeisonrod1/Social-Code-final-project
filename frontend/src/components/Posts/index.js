@@ -9,6 +9,8 @@ import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
 import {useEffect, useState} from "react";
 import {unwrapResult} from "@reduxjs/toolkit";
+import Comment from "./Comment";
+import comment from "./Comment";
 
 // STYLED COMPONENTS -start
 
@@ -114,6 +116,7 @@ const Posts = () => {
         <CardContainerMid>
           <CardMidNewPost />
           {posts.map(post => <CardMidPost post={post}/>)}
+
         </CardContainerMid>
         <CardContainerRight>
           <CardRightNav />

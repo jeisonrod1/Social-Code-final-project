@@ -9,6 +9,7 @@ import profile1 from "../../../images/users/profile1.jpg";
 import profile2 from "../../../images/users/profile2.jpg";
 import content from "../../../images/content/hooray.jpg";
 import { useState } from "react";
+import Comment from "../Comment";
 
 
 // STYLED COMPONENTS -start
@@ -183,7 +184,7 @@ const CardMidPost = ({post}) => {
   function handleClick() {
     setBtnState((btnState) => !btnState);
   }
-  let toggleClassCheck = btnState ? " comments-fold" : " comments-unfold";
+  //let toggleClassCheck = btnState ? " comments-fold" : " comments-unfold";
   return (
     <QCard>
       <div className="header">
@@ -200,16 +201,20 @@ const CardMidPost = ({post}) => {
         <p>{post.description}</p>
         {/*TODO: needs to be replaced with editor*/}
         <img className="image" src={content}></img>
-        <div className={`${toggleClassCheck}`}>
+        {/*<div className={`${toggleClassCheck}`}>*/}
           <h6>Comments:</h6>
-          {/*TODO: needs to be replaced with comment div*/}
+        {post.answersToComments.map(comment => <Comment comment={comment}/> )}
         </div>
           <div className="comment">
             <p>{console.log(post.answersToComments)}</p>
             <p>Comment 1 this is the first comment</p>
           </div>
 
+
+        <div>
         <form className="form" onSubmit={handleCommentSubmit}>
+
+
           <label>
             <input type="text" name="name" value={comment} placeholder="Post a comment" />
           </label>
@@ -226,10 +231,10 @@ const CardMidPost = ({post}) => {
           <img src={share}></img>
           <button>Share</button>
         </div>
-        <div className={`expander${toggleClassCheck}`} onClick={handleClick}>
+        {/*<div className={`expander${toggleClassCheck}`} onClick={handleClick}>
           <h5>{`${toggleClassCheck}`}</h5>
           <span className="material-symbols-outlined">expand_more</span>
-        </div>
+        </div>*/}
       </SocialButtons>
     </QCard>
   );
