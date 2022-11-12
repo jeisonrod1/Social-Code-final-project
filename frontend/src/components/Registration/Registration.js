@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { update_email, update_password } from "../../redux/slices/login-slice";
 
@@ -43,7 +43,8 @@ import IconFB from "../../images/icons/icon/facebook.png";
 import IconTW from "../../images/icons/icon/twitter.png";
 import IconIG from "../../images/icons/icon/instagram.png";
 import { Left } from "../Userprofile/TopPosts/index.styled";
-import RegistrationUsername from "./RegistrationForm";
+import RegistrationUsername from "./RegistrationValidation";
+import { useNavigate } from "react-router";
 
 // STYLED COMPONENTS -start
 
@@ -94,16 +95,19 @@ const Registration = () => {
     setPassword(e.target.value);
   };
 
+  const navigate = useNavigate();
+
   // Handle SUBMIT (SungUp)
+  // useEffect = (() => {})
   const handleSignUp = e => {
     e.preventDefault();
-    console.log(e);
+    // console.log(e);
     const url = "http://localhost:8001/backend/registration/";
     // "https://code-media.propulsion-learn.ch/backend/registration/";
     const jsBody = {
       email: email,
     };
-    console.log(email);
+    // console.log(email);
 
     const config = {
       method: "POST",
@@ -115,8 +119,10 @@ const Registration = () => {
 
     fetch(url, config).then(response => {
       if (response.status === 200) {
-        console.log("code successfully sent");
-        return response;
+        console.log("code successfully sent, response: ");
+        navigate("/registration/validation");
+        setSuccess(true);
+        console.log("1. " + success);
       } else {
         return response.json();
       }
@@ -124,24 +130,33 @@ const Registration = () => {
   };
   return (
     <>
-      {success ? (
-        <RegistrationPageContainer>
-          <SignInForm onSubmit={handleSignUp}>
-            <SignInTitle>Sign Up</SignInTitle>
-            <Inputs>
-              <EmailLabel src={LoginIcon} />
-              <EmailInput
-                placeholder="enter your email"
-                type="email"
-                onChange={handleEmailChange}
-              />
-            </Inputs>
-            <button>Sign Up</button>
-          </SignInForm>
-        </RegistrationPageContainer>
-      ) : (
-        <RegistrationUsername />
-      )}
+      <RegistrationPageContainer>
+        <SignInForm
+          onSubmit={handleSignUp}
+          onChange={() => {
+            success
+              ? navigate("/registration/validation")
+              : navigate("/registration/");
+          }}
+        >
+          <SignInTitle>Sign Up</SignInTitle>
+          <Inputs>
+            <EmailLabel src={LoginIcon} />
+            <EmailInput
+              placeholder="enter your email"
+              type="email"
+              onChange={handleEmailChange}
+            />
+          </Inputs>
+          <button>Sign Up</button>
+          <button
+            style={{ fontSize: "10px", color: "white" }}
+            onClick={() => navigate("/registration/validation")}
+          >
+            already message sent?
+          </button>
+        </SignInForm>
+      </RegistrationPageContainer>
     </>
   );
 };

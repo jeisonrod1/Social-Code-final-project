@@ -5,6 +5,7 @@ import Posts from "./components/Posts";
 import PostsPage from "./components/PostPage";
 import Userprofile from "./components/Userprofile/Profile/index";
 import Registration from "./components/Registration/Registration";
+import RegistrationValidation from "./components/Registration/RegistrationValidation";
 import Login from "./components/Login";
 import { useState } from "react";
 import { Provider } from "react-redux";
@@ -62,6 +63,10 @@ function App() {
               {/* Mads */}
               <Route path="login" element={<Login />} /> {/* Mads */}
               <Route path="registration" element={<Registration />} />{" "}
+              <Route
+                path="registration/validation"
+                element={<RegistrationValidation />}
+              />{" "}
               {/* Mads */}
               <Route path="judgeeditor/" element={<JudgeLanding />} />{" "}
               {/* Mads */}

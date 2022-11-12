@@ -56,6 +56,7 @@ import IconTW from "../../images/icons/icon/twitter.png";
 import IconIG from "../../images/icons/icon/instagram.png";
 import { Left } from "../Userprofile/TopPosts/index.styled";
 import { faTachographDigital } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router";
 
 // STYLED COMPONENTS -start
 
@@ -71,9 +72,8 @@ const RegistrationPageContainer = styled.div`
 
 // STYLED COMPONENTS -end
 
-const RegistrationUsername = () => {
+const RegistrationValidation = () => {
   const dispatch = useDispatch();
-  const [code, setCode] = useEffect("");
   const email = useSelector(state => state.loginData.email);
   const username = useSelector(state => state.loginData.username);
   const password = useSelector(state => state.loginData.password);
@@ -86,9 +86,13 @@ const RegistrationUsername = () => {
   const points = useSelector(state => state.loginData.points);
   const company = useSelector(state => state.loginData.company);
 
+  const [code, setCode] = useState("");
+
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [showPassword, setShowPassword] = useState("");
   const [hidePassword, setHidePassword] = useState("password");
+
+  const navigate = useNavigate();
   // makes the "Email" and Username Input controlled. Sends the input to the Login-Redux-Slice.
   const handleEmail = e => {
     dispatch(update_email(e.target.value));
@@ -184,8 +188,7 @@ const RegistrationUsername = () => {
         >
           <SignInTitle>Sign Up</SignInTitle>
           <Inputs type={"text"} onChange={handleAvatar}>
-            <EmailLabel />
-            <EmailInput placeholder="IDK how to setUp an avatar" />
+            <p> Avatar here </p>
           </Inputs>
           <LoginContainer>
             <LeftSide>
@@ -230,7 +233,7 @@ const RegistrationUsername = () => {
                 <PasswordInput
                   onChange={handlePasswordChange}
                   placeholder="set your password"
-                  type={showPassword ? "password" : "text"}
+                  type={showPassword ? "text" : "password"}
                 />
                 <input
                   type="checkbox"
@@ -251,17 +254,36 @@ const RegistrationUsername = () => {
                 <EmailLabel />
                 <EmailInput placeholder="enter your company" />
               </Inputs>
-              <Inputs type={"text"} value={about_me} onChange={handleAboutMe}>
+              <Inputs
+                type={"text"}
+                value={about_me}
+                height="200px"
+                style={{ height: "90px", border: "1px solid black" }}
+                onChange={handleAboutMe}
+              >
                 <EmailLabel />
                 <EmailInput placeholder="enter About info" />
               </Inputs>
             </RightSide>
           </LoginContainer>
-          <button>Sign Up</button>
+          <button
+            onClick={() => navigate("/registration")}
+            style={{ float: "left", marginLeft: "0px" }}
+          >
+            Return
+          </button>
+          <button
+            style={{
+              float: "right",
+              marginRight: "0px",
+            }}
+          >
+            Sign Up{" "}
+          </button>
         </SignInForm>
       </RegistrationPageContainer>
     </>
   );
 };
 
-export default RegistrationUsername;
+export default RegistrationValidation;
