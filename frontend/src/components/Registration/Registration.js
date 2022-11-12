@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { update_email, update_password } from "../../redux/slices/login-slice";
+import { update_email } from "../../redux/slices/login-slice";
 
 import styled from "styled-components";
 
@@ -89,12 +89,6 @@ const Registration = () => {
     e.preventDefault();
     dispatch(update_email(e.target.value));
   };
-  const handlePassword = e => {
-    e.preventDefault();
-    dispatch(update_password(e.target.value));
-    setPassword(e.target.value);
-  };
-
   const navigate = useNavigate();
 
   // Handle SUBMIT (SungUp)
@@ -133,11 +127,11 @@ const Registration = () => {
       <RegistrationPageContainer>
         <SignInForm
           onSubmit={handleSignUp}
-          onChange={() => {
-            success
-              ? navigate("/registration/validation")
-              : navigate("/registration/");
-          }}
+          // onChange={() => {
+          //   success
+          //     ? navigate("/registration/validation")
+          //     : navigate("/registration/");
+          // }}
         >
           <SignInTitle>Sign Up</SignInTitle>
           <Inputs>

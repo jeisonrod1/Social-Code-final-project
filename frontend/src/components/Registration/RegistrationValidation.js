@@ -74,9 +74,11 @@ const RegistrationPageContainer = styled.div`
 
 const RegistrationValidation = () => {
   const dispatch = useDispatch();
+
   const email = useSelector(state => state.loginData.email);
   const username = useSelector(state => state.loginData.username);
   const password = useSelector(state => state.loginData.password);
+  const token = useSelector(state => state.loginData.token);
 
   const first_name = useSelector(state => state.loginData.first_name);
   const last_name = useSelector(state => state.loginData.last_name);
@@ -86,19 +88,32 @@ const RegistrationValidation = () => {
   const points = useSelector(state => state.loginData.points);
   const company = useSelector(state => state.loginData.company);
 
-  const [code, setCode] = useState("");
-
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [showPassword, setShowPassword] = useState("");
-  const [hidePassword, setHidePassword] = useState("password");
+  const [showPassword2, setShowPassword2] = useState("");
 
+  const [code, setCode] = useState("");
+  const [emailState, setEmailState] = useState("");
+  const [tokenState, setTokenState] = useState("");
+  const [usernameState, setUsernameState] = useState("");
+  const [passwordState, setPasswordState] = useState("");
+  const [passwordState2, setPasswordState2] = useState("");
+  const [firstNameState, setFirstNameState] = useState("");
+  const [lastNameState, setLastNameState] = useState("");
+  const [phoneState, setPhoneState] = useState("");
+  const [locationState, setLocationState] = useState("");
+  const [aboutMeState, setAbaoutMeState] = useState("");
+  const [pointsState, setPointsState] = useState("");
+  const [companyState, setCompanyState] = useState("");
   const navigate = useNavigate();
   // makes the "Email" and Username Input controlled. Sends the input to the Login-Redux-Slice.
   const handleEmail = e => {
     dispatch(update_email(e.target.value));
+    setEmailState(e.target.value);
   };
   const handleUsername = e => {
     dispatch(update_username(e.target.value));
+    setUsernameState(e.target.value);
   };
   // Controlling the other inputs with local state
   const handleCodeChange = e => {
@@ -106,31 +121,40 @@ const RegistrationValidation = () => {
   };
   const handlePasswordChange = e => {
     dispatch(update_password(e.target.value));
+    setPasswordState(e.target.value);
   };
   const handlePasswordConfirm = e => {
     setPasswordConfirm(e.target.value);
+    setPasswordState2(e.target.value);
   };
   const handleFirstNameChange = e => {
     dispatch(update_firstName(e.target.value));
+    setFirstNameState(e.target.value);
   };
   const handleLastNameChange = e => {
     dispatch(update_lastName(e.target.value));
+    setLastNameState(e.target.value);
   };
   const handlePhone = e => {
     dispatch(update_phone(e.target.value));
+    setPhoneState(e.target.value);
   };
   const handleLocation = e => {
     dispatch(update_location(e.target.value));
+    setLocationState(e.target.value);
   };
   const handleAboutMe = e => {
     dispatch(update_aboutMe(e.target.value));
+    setAbaoutMeState(e.target.value);
   };
   const handlePoints = e => {
     dispatch(update_points(e.target.value));
+    setPointsState(e.target.value);
   };
 
   const handleCompany = e => {
     dispatch(update_company(e.target.value));
+    setCompanyState(e.target.value);
   };
 
   const handleAvatar = e => {
@@ -139,8 +163,8 @@ const RegistrationValidation = () => {
 
   const handleSignUp = e => {
     e.preventDefault();
-    const url = "http://localhost:8001/backend/registration/validation";
-    // "https://code-media.propulsion-learn.ch/backend/registration/validation";
+    const url = "http://localhost:8001/backend/registration/validation/";
+    // "https://code-media.propulsion-learn.ch/backend/registration/validation/";
     const jsBody = {
       email: email,
       username: username,
@@ -157,7 +181,7 @@ const RegistrationValidation = () => {
     };
 
     const config = {
-      method: "PATCH",
+      method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
       }),
@@ -173,9 +197,53 @@ const RegistrationValidation = () => {
         }
       })
       .then(data => {
-        if (data.email) {
-          console.log("Problem");
+        console.log(data);
+        dispatch(update_token(data.access));
+        console.log(token);
+        setTokenState(data.registration);
+        console.log(tokenState);
+      });
+    // second fetch
+    const urlAuthToken = "http://localhost:8001/backend/auth/token/";
+    // "https://code-media.propulsion-learn.ch/backend/auth/token/";
+    const jsBodyAuthToken = {
+      email: email,
+      username: username,
+      code: code,
+      password: password,
+      password_confirm: passwordConfirm,
+      first_name: first_name,
+      last_name: last_name,
+      location: location,
+      phone: phone,
+      company: company,
+      points: points,
+      about: about_me,
+    };
+
+    const configAuthToken = {
+      method: "POST",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${JSON.parse(localStorage.getItem("auth"))}`,
+      }),
+      body: JSON.stringify(jsBodyAuthToken),
+    };
+
+    fetch(urlAuthToken, configAuthToken)
+      .then(response => {
+        if (response.status === 200) {
+          console.log("Good");
+        } else {
+          return response.json();
         }
+      })
+      .then(data => {
+        console.log(data);
+        dispatch(update_token(data.access));
+        console.log(token);
+        setTokenState(data.registration);
+        console.log(tokenState);
       });
   };
 
@@ -192,21 +260,21 @@ const RegistrationValidation = () => {
           </Inputs>
           <LoginContainer>
             <LeftSide>
-              <Inputs
-                type={"text"}
-                value={code}
-                onChange={e => setCode(e.target.value)}
-              >
+              <Inputs type={"text"} value={code} onChange={handleCodeChange}>
                 <EmailLabel />
                 <EmailInput placeholder="enter your code" />
               </Inputs>
-              <Inputs type={"email"} value={email} onChange={handleEmail}>
+              <Inputs
+                type={"email"}
+                value={email ? { email } : { emailState }}
+                onChange={handleEmail}
+              >
                 <EmailLabel />
                 <EmailInput placeholder="enter your email" />
               </Inputs>
               <Inputs
                 type={"text"}
-                value={email}
+                value={first_name ? { first_name } : { firstNameState }}
                 onChange={handleFirstNameChange}
               >
                 <EmailLabel />
@@ -214,7 +282,7 @@ const RegistrationValidation = () => {
               </Inputs>
               <Inputs
                 type={"text"}
-                value={first_name}
+                value={last_name ? last_name : lastNameState}
                 onChange={handleLastNameChange}
               >
                 <EmailLabel />
@@ -222,13 +290,18 @@ const RegistrationValidation = () => {
               </Inputs>
               <Inputs
                 type={"text"}
-                value={last_name}
-                onChange={handleLastNameChange}
+                value={username ? username : usernameState}
+                onChange={handleUsername}
               >
                 <EmailLabel />
                 <EmailInput placeholder="enter your username" />
               </Inputs>
-              <Inputs value={password} onChange={handlePasswordChange}>
+            </LeftSide>
+            <RightSide>
+              <Inputs
+                value={password ? { password } : { passwordState }}
+                onChange={handlePasswordChange}
+              >
                 <PasswordLabel />
                 <PasswordInput
                   onChange={handlePasswordChange}
@@ -240,25 +313,47 @@ const RegistrationValidation = () => {
                   onClick={() => setShowPassword(!showPassword)}
                 />
               </Inputs>
-            </LeftSide>
-            <RightSide>
-              <Inputs type={"text"} value={location} onChange={handleLocation}>
+              <Inputs value={passwordConfirm} onChange={handlePasswordConfirm}>
+                <PasswordLabel />
+                <PasswordInput
+                  onChange={handlePasswordConfirm}
+                  placeholder="set your password"
+                  type={showPassword2 ? "text" : "password"}
+                />
+                <input
+                  type="checkbox"
+                  onClick={() => setShowPassword2(!showPassword2)}
+                />
+              </Inputs>
+              <Inputs
+                type={"text"}
+                value={location ? { location } : { locationState }}
+                onChange={handleLocation}
+              >
                 <EmailLabel />
                 <EmailInput placeholder="enter your location" />
               </Inputs>
-              <Inputs type={"text"} value={phone} onChange={handlePhone}>
+              <Inputs
+                type={"tel"}
+                value={phone ? { phone } : { phoneState }}
+                onChange={handlePhone}
+              >
                 <EmailLabel />
                 <EmailInput type="tel" placeholder="enter your phone" />
               </Inputs>
-              <Inputs type={"text"} value={company} onChange={handleCompany}>
+              <Inputs
+                type={"text"}
+                value={company ? { company } : { companyState }}
+                onChange={handleCompany}
+              >
                 <EmailLabel />
                 <EmailInput placeholder="enter your company" />
               </Inputs>
               <Inputs
                 type={"text"}
-                value={about_me}
+                value={about_me ? { about_me } : { aboutMeState }}
                 height="200px"
-                style={{ height: "90px", border: "1px solid black" }}
+                style={{ height: "90px" }}
                 onChange={handleAboutMe}
               >
                 <EmailLabel />
@@ -278,7 +373,7 @@ const RegistrationValidation = () => {
               marginRight: "0px",
             }}
           >
-            Sign Up{" "}
+            Sign Up
           </button>
         </SignInForm>
       </RegistrationPageContainer>
