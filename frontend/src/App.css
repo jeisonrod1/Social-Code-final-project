@@ -28,9 +28,10 @@ body {
 }
 
 main {
-  background-image: url('./images/covers/background-login.jpg');
+  background-image: url('./images/covers/bg_80.png');
   background-size: cover;
   height: 100%;
+  background-attachment: fixed;
   /* #13141 */
   transition: all 1s;
 }
