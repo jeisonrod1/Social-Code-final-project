@@ -32,24 +32,15 @@ main {
   background-size: cover;
   height: 100%;
   background-attachment: fixed;
+  background-color: #2e3138;
   /* #13141 */
   transition: all 1s;
 }
 
 main.light {
   background-image: url('./images/covers/bg_transparent_20.png');
-  background-color: #c6c6c6;
+  background-color: #ffffff;
   transition: all 1s;
-}
-
-html {
-  background-color: #2e3138;
-  /* #13141 */
-}
-
-html .light {
-  background-color: #ebebeb;
-  /* #13141 */
 }
 
 span,
@@ -159,3 +150,14 @@ input[type="submit"] {
 }
 
 /* MATERIAL DESIGN SYMBOL -end */
+
+
+/* html { */
+  /* background-color: #2e3138; */
+  /* /~ #13141 ~/ */
+/* } */
+
+/* html .light { */
+  /* background-color: #ebebeb; */
+  /* /~ #13141 ~/ */
+/* } */
