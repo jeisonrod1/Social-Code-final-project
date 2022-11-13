@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 
 import heart from "../../../images/icons/svgs/heart.svg";
@@ -8,9 +8,9 @@ import content from "../../../images/content/hooray.jpg";
 import { useState } from "react";
 import Comment from "../Comment";
 import Answers from "../Answers";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Editor from "@monaco-editor/react";
-import {defineTheme} from "../../Judge/lib/defineTheme";
+import { defineTheme } from "../../Judge/lib/defineTheme";
 
 // STYLED COMPONENTS -start
 
@@ -24,8 +24,15 @@ const QCard = styled.div`
   justify-content: space-between;
   flex-direction: column;
   border: 1px solid #5052632e;
-  background-color: rgba(126, 126, 126, 0.12);
   border-radius: 8px;
+  .light & {
+    background-color: rgba(126, 126, 126, 0.12);
+    transition: 1s all;
+  }
+  .dark & {
+    background-color: rgba(126, 126, 126, 0.12);
+    transition: 1s all;
+  }
   .header {
     display: flex;
     justify-content: start;
@@ -97,7 +104,6 @@ const QCard = styled.div`
       height: 100%;
       transition: height 0.4s all;
     }
-    
   }
   .left img {
     margin-right: 8px;
@@ -137,62 +143,53 @@ const SocialButtons = styled.div`
   }
   .comments-unfold .material-symbols-outlined {
     transform: rotate(180deg);
-
   }
 `;
 
 // STYLED COMPONENTS -end
 
-const CardMidPost = ({post}) => {
+const CardMidPost = ({ post }) => {
   const [btnState, setBtnState] = useState(false);
   const [comment, setComment] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("auth"))
-    const [theme, setTheme] = useState("");
+  const [token, setToken] = useState(localStorage.getItem("auth"));
+  const [theme, setTheme] = useState("");
 
-
-    const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleCommentSubmit = (e) => {
-        e.preventDefault()
+    e.preventDefault();
 
-        const url = "https://code-media.propulsion-learn.ch/backend/codepost/"
-        const fd= new FormData()
-        fd.append("content",comment.content)
+    const url = "https://code-media.propulsion-learn.ch/backend/codepost/";
+    const fd = new FormData();
+    fd.append("content", comment.content);
 
-
-
-
-        const config = {
-            method: "POST",
-            headers: new Headers({
-                "Authorization": token
-
-            }),
-            body: fd
-        }
-
-        fetch(url, config)
-        .then((response) => {
-            if (response.status === 200) {
-                console.log(response)
-            }
-            else {
-                console.log(response.json())
-            }
-        }).then(
-            setTimeout(()=>navigate("/posts"),1000)
-        )
-    }
-
-    const handleCommentChange = (e) => {
-        setComment(e)
-
+    const config = {
+      method: "POST",
+      headers: new Headers({
+        Authorization: token,
+      }),
+      body: fd,
     };
-      useEffect(() => {
-        defineTheme("oceanic-next").then((_) =>
-            setTheme({value: "oceanic-next", label: "Oceanic Next"})
-        );
-    }, []);
+
+    fetch(url, config)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response);
+        } else {
+          console.log(response.json());
+        }
+      })
+      .then(setTimeout(() => navigate("/posts"), 1000));
+  };
+
+  const handleCommentChange = (e) => {
+    setComment(e);
+  };
+  useEffect(() => {
+    defineTheme("oceanic-next").then((_) =>
+      setTheme({ value: "oceanic-next", label: "Oceanic Next" })
+    );
+  }, []);
 
   function handleClick() {
     setBtnState((btnState) => !btnState);
@@ -204,14 +201,6 @@ const CardMidPost = ({post}) => {
         <div className="left">
           <img className="image" src={post.user.avatar}></img>
           {/*TODO: needs work with the image*/}
-            <Editor
-                    height="30vh"
-                    width="30vw"
-                    language={post.language || "javascript"}
-                    theme={theme.value}
-                    defaultValue={post.code}
-
-                  />
         </div>
         <div className="right">
           <h5>{post.title}</h5>
@@ -219,29 +208,48 @@ const CardMidPost = ({post}) => {
         </div>
       </div>
       <div className="body">
+        <Editor
+          height="40vh"
+          width="100%"
+          language={post.language || "javascript"}
+          theme={theme.value}
+          defaultValue={post.code}
+        />
         <p>{post.description}</p>
         {/*TODO: needs to be replaced with editor*/}
-        <img className="image" style={{width: "400px",}} src={post.image}></img>
-        {/*<div className={`${toggleClassCheck}`}>*/}
-          <h6>Comments:</h6>
-        {post.answersToComments.map(comment => <Comment comment={comment}/> )}
+        <div className="img-wrapper" style={{ width: "200px" }}>
+          <img
+            className="image"
+            style={{ height: "100%" }}
+            src={post.image}
+          ></img>
         </div>
-          <div className="comment">
+        {/*<div className={`${toggleClassCheck}`}>*/}
+        <h6>Comments:</h6>
+        {post.answersToComments.map((comment) => (
+          <Comment comment={comment} />
+        ))}
+      </div>
+      <div className="comment"></div>
 
-          </div>
-
-
-        <div>
+      <div>
         <form className="form" onSubmit={handleCommentSubmit}>
-
           <label>
-            <input type="text" name="name" value={comment} onChange={handleCommentChange} placeholder="Post a comment" />
+            <input
+              type="text"
+              name="name"
+              value={comment}
+              onChange={handleCommentChange}
+              placeholder="Post a comment"
+            />
           </label>
           <input type="submit" value="Post It" />
         </form>
       </div>
-        <h3>Answers:</h3>
-        {post.answersToCodePost.map(answers => <Answers answers={answers}/>)}
+      <h3>Answers:</h3>
+      {post.answersToCodePost.map((answers) => (
+        <Answers answers={answers} />
+      ))}
       <SocialButtons>
         <div>
           <img src={heart}></img>
