@@ -28,7 +28,9 @@ body {
 }
 
 main {
-  background-color: #2e3138;
+  background-image: url('./images/covers/background-login.jpg');
+  background-size: cover;
+  height: 100%;
   /* #13141 */
   transition: all 1s;
 }

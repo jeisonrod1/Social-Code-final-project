@@ -27,7 +27,6 @@ const ProfileBadges = () => {
         <div>
         <BadgeTop>
             <Badges>Badges</Badges>
-            <AllBadges>View all badges</AllBadges>
         </BadgeTop>
         </div>
       <Container>
@@ -39,20 +38,6 @@ const ProfileBadges = () => {
               <BadgeType>Gold badges</BadgeType>
             </Badge>
           </BadgeImgContainer>
-          <BadgeInfo>
-            <Skill>
-              {" "}
-              <Dot></Dot> Marshal
-            </Skill>
-            <DateAdded>Apr 24, 2014</DateAdded>
-          </BadgeInfo>
-          <BadgeInfo>
-            <Skill>
-              {" "}
-              <Dot></Dot> Marshal
-            </Skill>
-            <DateAdded>Apr 24, 2014</DateAdded>
-          </BadgeInfo>
         </BadgeContainer>
         <BadgeContainer>
           <BadgeImgContainer>
@@ -62,20 +47,6 @@ const ProfileBadges = () => {
               <BadgeType>Gold badges</BadgeType>
             </Badge>
           </BadgeImgContainer>
-          <BadgeInfo>
-            <Skill>
-              {" "}
-              <Dot></Dot> Marshal
-            </Skill>
-            <DateAdded>Apr 24, 2014</DateAdded>
-          </BadgeInfo>
-          <BadgeInfo>
-            <Skill>
-              {" "}
-              <Dot></Dot> Marshal
-            </Skill>
-            <DateAdded>Apr 24, 2014</DateAdded>
-          </BadgeInfo>
         </BadgeContainer>
         <BadgeContainer>
           <BadgeImgContainer>
@@ -85,20 +56,6 @@ const ProfileBadges = () => {
               <BadgeType>Gold badges</BadgeType>
             </Badge>
           </BadgeImgContainer>
-          <BadgeInfo>
-            <Skill>
-              {" "}
-              <Dot></Dot> Marshal
-            </Skill>
-            <DateAdded>Apr 24, 2014</DateAdded>
-          </BadgeInfo>
-          <BadgeInfo>
-            <Skill>
-              {" "}
-              <Dot></Dot> Marshal
-            </Skill>
-            <DateAdded>Apr 24, 2014</DateAdded>
-          </BadgeInfo>
         </BadgeContainer>
       </Container>
     </BadgesContent>
