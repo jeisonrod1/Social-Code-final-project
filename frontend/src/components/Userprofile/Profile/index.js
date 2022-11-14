@@ -29,16 +29,14 @@ import InvitationInput from "../InvitationInput";
 
 
 const Userprofile = () => {
-  const [token, setToken] = useState(localStorage.getItem("auth"));
-  const [user, setUser] = useState("");
+    const [token, setToken] = useState(localStorage.getItem("auth"));
+    const [user, setUser] = useState("");
 
 
+    const fetchProfile = () => {
+        const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
 
-
-  const fetchProfile = () => {
-    const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
-
-    const config = {
+        const config = {
             method: "GET",
             headers: new Headers({
                 Authorization: token,
@@ -46,45 +44,45 @@ const Userprofile = () => {
 
         }
 
-    fetch(url, config)
-      .then(response => response.json())
-        .then(result => setUser(result[0]))
-        .catch(error => console.log('error', error));
-  };
+        fetch(url, config)
+            .then(response => response.json())
+            .then(result => setUser(result[0]))
+            .catch(error => console.log('error', error));
+    };
 
-  useEffect(() => {
-    fetchProfile();
-  }, [token]);
+    useEffect(() => {
+        fetchProfile();
+    }, [token]);
 
-  return (
-    <ProfilePage src={BgImage}>
-      <BackgroundImg src={BgImage} />
-      <UserHeader>
-        <ProfilePicture src={ProfileAvatar} />
-        <UserInfo>
-          <UserName>{user.username}</UserName>
-          <UserOccupation>Software Engineer</UserOccupation>
-          <UserLocation>{user.location}</UserLocation>
-          <UserEmail>{user.email}</UserEmail>
-        </UserInfo>
-        <ProfileBadges />
-      </UserHeader>
-      <StatsContainer>
-        <StatsTitle>Stats</StatsTitle>
-        <StatsContent>
-          <Reputation>{user.points} Points</Reputation>
-          <Reached>{user.amount_of_posts} Posts</Reached>
-          <Answers>{user.amount_of_friends} Friends</Answers>
-          <Questions>{user.amount_following} Followers</Questions>
-        </StatsContent>
-      </StatsContainer>
-      <AboutContainer>
-        <AboutTitle>About</AboutTitle>
-        <About>{user.about_me}</About>
-      </AboutContainer>
-      <InvitationInput/>
-    </ProfilePage>
-  );
+    return (
+        <ProfilePage src={BgImage}>
+            <BackgroundImg src={BgImage}/>
+            <UserHeader>
+                <ProfilePicture src={ProfileAvatar}/>
+                <UserInfo>
+                    <UserName>{user.username}</UserName>
+                    <UserOccupation>Software Engineer</UserOccupation>
+                    <UserLocation>{user.location}</UserLocation>
+                    <UserEmail>{user.email}</UserEmail>
+                </UserInfo>
+                <ProfileBadges/>
+            </UserHeader>
+            <StatsContainer>
+                <StatsTitle>Stats</StatsTitle>
+                <StatsContent>
+                    <Reputation>{user.points} Points</Reputation>
+                    <Reached>{user.amount_of_posts} Posts</Reached>
+                    <Answers>{user.amount_of_friends} Friends</Answers>
+                    <Questions>{user.amount_following} Followers</Questions>
+                </StatsContent>
+            </StatsContainer>
+            <AboutContainer>
+                <AboutTitle>About</AboutTitle>
+                <About>{user.about_me}</About>
+            </AboutContainer>
+            <InvitationInput/>
+        </ProfilePage>
+    );
 }
 
 export default Userprofile;

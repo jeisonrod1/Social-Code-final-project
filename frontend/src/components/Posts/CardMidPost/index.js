@@ -11,6 +11,12 @@ import Answers from "../Answers";
 import { useNavigate } from "react-router-dom";
 import Editor from "@monaco-editor/react";
 import { defineTheme } from "../../Judge/lib/defineTheme";
+import OutputWindow from "../../Judge/components/OutputWindows";
+import CustomInput from "../../Judge/components/CustomInput";
+import OutputDetails from "../../Judge/components/OutputDetails";
+import axios from "axios";
+import {toast, ToastContainer} from "react-toastify";
+import {languageOptions} from "../../Judge/constants/languageOptions";
 
 // STYLED COMPONENTS -start
 
@@ -145,16 +151,51 @@ const SocialButtons = styled.div`
     transform: rotate(180deg);
   }
 `;
+const Div6 = styled.div`
+    display: flex; 
+    flex-direction: column; 
+    flex-shrink: 0; 
+    width: 30%;
+`;
+const Div7 = styled.div`
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; 
+`;
+const CustomButton = styled.button`
+    z-index: 10; 
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem; 
+    padding-left: 1rem;
+    padding-right: 1rem; 
+    margin-top: 1rem; 
+    background-color: #ffffff; 
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
+    transition-duration: 200ms; 
+    flex-shrink: 0; 
+    border-radius: 0.375rem; 
+    border-width: 2px; 
+    border-color: #000000; 
+    opacity: !code ? 50 : 0
+    :hover {
+         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); 
+         }       
+`;
 
 // STYLED COMPONENTS -end
 
 const CardMidPost = ({ post }) => {
-  const [btnState, setBtnState] = useState(false);
-  const [comment, setComment] = useState(false);
-  const [token, setToken] = useState(localStorage.getItem("auth"));
-  const [theme, setTheme] = useState("");
+   const javascriptDefault = `// The language is set to javascript. Happy Hacking!`
+   const [btnState, setBtnState] = useState(false);
+   const [comment, setComment] = useState(false);
+   const [token, setToken] = useState(localStorage.getItem("auth"));
+   const [theme, setTheme] = useState("");
+   const [outputDetails, setOutputDetails] = useState(null);
+   const [processing, setProcessing] = useState(null);
+   const [code, setCode] = useState(javascriptDefault);
+   const [language, setLanguage] = useState(languageOptions[0]);
+   const navigate = useNavigate();
 
-  const navigate = useNavigate();
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
@@ -191,12 +232,117 @@ const CardMidPost = ({ post }) => {
     );
   }, []);
 
+  const handleCompile = () => {
+        if (post.language == "python") {
+            setLanguage(languageOptions[1])
+        }
+
+        setProcessing(true);
+        const formData = new FormData();
+        formData.append('language_id', language.id)
+        formData.append('source_code', btoa(post.code))
+        const config = {
+            method: "POST",
+            url: "https://code-media.propulsion-learn.ch/judge/submissions/",
+            params: { base64_encoded: "true", wait: "false" },
+            headers: {
+                "Content-Type": "application/json",
+                "X-Auth-Token": "f6583e60-b13b-4228-b554-2eb332ca64e7"
+
+            },
+            data: formData,
+        };
+
+        axios
+          .request(config)
+          .then(function (response) {
+            console.log("res.data", response.data);
+            const token = response.data.token;
+            checkStatus(token);
+          })
+          .catch((err) => {
+              let error = err.response ? err.response.data : err;
+              let status = err.response.status;
+              console.log("status", status);
+              if (status === 429) {
+                  console.log("too many requests", status);
+              }
+              setProcessing(false);
+              console.log("catch block...", error);
+          })
+    };
+
+  const checkStatus = async (token) => {
+        const config = {
+            method: "GET",
+            url:`https://code-media.propulsion-learn.ch/judge/submissions/` + token,
+            params: { base64_encoded: "true", fields: "*" },
+            headers: {
+                "X-Auth-Token": "f6583e60-b13b-4228-b554-2eb332ca64e7"
+            },
+        };
+        try {
+            let response = await axios.request(config);
+            let statusId = response.data.status?.id;
+
+            if (statusId === 1 || statusId === 2) {
+                setTimeout(() => {
+                    checkStatus(token);
+                }, 2000);
+                return;
+            }else{
+                setProcessing(false);
+                setOutputDetails(response.data);
+                showSuccessToast(`Compile Successfully!`);
+                console.log("response.data", response.data);
+                return;
+            }
+        } catch (err) {
+            console.log("err", err);
+            setProcessing(false);
+            showErrorToast();
+        }
+    };
+
+  const showSuccessToast = (msg) => {
+        toast.success(msg || `Compiled Successfully!`, {
+            position: "top-right",
+            autoClose: 100,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
+    const showErrorToast = (msg) => {
+        toast.success(msg || `Something went wrong! Please try again.`, {
+            position: "top-right",
+            autoClose: 100,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
+    };
   function handleClick() {
     setBtnState((btnState) => !btnState);
   }
   //let toggleClassCheck = btnState ? " comments-fold" : " comments-unfold";
   return (
     <QCard>
+        <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
       <div className="header">
         <div className="left">
           <img className="image" src={post.user.avatar}></img>
@@ -224,6 +370,20 @@ const CardMidPost = ({ post }) => {
             src={post.image}
           ></img>
         </div>
+        <Div6>
+                <OutputWindow outputDetails={outputDetails} />
+                <Div7>
+
+                    <CustomButton
+                      onClick={handleCompile}
+                      disabled={!code}
+
+                    >
+                      {processing ? "Processing..." : "Compile and Execute"}
+                    </CustomButton>
+                </Div7>
+                {outputDetails && <OutputDetails outputDetails={outputDetails} />}
+          </Div6>
         {/*<div className={`${toggleClassCheck}`}>*/}
         <h6>Comments:</h6>
         {post.answersToComments.map((comment) => (
