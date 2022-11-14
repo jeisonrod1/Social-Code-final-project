@@ -33,17 +33,18 @@ const Userprofile = () => {
   const [user, setUser] = useState("");
 
 
+
+
   const fetchProfile = () => {
     const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
 
-  const fetchProfile = () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Authorization", token)
-    var requestOptions = {
-        method: 'GET',
-        headers: myHeaders,
-        redirect: 'follow'
-    };
+    const config = {
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+            }),
+
+        }
 
     fetch(url, config)
       .then(response => response.json())
