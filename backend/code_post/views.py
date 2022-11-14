@@ -54,4 +54,12 @@ class LikedPosts(ListAPIView):
         return CodePost.objects.filter(likes=self.request.user)
 
 
+class SearchPostsView(ListAPIView):
+    serializer_class = CodePostSerializer
+    permission_classes = [ReadOnly]
+
+    def get_queryset(self):
+        params = self.request.query_params.get("search")
+        queryset = CodePost.objects.all().filter(tags__icontains=params).order_by('-created')
+        return queryset
 
