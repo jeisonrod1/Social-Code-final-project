@@ -42,4 +42,3 @@ class RetrieveUpdateDestroyRequestView(RetrieveUpdateDestroyAPIView):
     queryset = FriendRequest.objects.all()
     lookup_field = 'id'
 
-
