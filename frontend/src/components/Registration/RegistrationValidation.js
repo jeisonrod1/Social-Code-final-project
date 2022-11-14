@@ -184,9 +184,6 @@ const RegistrationValidation = () => {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
-        Authorization: `Bearer ${
-          JSON.parse(localStorage.getItem("auth")).CMToken
-        }`,
       }),
       body: JSON.stringify(jsBody),
     };
@@ -195,6 +192,7 @@ const RegistrationValidation = () => {
       .then(response => {
         console.log(response);
         if (response.status === 200) {
+          navigate("/login");
           console.log("Good");
         } else {
           return response.json();
@@ -202,54 +200,8 @@ const RegistrationValidation = () => {
       })
       .then(data => {
         console.log(data);
-        // dispatch(update_token(data.access));
-        // console.log(token);
-        // setTokenState(data.registration);
-        // console.log(tokenState);
-      });
-    // second fetch
-    const urlAuthToken = "http://localhost:8001/backend/auth/token/";
-    // "https://code-media.propulsion-learn.ch/backend/auth/token/";
-    const jsBodyAuthToken = {
-      email: email,
-      username: username,
-      code: code,
-      password: password,
-      password_confirm: passwordConfirm,
-      first_name: first_name,
-      last_name: last_name,
-      location: location,
-      phone: phone,
-      company: company,
-      points: points,
-      about: about_me,
-    };
-
-    const configAuthToken = {
-      method: "POST",
-      headers: new Headers({
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${JSON.parse(localStorage.getItem("auth"))}`,
-      }),
-      body: JSON.stringify(jsBodyAuthToken),
-    };
-
-    fetch(urlAuthToken, configAuthToken)
-      .then(response => {
-        if (response.status === 200) {
-          console.log("Good");
-          navigate("./login");
-        } else {
-          return response.json();
-        }
       })
-      .then(data => {
-        console.log(data);
-        // dispatch(update_token(data.access));
-        // console.log(token);
-        // setTokenState(data.registration);
-        // console.log(tokenState);
-      });
+      .catch(err => console.log("error: " + err));
   };
 
   return (
