@@ -44,14 +44,14 @@ const Userprofile = () => {
     const config = {
             method: "GET",
             headers: new Headers({
-                "Content-Type": "application/json",
+                Authorization: token,
             }),
 
         }
 
     fetch(url, requestOptions)
       .then(response => response.json())
-        .then(result => setUser(result))
+        .then(result => setUser(result[0]))
         .catch(error => console.log('error', error));
   }};
 
