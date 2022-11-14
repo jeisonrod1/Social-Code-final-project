@@ -11,11 +11,11 @@ body {
 .btn-x {
   z-index: 3000;
   position: fixed;
-  top: 4px;
+  top: 0px;
   left: 134px;
   /* color:white; */
-  background-color: #2e3138;
   border-radius: 20px;
+  border: none;
 }
 
 .light .btn-x {
@@ -25,6 +25,21 @@ body {
 
 .btn-x:hover {
   /* background-color: transparent(0.5); */
+}
+.sun-icon{
+  position: relative;
+top: 0;
+width:22px;
+color: #c7bfd5;
+border: none;
+}
+
+.moon-icon{
+  width:16px;
+  position: absolute;
+  left: 24px;
+  top: 12px;
+
 }
 
 main {

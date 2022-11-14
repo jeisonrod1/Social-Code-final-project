@@ -1,6 +1,5 @@
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import logo from "../../images/icons/svgs/logo_socialcode.jpg";
 
 // STYLED COMPONENTS -start
@@ -36,6 +35,10 @@ const HeaderComponent = styled.div`
   .left-nav {
     display: flex;
     align-items: center;
+    a:hover{
+      background-color: transparent;
+
+    }
   }
   .right-nav {
     display: flex;
@@ -77,7 +80,9 @@ const Header = () => {
     <>
       <HeaderComponent>
         <div className="left-nav">
-          <img src={logo}></img>
+          <Link to="../posts" className="logo-link">
+            <img src={logo}></img>
+          </Link>
         </div>
         <div className="right-nav">
           <a

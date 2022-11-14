@@ -26,6 +26,7 @@ export const UserHeader = styled.div`
 export const ProfilePicture = styled.img`
   width: 156px;
   height: 156px;
+  border-radius: 15px;
 `;
 
 export const UserInfo = styled.div`
@@ -56,11 +57,12 @@ export const UserEmail = styled.div`
 export const StatsContainer = styled.div`
   width: 208px;
   height: 150px;
-  background-color: #1e1f26;
+  background-color: #1e1f2650;
   display: flex;
   flex-direction: column;
   margin-left: 200px;
   flex-wrap: wrap;
+border-radius: 12px;
 `;
 export const StatsContent = styled.div`
   display: flex;
@@ -89,17 +91,21 @@ export const Questions = styled.div`
 export const AboutContainer = styled.div`
   width: 900px;
   height: 200px;
+  background-color: #1e1f2650;
+border-radius: 12px;
+margin-left: 215px;
+
 `;
 export const AboutTitle = styled.div`
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 15px;
-  padding-left: 200px;
+  padding: 20px 25px 10px;
 
 `;
 export const About = styled.div`
-  width: 100%;
-  padding-left: 200px;
+  padding: 0px 25px;
+  
 
 `;
 
