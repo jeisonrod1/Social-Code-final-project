@@ -8,6 +8,7 @@ import CardMidNewPost from "./CardMidNewPost/index.js";
 import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
 import React, {useEffect, useState} from "react";
+import CreatePost from "../../components/CreatePost/CreateCodePost";
 import {unwrapResult} from "@reduxjs/toolkit";
 import Comment from "./Comment";
 import Spinner from "../Posts/Spinner/index";
@@ -146,7 +147,7 @@ const SocialButtons = styled.div`
 const Posts = () => {
 
   const [posts, setPosts] = useState([])
-  const [searchParam, setSearchParam] = useState(['ba'])
+  const [searchParam, setSearchParam] = useState([' '])
 
     const handleTagReact = () => {
         setSearchParam("React")
@@ -200,6 +201,7 @@ const Posts = () => {
           <CardLeftNav />
         </CardContainerLeft>
         <CardContainerMid>
+          <CreatePost />
           <CardMidNewPost />
 { posts.length > 0 && posts.map(post => <CardMidPost post={post}/>)}
 

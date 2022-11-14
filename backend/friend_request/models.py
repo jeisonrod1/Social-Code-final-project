@@ -5,6 +5,6 @@ User = get_user_model()
 
 
 class FriendRequest(models.Model):
-    request = models.ManyToManyField(to=User, on_delete=models.CASCADE, related_name="friend_request_requester")
-    receiver = models.ManyToManyField(to=User, on_delete=models.CASCADE, related_name="friend_request_receiver")
+    request = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="friend_request_requester", blank=True, null=True)
+    receiver = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name="friend_request_receiver", blank=True, null=True)
     status = models.CharField(max_length=1, default="P")

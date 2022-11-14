@@ -11,11 +11,18 @@ class GettingRequestSerializer(serializers.ModelSerializer):
         model = FriendRequest
         fields = '__all__'
 
+
+class FriendsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ["id", "username", "first_name", "last_name", "avatar"]
+
+
 class CreatingRequestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FriendRequest
-        fields = ['friend_request_requester']
+        fields = '__all__'
 
 class UpdatingRequestSerializer(serializers.ModelSerializer):
 

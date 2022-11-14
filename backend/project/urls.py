@@ -36,6 +36,7 @@ urlpatterns = [
     path('backend/badges/', include('badges.urls')),
     path('backend/wallet/', include('wallet.urls')),
     path('backend/postwallet/', include('post_wallet.urls')),
+    path('backend/friends/', include('friend_request.urls')),
 
 # JWT
     path('backend/auth/token/', views.TokenObtainPairView.as_view(), name='token_obtain_pair'),
