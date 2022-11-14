@@ -34,7 +34,6 @@ const FindFriends = () => {
   }, []);
 
 
-
   const fetchFriends = () => {
     var myHeaders = new Headers();
 myHeaders.append("Authorization", token);
