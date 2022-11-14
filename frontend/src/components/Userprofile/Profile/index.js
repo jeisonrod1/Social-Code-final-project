@@ -32,6 +32,9 @@ const Userprofile = () => {
   const [token, setToken] = useState(localStorage.getItem("auth"));
   const [user, setUser] = useState("");
 
+  useEffect(() => {
+    fetchProfile();
+  }, [token]);
 
 
 
@@ -46,15 +49,12 @@ const Userprofile = () => {
 
         }
 
-    fetch(url, config)
+    fetch(url, requestOptions)
       .then(response => response.json())
         .then(result => setUser(result))
         .catch(error => console.log('error', error));
-  };
+  }};
 
-  useEffect(() => {
-    fetchProfile();
-  }, [token]);
 
   return (
     <ProfilePage src={BgImage}>

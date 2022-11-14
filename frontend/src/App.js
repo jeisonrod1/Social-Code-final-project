@@ -22,6 +22,7 @@ import { Toaster } from "react-hot-toast";
 import CreatePost from "./components/CreatePost/CreateCodePost";
 import SunIcon from "./images/icons/svgs/sun.svg"
 import MoonIcon from "./images/icons/svgs/moon.svg"
+import FriendsPage from "./components/FriendsPage";
 
 function App() {
   const [btnState, setBtnState] = useState(false);
@@ -67,6 +68,7 @@ function App() {
                 path="registration/validation"
                 element={<RegistrationValidation />}
               />{" "}
+              <Route path="my_friends/" element={<FriendsPage/>}/>
               {/* Mads */}
               <Route path="judgeeditor/" element={<JudgeLanding />} />{" "}
               <Route path="createpost/" element={<CreatePost />} />{" "}
