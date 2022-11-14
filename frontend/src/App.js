@@ -68,7 +68,7 @@ function App() {
                 path="registration/validation"
                 element={<RegistrationValidation />}
               />{" "}
-              <Route path="my_friends" element={<FriendsPage/>}/>
+              <Route path="my_friends/" element={<FriendsPage/>}/>
               {/* Mads */}
               <Route path="judgeeditor/" element={<JudgeLanding />} />{" "}
               <Route path="createpost/" element={<CreatePost />} />{" "}
