@@ -25,15 +25,17 @@ export const Main = styled.div`
 `;
 
 export const Gridding = styled.div`
-  margin-top: 96px;
+
   padding: 0px;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr ;
   grid-template-rows: repeat(2, 1fr);
   column-gap: 32px;
   row-gap: 32px;
-  width: 80%;
   height: 100%;
+  width: 60%;
+  margin: 0 auto;
+  padding-top: 100px;
 
   p {
   }

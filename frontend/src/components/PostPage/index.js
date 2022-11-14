@@ -56,8 +56,6 @@ fetch("http://localhost:8001/backend/friends/", requestOptions)
 
 
   return (
-    <Container>
-      <Main>
         <Gridding>
           {friends.map((user) => (
             <BeingGrinded key={user.id}>
@@ -101,8 +99,6 @@ fetch("http://localhost:8001/backend/friends/", requestOptions)
               </BeingFlexed>
             </BeingGrinded>))}
         </Gridding>
-      </Main>
-    </Container>
   );
 };
 export default FindFriends;

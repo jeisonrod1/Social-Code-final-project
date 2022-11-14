@@ -20,6 +20,8 @@ import React from "react";
 
 import { Toaster } from "react-hot-toast";
 import CreatePost from "./components/CreatePost/CreateCodePost";
+import SunIcon from "./images/icons/svgs/sun.svg"
+import MoonIcon from "./images/icons/svgs/moon.svg"
 
 function App() {
   const [btnState, setBtnState] = useState(false);
@@ -74,7 +76,8 @@ function App() {
               className={`btn-x${toggleClassCheck}`}
               onClick={handleClick}
             >
-              Theme ={`${toggleClassCheck}`}
+          {!btnState ? <img className="sun-icon" src={SunIcon}/> : <img className="moon-icon" src={MoonIcon}/>}
+              
             </button>
             <Footer /> {/* Mads */}
           </main>

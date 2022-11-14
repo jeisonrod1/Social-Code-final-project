@@ -8,8 +8,10 @@ import CardMidNewPost from "./CardMidNewPost/index.js";
 import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
 import React, {useEffect, useState} from "react";
+import CreatePost from "../../components/CreatePost/CreateCodePost";
 import {unwrapResult} from "@reduxjs/toolkit";
 import Comment from "./Comment";
+import Spinner from "../Posts/Spinner/index";
 import comment from "./Comment";
 
 // STYLED COMPONENTS -start
@@ -167,6 +169,9 @@ const Posts = () => {
         }
 
   useEffect(() => {
+    setTimeout(() =>{
+      setLoading(false)
+    },2000)
     fetchPosts()
   }, [searchParam]);
 
@@ -185,7 +190,10 @@ const Posts = () => {
         .then(result => setPosts(result))
         .catch(error => console.log('error', error));
   }
-
+  const [loading, setLoading] = useState(true);
+  if (loading){
+    return <Spinner />
+  }
   return (
     <>
       <RowWrapper>
@@ -193,8 +201,9 @@ const Posts = () => {
           <CardLeftNav />
         </CardContainerLeft>
         <CardContainerMid>
+          <CreatePost />
           <CardMidNewPost />
-          {posts.map(post => <CardMidPost post={post}/>)}
+{ posts.length > 0 && posts.map(post => <CardMidPost post={post}/>)}
 
         </CardContainerMid>
         <CardContainerRight>

@@ -26,6 +26,7 @@ import ProfileBadges from "../ProfileBadges";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import BgImage from "../../../images/covers/background-login.jpg";
+import InvitationInput from "../InvitationInput";
 
 // STYLED COMPONENTS -start
 
@@ -42,7 +43,7 @@ const Userprofile = () => {
   const [location, setLocation] = useState("Zürich, CH");
   const [phone, setPhone] = useState("");
   const [about_me, setAbout_Me] = useState(
-    "‘About Me’ isn’t a strong enough title. Your headline needs to not only describe the content on the page, but also pull your readers in and make them want to learn more. Keep it short and sweet, but punchy and personal."
+    "Junior Developer, into gaming, coding addict, looking forward to have collaborations and develop interesting projects, also to help solve questions about Python, Javascript and React."
   );
   const [avatar, setAvatar] = useState("");
   const [points, setPoints] = useState("");
@@ -113,9 +114,7 @@ const Userprofile = () => {
         <AboutTitle>About</AboutTitle>
         <About>{about_me}</About>
       </AboutContainer>
-      <div></div>
-      {/* <ProfileBadges/> */}
-      <div></div>
+      <InvitationInput/>
     </ProfilePage>
   );
 };
