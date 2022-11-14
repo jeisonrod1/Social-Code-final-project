@@ -12,6 +12,9 @@ class ListCreateCommentsView(ListCreateAPIView):
     serializer_class = CommentsSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
 
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
 
 class RetrieveUpdateDestroyCommentsView(RetrieveUpdateDestroyAPIView):
     queryset = Comments.objects.all()

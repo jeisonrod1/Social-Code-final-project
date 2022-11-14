@@ -12,8 +12,8 @@ class Answers(models.Model):
     image = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, blank=True, null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    answers = models.ForeignKey(to=CodePost, on_delete=models.CASCADE, related_name='answersToCodePost')
-    answersOfUser = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='answersOfUser')
+    answers = models.ForeignKey(to=CodePost, on_delete=models.CASCADE, related_name='answersToCodePost', blank=True)
+    answersOfUser = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='answersOfUser', blank=True)
 
 
     def __str__(self):
