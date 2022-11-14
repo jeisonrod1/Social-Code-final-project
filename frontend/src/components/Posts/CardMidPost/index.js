@@ -1,15 +1,16 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
-import card1 from "../../../images/restaurants/card-1.jpg";
+
 import heart from "../../../images/icons/svgs/heart.svg";
 import share from "../../../images/icons/svgs/share.svg";
-import meme from "../../../images/memes/ten-sec.jpg";
-import profile from "../../../images/users/profile-face.png";
-import profile1 from "../../../images/users/profile1.jpg";
-import profile2 from "../../../images/users/profile2.jpg";
+
 import content from "../../../images/content/hooray.jpg";
 import { useState } from "react";
-
+import Comment from "../Comment";
+import Answers from "../Answers";
+import { useNavigate } from "react-router-dom";
+import Editor from "@monaco-editor/react";
+import { defineTheme } from "../../Judge/lib/defineTheme";
 
 // STYLED COMPONENTS -start
 
@@ -23,8 +24,15 @@ const QCard = styled.div`
   justify-content: space-between;
   flex-direction: column;
   border: 1px solid #5052632e;
-  background-color: rgba(126, 126, 126, 0.12);
   border-radius: 8px;
+  .light & {
+    background-color: rgba(126, 126, 126, 0.12);
+    transition: 1s all;
+  }
+  .dark & {
+    background-color: rgba(126, 126, 126, 0.12);
+    transition: 1s all;
+  }
   .header {
     display: flex;
     justify-content: start;
@@ -96,7 +104,6 @@ const QCard = styled.div`
       height: 100%;
       transition: height 0.4s all;
     }
-    
   }
   .left img {
     margin-right: 8px;
@@ -136,66 +143,113 @@ const SocialButtons = styled.div`
   }
   .comments-unfold .material-symbols-outlined {
     transform: rotate(180deg);
-
   }
 `;
 
 // STYLED COMPONENTS -end
 
-const CardMidPost = ({post}) => {
+const CardMidPost = ({ post }) => {
   const [btnState, setBtnState] = useState(false);
+  const [comment, setComment] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("auth"));
+  const [theme, setTheme] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleCommentSubmit = (e) => {
+    e.preventDefault();
+
+    const url = "https://code-media.propulsion-learn.ch/backend/codepost/";
+    const fd = new FormData();
+    fd.append("content", comment.content);
+
+    const config = {
+      method: "POST",
+      headers: new Headers({
+        Authorization: token,
+      }),
+      body: fd,
+    };
+
+    fetch(url, config)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response);
+        } else {
+          console.log(response.json());
+        }
+      })
+      .then(setTimeout(() => navigate("/posts"), 1000));
+  };
+
+  const handleCommentChange = (e) => {
+    setComment(e);
+  };
+  useEffect(() => {
+    defineTheme("oceanic-next").then((_) =>
+      setTheme({ value: "oceanic-next", label: "Oceanic Next" })
+    );
+  }, []);
+
   function handleClick() {
     setBtnState((btnState) => !btnState);
   }
-  let toggleClassCheck = btnState ? " comments-fold" : " comments-unfold";
+  //let toggleClassCheck = btnState ? " comments-fold" : " comments-unfold";
   return (
     <QCard>
       <div className="header">
         <div className="left">
-          <img className="image" src={profile2}></img>
+          <img className="image" src={post.user.avatar}></img>
           {/*TODO: needs work with the image*/}
         </div>
         <div className="right">
           <h5>{post.title}</h5>
-          <p className="subtitle">Asked 16.07.19 - Views 339k</p>
+          <p className="subtitle">Asked {post.created}</p>
         </div>
       </div>
       <div className="body">
+        <Editor
+          height="40vh"
+          width="100%"
+          language={post.language || "javascript"}
+          theme={theme.value}
+          defaultValue={post.code}
+        />
         <p>{post.description}</p>
         {/*TODO: needs to be replaced with editor*/}
-        <img className="image" src={content}></img>
-        <div className={`${toggleClassCheck}`}>
-          <h6>Comments:</h6>
-          {/*TODO: needs to be replaced with comment div*/}
-          <div className="comment">
-            <h5>Peter3202:</h5>
-            <p>Comment 1 this is the first comment</p>
-          </div>
-          <div className="comment">
-            <h5>Tina20000:</h5>
-            <p>Comment 2 this is the second comment</p>
-          </div>
-          <div className="comment">
-            <h5>Tina20000:</h5>
-            <p>Comment 2 this is the second comment</p>
-          </div>
-          <div className="comment">
-            <h5>Tina20000:</h5>
-            <p>Comment 2 this is the second comment</p>
-          </div>
-          <div className="comment">
-            <h5>Tina20000:</h5>
-            <p>Comment 2 this is the second comment</p>
-          </div>
+        <div className="img-wrapper" style={{ width: "200px" }}>
+          <img
+            className="image"
+            style={{ height: "100%" }}
+            src={post.image}
+          ></img>
         </div>
+        {/*<div className={`${toggleClassCheck}`}>*/}
+        <h6>Comments:</h6>
+        {post.answersToComments.map((comment) => (
+          <Comment comment={comment} />
+        ))}
+      </div>
+      <div className="comment"></div>
 
-        <form className="form">
+      <div>
+        <form className="form" onSubmit={handleCommentSubmit}>
           <label>
-            <input type="text" name="name" placeholder="Post a comment" />
+            <input
+              type="text"
+              name="name"
+              value={comment}
+              onChange={handleCommentChange}
+              placeholder="Post a comment"
+            />
           </label>
           <input type="submit" value="Post It" />
         </form>
       </div>
+      <h3>Answers:</h3>
+      {post.answersToCodePost.map((answers) => (
+        <Answers answers={answers} />
+      ))}
       <SocialButtons>
         <div>
           <img src={heart}></img>
@@ -206,10 +260,10 @@ const CardMidPost = ({post}) => {
           <img src={share}></img>
           <button>Share</button>
         </div>
-        <div className={`expander${toggleClassCheck}`} onClick={handleClick}>
+        {/*<div className={`expander${toggleClassCheck}`} onClick={handleClick}>
           <h5>{`${toggleClassCheck}`}</h5>
           <span className="material-symbols-outlined">expand_more</span>
-        </div>
+        </div>*/}
       </SocialButtons>
     </QCard>
   );

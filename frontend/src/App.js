@@ -13,14 +13,13 @@ import store from "./redux/store";
 
 import JudgeLanding from "./components/Judge/components/Landing";
 
-import NavTest from "./components/NavTest";
-
 import "./App.css";
 import AccessEditor from "./components/Editor/AccessEditor";
 import EditorPage_HTML_CSS_JS from "./components/Editor/EditorPage_HTML_CSS_JS";
 import React from "react";
 
 import { Toaster } from "react-hot-toast";
+import CreatePost from "./components/CreatePost/CreateCodePost";
 
 function App() {
   const [btnState, setBtnState] = useState(false);

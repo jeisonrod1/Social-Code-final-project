@@ -10,14 +10,12 @@ width: 100%;
 height: 100%;
 display: flex;
 gap: 20px;
-
 `;
 
 export const BadgesContent = styled.div`
   width: 100%;
   height: 265px;
-  background-color: #000;
-  padding:15px 20px;
+  border-radius: 5px;
 `;
 
 export const BadgeTop = styled.div`
@@ -27,6 +25,7 @@ export const BadgeTop = styled.div`
 `;
 export const Badges = styled.div`
   font-size: 18px;
+  padding: 0 20px;
 `;
 
 export const AllBadges = styled.div`
@@ -35,10 +34,9 @@ export const AllBadges = styled.div`
 `;
 
 export const BadgeContainer = styled.div`
-  width: 280px;
-  height: 204px;
+  width: 200px;
+  height: 120px;
   border-radius: 5px;
-  background-color: #1e1f26;
   padding: 10px;
 `;
 

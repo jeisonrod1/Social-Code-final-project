@@ -1,22 +1,27 @@
 import styled from "styled-components";
 
 export const ProfilePage = styled.div`
-  padding: 100px 120px;
   width: 100vw;
-  /* height: 1500px; */
+  height: 100vh;
   display: grid;
   color: white;
   grid-template-columns: 208px 1fr;
-  grid-template-rows: 156px 156px 340px 227px;
-  gap: 20px;
-  overflow: scroll
+  grid-template-rows: 100px 156px 180px 227px;
+  gap: 45px;
+  overflow: scroll;
+  background-image: url("../../../images/covers/background-login.jpg") !important;
 `;
-
+export const BackgroundImg = styled.img`
+width: 100vw;
+height: 100vh;
+`;
 export const UserHeader = styled.div`
   display: flex;
   gap: 25px;
   grid-column-start: 1;
   grid-column-end: 3;
+  padding-left: 200px;
+
 `;
 export const ProfilePicture = styled.img`
   width: 156px;
@@ -54,6 +59,7 @@ export const StatsContainer = styled.div`
   background-color: #1e1f26;
   display: flex;
   flex-direction: column;
+  margin-left: 200px;
   flex-wrap: wrap;
 `;
 export const StatsContent = styled.div`
@@ -82,29 +88,18 @@ export const Questions = styled.div`
 `;
 export const AboutContainer = styled.div`
   width: 900px;
+  height: 200px;
 `;
 export const AboutTitle = styled.div`
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 15px;
+  padding-left: 200px;
+
 `;
 export const About = styled.div`
   width: 100%;
+  padding-left: 200px;
+
 `;
 
-
-// export const = styled.div`
-
-// `;
-// export const = styled.div`
-
-// `;
-// export const = styled.div`
-
-// `;
-// export const = styled.div`
-
-// `;
-// export const = styled.div`
-
-// `;

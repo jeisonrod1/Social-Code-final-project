@@ -8,6 +8,9 @@ import CardMidNewPost from "./CardMidNewPost/index.js";
 import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
 import {useEffect, useState} from "react";
+import {unwrapResult} from "@reduxjs/toolkit";
+import Comment from "./Comment";
+import comment from "./Comment";
 
 // STYLED COMPONENTS -start
 
@@ -98,7 +101,7 @@ const Posts = () => {
       redirect: 'follow'
     };
 
-    fetch("https://code-media.propulsion-learn.ch/posts", requestOptions)
+    fetch("https://code-media.propulsion-learn.ch/backend/codepost/", requestOptions)
         .then(response => response.json())
         .then(result => setPosts(result))
         .catch(error => console.log('error', error));
@@ -113,6 +116,7 @@ const Posts = () => {
         <CardContainerMid>
           <CardMidNewPost />
           {posts.map(post => <CardMidPost post={post}/>)}
+
         </CardContainerMid>
         <CardContainerRight>
           <CardRightNav />
