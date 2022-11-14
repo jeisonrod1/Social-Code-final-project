@@ -67,6 +67,7 @@ function App() {
               />{" "}
               {/* Mads */}
               <Route path="judgeeditor/" element={<JudgeLanding />} />{" "}
+              <Route path="createpost/" element={<CreatePost />} />{" "}
               {/* Mads */}
             </Routes>
             <button
