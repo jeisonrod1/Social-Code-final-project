@@ -82,7 +82,7 @@ export const InvitationContainer = styled.p`
 `
 
 // FORM
-export const SignInForm = styled.form`
+export const LoginForm = styled.form`
     border: solid yellow;
     display: flex;
     flex-direction: column;
@@ -119,16 +119,18 @@ export const SignInForm = styled.form`
     }
 
     button {
-
-      margin-top: 75px;
-      width: 180px;
-      padding: 8px 12px;
-      font-size: 18px;
-      font-weight: 550;
-      color: black;
-      border-radius: 12px;
+      background: ${p=>p.theme.purpleLight};
+      color: white;
+      font-size: ${p=>p.theme.fontSizeM};
+      width: 160px;
+      height: 40px;
+      border-radius: 4px;
       border: none;
-      cursor: pointer;
+
+      :hover {
+        cursor: pointer;
+        font-weight: bold;
+      }
     }
 `;
 

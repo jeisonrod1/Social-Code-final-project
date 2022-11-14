@@ -13,7 +13,8 @@ import {
   RightContainer,
   LeftContainer,
   LogoNavigationLogin,
-  InvitationContainer
+  InvitationContainer,
+  LoginForm
 } from "./index.styled";
 import IconFB from "../../images/icons/icon/facebook.png"
 import IconTW from "../../images/icons/icon/twitter.png"
@@ -71,51 +72,35 @@ const Login = () => {
       <LeftContainer>
         <LogoNavigationLogin src={logo}/>
         <Slogan>Connecting <b>developers</b> around the globe</Slogan>
-        {/* <LeftBackground src={LeftBackgroundImg} />
-        <LeftTopContainer>
-          <AppName>Social Code</AppName>
-          <Slogan></Slogan>
-        </LeftTopContainer>
-        <LeftBottomContainer>
-          <ReferralContainer>
-            <ReferralText>New here?</ReferralText>
-            <ReferralTitle>Enter your referral code</ReferralTitle>
-            <ReferralForm>
-              <ReferralInput />
-            </ReferralForm>
-          </ReferralContainer>
-        </LeftBottomContainer>
-        <SocialCodeLogo src={SocialCode} /> */}
       </LeftContainer>
 
       <RightContainer>
 
-        <SignInForm onSubmit={handleSubmit}>
+        <LoginForm onSubmit={handleSubmit}>
           <h2>Hello, SocialCoder</h2>
           
-            <label>
-              email
-              <input placeholder="enter your email" type="email" onChange={handleEmailChange}/>
+            <label>email
+              <input 
+                type="email"
+                onChange={handleEmailChange}/>
             </label>
           
-            <label>
-              password
+            <label>password
               <input
-                placeholder="enter your password"
                 type="password"
                 onChange={handlePasswordChange}
               />
             </label>
         
-          <button>Sign in</button>
-        </SignInForm>
+          <button>Log in</button>
+        </LoginForm>
 
 
         <InvitationContainer>
           No Account? Do you have the code?
         </InvitationContainer>
 
-     
+
         <RightBottomContainer>
           <SocialMediaIcons>
             <FacebookLink href="https://www.facebook.com">
@@ -132,6 +117,7 @@ const Login = () => {
       </RightContainer>
 
     </LoginContainer>
-  );
-};
+  )
+}
+
 export default Login;
