@@ -1,28 +1,26 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import { Provider } from "react-redux";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Posts from "./components/Posts";
-import PostsPage from "./components/PostPage";
 import Userprofile from "./components/Userprofile/Profile/index";
 import Registration from "./components/Registration/Registration";
 import RegistrationValidation from "./components/Registration/RegistrationValidation";
 import Login from "./components/Login";
-import { useState } from "react";
-import { Provider } from "react-redux";
+import FriendsPage from "./components/FriendsPage";
+import CreatePost from "./components/CreatePost/CreateCodePost";
 import store from "./redux/store";
 
 import JudgeLanding from "./components/Judge/components/Landing";
-
-import "./App.css";
 import AccessEditor from "./components/Editor/AccessEditor";
 import EditorPage_HTML_CSS_JS from "./components/Editor/EditorPage_HTML_CSS_JS";
 import React from "react";
+import "./App.css";
 
 import { Toaster } from "react-hot-toast";
-import CreatePost from "./components/CreatePost/CreateCodePost";
 import SunIcon from "./images/icons/svgs/sun.svg"
 import MoonIcon from "./images/icons/svgs/moon.svg"
-import FriendsPage from "./components/FriendsPage";
 
 function App() {
   const [btnState, setBtnState] = useState(false);
@@ -49,30 +47,22 @@ function App() {
             />
           </div>
           <main className={`xtxt${toggleClassCheck}`}>
-            <Header /> {/* Mads */}
+            <Header />
             <Routes>
-              <Route path="posts" element={<Posts />} /> {/* Mads */}
-              <Route path="postpage" element={<PostsPage />} />
-              {/* Mads */}
-              <Route path="/editor" element={<AccessEditor />}></Route>
-              <Route
-                path="/editor/:roomId"
-                element={<EditorPage_HTML_CSS_JS />}
-              ></Route>
-              {/* Mads */}
-              <Route path="userprofile" element={<Userprofile />} />{" "}
-              {/* Mads */}
-              <Route path="login" element={<Login />} /> {/* Mads */}
-              <Route path="registration" element={<Registration />} />{" "}
-              <Route
-                path="registration/validation"
-                element={<RegistrationValidation />}
-              />{" "}
+              <Route path="/" element={<Posts />} />
+              <Route path="posts" element={<Posts />} />
+              <Route path="createpost/" element={<CreatePost />} />
+              <Route path="find_friends" element={<FriendsPage />} />
+              <Route path="/editor" element={<AccessEditor />} />
+              <Route path="/editor/:roomId" element={<EditorPage_HTML_CSS_JS />} />
+              <Route path="userprofile" element={<Userprofile />} />
               <Route path="my_friends/" element={<FriendsPage/>}/>
-              {/* Mads */}
-              <Route path="judgeeditor/" element={<JudgeLanding />} />{" "}
-              <Route path="createpost/" element={<CreatePost />} />{" "}
-              {/* Mads */}
+              <Route path="judgeeditor/" element={<JudgeLanding />} />
+
+              <Route path="login" element={<Login />} />
+              <Route path="registration" element={<Registration />} />
+              <Route path="registration/validation" element={<RegistrationValidation />} />
+
             </Routes>
             <button
               className={`btn-x${toggleClassCheck}`}
@@ -81,7 +71,7 @@ function App() {
           {!btnState ? <img className="sun-icon" src={SunIcon}/> : <img className="moon-icon" src={MoonIcon}/>}
               
             </button>
-            <Footer /> {/* Mads */}
+            <Footer />
           </main>
         </BrowserRouter>
       </Provider>

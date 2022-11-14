@@ -41,7 +41,7 @@ const Userprofile = () => {
   const fetchProfile = () => {
     const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
 
-    const config = {
+    const requestOptions = {
             method: "GET",
             headers: new Headers({
                 Authorization: token,
@@ -53,7 +53,7 @@ const Userprofile = () => {
       .then(response => response.json())
         .then(result => setUser(result[0]))
         .catch(error => console.log('error', error));
-  }};
+  };
 
 
   return (

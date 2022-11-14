@@ -96,7 +96,7 @@ const Header = () => {
           <a
             className="plain"
             onClick={() => {
-              navigate("../postpage");
+              navigate("../find_friends");
             }}
           >
             Find Friends
