@@ -449,8 +449,6 @@ const PostPage = () => {
   //   fetch(`${url}${id}/`, config).then(response => console.log(response));
   // };
   return (
-    <Container>
-      <Main>
         <Gridding>
           {userdata2.map((user) => (
             <BeingGrinded key={user.id}>
@@ -495,8 +493,6 @@ const PostPage = () => {
             </BeingGrinded>
           ))}
         </Gridding>
-      </Main>
-    </Container>
   );
 };
 export default PostPage;

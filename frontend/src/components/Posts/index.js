@@ -8,6 +8,7 @@ import CardMidNewPost from "./CardMidNewPost/index.js";
 import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
 import React, {useEffect, useState} from "react";
+import CreatePost from "../../components/CreatePost/CreateCodePost";
 import {unwrapResult} from "@reduxjs/toolkit";
 import Comment from "./Comment";
 import comment from "./Comment";
@@ -193,6 +194,7 @@ const Posts = () => {
           <CardLeftNav />
         </CardContainerLeft>
         <CardContainerMid>
+          <CreatePost />
           <CardMidNewPost />
           {posts.map(post => <CardMidPost post={post}/>)}
 
