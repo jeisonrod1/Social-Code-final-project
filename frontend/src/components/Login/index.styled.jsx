@@ -30,34 +30,108 @@ export const LeftContainer = styled.div`
 `;
 
 export const RightContainer = styled.div`
-    width: 60%;
     height: 100vh;
+    width: 60%;
     display: flex;
     background: #1a1a1a;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
 `;
 
+export const LogoNavigationLogin = styled.img`
+    height: 20px;
+    position: absolute;
+    top: 3%;
+    left: 3%;
 
-export const AppName = styled.p`
-  padding: 60px 0 0;
-  font-size: 4.5em;
-  text-align: center;
-  color: #fff;
-  scale: 0.9;
-`;
-export const Slogan = styled.p`
-  padding: 20px 60px 0;
-  font-size: 1.8em;
-  text-align: center;
-  color: #fff;
-  scale: 0.9;
+    :hover {
+      cursor: pointer;
+      transform: scale(1.03);
+      transition: ${p=>p.theme.transitionShort};
+    }
+`
+
+export const Slogan = styled.h1`
+    position: absolute;
+    height: 100px;
+    width: 50%;
+    bottom: 20%;
+    right: 2%;
+    color: white;
+    font-size: 50px;
+    font-weight: normal;
+    text-align: right;
+    font-family: 'Encode Sans SC', sans-serif;
+    line-height: 50px;
+
+    b {
+      color: ${p=>p.theme.purpleLight};
+    }
+
+`
+
+export const InvitationContainer = styled.p`
+    font-family: 'Encode Sans SC', sans-serif;
+    font-size: ${p=>p.theme.fontSizeS};
+    color: white;
+    position: absolute;
+    bottom: 20%;
+`
+
+// FORM
+export const SignInForm = styled.form`
+    border: solid yellow;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 350px;
+    height: 400px;
+
+    h2 {
+      font-family: 'Encode Sans SC', sans-serif;
+      font-size: ${p=>p.theme.fontSizeXL};
+      color: white;
+    }
+
+    label {
+      font-size: ${p=>p.theme.fontSizeS};
+      display: flex;
+      flex-direction: column;
+      height: 40px;
+    }
+
+    input {
+        height: 30px;
+        width: 200px;
+        border: none;
+        border-bottom: solid white 2px;
+        color: white;
+        padding: 10px;
+
+        border-radius: 0;
+        ::placeholder {
+          color: #5e5e5e;
+        }
+    }
+
+    button {
+
+      margin-top: 75px;
+      width: 180px;
+      padding: 8px 12px;
+      font-size: 18px;
+      font-weight: 550;
+      color: black;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+    }
 `;
 
-export const LeftBottomContainer = styled.div`
-  position: absolute;
-  width: 50%;
-`;
 export const ReferralContainer = styled.div`
   position: relative;
   display: flex;
@@ -117,35 +191,14 @@ export const RightMiddleContainer = styled.div`
   position: relative;
   margin: 0 auto;
 `;
-export const SignInForm = styled.form`
-  text-align: center;
-  width: 350px;
-  height: 480px;
-  background-color: #48367e;
-  border-radius: 8px;
-  scale: 0.9;
 
-  button {
-    margin-top: 75px;
-    width: 180px;
-    padding: 8px 12px;
-    font-size: 18px;
-    font-weight: 550;
-    color: black;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
-  }
-`;
 export const SignInTitle = styled.div`
   font-size: 1.6em;
   font-weight: 600;
   letter-spacing: 2px;
   padding: 25px 0 40px;
 `;
-export const Inputs = styled.div`
-  padding: 25px;
-`;
+
 export const EmailLabel = styled.img`
   position: relative;
   padding-right: 25px;

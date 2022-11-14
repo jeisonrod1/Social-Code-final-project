@@ -1,28 +1,7 @@
 import {
   LoginContainer,
-  LeftBackground,
-  LeftTopContainer,
-  AppName,
   Slogan,
-  LeftBottomContainer,
-  ReferralContainer,
-  ReferralText,
-  ReferralTitle,
-  ReferralForm,
-  ReferralInput,
-  SocialCodeLogo,
-  RightBackground,
-  RightTopContainer,
-  SignInText,
-  SignInIcon,
-  RightMiddleContainer,
   SignInForm,
-  SignInTitle,
-  Inputs,
-  EmailLabel,
-  EmailInput,
-  PasswordLabel,
-  PasswordInput,
   RightBottomContainer,
   SocialMediaIcons,
   FacebookLink,
@@ -32,54 +11,17 @@ import {
   InstagramLink,
   InstagramIcon,
   RightContainer,
-  LeftContainer
+  LeftContainer,
+  LogoNavigationLogin,
+  InvitationContainer
 } from "./index.styled";
-import LeftBackgroundImg from "../../images/covers/background-login.jpg";
-import RightBackgroundImg from "../../images/covers/right-background.jpeg";
-import LoginIcon from "../../images/icons/icon/login.png";
-import PasswordIcon from "../../images/icons/icon/padlock.png";
-import SocialCode from "../../images/icons/svgs/logo_socialcode.jpg"
 import IconFB from "../../images/icons/icon/facebook.png"
 import IconTW from "../../images/icons/icon/twitter.png"
 import IconIG from "../../images/icons/icon/instagram.png"
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
-import styled from "styled-components";
 import logo from "../../images/logos/social_code_logo.webp"
 
-
-const LogoNavigationLogin = styled.img`
-    height: 20px;
-    position: absolute;
-    top: 3%;
-    left: 3%;
-
-    :hover {
-      cursor: pointer;
-      transform: scale(1.03);
-      transition: ${p=>p.theme.transitionShort};
-    }
-`
-
-const AppSlogan = styled.h1`
-    position: absolute;
-    height: 100px;
-    width: 50%;
-    bottom: 20%;
-    right: 2%;
-    color: white;
-    font-size: 50px;
-    font-weight: normal;
-    text-align: right;
-    font-family: 'Encode Sans SC', sans-serif;
-    line-height: 50px;
-    
-
-    b {
-      color: ${p=>p.theme.purpleLight};
-    }
-    
-`
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -91,7 +33,6 @@ const Login = () => {
     const handleEmailChange = e => setEmail(e.target.value)
     const handlePasswordChange = e => setPassword(e.target.value)
 
-
     const handleSubmit = e => {
         e.preventDefault()
 
@@ -99,7 +40,6 @@ const Login = () => {
             "email": email,
             "password": password,
         }
-
         const config = {
             method: "POST",
             headers: new Headers({
@@ -107,7 +47,6 @@ const Login = () => {
             }),
             body: JSON.stringify(jsBody)
         }
-
       fetch("https://code-media.propulsion-learn.ch/backend/auth/token/", config)
             .then(response => response.json())
             .then(data => {
@@ -131,7 +70,7 @@ const Login = () => {
 
       <LeftContainer>
         <LogoNavigationLogin src={logo}/>
-        <AppSlogan>Connecting <b>developers</b> around the globe</AppSlogan>
+        <Slogan>Connecting <b>developers</b> around the globe</Slogan>
         {/* <LeftBackground src={LeftBackgroundImg} />
         <LeftTopContainer>
           <AppName>Social Code</AppName>
@@ -150,27 +89,33 @@ const Login = () => {
       </LeftContainer>
 
       <RightContainer>
-        <RightTopContainer>
-          <SignInText>Sign in</SignInText>
-          <SignInIcon src={LoginIcon} />
-        </RightTopContainer>
-        <RightMiddleContainer>
-          <SignInForm onSubmit={handleSubmit}>
-            <SignInTitle>Sign in</SignInTitle>
-            <Inputs>
-              <EmailLabel src={LoginIcon} />
-              <EmailInput placeholder="enter your email" type="email" onChange={handleEmailChange}/>
-              <PasswordLabel src={PasswordIcon} />
-              <PasswordInput
+
+        <SignInForm onSubmit={handleSubmit}>
+          <h2>Hello, SocialCoder</h2>
+          
+            <label>
+              email
+              <input placeholder="enter your email" type="email" onChange={handleEmailChange}/>
+            </label>
+          
+            <label>
+              password
+              <input
                 placeholder="enter your password"
                 type="password"
                 onChange={handlePasswordChange}
               />
+            </label>
+        
+          <button>Sign in</button>
+        </SignInForm>
 
-            </Inputs>
-            <button>Sign in</button>
-          </SignInForm>
-        </RightMiddleContainer>
+
+        <InvitationContainer>
+          No Account? Do you have the code?
+        </InvitationContainer>
+
+     
         <RightBottomContainer>
           <SocialMediaIcons>
             <FacebookLink href="https://www.facebook.com">
