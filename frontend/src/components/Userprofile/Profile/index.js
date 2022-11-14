@@ -27,26 +27,24 @@ import { useEffect, useState } from "react";
 import BgImage from "../../../images/covers/background-login.jpg";
 import InvitationInput from "../InvitationInput";
 
-// STYLED COMPONENTS -start
-
-const ExampleComponent = styled.div``;
-
-// STYLED COMPONENTS -end
 
 const Userprofile = () => {
   const [token, setToken] = useState(localStorage.getItem("auth"));
   const [user, setUser] = useState("");
 
 
+
+
   const fetchProfile = () => {
     const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
 
     const config = {
-      method: "GET",
-      headers: new Headers({
-        Autorization: `Bearer ${token}`,
-      }),
-    };
+            method: "GET",
+            headers: new Headers({
+                "Content-Type": "application/json",
+            }),
+
+        }
 
     fetch(url, config)
       .then(response => response.json())
@@ -87,5 +85,6 @@ const Userprofile = () => {
       <InvitationInput/>
     </ProfilePage>
   );
-};
+}
+
 export default Userprofile;
