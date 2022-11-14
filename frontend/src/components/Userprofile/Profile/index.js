@@ -28,11 +28,6 @@ import axios from "axios";
 import BgImage from "../../../images/covers/background-login.jpg";
 import InvitationInput from "../InvitationInput";
 
-// STYLED COMPONENTS -start
-
-const ExampleComponent = styled.div``;
-
-// STYLED COMPONENTS -end
 
 const Userprofile = () => {
   const [token, setToken] = useState(localStorage.getItem("auth"));
@@ -49,40 +44,32 @@ const Userprofile = () => {
   const [points, setPoints] = useState("");
   const [company, setCompany] = useState("");
 
-  const fetchProfile = () => {
-    const url =
-      "https://code-media.propulsion-learn.ch//backend/api/social/users/me/";
 
-    const config = {
-      method: "GET",
-      headers: new Headers({
-        Autorization: `Bearer ${token}`,
-      }),
+  const fetchProfile = () => {
+    var myHeaders = new Headers();
+    myHeaders.append("Authorization", token)
+    var requestOptions = {
+        method: 'GET',
+        headers: myHeaders,
+        redirect: 'follow'
     };
 
-    fetch(url, config)
-      .then(response => {
-        if (response.status === 200) {
-          const data = response.json();
-          setUsername(data.get("username"));
-          setFirst_Name(data.get("first_name"));
-          setLast_Name(data.get("last_name"));
-          setEmail(data.get("email"));
-          setLocation(data.get("location"));
-          setPhone(data.get("phone"));
-          setAbout_Me(data.get("about_me"));
-          setAvatar(data.get("avatar"));
-          setPoints(data.get("points"));
-          setCompany(data.get("company"));
-        } else {
-          console.log(response.json());
-        }
-      })
-      .then(data => {
-        setToken(data.access);
-        console.log(token);
-      });
-  };
+    fetch("https://code-media.propulsion-learn.ch/backend/api/social/users/me/", requestOptions)
+    .then(response => response.json())
+    .then(data => {
+        setUsername(data[0].username);
+        setFirst_Name(data[0].first_name);
+        setLast_Name(data[0].last_name);
+        setEmail(data[0].email);
+        setLocation(data[0].location);
+        setPhone(data[0].phone);
+        setAbout_Me(data[0].about_me);
+        setAvatar(data[0].avatar);
+        setPoints(data[0].points);
+        setCompany(data[0].company);
+    })
+    .catch(error => console.log('error', error));
+    }
 
   useEffect(() => {
     fetchProfile();
@@ -117,5 +104,6 @@ const Userprofile = () => {
       <InvitationInput/>
     </ProfilePage>
   );
-};
+}
+
 export default Userprofile;
