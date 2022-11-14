@@ -32,6 +32,9 @@ const Userprofile = () => {
     const [token, setToken] = useState(localStorage.getItem("auth"));
     const [user, setUser] = useState("");
 
+  useEffect(() => {
+    fetchProfile();
+  }, [token]);
 
     const fetchProfile = () => {
         const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
@@ -44,15 +47,19 @@ const Userprofile = () => {
 
         }
 
+
         fetch(url, config)
             .then(response => response.json())
             .then(result => setUser(result[0]))
             .catch(error => console.log('error', error));
-    };
+      };
 
-    useEffect(() => {
-        fetchProfile();
-    }, [token]);
+        useEffect(() => {
+            fetchProfile();
+        }, [token]);
+
+
+
 
     return (
         <ProfilePage src={BgImage}>
