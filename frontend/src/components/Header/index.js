@@ -1,10 +1,9 @@
 import styled from "styled-components";
-import { useNavigate, useLocation, Link } from "react-router-dom";
-import logo from "../../images/icons/svgs/logo_socialcode.jpg";
+import { useNavigate, useLocation, Link } from "react-router-dom"
+import logo from "../../images/logos/social_code_logo.webp"
 
-// STYLED COMPONENTS -start
 
-const HeaderComponent = styled.div`
+const NavigationContainer = styled.div`
   display: flex;
   position: fixed;
   width: 100%;
@@ -28,18 +27,10 @@ const HeaderComponent = styled.div`
       cursor: pointer;
     }
   }
-  img {
-    height: 24px;
-    margin: 16px;
-  }
-  .left-nav {
-    display: flex;
-    align-items: center;
-    a:hover{
-      background-color: transparent;
-
+    .left-nav {
+      display: flex;
+      align-items: center;
     }
-  }
   .right-nav {
     display: flex;
     align-items: center;
@@ -70,20 +61,23 @@ const HeaderComponent = styled.div`
   }
 `;
 
+const LogoNavigation = styled.img`
+    height: 20px;
+`
+
 // STYLED COMPONENTS -end
 
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.pathname);
+
   return (
     <>
-      <HeaderComponent>
+      <NavigationContainer>
         <div className="left-nav">
-          <Link to="../posts" className="logo-link">
-            <img src={logo}></img>
-          </Link>
+            <LogoNavigation onClick={()=>navigate("/login")} src={logo}/>
         </div>
+
         <div className="right-nav">
           <a
             className="plain"
@@ -137,7 +131,7 @@ const Header = () => {
             </a>
           </div>
         </div>
-      </HeaderComponent>
+      </NavigationContainer>
     </>
   );
 };
