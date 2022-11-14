@@ -32,6 +32,9 @@ const Userprofile = () => {
   const [token, setToken] = useState(localStorage.getItem("auth"));
   const [user, setUser] = useState("");
 
+  useEffect(() => {
+    fetchProfile();
+  }, [token]);
 
   const fetchProfile = () => {
     const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
@@ -45,15 +48,12 @@ const Userprofile = () => {
         redirect: 'follow'
     };
 
-    fetch(url, config)
+    fetch(url, requestOptions)
       .then(response => response.json())
         .then(result => setUser(result))
         .catch(error => console.log('error', error));
-  };
+  }};
 
-  useEffect(() => {
-    fetchProfile();
-  }, [token]);
 
   return (
     <ProfilePage src={BgImage}>
