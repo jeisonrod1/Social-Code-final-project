@@ -6,7 +6,8 @@ export const LoginContainer = styled.div`
   height: 100vh;
   display: flex;
   font-family: "Monaco";
-`;
+  border: solid white 3px;
+`
 
 export const LeftSide = styled.div`
   width: 50%;

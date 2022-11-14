@@ -46,23 +46,18 @@ import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 
 const Login = () => {
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
+    const [token, setToken] = useState("")
+    const navigate = useNavigate()
 
-  const navigate = useNavigate()
 
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const [token, setToken] = useState("")
+    const handleEmailChange = e => setEmail(e.target.value)
+    const handlePasswordChange = e => setPassword(e.target.value)
 
-  const handleEmailChange = (e) => {
-        setEmail(e.target.value)
-    }
-    const handlePasswordChange = (e) => {
-        setPassword(e.target.value)
-    }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = e => {
         e.preventDefault()
-        const url = "https://code-media.propulsion-learn.ch/backend/auth/token/"
 
         const jsBody = {
             "email": email,
@@ -77,28 +72,22 @@ const Login = () => {
             body: JSON.stringify(jsBody)
         }
 
-       fetch(url, config)
+      fetch("https://code-media.propulsion-learn.ch/backend/auth/token/", config)
             .then(response => response.json())
             .then(data => {
                 localStorage.setItem("auth", data.access)
                 setToken(data.access)
-
-
             })
             .catch(error => console.log(error))
+      }
 
-    }
-
-     useEffect(() => {
-
-
+      useEffect(() => {
         if (token) {
             localStorage.setItem("auth",`Bearer ${token}`);
             console.log("the token was stored to local storage");
             navigate("/")
         }
       }, [token]);
-
 
 
   return (

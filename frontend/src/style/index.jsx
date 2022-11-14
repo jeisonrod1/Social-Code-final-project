@@ -35,7 +35,7 @@ export const theme = {
     boxShadowTiles: `0 2px 24px 0 rgba(0,0,0,0.04)`,
     boxShadowInTiles: `0 1px 3px 0 rgba(0,0,0,0.2)`,
 
-    // Text Sizes:
+    // Font Sizes:
     fontSizeXXXXL: '64px',
     fontSizeXXXL: '48px',
     fontSizeXXL: '32px',
@@ -46,24 +46,11 @@ export const theme = {
     fontSizeXS: '10px',
     fontSizeXXS: '8px',
 
-    // Text Weights:
+    // Font Weights:
     fontWeightThin: '300',
     fontWeightRegular: '400',
     fontWeightMedium: '500',
     fontWeightBold: '700',
-
-    // Space
-    controlHeight: '40px',
-    controlHeightMini: '24px',
-    controlHeightSmall: '32px',
-    controlHeightLarge: '48px',
-    spaceXXS: '4px',
-    spaceXS: '8px',
-    spaceS: '16px',
-    spaceM: '24px',
-    spaceL: '32px',
-    spaceXL: '48px',
-    spaceXXL: '220px',
 
     // Transitions:
     transitionShort: '0.1s',

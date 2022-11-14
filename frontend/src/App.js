@@ -51,38 +51,34 @@ function App() {
             />
           </div>
           <main className={`xtxt${toggleClassCheck}`}>
-            <Navigation /> {/* Mads */}
-            <Routes>
-              <Route path="posts" element={<Posts />} /> {/* Mads */}
-              <Route path="postpage" element={<PostsPage />} />
-              {/* Mads */}
-              <Route path="/editor" element={<AccessEditor />}></Route>
-              <Route
-                path="/editor/:roomId"
-                element={<EditorPage_HTML_CSS_JS />}
-              ></Route>
-              {/* Mads */}
-              <Route path="userprofile" element={<Userprofile />} />
-              {/* Mads */}
-              <Route path="login" element={<Login />} /> {/* Mads */}
-              <Route path="registration" element={<Registration />} />
-              <Route
-                path="registration/validation"
-                element={<RegistrationValidation />}
-              />{" "}
-              {/* Mads */}
-              <Route path="judgeeditor/" element={<JudgeLanding />} />
-              <Route path="createpost/" element={<CreatePost />} />
-              {/* Mads */}
-            </Routes>
-            <button
-              className={`btn-x${toggleClassCheck}`}
-              onClick={handleClick}
-            >
-          {!btnState ? <img className="sun-icon" src={SunIcon}/> : <img className="moon-icon" src={MoonIcon}/>}
-              
-            </button>
-            <Footer /> {/* Mads */}
+
+
+            
+            <Navigation />
+              <Routes>
+                <Route path="posts" element={<Posts/>} />
+                <Route path="postpage" element={<PostsPage/>} />
+                <Route path="/editor" element={<AccessEditor/>} />
+                <Route path="/editor/:roomId" element={<EditorPage_HTML_CSS_JS/>} />
+                <Route path="userprofile" element={<Userprofile/>} />
+                <Route path="login" element={<Login/>} />
+                <Route path="registration" element={<Registration/>} />
+                <Route path="registration/validation" element={<RegistrationValidation/>} />
+                <Route path="judgeeditor/" element={<JudgeLanding/>} />
+                <Route path="createpost/" element={<CreatePost/>} />
+              </Routes>
+
+
+
+
+              <button
+                className={`btn-x${toggleClassCheck}`}
+                onClick={handleClick}
+              >
+              {!btnState ? <img className="sun-icon" src={SunIcon}/> : <img className="moon-icon" src={MoonIcon}/>}
+                
+              </button>
+            <Footer />
           </main>
         </BrowserRouter>
         </ThemeProvider>
