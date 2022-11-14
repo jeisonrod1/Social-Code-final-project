@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     "badges",
     "wallet",
     "post_wallet",
+    "friend_request",
 
 ]
 
