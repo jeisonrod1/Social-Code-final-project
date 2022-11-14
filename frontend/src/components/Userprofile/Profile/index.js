@@ -24,7 +24,6 @@ import {
 } from "./index.styled";
 import ProfileBadges from "../ProfileBadges";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import BgImage from "../../../images/covers/background-login.jpg";
 import InvitationInput from "../InvitationInput";
 
@@ -36,22 +35,11 @@ const ExampleComponent = styled.div``;
 
 const Userprofile = () => {
   const [token, setToken] = useState(localStorage.getItem("auth"));
-  const [username, setUsername] = useState("Jesus Christ");
-  const [first_name, setFirst_Name] = useState("");
-  const [last_name, setLast_Name] = useState("");
-  const [email, setEmail] = useState("jesuschrist@heaven.com");
-  const [location, setLocation] = useState("Zürich, CH");
-  const [phone, setPhone] = useState("");
-  const [about_me, setAbout_Me] = useState(
-    "Junior Developer, into gaming, coding addict, looking forward to have collaborations and develop interesting projects, also to help solve questions about Python, Javascript and React."
-  );
-  const [avatar, setAvatar] = useState("");
-  const [points, setPoints] = useState("");
-  const [company, setCompany] = useState("");
+  const [user, setUser] = useState("");
+
 
   const fetchProfile = () => {
-    const url =
-      "https://code-media.propulsion-learn.ch//backend/api/social/users/me/";
+    const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
 
     const config = {
       method: "GET",
@@ -61,27 +49,9 @@ const Userprofile = () => {
     };
 
     fetch(url, config)
-      .then(response => {
-        if (response.status === 200) {
-          const data = response.json();
-          setUsername(data.get("username"));
-          setFirst_Name(data.get("first_name"));
-          setLast_Name(data.get("last_name"));
-          setEmail(data.get("email"));
-          setLocation(data.get("location"));
-          setPhone(data.get("phone"));
-          setAbout_Me(data.get("about_me"));
-          setAvatar(data.get("avatar"));
-          setPoints(data.get("points"));
-          setCompany(data.get("company"));
-        } else {
-          console.log(response.json());
-        }
-      })
-      .then(data => {
-        setToken(data.access);
-        console.log(token);
-      });
+      .then(response => response.json())
+        .then(result => setUser(result))
+        .catch(error => console.log('error', error));
   };
 
   useEffect(() => {
@@ -94,25 +64,25 @@ const Userprofile = () => {
       <UserHeader>
         <ProfilePicture src={ProfileAvatar} />
         <UserInfo>
-          <UserName>{username}</UserName>
+          <UserName>{user.username}</UserName>
           <UserOccupation>Software Engineer</UserOccupation>
-          <UserLocation>{location}</UserLocation>
-          <UserEmail>{email}</UserEmail>
+          <UserLocation>{user.location}</UserLocation>
+          <UserEmail>{user.email}</UserEmail>
         </UserInfo>
         <ProfileBadges />
       </UserHeader>
       <StatsContainer>
         <StatsTitle>Stats</StatsTitle>
         <StatsContent>
-          <Reputation>113 Reputation</Reputation>
-          <Reached>4k Reached</Reached>
-          <Answers>1 Answers</Answers>
-          <Questions>9 Questions</Questions>
+          <Reputation>{user.points} Points</Reputation>
+          <Reached>{user.amount_of_posts} Posts</Reached>
+          <Answers>{user.amount_of_friends} Friends</Answers>
+          <Questions>{user.amount_following} Followers</Questions>
         </StatsContent>
       </StatsContainer>
       <AboutContainer>
         <AboutTitle>About</AboutTitle>
-        <About>{about_me}</About>
+        <About>{user.about_me}</About>
       </AboutContainer>
       <InvitationInput/>
     </ProfilePage>
