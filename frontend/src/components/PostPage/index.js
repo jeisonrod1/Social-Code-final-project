@@ -29,7 +29,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://code-media.propulsion-learn.ch/backend/friends/", requestOptions)
+fetch("https://code-media.propulsion-learn.ch/backend/api/social/users/list/", requestOptions)
   .then(response => response.json())
   .then(result => setFriends(result))
   .catch(error => console.log('error', error));
