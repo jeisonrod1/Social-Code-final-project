@@ -12,7 +12,6 @@ import { useNavigate } from "react-router-dom";
 import Editor from "@monaco-editor/react";
 import { defineTheme } from "../../Judge/lib/defineTheme";
 import OutputWindow from "../../Judge/components/OutputWindows";
-import CustomInput from "../../Judge/components/CustomInput";
 import OutputDetails from "../../Judge/components/OutputDetails";
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
@@ -187,7 +186,7 @@ const CustomButton = styled.button`
 const CardMidPost = ({ post }) => {
    const javascriptDefault = `// The language is set to javascript. Happy Hacking!`
    const [btnState, setBtnState] = useState(false);
-   const [comment, setComment] = useState(false);
+   const [comment, setComment] = useState("Leave a Comment");
    const [token, setToken] = useState(localStorage.getItem("auth"));
    const [theme, setTheme] = useState("");
    const [outputDetails, setOutputDetails] = useState(null);
@@ -224,7 +223,7 @@ const CardMidPost = ({ post }) => {
   };
 
   const handleCommentChange = (e) => {
-    setComment(e);
+    setComment(e.target.value);
   };
   useEffect(() => {
     defineTheme("oceanic-next").then((_) =>
