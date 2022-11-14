@@ -1,6 +1,5 @@
 import {
   LoginContainer,
-  LeftSide,
   LeftBackground,
   LeftTopContainer,
   AppName,
@@ -12,7 +11,6 @@ import {
   ReferralForm,
   ReferralInput,
   SocialCodeLogo,
-  RightSide,
   RightBackground,
   RightTopContainer,
   SignInText,
@@ -32,7 +30,9 @@ import {
   TwitterLink,
   TwitterIcon,
   InstagramLink,
-  InstagramIcon
+  InstagramIcon,
+  RightContainer,
+  LeftContainer
 } from "./index.styled";
 import LeftBackgroundImg from "../../images/covers/background-login.jpg";
 import RightBackgroundImg from "../../images/covers/right-background.jpeg";
@@ -44,6 +44,23 @@ import IconTW from "../../images/icons/icon/twitter.png"
 import IconIG from "../../images/icons/icon/instagram.png"
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
+import styled from "styled-components";
+import logo from "../../images/logos/social_code_logo.webp"
+
+
+const LogoNavigationLogin = styled.img`
+    height: 16px;
+    position: absolute;
+    top: 2%;
+    left: 2%;
+
+    :hover {
+      cursor: pointer;
+      transform: scale(1.03);
+      transition: ${p=>p.theme.transitionShort};
+    }
+`
+
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -92,8 +109,10 @@ const Login = () => {
 
   return (
     <LoginContainer>
-      <LeftSide>
-        <LeftBackground src={LeftBackgroundImg} />
+
+      <LeftContainer>
+        <LogoNavigationLogin src={logo}/>
+        {/* <LeftBackground src={LeftBackgroundImg} />
         <LeftTopContainer>
           <AppName>Social Code</AppName>
           <Slogan>Connecting developers around the globe</Slogan>
@@ -107,9 +126,10 @@ const Login = () => {
             </ReferralForm>
           </ReferralContainer>
         </LeftBottomContainer>
-        <SocialCodeLogo src={SocialCode} />
-      </LeftSide>
-      <RightSide>
+        <SocialCodeLogo src={SocialCode} /> */}
+      </LeftContainer>
+
+      <RightContainer>
         <RightBackground src={RightBackgroundImg} />
         <RightTopContainer>
           <SignInText>Sign in</SignInText>
@@ -145,7 +165,8 @@ const Login = () => {
             </InstagramLink>
           </SocialMediaIcons>
         </RightBottomContainer>
-      </RightSide>
+      </RightContainer>
+
     </LoginContainer>
   );
 };

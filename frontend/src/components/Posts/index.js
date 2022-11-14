@@ -13,6 +13,7 @@ import {unwrapResult} from "@reduxjs/toolkit";
 import Comment from "./Comment";
 import Spinner from "../Posts/Spinner/index";
 import comment from "./Comment";
+import Navigation from "../Navigation";
 
 // STYLED COMPONENTS -start
 
@@ -196,6 +197,7 @@ const Posts = () => {
   }
   return (
     <>
+     <Navigation />
       <RowWrapper>
         <CardContainerLeft>
           <CardLeftNav />
@@ -203,7 +205,7 @@ const Posts = () => {
         <CardContainerMid>
           <CreatePost />
           <CardMidNewPost />
-{ posts.length > 0 && posts.map(post => <CardMidPost post={post}/>)}
+        { posts.length > 0 && posts.map(post => <CardMidPost post={post}/>)}
 
         </CardContainerMid>
         <CardContainerRight>

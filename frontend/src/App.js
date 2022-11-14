@@ -3,8 +3,8 @@ import Footer from "./components/Footer";
 import Posts from "./components/Posts";
 import PostsPage from "./components/PostPage";
 import Userprofile from "./components/Userprofile/Profile/index";
-import Registration from "./components/Registration/Registration";
-import RegistrationValidation from "./components/Registration/RegistrationValidation";
+// import Registration from "./components/Registration/Registration";
+// import RegistrationValidation from "./components/Registration/RegistrationValidation";
 import Login from "./components/Login";
 import { useState } from "react";
 import { Provider } from "react-redux";
@@ -37,38 +37,35 @@ function App() {
     <>
       <Provider store={store}>
         <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <div>
-            <Toaster
-              position="top-center"
-              toastOptions={{
-                success: {
-                  theme: {
-                    primary: "#4aed88",
+          <BrowserRouter>
+            <div>
+              <Toaster
+                position="top-center"
+                toastOptions={{
+                  success: {
+                    theme: {
+                      primary: "#4aed88",
+                    },
                   },
-                },
-              }}
-            />
-          </div>
-          <main className={`xtxt${toggleClassCheck}`}>
+                }}
+              />
+            </div>
+            <main className={`xtxt${toggleClassCheck}`}>
 
-
-            
-            <Navigation />
+          
+           
               <Routes>
                 <Route path="posts" element={<Posts/>} />
                 <Route path="postpage" element={<PostsPage/>} />
                 <Route path="/editor" element={<AccessEditor/>} />
                 <Route path="/editor/:roomId" element={<EditorPage_HTML_CSS_JS/>} />
                 <Route path="userprofile" element={<Userprofile/>} />
-                <Route path="login" element={<Login/>} />
-                <Route path="registration" element={<Registration/>} />
-                <Route path="registration/validation" element={<RegistrationValidation/>} />
+                {/* <Route path="registration" element={<Registration/>} /> */}
+                {/* <Route path="registration/validation" element={<RegistrationValidation/>} /> */}
                 <Route path="judgeeditor/" element={<JudgeLanding/>} />
                 <Route path="createpost/" element={<CreatePost/>} />
+                <Route path="login" element={<Login/>} />
               </Routes>
-
-
 
 
               <button

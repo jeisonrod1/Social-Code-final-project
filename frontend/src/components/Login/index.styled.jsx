@@ -1,23 +1,37 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import poster from "../../images/posters/poster1.jpeg"
 
-export const LoginContainer = styled.div`
-  color: #fff;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  font-family: "Monaco";
-  border: solid white 3px;
+// ANIMATIONS:
+export const posterMove = keyframes`
+    from {transform: translateY(0)}
+    to {background-position: 85%}
 `
 
-export const LeftSide = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+export const LoginContainer = styled.div`
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid white 3px;
+`
+
+export const LeftContainer = styled.div`
+    height: 100vh;
+    border: solid red;
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    background-image: linear-gradient(78deg, #000000a5, #18081967), url(${poster});
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 4px;
+    animation: ${posterMove} 18s linear infinite;
 `;
 
-export const RightSide = styled.div`
-  width: 50%;
+export const RightContainer = styled.div`
+  width: 60%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -210,3 +224,7 @@ export const InstagramLink = styled.a``;
 export const InstagramIcon = styled.img`
   width: 20px;
 `;
+
+
+
+
