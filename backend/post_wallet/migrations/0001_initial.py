@@ -9,6 +9,8 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
+        ('badges', '0001_initial'),
+        ('general_posts', '0001_initial'),
         ('general_posts', '0001_initial'),
         ('badges', '0001_initial'),
     ]

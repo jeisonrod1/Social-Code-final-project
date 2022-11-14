@@ -183,29 +183,3 @@ export const PasswordInput = styled.input`
   position: relative;
   top: -4px;
 `;
-export const RightBottomContainer = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  gap: 20px;
-`;
-export const SocialMediaIcons = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-`;
-export const FacebookLink = styled.a``;
-export const FacebookIcon = styled.img`
-  width: 20px;
-`;
-
-export const TwitterLink = styled.a``;
-export const TwitterIcon = styled.img`
-  width: 20px;
-`;
-export const InstagramLink = styled.a``;
-export const InstagramIcon = styled.img`
-  width: 20px;
-`;
