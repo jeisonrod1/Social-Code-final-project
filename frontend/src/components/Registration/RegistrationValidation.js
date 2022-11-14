@@ -184,12 +184,16 @@ const RegistrationValidation = () => {
       method: "POST",
       headers: new Headers({
         "Content-Type": "application/json",
+        Authorization: `Bearer ${
+          JSON.parse(localStorage.getItem("auth")).CMToken
+        }`,
       }),
       body: JSON.stringify(jsBody),
     };
 
     fetch(url, config)
       .then(response => {
+        console.log(response);
         if (response.status === 200) {
           console.log("Good");
         } else {
@@ -198,10 +202,10 @@ const RegistrationValidation = () => {
       })
       .then(data => {
         console.log(data);
-        dispatch(update_token(data.access));
-        console.log(token);
-        setTokenState(data.registration);
-        console.log(tokenState);
+        // dispatch(update_token(data.access));
+        // console.log(token);
+        // setTokenState(data.registration);
+        // console.log(tokenState);
       });
     // second fetch
     const urlAuthToken = "http://localhost:8001/backend/auth/token/";
@@ -234,16 +238,17 @@ const RegistrationValidation = () => {
       .then(response => {
         if (response.status === 200) {
           console.log("Good");
+          navigate("./login");
         } else {
           return response.json();
         }
       })
       .then(data => {
         console.log(data);
-        dispatch(update_token(data.access));
-        console.log(token);
-        setTokenState(data.registration);
-        console.log(tokenState);
+        // dispatch(update_token(data.access));
+        // console.log(token);
+        // setTokenState(data.registration);
+        // console.log(tokenState);
       });
   };
 

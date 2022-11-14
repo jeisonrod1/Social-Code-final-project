@@ -70,6 +70,7 @@ const Registration = () => {
 
   // User Infos
   const [Username, setUsername] = useState("");
+  const [emailState, setEmailState] = useState("");
   const [first_name, setFirst_Name] = useState("");
   const [last_name, setLast_Name] = useState("");
   const [location, setLocation] = useState("");
@@ -88,6 +89,7 @@ const Registration = () => {
   const handleEmailChange = e => {
     e.preventDefault();
     dispatch(update_email(e.target.value));
+    setEmailState(e.target.value);
   };
   const navigate = useNavigate();
 
@@ -111,16 +113,21 @@ const Registration = () => {
       body: JSON.stringify(jsBody),
     };
 
-    fetch(url, config).then(response => {
-      if (response.status === 200) {
-        console.log("code successfully sent, response: ");
-        navigate("/registration/validation");
-        setSuccess(true);
-        console.log("1. " + success);
-      } else {
-        return response.json();
-      }
-    });
+    fetch(url, config)
+      .then(response => {
+        console.log("code successfully sent, response: " + response);
+        if (response.status === 200) {
+          console.log("code successfully sent, response: " + response);
+          navigate("/registration/validation");
+          setSuccess(true);
+          console.log("1. " + success);
+        } else {
+          setSuccess(false);
+          return response.json();
+        }
+      })
+      .then(data => console.log(data))
+      .catch(err => console.log("Error" + err));
   };
   return (
     <>
@@ -142,7 +149,11 @@ const Registration = () => {
               onChange={handleEmailChange}
             />
           </Inputs>
-          <button>Sign Up</button>
+          {success ? (
+            <button>We've sent an email to {emailState}</button>
+          ) : (
+            <button>Sign Up</button>
+          )}
           <button
             style={{ fontSize: "10px", color: "white" }}
             onClick={() => navigate("/registration/validation")}
