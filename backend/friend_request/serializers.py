@@ -15,7 +15,7 @@ class CreatingRequestSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = FriendRequest
-        fields = ['friend_request_requester']
+        fields = '__all__'
 
 class UpdatingRequestSerializer(serializers.ModelSerializer):
 
