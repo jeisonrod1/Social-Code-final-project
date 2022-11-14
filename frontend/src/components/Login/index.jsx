@@ -68,10 +68,16 @@ const AppSlogan = styled.h1`
     bottom: 20%;
     right: 2%;
     color: white;
-    font-size: ${p=>p.theme.fontSizeXXXL};
-    border: solid yellow;
+    font-size: 50px;
     font-weight: normal;
     text-align: right;
+    font-family: 'Encode Sans SC', sans-serif;
+    line-height: 50px;
+    
+
+    b {
+      color: ${p=>p.theme.purpleLight};
+    }
     
 `
 
@@ -125,7 +131,7 @@ const Login = () => {
 
       <LeftContainer>
         <LogoNavigationLogin src={logo}/>
-        <AppSlogan>Connecting developers around the globe</AppSlogan>
+        <AppSlogan>Connecting <b>developers</b> around the globe</AppSlogan>
         {/* <LeftBackground src={LeftBackgroundImg} />
         <LeftTopContainer>
           <AppName>Social Code</AppName>
