@@ -49,10 +49,10 @@ import logo from "../../images/logos/social_code_logo.webp"
 
 
 const LogoNavigationLogin = styled.img`
-    height: 16px;
+    height: 20px;
     position: absolute;
-    top: 2%;
-    left: 2%;
+    top: 3%;
+    left: 3%;
 
     :hover {
       cursor: pointer;
@@ -130,7 +130,6 @@ const Login = () => {
       </LeftContainer>
 
       <RightContainer>
-        <RightBackground src={RightBackgroundImg} />
         <RightTopContainer>
           <SignInText>Sign in</SignInText>
           <SignInIcon src={LoginIcon} />

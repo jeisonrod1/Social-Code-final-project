@@ -3,8 +3,8 @@ import poster from "../../images/posters/poster1.jpeg"
 
 // ANIMATIONS:
 export const posterMove = keyframes`
-    from {transform: translateY(0)}
-    to {background-position: 85%}
+    from {transform: translateX(0)}
+    to {background-position: 40%}
 `
 
 export const LoginContainer = styled.div`
@@ -18,23 +18,23 @@ export const LoginContainer = styled.div`
 
 export const LeftContainer = styled.div`
     height: 100vh;
-    border: solid red;
     width: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    background-image: linear-gradient(78deg, #000000a5, #18081967), url(${poster});
+    background-image: linear-gradient(78deg, #000000a5, #04020557), url(${poster});
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 4px;
-    animation: ${posterMove} 18s linear infinite;
+    animation: ${posterMove} 7s linear infinite;
 `;
 
 export const RightContainer = styled.div`
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+    width: 60%;
+    height: 100vh;
+    display: flex;
+    background: #1a1a1a;
+    flex-direction: column;
+    justify-content: space-evenly;
 `;
 
 export const LeftBackground = styled.img`
