@@ -1,0 +1,24 @@
+body {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+main {
+  background-color: #2e3138; 
+  /* #13141 */
+}
+
+html {
+  background-color: #2e3138; 
+  /* #13141 */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+    }
+
+span, a, p, h1, h2, h3, h4, h5, h6 {
+  color: rgb(199, 191, 213);
+}
+    

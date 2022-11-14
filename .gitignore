@@ -6,3 +6,6 @@ __pycache__
 static-files
 media-files
 /judge/
+
+/.history
+.history
