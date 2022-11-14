@@ -145,7 +145,7 @@ const SocialButtons = styled.div`
 const Posts = () => {
 
   const [posts, setPosts] = useState([])
-  const [searchParam, setSearchParam] = useState(['ba'])
+  const [searchParam, setSearchParam] = useState([' '])
 
     const handleTagReact = () => {
         setSearchParam("React")
