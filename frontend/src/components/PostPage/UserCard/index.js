@@ -1,8 +1,25 @@
-import {BeingFlexed, BeingGrinded, ButtonDiv, Context, FullName, Located, UpperPart} from "../friends-style";
+import {BeingFlexed, BeingGrinded, ButtonDiv, Context, FullName, Located, UpperPart, AddFriendBtn} from "../friends-style";
 
 
 
 const UserCard = ({user}) => {
+
+    const handleFriendClick = () => {
+        var myHeaders = new Headers();
+        myHeaders.append("Accept", "application/json");
+        myHeaders.append("Authorization", localStorage.getItem('auth'));
+
+        var requestOptions = {
+          method: 'POST',
+          headers: myHeaders,
+          redirect: 'follow'
+        };
+        let url = `https://code-media.propulsion-learn.ch/backend/friends/create/${user.id}`
+        fetch(url, requestOptions)
+          .then(response => response.text())
+          .then(result => console.log(result))
+          .catch(error => console.log('error', error));
+    }
 
     return (
         <BeingGrinded key={user.id}>
@@ -35,10 +52,11 @@ const UserCard = ({user}) => {
                       </FriendBtw>
                     </Follow_add_friend_btn_container>
                   ) : (
-                    <AddFriendBtn onClick={() => handleFriendClick(user.id)}>
+
+                  )} */}
+                     <AddFriendBtn onClick={() => handleFriendClick(user.id)}>
                       ADD FRIEND
                     </AddFriendBtn>
-                  )} */}
                 </ButtonDiv>
                 <div>
                   <Context>{user.about_me}</Context>
