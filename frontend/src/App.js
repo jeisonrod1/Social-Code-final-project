@@ -53,7 +53,6 @@ function App() {
             <main className={`xtxt${toggleClassCheck}`}>
 
           
-           
               <Routes>
                 <Route path="posts" element={<Posts/>} />
                 <Route path="postpage" element={<PostsPage/>} />
@@ -75,7 +74,7 @@ function App() {
               {!btnState ? <img className="sun-icon" src={SunIcon}/> : <img className="moon-icon" src={MoonIcon}/>}
                 
               </button>
-            <Footer />
+            
           </main>
         </BrowserRouter>
         </ThemeProvider>

@@ -61,6 +61,19 @@ const LogoNavigationLogin = styled.img`
     }
 `
 
+const AppSlogan = styled.h1`
+    position: absolute;
+    height: 100px;
+    width: 50%;
+    bottom: 20%;
+    right: 2%;
+    color: white;
+    font-size: ${p=>p.theme.fontSizeXXXL};
+    border: solid yellow;
+    font-weight: normal;
+    text-align: right;
+    
+`
 
 const Login = () => {
     const [email, setEmail] = useState("")
@@ -112,10 +125,11 @@ const Login = () => {
 
       <LeftContainer>
         <LogoNavigationLogin src={logo}/>
+        <AppSlogan>Connecting developers around the globe</AppSlogan>
         {/* <LeftBackground src={LeftBackgroundImg} />
         <LeftTopContainer>
           <AppName>Social Code</AppName>
-          <Slogan>Connecting developers around the globe</Slogan>
+          <Slogan></Slogan>
         </LeftTopContainer>
         <LeftBottomContainer>
           <ReferralContainer>

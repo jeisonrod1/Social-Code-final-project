@@ -14,6 +14,7 @@ import Comment from "./Comment";
 import Spinner from "../Posts/Spinner/index";
 import comment from "./Comment";
 import Navigation from "../Navigation";
+import Footer from "../Footer";
 
 // STYLED COMPONENTS -start
 
@@ -220,6 +221,7 @@ const Posts = () => {
             </QCard>
         </CardContainerRight>
       </RowWrapper>
+      <Footer />
     </>
   );
 };

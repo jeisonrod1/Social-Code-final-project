@@ -14,6 +14,7 @@ export const LoginContainer = styled.div`
     justify-content: center;
     align-items: center;
     border: solid white 3px;
+    position: relative;
 `
 
 export const LeftContainer = styled.div`
@@ -37,24 +38,6 @@ export const RightContainer = styled.div`
     justify-content: space-evenly;
 `;
 
-export const LeftBackground = styled.img`
-  width: 50%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-`;
-
-export const RightBackground = styled.img`
-  width: 50%;
-  height: 100%;
-  object-fit: cover;
-  position: absolute;
-`;
-
-export const LeftTopContainer = styled.div`
-  position: relative;
-  scale: 0.9;
-`;
 
 export const AppName = styled.p`
   padding: 60px 0 0;
@@ -70,6 +53,7 @@ export const Slogan = styled.p`
   color: #fff;
   scale: 0.9;
 `;
+
 export const LeftBottomContainer = styled.div`
   position: absolute;
   width: 50%;
