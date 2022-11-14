@@ -44,8 +44,8 @@ export const BadgeImgContainer = styled.div`
   display: flex;
 `;
 export const BadgeImg = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 70px;
+  height: 65px;
   padding: 10px;
 `;
 export const Badge = styled.div`

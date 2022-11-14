@@ -1,5 +1,7 @@
 import React from 'react'
 import GoldBadge from '../../../images/badges/Gold.png'
+import SilverBadgeOne from "../../../images/badges/silver-1.png"
+import SilverBadgeTwo from "../../../images/badges/silver-2.png"
 import {  
     BadgesContainer,
     BadgesContent,
@@ -34,26 +36,26 @@ const ProfileBadges = () => {
           <BadgeImgContainer>
             <BadgeImg src={GoldBadge} />
             <Badge>
-              <Score>78</Score>
-              <BadgeType>Gold badges</BadgeType>
+              <Score>92</Score>
+              <BadgeType>Gold badge</BadgeType>
             </Badge>
           </BadgeImgContainer>
         </BadgeContainer>
         <BadgeContainer>
           <BadgeImgContainer>
-            <BadgeImg src={GoldBadge} />
+            <BadgeImg src={SilverBadgeOne} />
             <Badge>
-              <Score>78</Score>
-              <BadgeType>Gold badges</BadgeType>
+              <Score>68</Score>
+              <BadgeType>Silver badge</BadgeType>
             </Badge>
           </BadgeImgContainer>
         </BadgeContainer>
         <BadgeContainer>
           <BadgeImgContainer>
-            <BadgeImg src={GoldBadge} />
+            <BadgeImg src={SilverBadgeTwo} />
             <Badge>
-              <Score>78</Score>
-              <BadgeType>Gold badges</BadgeType>
+              <Score>55</Score>
+              <BadgeType>Silver badge</BadgeType>
             </Badge>
           </BadgeImgContainer>
         </BadgeContainer>
