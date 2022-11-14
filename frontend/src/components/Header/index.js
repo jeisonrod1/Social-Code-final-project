@@ -94,7 +94,7 @@ const Header = () => {
               navigate("../postpage");
             }}
           >
-            PostPage
+            Find Friends
           </a>
           <a
             className="plain"
@@ -110,7 +110,7 @@ const Header = () => {
               navigate("../userprofile");
             }}
           >
-            UserProfile
+            User Profile
           </a>
           <div className="orange">
             <a
