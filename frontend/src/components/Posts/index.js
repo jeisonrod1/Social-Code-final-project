@@ -7,7 +7,7 @@ import CardMidPost from "./CardMidPost/index.js";
 import CardMidNewPost from "./CardMidNewPost/index.js";
 import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {unwrapResult} from "@reduxjs/toolkit";
 import Comment from "./Comment";
 import comment from "./Comment";
@@ -81,15 +81,94 @@ const Navbar = styled.div`
   }
 `;
 
+const QCard = styled.div`
+  border-top: 5px solid #492d71;
+  margin: 8px;
+  padding: 8px 8px 32px 8px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  justify-content: space-between;
+  flex-direction: column;
+  border: 1px solid #5052632e;
+  background-color: rgba(126, 126, 126, 0.12);
+  border-radius: 8px;
+  .wrapper {
+    display: flex;
+  }
+  .image {
+    width: 150px;
+    margin: 16px;
+  }
+  p,
+  h5,
+  h3 {
+    margin: 8px 8px 0 8px;
+    font-weight: 500;
+  }
+  p:hover {
+    font-weight: 700;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+`;
+
+const SocialButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px;
+  border-top: 1px dashed lightgrey;
+  padding-top: 16px;
+  button {
+    background-color: #492d71;
+    color: white;
+    padding: 6px;
+    border-radius: 16px;
+  }
+  svg {
+    fill: white;
+  }
+  img {
+    margin-right: 8px;
+    height: 20px;
+  }
+  div {
+    display: flex;
+    align-items: center;
+  }
+`;
+
 // STYLED COMPONENTS -end
 
 const Posts = () => {
 
   const [posts, setPosts] = useState([])
+  const [searchParam, setSearchParam] = useState(['ba'])
+
+    const handleTagReact = () => {
+        setSearchParam("React")
+    }
+    const handleTagBackend = () => {
+        setSearchParam("Backend")
+    }
+    const handleTagFrontend = () => {
+        setSearchParam("Frontend")
+    }
+    const handleTagJobs = () => {
+            setSearchParam("Jobs")
+        }
+    const handleTagMemes = () => {
+            setSearchParam("Memes")
+        }
+    const handleTagFinalProject = () => {
+            setSearchParam("Finalproject")
+        }
 
   useEffect(() => {
     fetchPosts()
-  }, []);
+  }, [searchParam]);
 
   const fetchPosts = () => {
     var myHeaders = new Headers();
@@ -101,7 +180,7 @@ const Posts = () => {
       redirect: 'follow'
     };
 
-    fetch("https://code-media.propulsion-learn.ch/backend/codepost/", requestOptions)
+    fetch(`https://code-media.propulsion-learn.ch/backend/codepost/search/?search=${searchParam}`, requestOptions)
         .then(response => response.json())
         .then(result => setPosts(result))
         .catch(error => console.log('error', error));
@@ -119,7 +198,15 @@ const Posts = () => {
 
         </CardContainerMid>
         <CardContainerRight>
-          <CardRightNav />
+              <QCard>
+                <h3>Channels:</h3>
+                <p onClick={handleTagJobs}>#SwissJobs</p>
+                <p onClick={handleTagMemes}>#Memes</p>
+                <p onClick={handleTagFinalProject}>#Final Projects</p>
+                <p onClick={handleTagReact}>#React.js</p>
+                <p onClick={handleTagFrontend}>#Frontend</p>
+                <p onClick={handleTagBackend}>#Backend</p>
+            </QCard>
         </CardContainerRight>
       </RowWrapper>
     </>
