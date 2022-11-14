@@ -163,8 +163,9 @@ const RegistrationValidation = () => {
 
   const handleSignUp = e => {
     e.preventDefault();
-    const url = "http://localhost:8001/backend/registration/validation/";
-    // "https://code-media.propulsion-learn.ch/backend/registration/validation/";
+    const url =
+      "https://code-media.propulsion-learn.ch/backend/registration/validation/";
+    //  "http://localhost:8001/backend/registration/validation/";
     const jsBody = {
       email: email,
       username: username,

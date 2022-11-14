@@ -98,8 +98,8 @@ const Registration = () => {
   const handleSignUp = e => {
     e.preventDefault();
     // console.log(e);
-    const url = "http://localhost:8001/backend/registration/";
-    // "https://code-media.propulsion-learn.ch/backend/registration/";
+    const url = "https://code-media.propulsion-learn.ch/backend/registration/";
+    //  "http://localhost:8001/backend/registration/";
     const jsBody = {
       email: email,
     };
