@@ -1,11 +1,11 @@
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User
 from django.db.models import Q
-from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView
+from rest_framework.generics import CreateAPIView, ListAPIView, RetrieveUpdateDestroyAPIView, GenericAPIView
 from rest_framework.response import Response
 
 from friend_request.models import FriendRequest
-from friend_request.serializers import CreatingRequestSerializer, GettingRequestSerializer, UpdatingRequestSerializer
+from friend_request.serializers import CreatingRequestSerializer, GettingRequestSerializer, UpdatingRequestSerializer, FriendsSerializer
 
 User = get_user_model()
 class CreateRequestView(CreateAPIView):
@@ -26,11 +26,11 @@ class ListInvolvedRequestView(ListAPIView):
 
 
 class ListAcceptedRequestsView(ListAPIView):
-    serializer_class = GettingRequestSerializer
-    queryset = FriendRequest.objects.all()
+    serializer_class = FriendsSerializer
+    queryset = FriendRequest.objects.filter()
 
     def get_queryset(self):
-        return FriendRequest.objects.filter(Q(status="A"), Q(request=self.request.user) | Q(receiver=self.request.user))
+        return User.objects.all().filter(Q(friend_request_requester__receiver=self.request.user) | Q(friend_request_receiver__request=self.request.user)).filter(friend_request_requester__status="A")
 
 
 class RetrieveUpdateDestroyRequestView(RetrieveUpdateDestroyAPIView):
