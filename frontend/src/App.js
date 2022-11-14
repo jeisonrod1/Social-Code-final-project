@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Posts from "./components/Posts";
 import PostsPage from "./components/PostPage";
@@ -22,6 +21,9 @@ import { Toaster } from "react-hot-toast";
 import CreatePost from "./components/CreatePost/CreateCodePost";
 import SunIcon from "./images/icons/svgs/sun.svg"
 import MoonIcon from "./images/icons/svgs/moon.svg"
+import Navigation from "./components/Navigation";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./style";
 
 function App() {
   const [btnState, setBtnState] = useState(false);
@@ -34,6 +36,7 @@ function App() {
   return (
     <>
       <Provider store={store}>
+        <ThemeProvider theme={theme}>
         <BrowserRouter>
           <div>
             <Toaster
@@ -48,7 +51,7 @@ function App() {
             />
           </div>
           <main className={`xtxt${toggleClassCheck}`}>
-            <Header /> {/* Mads */}
+            <Navigation /> {/* Mads */}
             <Routes>
               <Route path="posts" element={<Posts />} /> {/* Mads */}
               <Route path="postpage" element={<PostsPage />} />
@@ -59,17 +62,17 @@ function App() {
                 element={<EditorPage_HTML_CSS_JS />}
               ></Route>
               {/* Mads */}
-              <Route path="userprofile" element={<Userprofile />} />{" "}
+              <Route path="userprofile" element={<Userprofile />} />
               {/* Mads */}
               <Route path="login" element={<Login />} /> {/* Mads */}
-              <Route path="registration" element={<Registration />} />{" "}
+              <Route path="registration" element={<Registration />} />
               <Route
                 path="registration/validation"
                 element={<RegistrationValidation />}
               />{" "}
               {/* Mads */}
-              <Route path="judgeeditor/" element={<JudgeLanding />} />{" "}
-              <Route path="createpost/" element={<CreatePost />} />{" "}
+              <Route path="judgeeditor/" element={<JudgeLanding />} />
+              <Route path="createpost/" element={<CreatePost />} />
               {/* Mads */}
             </Routes>
             <button
@@ -82,6 +85,7 @@ function App() {
             <Footer /> {/* Mads */}
           </main>
         </BrowserRouter>
+        </ThemeProvider>
       </Provider>
     </>
   );
