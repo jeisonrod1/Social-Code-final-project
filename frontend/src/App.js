@@ -24,6 +24,7 @@ import MoonIcon from "./images/icons/svgs/moon.svg"
 import Navigation from "./components/Navigation";
 import { ThemeProvider } from "styled-components";
 import { theme } from "./style";
+import Signup from "./components/Signup";
 
 function App() {
   const [btnState, setBtnState] = useState(false);
@@ -53,7 +54,7 @@ function App() {
                     />
                     </div>
                   <main className={`xtxt${toggleClassCheck}`}>
-                    <Navigation />
+              
                     <Routes>
                       <Route path="/" element={<Posts />} />
                       <Route path="posts" element={<Posts />} />
@@ -64,10 +65,9 @@ function App() {
                       <Route path="userprofile/" element={<Userprofile />} />
                       <Route path="my_friends/" element={<FriendsPage/>}/>
                       <Route path="judgeeditor/" element={<JudgeLanding />} />
-
                       <Route path="login" element={<Login />} />
                       <Route path="registration" element={<Registration />} />
-
+                      <Route path="/signup" element={<Signup />} />
 
                     </Routes>
                     <button
@@ -77,7 +77,7 @@ function App() {
                   {!btnState ? <img className="sun-icon" src={SunIcon}/> : <img className="moon-icon" src={MoonIcon}/>}
 
                     </button>
-                    <Footer />
+                    
                   </main>
 
 
