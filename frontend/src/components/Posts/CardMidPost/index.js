@@ -383,6 +383,11 @@ const CardMidPost = ({ post }) => {
                 </Div7>
                 {outputDetails && <OutputDetails outputDetails={outputDetails} />}
           </Div6>
+          <div>
+            <h6>Answers</h6>
+                <Answers/>
+          </div>
+
         {/*<div className={`${toggleClassCheck}`}>*/}
         <h6>Comments:</h6>
           <CreateComment/>
