@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import Footer from "../Footer"
 import Navigation from "../Navigation"
 import UserCard from "../UserCard"
-import { UsersContainer, UsersListContainer } from "./styled"
+import { UsersListContainer } from "./styled"
 
 
 const Users = () => {

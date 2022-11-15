@@ -29,14 +29,14 @@ const UserCard = ({user}) => {
               <img src={user.avatar ? user.avatar : avatar_placeholder}/>
             </Avatar>
 
-            {/* <img src={user.avatar}/> */}
+            <h1>{user.first_name} {user.last_name}</h1>
+               
+                
               <div>
                 <div>
                 </div>
                 <div>
-                  <div>
-                    {user.first_name} {user.last_name}
-                  </div>
+                  
                   <div>{user.location}</div>
                 </div>
                 <div>

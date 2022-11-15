@@ -12,13 +12,20 @@ export const UserCardContainer = styled.div`
     background: #282828;
     position: relative;
     margin-top: 60px;
+
+    h1 {
+        font-family: 'Encode Sans SC', sans-serif;
+        font-size: ${p=>p.theme.fontSizeXL};
+        font-weight: bold;
+        color: white;
+    }
     
 `
 
 export const Avatar = styled.div`
     height: 150px;
     width: 150px;
-    border: solid #282828 6px;
+    border: solid #282828 4x;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -31,5 +38,6 @@ export const Avatar = styled.div`
         height: 100%;
         width: 100%;
     }
+
 
 `
