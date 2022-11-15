@@ -154,7 +154,6 @@ const Div6 = styled.div`
     display: flex; 
     flex-direction: column; 
     flex-shrink: 0; 
-    width: 30%;
 `;
 const Div7 = styled.div`
     display: flex; 
@@ -168,12 +167,12 @@ const CustomButton = styled.button`
     padding-left: 1rem;
     padding-right: 1rem; 
     margin-top: 1rem; 
-    background-color: #ffffff; 
+    background-color: transparent; 
     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
     transition-duration: 200ms; 
     flex-shrink: 0; 
     border-radius: 0.375rem; 
-    border-width: 2px; 
+    border-width: 1px; 
     border-color: #000000; 
     opacity: !code ? 50 : 0
     :hover {
@@ -344,12 +343,12 @@ const CardMidPost = ({ post }) => {
             />
       <div className="header">
         <div className="left">
-          <img className="image" src={post.user.avatar}></img>
-          {/*TODO: needs work with the image*/}
+          <img className="image" src={post.author.image}></img>
         </div>
         <div className="right">
-          <h5>{post.title}</h5>
+          <h5>{post.author.username}</h5>
           <p className="subtitle">Asked {post.created}</p>
+          <h5>{post.title}</h5>
         </div>
       </div>
       <div className="body">
@@ -385,7 +384,7 @@ const CardMidPost = ({ post }) => {
           </Div6>
         {/*<div className={`${toggleClassCheck}`}>*/}
         <h6>Comments:</h6>
-        {post.answersToComments.map((comment) => (
+        {post.postComments.map((comment) => (
           <Comment key={comment.id} comment={comment} />
         ))}
       </div>
@@ -405,10 +404,7 @@ const CardMidPost = ({ post }) => {
           <input type="submit" value="Post It" />
         </form>
       </div>
-      <h3>Answers:</h3>
-      {post.answersToCodePost.map((answers) => (
-        <Answers key={answers.id} answers={answers} />
-      ))}
+
       <SocialButtons>
         <div>
           <img src={heart}></img>

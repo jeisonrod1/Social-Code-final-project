@@ -8,7 +8,6 @@ import CardMidNewPost from "./CardMidNewPost/index.js";
 import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
 import React, {useEffect, useState} from "react";
-import CreatePost from "../../components/CreatePost/CreateCodePost";
 import {unwrapResult} from "@reduxjs/toolkit";
 import Comment from "./Comment";
 import Spinner from "../Posts/Spinner/index";
@@ -187,7 +186,8 @@ const Posts = () => {
       redirect: 'follow'
     };
 
-    fetch(`https://code-media.propulsion-learn.ch/backend/codepost/search/?search=${searchParam}`, requestOptions)
+    fetch(`
+http://localhost:8001/backend/codepost/search/?search=${searchParam}`, requestOptions)
         .then(response => response.json())
         .then(result => setPosts(result))
         .catch(error => console.log('error', error));
@@ -204,9 +204,8 @@ const Posts = () => {
           <CardLeftNav />
         </CardContainerLeft>
         <CardContainerMid>
-          <CreatePost />
           <CardMidNewPost />
-        { posts.length > 0 && posts.map(post => <CardMidPost post={post}/>)}
+        { posts.length > 0 && posts.map(post => <CardMidPost key={post.id} post={post}/>)}
 
         </CardContainerMid>
         <CardContainerRight>

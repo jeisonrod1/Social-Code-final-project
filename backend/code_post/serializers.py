@@ -1,25 +1,44 @@
 from rest_framework import serializers
-
-from answers.serializers import AnswersSerializer
+from answers.models import Answers
 from code_post.models import CodePost
-from comments.serializers import CommentsSerializer
+from django.contrib.auth import get_user_model
 
-from user.serializers import UserSerializer
+from comments.models import Comments
+
+User = get_user_model()
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'wallet', 'username', 'avatar', 'user_level', 'points']
+
+class CommentsSerializer(serializers.ModelSerializer):
+    author = UserSerializer(read_only=True)
+    class Meta:
+        model = Comments
+        fields = '__all__'
 
 
+class AnswersSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Answers
+        exclude = ['post', ]
+
+    author = UserSerializer(read_only=True)
+    replies = CommentsSerializer(read_only=True, many=True)
 
 class CodePostSerializer(serializers.ModelSerializer):
+    author = UserSerializer(read_only=True)
+    postComments = AnswersSerializer(many=True, read_only=True)
 
     class Meta:
         model = CodePost
-        fields = "__all__"
-
-    user = UserSerializer(read_only=True)
-    answersToComments = CommentsSerializer(many=True, read_only=True)
-    answersToCodePost = AnswersSerializer(many=True, read_only=True)
+        fields = '__all__'
 
 
 class CreateCodePostSerializer(serializers.ModelSerializer):
     class Meta:
         model = CodePost
         fields = '__all__'
+    author = UserSerializer(read_only=True)

@@ -1,16 +1,14 @@
 
 
-const Answers = ({answers}) => {
+const Answers = ({reply}) => {
 
     return (
         <>
+            <p>{reply.author.username}</p>
+            <img src={reply.author.avatar} />
             <p>
-                {answers.textContent}
+                {reply.content}
             </p>
-            <p>
-                {answers.code}
-            </p>
-            <img source={answers.image}/>
         </>
     )
 }
