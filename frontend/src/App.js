@@ -1,9 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { useState } from "react";
-import { Provider } from "react-redux";
-
-
 
 import Footer from "./components/Footer";
 import Posts from "./components/Posts";
@@ -38,7 +35,7 @@ function App() {
 
   return (
             <>
-              <Provider>
+
                 <ThemeProvider theme={theme}>
                   <BrowserRouter>
                     <div>
@@ -61,10 +58,10 @@ function App() {
                       <Route path="/" element={<Posts />} />
                       <Route path="posts" element={<Posts />} />
                       <Route path="createpost/" element={<CreatePost />} />
-                      <Route path="find_friends" element={<FriendsPage />} />
+                      <Route path="/find_friends" element={<FriendsPage />} />
                       <Route path="/editor" element={<AccessEditor />} />
                       <Route path="/editor/:roomId" element={<EditorPage_HTML_CSS_JS />} />
-                      <Route path="userprofile" element={<Userprofile />} />
+                      <Route path="userprofile/" element={<Userprofile />} />
                       <Route path="my_friends/" element={<FriendsPage/>}/>
                       <Route path="judgeeditor/" element={<JudgeLanding />} />
 
@@ -86,7 +83,7 @@ function App() {
 
                 </BrowserRouter>
                 </ThemeProvider>
-              </Provider>
+
             </>
           );
         }

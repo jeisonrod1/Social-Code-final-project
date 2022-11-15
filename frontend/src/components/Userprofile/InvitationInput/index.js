@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from "styled-components"
 
-const InvitationInput = () => {
 
     //Start styled-components
 
@@ -26,6 +25,7 @@ const InvitationInput = () => {
     }
 
     `
+const InvitationInput = () => {
 
     const handleClick = (evt) => evt.preventDefault()
 
