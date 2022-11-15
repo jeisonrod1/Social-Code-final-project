@@ -19,7 +19,7 @@ import logo from "../../images/logos/social_code_logo.webp"
 const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const [token, setToken] = useState("")
+    const [token, setToken] = useState(localStorage.getItem('auth'))
     const navigate = useNavigate()
 
     const handleEmailChange = e => setEmail(e.target.value)
@@ -54,6 +54,8 @@ const Login = () => {
           console.log("the token was stored to local storage");
           navigate("/posts")
       }
+
+
     }, [token]);
 
 
