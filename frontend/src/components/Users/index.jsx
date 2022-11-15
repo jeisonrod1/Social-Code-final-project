@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react"
 import Footer from "../Footer"
 import Navigation from "../Navigation"
 import UserCard from "../UserCard"
-import { UsersContainer } from "./styled"
+import { UsersContainer, UsersListContainer } from "./styled"
 
 
 const Users = () => {
@@ -38,11 +38,11 @@ const Users = () => {
     return (
         <>
             <Navigation />
-            <UsersContainer>
+            <UsersListContainer>
                 {users.map(user => (
                     <UserCard user={user} key={user.id} />
                 ))}
-            </UsersContainer>
+            </UsersListContainer>
             <Footer />
         </>
     )

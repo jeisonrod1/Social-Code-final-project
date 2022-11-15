@@ -1,5 +1,6 @@
 import {useLocation} from "react-router-dom";
-import { UserCardContainer } from "./styled";
+import { Avatar, UserCardContainer } from "./styled";
+import avatar_placeholder from "../../images/logos/logo-color.png"
 
 
 const UserCard = ({user}) => {
@@ -24,13 +25,13 @@ const UserCard = ({user}) => {
 
     return (
         <UserCardContainer key={user.id}>
+            <Avatar>
+              <img src={user.avatar ? user.avatar : avatar_placeholder}/>
+            </Avatar>
+
+            {/* <img src={user.avatar}/> */}
               <div>
                 <div>
-                  <img
-                    src={user.avatar}
-                    alt="Profile Image"
-                    style={{ width: "60px" }}
-                  />
                 </div>
                 <div>
                   <div>
