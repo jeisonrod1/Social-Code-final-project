@@ -97,7 +97,7 @@ margin-left: 215px;
 
 `;
 export const AboutTitle = styled.div`
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 700;
   margin-bottom: 15px;
   padding: 20px 25px 10px;

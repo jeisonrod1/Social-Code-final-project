@@ -60,7 +60,7 @@ export const Slogan = styled.h1`
     bottom: 20%;
     right: 2%;
     color: white;
-    font-size: 50px;
+    font-size: ${p=>p.theme.fontSizeXXXL};
     font-weight: normal;
     text-align: right;
     font-family: 'Encode Sans SC', sans-serif;
@@ -68,6 +68,7 @@ export const Slogan = styled.h1`
 
     b {
       color: ${p=>p.theme.purpleLight};
+      font-size: ${p=>p.theme.fontSizeXXXL};
     }
 
 `
@@ -110,12 +111,12 @@ export const LoginForm = styled.form`
 
       h3 {
         margin: 0;
-        font-size: ${p=>p.theme.fontSizeXS};
+        font-size: ${p=>p.theme.fontSizeS};
         font-weight: normal;
       }
 
       input {
-          height: 20px;
+          height: 28px;
           width: 200px;
           border: none;
           border-bottom: solid white 1px;

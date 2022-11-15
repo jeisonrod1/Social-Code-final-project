@@ -59,14 +59,15 @@ export const Slogan = styled.h1`
     bottom: 20%;
     left: 2%;
     color: white;
-    font-size: 40px;
     font-weight: normal;
     text-align: left;
     font-family: "Encode Sans SC", sans-serif;
     line-height: 50px;
+    font-size: ${p => p.theme.fontSizeXXXL};
 
     b {
         color: ${p => p.theme.purpleLight};
+        font-size: ${p => p.theme.fontSizeXXXL};
     }
 `
 
@@ -107,12 +108,12 @@ export const SignupForm = styled.form`
 
         h3 {
             margin: 0;
-            font-size: ${p => p.theme.fontSizeXS};
+            font-size: ${p => p.theme.fontSizeS};
             font-weight: normal;
         }
 
         input {
-            height: 20px;
+            height: 28px;
             width: 200px;
             border: none;
             border-bottom: solid white 1px;
