@@ -13,7 +13,6 @@ export const LoginContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid white 3px;
     position: relative;
 `
 
@@ -79,6 +78,13 @@ export const InvitationContainer = styled.p`
     color: white;
     position: absolute;
     bottom: 10%;
+
+    :hover {
+      color: ${p=>p.theme.purpleLight};
+      transition: 0.1s;
+      cursor: pointer;
+    }
+
 `
 
 // FORM
@@ -89,7 +95,6 @@ export const LoginForm = styled.form`
     justify-content: center;
     width: 350px;
     height: 400px;
-    border:solid yellow;
 
     h2 {
       font-family: 'Encode Sans SC', sans-serif;
@@ -151,103 +156,29 @@ export const LoginForm = styled.form`
 `;
 
 
+export const SocialMediaIconsContainer = styled.div`
+    position: absolute;
+    top:0;
+    width: 30px;
+    left:-15px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding-top: 20px;
 
+    a {
+      img {
+        height: 26px;
+        opacity: 0.6;
 
+        :hover {
+          cursor: pointer;
+          opacity: 1;
+          transition: 0.1s;
+        }
+      }
+    }
 
-
-
-
-export const ReferralContainer = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  top: 100px;
-`;
-export const ReferralText = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-export const ReferralTitle = styled.div`
-  display: flex;
-  justify-content: center;
-`;
-export const ReferralForm = styled.form`
-  display: flex;
-  justify-content: center;
-`;
-
-export const ReferralInput = styled.input`
-  width: 200px;
-  padding: 5px 8px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  font-size: 20px;
-`;
-export const SocialCodeLogo = styled.img`
-  width: 20%;
-  position: relative;
-  top: 50px;
-  margin: 0 auto;
-`;
-export const RightTopContainer = styled.div`
-  position: relative;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  gap: 10px;
-  bottom: 20px;
-  right: 60px;
-  scale: 1.1;
-`;
-export const SignInText = styled.button`
-  border: none;
-  background: none;
-  color: white;
-  font-family: "Monaco";
-  cursor: pointer;
-`;
-export const SignInIcon = styled.img`
-  scale: 0.8;
-`;
-export const RightMiddleContainer = styled.div`
-  position: relative;
-  margin: 0 auto;
-`;
-
-
-
-
-
-export const RightBottomContainer = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  gap: 20px;
-`;
-export const SocialMediaIcons = styled.div`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-`;
-export const FacebookLink = styled.a``;
-export const FacebookIcon = styled.img`
-  width: 20px;
-`;
-
-export const TwitterLink = styled.a``;
-export const TwitterIcon = styled.img`
-  width: 20px;
-`;
-export const InstagramLink = styled.a``;
-export const InstagramIcon = styled.img`
-  width: 20px;
-`;
-
-
-
-
+`

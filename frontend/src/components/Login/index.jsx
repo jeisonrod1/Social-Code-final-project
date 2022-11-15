@@ -1,20 +1,12 @@
 import {
   LoginContainer,
   Slogan,
-  SignInForm,
-  RightBottomContainer,
-  SocialMediaIcons,
-  FacebookLink,
-  FacebookIcon,
-  TwitterLink,
-  TwitterIcon,
-  InstagramLink,
-  InstagramIcon,
   RightContainer,
   LeftContainer,
   LogoNavigationLogin,
   InvitationContainer,
-  LoginForm
+  LoginForm,
+  SocialMediaIconsContainer
 } from "./index.styled";
 import IconFB from "../../images/icons/icon/facebook.png"
 import IconTW from "../../images/icons/icon/twitter.png"
@@ -99,24 +91,18 @@ const Login = () => {
         </LoginForm>
 
 
-        <InvitationContainer>
+        <InvitationContainer onClick={()=>navigate("/registration")}>
           No Account? Do you have the code?
         </InvitationContainer>
 
 
-        <RightBottomContainer>
-          <SocialMediaIcons>
-            <FacebookLink href="https://www.facebook.com">
-              <FacebookIcon src={IconFB} />
-            </FacebookLink>
-            <TwitterLink href="https://www.twitter.com">
-              <TwitterIcon src={IconTW}/>
-            </TwitterLink>
-            <InstagramLink href="https://www.instagram.com">
-              <InstagramIcon src={IconIG}/>
-            </InstagramLink>
-          </SocialMediaIcons>
-        </RightBottomContainer>
+        <SocialMediaIconsContainer>
+          
+            <a href="https://www.facebook.com"><img src={IconFB}/></a>
+            <a href="https://www.twitter.com"><img src={IconTW}/></a>
+            <a href="https://www.instagram.com"><img src={IconIG}/></a>
+        </SocialMediaIconsContainer>
+
       </RightContainer>
 
     </LoginContainer>
