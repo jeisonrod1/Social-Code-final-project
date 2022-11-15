@@ -2,10 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { useState } from "react";
 
-import Footer from "./components/Footer";
+
 import Posts from "./components/Posts";
 import Userprofile from "./components/Userprofile/Profile/index";
- import Registration from "./components/Registration/Registration";
+import Registration from "./components/Registration/";
 
 import Login from "./components/Login";
 import FriendsPage from "./components/FriendsPage";
@@ -66,7 +66,7 @@ function App() {
                       <Route path="my_friends/" element={<FriendsPage/>}/>
                       <Route path="judgeeditor/" element={<JudgeLanding />} />
                       <Route path="login" element={<Login />} />
-                      <Route path="registration" element={<Registration />} />
+                      <Route path="/registration" element={<Registration />} />
                       <Route path="/signup" element={<Signup />} />
 
                     </Routes>
