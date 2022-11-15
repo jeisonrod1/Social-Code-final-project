@@ -6,6 +6,7 @@ import share from "../../../images/icons/svgs/share.svg";
 import meme from "../../../images/memes/ten-sec.jpg";
 import profile1 from "../../../images/users/profile1.jpg";
 import CreatePost from "../../CreatePost/CreateCodePost";
+import { useState } from 'react';
 
 // STYLED COMPONENTS -start
 
@@ -78,6 +79,12 @@ const NewPostButtons = styled.div`
 // STYLED COMPONENTS -end
 
 const CardMidNewPost = () => {
+  const [isShown, setIsShown] = useState(false);
+  const handleClick = event => {
+    // 👇️ toggle shown state
+    setIsShown(current => !current);
+  }
+
   return (
     <QCard>
       <div className="body">
@@ -96,10 +103,13 @@ const CardMidNewPost = () => {
           <button>[ AddImage ]</button>
         </div>
         <div>
-          <button>[ OpenEditor ]</button>
+        <button onClick={handleClick}>[ ToggleCodeEditor ]</button>
         </div>
       </NewPostButtons>
+      {isShown && <CreatePost />}
     </QCard>
+  
   );
 };
+
 export default CardMidNewPost;
