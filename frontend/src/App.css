@@ -3,11 +3,6 @@ body {
   overflow-x: hidden;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 .btn-x {
   z-index: 3000;
   position: fixed;
@@ -39,7 +34,6 @@ border: none;
   position: absolute;
   left: 24px;
   top: 12px;
-
 }
 
 main {
@@ -110,10 +104,10 @@ button {
   cursor: pointer;
 }
 
-.dark button:hover {
-  border: none;
-  /* background-color: #515160; */
-}
+/* .dark button:hover { */
+  /* border: none; */
+  /* /~ background-color: #515160; ~/ */
+/* }' */
 
 input {
   background-color: #2d2d38;
