@@ -22,5 +22,5 @@ class CodePost(models.Model):
     image = models.ImageField(upload_to=code_directory_path, height_field=None, width_field=None, max_length=100, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    user = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='codePost')
+    author = models.ForeignKey(to=User, on_delete=models.CASCADE, related_name='codePosts')
 

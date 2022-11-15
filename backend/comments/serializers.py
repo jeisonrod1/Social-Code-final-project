@@ -1,13 +1,17 @@
 from rest_framework import serializers
-
-from answers.serializers import AnswersSerializer
 from comments.models import Comments
-from user.serializers import UserSerializer
+from django.contrib.auth import get_user_model
 
+
+User = get_user_model()
+class UserSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = ['id', 'username']
 
 class CommentsSerializer(serializers.ModelSerializer):
-    user = UserSerializer(read_only=True)
+    author = UserSerializer(read_only=True)
     class Meta:
         model = Comments
         fields = '__all__'
-    answers = AnswersSerializer(many=True)
