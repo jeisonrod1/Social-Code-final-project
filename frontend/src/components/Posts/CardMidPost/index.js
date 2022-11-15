@@ -154,7 +154,6 @@ const Div6 = styled.div`
     display: flex; 
     flex-direction: column; 
     flex-shrink: 0; 
-    width: 30%;
 `;
 const Div7 = styled.div`
     display: flex; 
@@ -168,12 +167,12 @@ const CustomButton = styled.button`
     padding-left: 1rem;
     padding-right: 1rem; 
     margin-top: 1rem; 
-    background-color: #ffffff; 
+    background-color: transparent; 
     transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform; 
     transition-duration: 200ms; 
     flex-shrink: 0; 
     border-radius: 0.375rem; 
-    border-width: 2px; 
+    border-width: 1px; 
     border-color: #000000; 
     opacity: !code ? 50 : 0
     :hover {

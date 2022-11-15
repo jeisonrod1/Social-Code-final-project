@@ -167,7 +167,7 @@ function CreatePost() {
 
           
           <SubmitButtonDiv>
-            <SubmitButtonButton type="submit">SUBMIT</SubmitButtonButton>
+            <SubmitButtonButton type="submit">Post It</SubmitButtonButton>
           </SubmitButtonDiv>
         </InputGridDiv>
       </BodyForm>
