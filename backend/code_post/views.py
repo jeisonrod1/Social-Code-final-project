@@ -12,7 +12,7 @@ class ListCreateCodePostView(ListCreateAPIView):
     permission_classes = [IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
-        serializer.save(user=self.request.user)
+        serializer.save(author=self.request.user)
 
 
 class RetrieveUpdateDestroyCodePostView(RetrieveUpdateDestroyAPIView):
