@@ -54,7 +54,7 @@ const Userprofile = () => {
 
   useEffect(() => {
     fetchProfile();
-  }, );
+  }, [token]);
 
 
     return (
