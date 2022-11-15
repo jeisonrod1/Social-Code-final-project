@@ -15,9 +15,6 @@ export const UsersContainer = styled.div`
 `
 
 
-export const Border1pxSolidBlack = styled.div`
-  border: 1px solid black;
-`;
 
 export const Container = styled.div`
   display: flex;

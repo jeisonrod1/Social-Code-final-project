@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react"
 import Footer from "../Footer"
 import Navigation from "../Navigation"
 import UserCard from "../UserCard"
+import { UsersContainer } from "./styled"
+
 
 const Users = () => {
     const [users, setUsers] = useState([])
@@ -11,7 +13,7 @@ const Users = () => {
         fetchFriends()
     }, [])
 
-    console.log(friends && friends)
+    console.log(users && users)
 
     const fetchFriends = () => {
         var myHeaders = new Headers()

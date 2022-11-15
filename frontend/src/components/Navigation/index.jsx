@@ -136,7 +136,7 @@ const Navigation = () => {
 
         <div className="right">
           <NavigationItem onClick={() => navigate("/posts")}>Posts</NavigationItem>
-          <NavigationItem onClick={() => navigate("/find_friends")}>Friends</NavigationItem>
+          <NavigationItem onClick={() => navigate("/users")}>Friends</NavigationItem>
           <NavigationItem onClick={() => navigate("/editor")}>Editor</NavigationItem>
           <NavigationItem onClick={() => navigate("/userProfile")}><img src={user_avatar}/></NavigationItem>
         </div>
