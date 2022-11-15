@@ -19,7 +19,6 @@ const Span1 = styled.span`
     padding-bottom: 0.25rem; 
     padding-left: 0.5rem;
     padding-right: 0.5rem; 
-    background-color: #F3F4F6; 
     font-weight: 600; 
     border-radius: 0.375rem; 
 
