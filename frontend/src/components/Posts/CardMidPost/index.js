@@ -348,8 +348,9 @@ const CardMidPost = ({ post }) => {
           {/*TODO: needs work with the image*/}
         </div>
         <div className="right">
-          <h5>{post.title}</h5>
+          <h5>{post.user.username}</h5>
           <p className="subtitle">Asked {post.created}</p>
+          <h5>{post.title}</h5>
         </div>
       </div>
       <div className="body">
