@@ -21,6 +21,8 @@ export const theme = {
     colorSuccess: '#0CCE6B',
     colorError: '#d60801',
     colorPending: 'orange',
+    backgroundBlack: "#212121",
+    backgroundBlackLight: "#333333",
 
     // border Radius
     borderRadiusS: "2px",

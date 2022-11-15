@@ -16,6 +16,7 @@ const NavigationContainer = styled.div`
     right: 0;
     z-index: 1;
     padding: 0 2%;
+    background: ${p=>p.theme.backgroundBlack};
 
     .left {
       height: 100%;
@@ -32,7 +33,7 @@ const NavigationContainer = styled.div`
       justify-content: flex-end;
       align-items: center;
     }
-
+/* 
 
   .light & {
     background-color: #e2e2e2;
@@ -51,7 +52,7 @@ const NavigationContainer = styled.div`
       border-radius: 8px;
       cursor: pointer;
     }
-  }
+  } */
 
   .right-nav {
     display: flex;
