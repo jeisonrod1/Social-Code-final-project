@@ -16,6 +16,7 @@ import OutputDetails from "../../Judge/components/OutputDetails";
 import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import {languageOptions} from "../../Judge/constants/languageOptions";
+import CreateComment from "../../CreateComment";
 
 // STYLED COMPONENTS -start
 
@@ -384,6 +385,7 @@ const CardMidPost = ({ post }) => {
           </Div6>
         {/*<div className={`${toggleClassCheck}`}>*/}
         <h6>Comments:</h6>
+          <CreateComment/>
         {post.postComments.map((comment) => (
           <Comment key={comment.id} comment={comment} />
         ))}
