@@ -176,7 +176,7 @@ export const SocialMediaIconsContainer = styled.div`
         :hover {
           cursor: pointer;
           opacity: 1;
-          transition: 0.1s;
+          transition: ${p=>p.theme.transitionShort};
         }
       }
     }

@@ -22,7 +22,6 @@ const Login = () => {
     const [token, setToken] = useState("")
     const navigate = useNavigate()
 
-
     const handleEmailChange = e => setEmail(e.target.value)
     const handlePasswordChange = e => setPassword(e.target.value)
 
@@ -40,22 +39,22 @@ const Login = () => {
             }),
             body: JSON.stringify(jsBody)
         }
-      fetch("https://code-media.propulsion-learn.ch/backend/auth/token/", config)
+        fetch("https://code-media.propulsion-learn.ch/backend/auth/token/", config)
             .then(response => response.json())
             .then(data => {
                 localStorage.setItem("auth", data.access)
                 setToken(data.access)
             })
             .catch(error => console.log(error))
-      }
+    }
 
-      useEffect(() => {
-        if (token) {
-            localStorage.setItem("auth",`Bearer ${token}`);
-            console.log("the token was stored to local storage");
-            navigate("/")
-        }
-      }, [token]);
+    useEffect(() => {
+      if (token) {
+          localStorage.setItem("auth",`Bearer ${token}`);
+          console.log("the token was stored to local storage");
+          navigate("/posts")
+      }
+    }, [token]);
 
 
   return (
@@ -73,10 +72,7 @@ const Login = () => {
           
             <label>
               <h3>email</h3>
-              <input 
-                type="email"
-                onChange={handleEmailChange}
-              />
+              <input type="email" onChange={handleEmailChange}/>
             </label>
           
             <label>
@@ -88,23 +84,20 @@ const Login = () => {
             </label>
         
           <button>Log in</button>
-        </LoginForm>
 
+        </LoginForm>
 
         <InvitationContainer onClick={()=>navigate("/registration")}>
           No Account? Do you have the code?
         </InvitationContainer>
 
-
         <SocialMediaIconsContainer>
-          
             <a href="https://www.facebook.com"><img src={IconFB}/></a>
             <a href="https://www.twitter.com"><img src={IconTW}/></a>
             <a href="https://www.instagram.com"><img src={IconIG}/></a>
         </SocialMediaIconsContainer>
 
       </RightContainer>
-
     </LoginContainer>
   )
 }
