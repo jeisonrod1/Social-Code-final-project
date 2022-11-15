@@ -1,7 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
-from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
+from django.template import context
+from django.template.loader import render_to_string
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 from rest_framework.generics import ListCreateAPIView, GenericAPIView
 from rest_framework.response import Response
@@ -24,13 +26,16 @@ class UserRegistration(ListCreateAPIView):
         new_user.save()
         registration = Registration(user=new_user)
         registration.save()
-        send_mail(
+        html_version = 'Invitation.html'
+        html_message = render_to_string(html_version, {'context': context, })
+        email = send_mail(
             'Your registration code for Social-Code',
             f'{registration.code}',
-            'social.code.2022@gmail.com',
-            [f'{new_user.email}'],
+            html_message,
+            [new_user.email],
             fail_silently=False,
         )
+        email.send()
         return Response('Email sent')
 
 
