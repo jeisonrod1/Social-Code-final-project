@@ -19,24 +19,11 @@ import styled from "styled-components";
 import Login from "../Login";
 import {
   LoginContainer,
+
+} from "../Login/index.styled";
+import {
   LeftSide,
-  LeftBackground,
-  LeftTopContainer,
-  AppName,
-  Slogan,
-  LeftBottomContainer,
-  ReferralContainer,
-  ReferralText,
-  ReferralTitle,
-  ReferralForm,
-  ReferralInput,
-  SocialCodeLogo,
   RightSide,
-  RightBackground,
-  RightTopContainer,
-  SignInText,
-  SignInIcon,
-  RightMiddleContainer,
   SignInForm,
   SignInTitle,
   Inputs,
@@ -44,18 +31,8 @@ import {
   EmailInput,
   PasswordLabel,
   PasswordInput,
-} from "../Login/index.styled";
+} from "./registration.Styles"
 
-import LeftBackgroundImg from "../../images/covers/background-login.jpg";
-import RightBackgroundImg from "../../images/covers/right-background.jpeg";
-import LoginIcon from "../../images/icons/icon/login.png";
-import PasswordIcon from "../../images/icons/icon/padlock.png";
-import SocialCode from "../../images/icons/svgs/logo_socialcode.jpg";
-import IconFB from "../../images/icons/icon/facebook.png";
-import IconTW from "../../images/icons/icon/twitter.png";
-import IconIG from "../../images/icons/icon/instagram.png";
-import { Left } from "../Userprofile/TopPosts/index.styled";
-import { faTachographDigital } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
 
 // STYLED COMPONENTS -start
