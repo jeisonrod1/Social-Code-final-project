@@ -31,6 +31,7 @@ class AnswersSerializer(serializers.ModelSerializer):
 class CodePostSerializer(serializers.ModelSerializer):
     author = UserSerializer(read_only=True)
     postComments = AnswersSerializer(many=True, read_only=True)
+    replies = CommentsSerializer(read_only=True, many=True)
 
     class Meta:
         model = CodePost

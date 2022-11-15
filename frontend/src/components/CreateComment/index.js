@@ -5,9 +5,7 @@ function CreateComment() {
 
     return (
         <div>
-            <InputItemInputField>
-               Hello this is a test!
-            </InputItemInputField>
+            <InputItemInputField/>
             <SubmitButtonDiv>
                 <SubmitButtonButton type="submit">Post It</SubmitButtonButton>
             </SubmitButtonDiv>
