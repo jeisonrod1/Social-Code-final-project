@@ -1,8 +1,8 @@
-
 .PEcardcontainer {
     height: 100vh;
     position: relative;
-    background-color: #333333;
+    background-color: #272727;
+    color: white;
 }
 
 .PEcover {
@@ -10,6 +10,7 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
+    border: solid yellow;
 }
 
 .PEcover img {
@@ -26,7 +27,6 @@
 .editCard {
     width: 1152px;
     height: 730px;
-    background-color: white;
     position: absolute;
     top: 0px;
     left: 40%;
@@ -38,6 +38,9 @@
     border: 1px solid rgba(0, 0, 0, .1);
     scale: .75;
     font-size:1.2em;
+    background: #333333;
+    color: white;
+
 }
 
 .editCardLeft img {
@@ -46,6 +49,7 @@
     border-radius: 42.5px;
     margin-top: 60px;
     font-size:1.2em;
+    background: #333333;
 }
 
 .editCardLeft {
