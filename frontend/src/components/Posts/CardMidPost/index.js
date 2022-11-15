@@ -201,7 +201,7 @@ const CardMidPost = ({ post }) => {
 
     const url = "https://code-media.propulsion-learn.ch/backend/codepost/";
     const fd = new FormData();
-    fd.append("content", comment.content);
+    fd.append("content", comment);
 
     const config = {
       method: "POST",
@@ -232,7 +232,7 @@ const CardMidPost = ({ post }) => {
   }, []);
 
   const handleCompile = () => {
-        if (post.language == "python") {
+        if (post.language === "python") {
             setLanguage(languageOptions[1])
         }
 
