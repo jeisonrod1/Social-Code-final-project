@@ -385,7 +385,7 @@ const CardMidPost = ({ post }) => {
           </Div6>
           <div>
             <h6>Answers</h6>
-                <Answers/>
+                <Answers key={post.id} reply={post.reply}/>
           </div>
 
         {/*<div className={`${toggleClassCheck}`}>*/}
