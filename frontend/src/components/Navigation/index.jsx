@@ -1,8 +1,7 @@
 import styled from "styled-components";
-import { useNavigate, useLocation, Link } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import logo from "../../images/logos/social_code_logo.webp"
 import user_avatar from "../../images/users/profile-face.png"
-
 
 
 const NavigationContainer = styled.div`
@@ -17,18 +16,15 @@ const NavigationContainer = styled.div`
     right: 0;
     z-index: 1;
     padding: 0 2%;
-    border: solid red;
 
     .left {
       height: 100%;
       width: 50%;
       display: flex;
       align-items: center;
-      border: solid yellow;
     }
   
     .right {
-      border: solid green;
       height: 100%;
       width: fit-content;
       width: 50%;

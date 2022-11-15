@@ -55,6 +55,6 @@ export const theme = {
 
     // Transitions:
     transitionShort: '0.1s',
-    transitionNormal: '0.1s',
+    transitionNormal: '0.3s',
     transitionLong: '0.4s',
 }

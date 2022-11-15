@@ -19,6 +19,13 @@ export const UserCardContainer = styled.div`
         font-weight: bold;
         color: white;
     }
+
+    :hover {
+        cursor: pointer;
+        background: #282828a1;
+        transform: scale(1.05);
+        transition: ${p=>p.theme.transitionNormal};
+    }
     
 `
 
@@ -82,6 +89,8 @@ export const AddFriendButton = styled.button`
     border-radius: 4px;
     border: none;
     margin-top: 26px;
+    position: absolute;
+    bottom: 40px;
 
     :hover {
         cursor: pointer;
