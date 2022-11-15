@@ -5,14 +5,13 @@ export const Gridding = styled.form`
 
 export const BodyForm = styled.form`
     height: 450px;
-    width: 570px;
-    border: 1px solid #5052632e;
+    width: 566px;
     background-color: rgba(126, 126, 126, 0.12);
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
-    border-radius: 8px;
-    margin: 8px;
+    border-radius: 0 0 8px 8px;
+
     padding: 8px;
     div {
         margin-right: 8px;
