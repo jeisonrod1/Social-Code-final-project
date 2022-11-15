@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ObjectDoesNotExist
 from django.core.mail import send_mail
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticatedOrReadOnly
 
 from rest_framework.generics import ListCreateAPIView, GenericAPIView
 from rest_framework.response import Response
@@ -12,10 +12,11 @@ from user.serializers import UserSerializer
 
 User = get_user_model()
 
+
 class UserRegistration(ListCreateAPIView):
     queryset = Registration.objects.all()
     serializer_class = RegistrationSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def post(self, request, *args, **kwargs):
         user_email = request.data['email']
