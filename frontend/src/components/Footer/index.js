@@ -17,7 +17,7 @@ const HeaderComponent = styled.div`
   width: 100%;
   bottom: 0;
   height: 42px;
-  .light &{
+  /* .light &{
     background-color: #e2e2e2;
     transition: all 1s;
     box-shadow: 0px 7px 23px 7px rgba(180, 168, 255, 0.63);
@@ -26,7 +26,7 @@ const HeaderComponent = styled.div`
     background-color: #2e3138;
     transition: all 1s;
     box-shadow: 0px 7px 23px 6px rgba(140,0,0,0.63);
-  }  
+  }   */
   .music {
     border-radius: 20px;
     height: 33px;
@@ -82,8 +82,8 @@ const Footer = () => {
         <div className="pacman"></div>
         <div className="dot"></div>
         <button className="music" onClick={() => playSound()}>
-       MaxVolume!
-    </button>
+          Music
+        </button>
         <div>
           <img src={logo_fb}></img>
           <img src={logo_twit}></img>
