@@ -8,9 +8,8 @@ const Answers = ({reply}) => {
            <div >
                {reply ? (
                 <div>
-                    <h3>THIS IS A TEST</h3>
                     <p>{reply.author.username}</p>
-                    <img src={reply.author} width="20px"/>
+                    <img src={reply.author.avatar} width="20px"/>
                     <p>{reply.content}</p>
                 </div>
                ) : <h5>loading...</h5>}
