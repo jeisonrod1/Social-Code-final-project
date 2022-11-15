@@ -20,7 +20,6 @@ class UserRegistration(ListCreateAPIView):
     def post(self, request, *args, **kwargs):
         user_email = request.data['email']
         new_user = User(email=user_email, is_active=False)
-        body = Invitation
         new_user.save()
         registration = Registration(user=new_user)
         registration.save()
