@@ -343,11 +343,10 @@ const CardMidPost = ({ post }) => {
             />
       <div className="header">
         <div className="left">
-          <img className="image" src={post.user.avatar}></img>
-          {/*TODO: needs work with the image*/}
+          <img className="image" src={post.author.image}></img>
         </div>
         <div className="right">
-          <h5>{post.user.username}</h5>
+          <h5>{post.author.username}</h5>
           <p className="subtitle">Asked {post.created}</p>
           <h5>{post.title}</h5>
         </div>
@@ -385,7 +384,7 @@ const CardMidPost = ({ post }) => {
           </Div6>
         {/*<div className={`${toggleClassCheck}`}>*/}
         <h6>Comments:</h6>
-        {post.answersToComments.map((comment) => (
+        {post.postComments.map((comment) => (
           <Comment key={comment.id} comment={comment} />
         ))}
       </div>
@@ -405,10 +404,7 @@ const CardMidPost = ({ post }) => {
           <input type="submit" value="Post It" />
         </form>
       </div>
-      <h3>Answers:</h3>
-      {post.answersToCodePost.map((answers) => (
-        <Answers key={answers.id} answers={answers} />
-      ))}
+
       <SocialButtons>
         <div>
           <img src={heart}></img>
