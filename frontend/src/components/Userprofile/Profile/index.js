@@ -61,7 +61,7 @@ const Userprofile = () => {
         <ProfilePage src={BgImage}>
             <BackgroundImg src={BgImage}/>
             <UserHeader>
-                <ProfilePicture src={ProfileAvatar}/>
+                <ProfilePicture src={user.avatar}/>
                 <UserInfo>
                     <UserName>{user.username}</UserName>
                     <UserOccupation>Software Engineer</UserOccupation>
@@ -82,6 +82,9 @@ const Userprofile = () => {
             <AboutContainer>
                 <AboutTitle>About</AboutTitle>
                 <About>{user.about_me}</About>
+                <AboutTitle>Company</AboutTitle>
+                <About>{user.company}</About>
+
             </AboutContainer>
             <InvitationInput/>
         </ProfilePage>
