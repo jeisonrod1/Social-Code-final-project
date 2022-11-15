@@ -38,6 +38,43 @@ export const Avatar = styled.div`
         height: 100%;
         width: 100%;
     }
+`
 
+export const CompanyLabel = styled.label`
+    border: solid 1px white;
+    height: 15px;
+    padding: 10px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    border-radius: 10px;
+    font-size: ${p=>p.theme.fontSizeS};
+`
+
+export const LocationWrapper = styled.div`
+    display: flex;
+    align-items: center;
+
+    img {
+        height: 16px;
+        margin-right: 4px;
+    }
+`
+
+export const AddFriendButton = styled.button`
+    background: ${p=>p.theme.purpleLight};
+    color: white;
+    font-size: ${p=>p.theme.fontSizeM};
+    width: 140px;
+    height: 36px;
+    border-radius: 4px;
+    border: none;
+    margin-top: 26px;
+
+    :hover {
+        cursor: pointer;
+        font-weight: bold;
+    }
 
 `
