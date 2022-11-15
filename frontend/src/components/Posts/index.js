@@ -187,7 +187,7 @@ const Posts = () => {
     };
 
     fetch(`
-http://localhost:8001/backend/codepost/search/?search=${searchParam}`, requestOptions)
+https://code-media.propulsion-learn.ch/backend/codepost/search/?search=${searchParam}`, requestOptions)
         .then(response => response.json())
         .then(result => setPosts(result))
         .catch(error => console.log('error', error));
