@@ -1,14 +1,18 @@
+import {AnswersContainer} from "./index.styled";
 
 
 const Answers = ({reply}) => {
 
     return (
         <>
-            <p>{reply.author.username}</p>
-            <img src={reply.author.avatar} />
-            <p>
-                {reply.content}
-            </p>
+
+                <p>{reply.author.username}</p>
+           <div>
+                <img src={reply.author.avatar} width="20px"/>
+                <p>
+                    {reply.content}
+                </p>
+            </div>
         </>
     )
 }
