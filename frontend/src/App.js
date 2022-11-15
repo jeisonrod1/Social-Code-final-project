@@ -13,7 +13,7 @@ import Userprofile from "./components/Userprofile/Profile/index";
 import Login from "./components/Login";
 import FriendsPage from "./components/FriendsPage";
 import CreatePost from "./components/CreatePost/CreateCodePost";
-import store from "./redux/store";
+
 
 import JudgeLanding from "./components/Judge/components/Landing";
 import AccessEditor from "./components/Editor/AccessEditor";
@@ -38,7 +38,7 @@ function App() {
 
   return (
             <>
-              <Provider store={store}>
+              <Provider>
                 <ThemeProvider theme={theme}>
                   <BrowserRouter>
                     <div>
@@ -54,9 +54,9 @@ function App() {
                         }
                         }
                     />
-                  </div>
+                    </div>
                   <main className={`xtxt${toggleClassCheck}`}>
-                    <Header />
+                    <Navigation />
                     <Routes>
                       <Route path="/" element={<Posts />} />
                       <Route path="posts" element={<Posts />} />
@@ -70,7 +70,7 @@ function App() {
 
                       <Route path="login" element={<Login />} />
                       <Route path="registration" element={<Registration />} />
-                      <Route path="registration/validation" element={<RegistrationValidation />} />
+
 
                     </Routes>
                     <button
