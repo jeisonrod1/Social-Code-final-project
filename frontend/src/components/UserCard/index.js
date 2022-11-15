@@ -1,10 +1,8 @@
-import {BeingFlexed, BeingGrinded, ButtonDiv, Context, FullName, Located, UpperPart, AddFriendBtn} from "../friends-style";
 import {useLocation} from "react-router-dom";
-
+import { UserCardContainer } from "./styled";
 
 
 const UserCard = ({user}) => {
-
     const location = useLocation().pathname
 
     const handleFriendClick = () => {
@@ -25,8 +23,8 @@ const UserCard = ({user}) => {
     }
 
     return (
-        <BeingGrinded key={user.id}>
-              <BeingFlexed>
+        <UserCardContainer key={user.id}>
+              <div>
                 <div>
                   <img
                     src={user.avatar}
@@ -34,13 +32,13 @@ const UserCard = ({user}) => {
                     style={{ width: "60px" }}
                   />
                 </div>
-                <UpperPart>
-                  <FullName>
+                <div>
+                  <div>
                     {user.first_name} {user.last_name}
-                  </FullName>
-                  <Located>{user.location}</Located>
-                </UpperPart>
-                <ButtonDiv>
+                  </div>
+                  <div>{user.location}</div>
+                </div>
+                <div>
                   {/* {user.logged_in_user_is_following ? (
                     <UnfollowBtn>FOLLOWING</UnfollowBtn>
                   ) : (
@@ -57,14 +55,14 @@ const UserCard = ({user}) => {
                   ) : (
 
                   )} */}
-                    {location != '/my_friends/' ? <AddFriendBtn onClick={() => handleFriendClick(user.id)}> ADD FRIEND </AddFriendBtn> : ''}
+                    {location != '/my_friends/' ? <button onClick={() => handleFriendClick(user.id)}> ADD FRIEND </button> : ''}
 
-                </ButtonDiv>
-                <div>
-                  <Context>{user.about_me}</Context>
                 </div>
-              </BeingFlexed>
-            </BeingGrinded>
+                <div>
+                  <div>{user.about_me}</div>
+                </div>
+              </div>
+            </UserCardContainer>
     )
 }
 export default UserCard;

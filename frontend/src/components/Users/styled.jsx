@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+
+export const UsersContainer = styled.div`
+    height: 100%;
+    width: 60%;
+    display: grid;
+    padding: 0px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    column-gap: 32px;
+    row-gap: 32px;
+    margin: 0 auto;
+    padding-top: 100px;
+`
+
+
 export const Border1pxSolidBlack = styled.div`
   border: 1px solid black;
 `;
@@ -24,22 +39,6 @@ export const Main = styled.div`
   /* background-color: lightgray; */
 `;
 
-export const Gridding = styled.div`
-
-  padding: 0px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr ;
-  grid-template-rows: repeat(2, 1fr);
-  column-gap: 32px;
-  row-gap: 32px;
-  height: 100%;
-  width: 60%;
-  margin: 0 auto;
-  padding-top: 100px;
-
-  p {
-  }
-`;
 
 export const BeingGrinded = styled.div`
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
