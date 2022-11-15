@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 
 export const UserCardContainer = styled.div`
-    height: 400px;
-    width: 300px;
+    height: 360px;
+    width: 280px;
     display: flex;
-    border-radius: 6px;
+    border-radius: 8px;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -37,6 +37,7 @@ export const Avatar = styled.div`
         border-radius: 50%;
         height: 100%;
         width: 100%;
+        object-fit: cover;
     }
 `
 
@@ -55,11 +56,21 @@ export const CompanyLabel = styled.label`
 export const LocationWrapper = styled.div`
     display: flex;
     align-items: center;
+    width: 100%;
+    justify-content: center;
+    margin-top: 6px;
 
     img {
         height: 16px;
         margin-right: 4px;
+        
     }
+`
+
+export const Experience = styled.h2`
+    font-size: ${p=>p.theme.fontSizeS};
+    color: white;
+    margin-top: 10px;
 `
 
 export const AddFriendButton = styled.button`

@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom"
-import { AddFriendButton, Avatar, CompanyLabel, LocationWrapper, UserCardContainer } from "./styled"
+import { AddFriendButton, Avatar, CompanyLabel, Experience, LocationWrapper, UserCardContainer } from "./styled"
 import avatar_placeholder from "../../images/logos/logo-color.png"
 import location_icon from "../../images/icons/svgs/location.svg"
 
@@ -25,10 +25,15 @@ const UserCard = ({ user }) => {
 
     return (
         <UserCardContainer key={user.id}>
-            <Avatar><img src={user.avatar ? user.avatar : avatar_placeholder} /></Avatar>
+            <Avatar>
+                <img src={user.avatar ? user.avatar : avatar_placeholder} />
+            </Avatar>
 
-            <h1>{user.first_name} {user.last_name}</h1>
-            <CompanyLabel>Google</CompanyLabel>
+            <h1>
+                {user.first_name} {user.last_name}
+            </h1>
+            <Experience>{user.experience}Frontend</Experience>
+            <CompanyLabel>{user.company}Google INC</CompanyLabel>
             <LocationWrapper>
                 <img src={location_icon} />
                 {user.location}
@@ -47,7 +52,7 @@ const UserCard = ({ user }) => {
                   ) : (
                   )} */}
             {/* {location != '/my_friends/' ? <button onClick={() => handleFriendClick(user.id)}> ADD FRIEND </button> : ''} */}
-            
+
             <AddFriendButton onClick={() => handleFriendClick(user.id)}>Add Friend</AddFriendButton>
         </UserCardContainer>
     )
