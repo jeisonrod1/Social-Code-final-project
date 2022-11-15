@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import Posts from "./components/Posts";
 import Userprofile from "./components/Userprofile/Profile/index";
  import Registration from "./components/Registration/Registration";
-import RegistrationValidation from "./components/Registration/RegistrationValidation";
+
 import Login from "./components/Login";
 import FriendsPage from "./components/FriendsPage";
 import CreatePost from "./components/CreatePost/CreateCodePost";
