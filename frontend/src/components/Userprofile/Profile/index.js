@@ -43,12 +43,14 @@ const Userprofile = () => {
             }),
 
         }
-
+        if (token) {
 
         fetch(url, config)
             .then(response => response.json())
             .then(result => setUser(result[0]))
             .catch(error => console.log('error', error));
+        }
+
       };
 
 
