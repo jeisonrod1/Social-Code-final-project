@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './profileeditcard.css';
+import Navigation from "../Navigation";
+import Footer from "../Footer"
 
 const Registration = () => {
     const [email, setEmail] = useState("")
@@ -55,11 +57,12 @@ const Registration = () => {
         navigate("/login")
     }
 
-    return (
+    return <>
         <div className="PEcardcontainer">
-            <div className="PEcover">
+            <Navigation/>
+            {/* <div className="PEcover">
                 <img src={require('../../images/covers/right-background.jpeg')} />
-            </div>
+            </div> */}
             <div className="editCard">
                 <div className="editCardLeft">
                     <button className="PEdelete">DELETE ACCOUNT</button>
@@ -103,8 +106,9 @@ const Registration = () => {
                     </div>
                 </div>
             </div>
+            <Footer/>
         </div>
-    )
+    </>
 }
 
 export default Registration;

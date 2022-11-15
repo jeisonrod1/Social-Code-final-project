@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const UsersContainer = styled.div`
+export const UsersListContainer = styled.div`
     height: 100%;
     width: 60%;
     display: grid;

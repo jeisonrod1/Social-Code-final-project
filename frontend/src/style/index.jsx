@@ -7,6 +7,7 @@ export const GlobalStyle = createGlobalStyle`
         font-weight: normal;
         font-size: 16px;
         box-sizing: border-box;
+        color: white;
     }
 `
 
@@ -20,6 +21,8 @@ export const theme = {
     colorSuccess: '#0CCE6B',
     colorError: '#d60801',
     colorPending: 'orange',
+    backgroundBlack: "#212121",
+    backgroundBlackLight: "#333333",
 
     // border Radius
     borderRadiusS: "2px",
@@ -37,8 +40,8 @@ export const theme = {
 
     // Font Sizes:
     fontSizeXXXXL: '64px',
-    fontSizeXXXL: '48px',
-    fontSizeXXL: '32px',
+    fontSizeXXXL: '36px',
+    fontSizeXXL: '28px',
     fontSizeXL: '24px',
     fontSizeL: '20px',
     fontSizeM: '15px',
@@ -54,6 +57,6 @@ export const theme = {
 
     // Transitions:
     transitionShort: '0.1s',
-    transitionNormal: '0.1s',
+    transitionNormal: '0.3s',
     transitionLong: '0.4s',
 }
