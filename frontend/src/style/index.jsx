@@ -40,8 +40,8 @@ export const theme = {
 
     // Font Sizes:
     fontSizeXXXXL: '64px',
-    fontSizeXXXL: '48px',
-    fontSizeXXL: '32px',
+    fontSizeXXXL: '36px',
+    fontSizeXXL: '28px',
     fontSizeXL: '24px',
     fontSizeL: '20px',
     fontSizeM: '15px',

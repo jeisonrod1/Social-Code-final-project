@@ -15,7 +15,7 @@ export const UserCardContainer = styled.div`
 
     h1 {
         font-family: 'Encode Sans SC', sans-serif;
-        font-size: ${p=>p.theme.fontSizeXL};
+        font-size: ${p=>p.theme.fontSizeXXL};
         font-weight: bold;
         color: white;
     }
@@ -58,6 +58,7 @@ export const CompanyLabel = styled.label`
     width: fit-content;
     border-radius: 10px;
     font-size: ${p=>p.theme.fontSizeS};
+    margin-top: 10px;
 `
 
 export const LocationWrapper = styled.div`
@@ -66,6 +67,7 @@ export const LocationWrapper = styled.div`
     width: 100%;
     justify-content: center;
     margin-top: 6px;
+    font-size: ${p=>p.theme.fontSizeS};
 
     img {
         height: 16px;
@@ -77,7 +79,7 @@ export const LocationWrapper = styled.div`
 export const Experience = styled.h2`
     font-size: ${p=>p.theme.fontSizeS};
     color: white;
-    margin-top: 10px;
+    margin-top: 8px;
 `
 
 export const AddFriendButton = styled.button`

@@ -32,8 +32,8 @@ const UserCard = ({ user }) => {
             <h1>
                 {user.first_name} {user.last_name}
             </h1>
-            <Experience>{user.experience}Frontend</Experience>
-            <CompanyLabel>{user.company}Google INC</CompanyLabel>
+            <Experience>{user.experience}</Experience>
+            <CompanyLabel>{user.company}</CompanyLabel>
             <LocationWrapper>
                 <img src={location_icon} />
                 {user.location}
