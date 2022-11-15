@@ -1,19 +1,13 @@
-import {
-    LoginContainer,
-    Slogan,
-    RightContainer,
-    LeftContainer,
-    LogoNavigationLogin,
-    InvitationContainer,
-    LoginForm,
-    SocialMediaIconsContainer,
-} from "./index.styled"
+import {Slogan, RightContainer, LeftContainer, LogoNavigationLogin,InvitationContainer,SocialMediaIconsContainer} from "./index.styled"
 import IconFB from "../../images/icons/icon/facebook.png"
 import IconTW from "../../images/icons/icon/twitter.png"
 import IconIG from "../../images/icons/icon/instagram.png"
 import { useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 import logo from "../../images/logos/social_code_logo.webp"
+import { SignupContainer } from "./index.styled"
+import { SignupForm } from "./index.styled"
+
 
 const Signup = () => {
     const [email, setEmail] = useState("")
@@ -57,28 +51,17 @@ const Signup = () => {
 
     return (
         <SignupContainer>
-            <RightContainer>
-                <LogoNavigationLogin src={logo} />
-                <Slogan>
-                    Do you have the <b>Code?</b> access only by invitation
-                </Slogan>
-            </RightContainer>
 
             <LeftContainer>
                 <SignupForm onSubmit={handleSubmit}>
-                    <h2>Hello, SocialCoder</h2>
+                    <h2>Enter the code here</h2>
 
                     <label>
-                        <h3>email</h3>
+                        <h3>code</h3>
                         <input type="email" onChange={handleEmailChange} />
                     </label>
 
-                    <label>
-                        <h3>Password</h3>
-                        <input type="password" onChange={handlePasswordChange} />
-                    </label>
-
-                    <button>Log in</button>
+                    <button>Sign up</button>
                 </SignupForm>
 
                 <InvitationContainer onClick={() => navigate("/login")}>
@@ -97,6 +80,13 @@ const Signup = () => {
                     </a>
                 </SocialMediaIconsContainer>
             </LeftContainer>
+
+            <RightContainer>
+                <LogoNavigationLogin src={logo} />
+                <Slogan>
+                    Do you have the <b>code?</b> access only by invitation
+                </Slogan>
+            </RightContainer>
         </SignupContainer>
     )
 }

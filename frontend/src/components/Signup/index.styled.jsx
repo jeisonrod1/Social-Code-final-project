@@ -57,11 +57,11 @@ export const Slogan = styled.h1`
     height: 100px;
     width: 50%;
     bottom: 20%;
-    right: 2%;
+    left: 2%;
     color: white;
-    font-size: 50px;
+    font-size: 40px;
     font-weight: normal;
-    text-align: right;
+    text-align: left;
     font-family: "Encode Sans SC", sans-serif;
     line-height: 50px;
 
@@ -155,13 +155,14 @@ export const SocialMediaIconsContainer = styled.div`
     position: absolute;
     top: 0;
     width: 30px;
-    left: -15px;
+    right: -15px;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     padding-top: 20px;
+    z-index: 1;
 
     a {
         img {

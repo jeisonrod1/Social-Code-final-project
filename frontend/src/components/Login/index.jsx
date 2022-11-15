@@ -7,7 +7,7 @@ import {
   InvitationContainer,
   LoginForm,
   SocialMediaIconsContainer
-} from "./index.styled";
+} from "./index.styled.jsx";
 import IconFB from "../../images/icons/icon/facebook.png"
 import IconTW from "../../images/icons/icon/twitter.png"
 import IconIG from "../../images/icons/icon/instagram.png"
