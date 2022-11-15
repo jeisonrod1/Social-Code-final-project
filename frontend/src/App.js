@@ -38,7 +38,7 @@ function App() {
 
   return (
             <>
-              <Provider>
+
                 <ThemeProvider theme={theme}>
                   <BrowserRouter>
                     <div>
@@ -86,7 +86,7 @@ function App() {
 
                 </BrowserRouter>
                 </ThemeProvider>
-              </Provider>
+
             </>
           );
         }
