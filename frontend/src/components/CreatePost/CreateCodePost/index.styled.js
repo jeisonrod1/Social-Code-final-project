@@ -48,3 +48,16 @@ export const SubmitButtonButton = styled.button`
     border-radius: 28px;
 `;
 
+export const OutputItemDiv = styled.div`
+    display: flex; 
+    flex-direction: column; 
+    flex-shrink: 0; 
+    width: 30%;
+
+`;
+
+export const OutputCodeDiv = styled.div`
+    display: flex; 
+    flex-direction: column; 
+    align-items: flex-end; 
+`;

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-// Image import
-
 // Styled Component imports
 import {
   BodyForm,
@@ -13,7 +11,7 @@ import {
   SubmitButtonButton,
   SubmitButtonDiv,
   TitleDiv,
-  InputItemSelectField,
+  InputItemSelectField, OutputItemDiv, OutputCodeDiv,
 } from "./index.styled.js";
 import { useNavigate } from "react-router-dom";
 import Editor from "@monaco-editor/react";
@@ -160,6 +158,12 @@ function CreatePost() {
               onChange={handleCodeChange}
             />
           </InputItemDiv>
+          <OutputItemDiv>
+              <OutputCodeDiv>
+
+              </OutputCodeDiv>
+
+          </OutputItemDiv>
 
           
           <SubmitButtonDiv>

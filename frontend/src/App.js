@@ -1,24 +1,24 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import { useState } from "react";
+
 import Footer from "./components/Footer";
 import Posts from "./components/Posts";
-import PostsPage from "./components/PostPage";
 import Userprofile from "./components/Userprofile/Profile/index";
-// import Registration from "./components/Registration/Registration";
-// import RegistrationValidation from "./components/Registration/RegistrationValidation";
+ import Registration from "./components/Registration/Registration";
+
 import Login from "./components/Login";
-import { useState } from "react";
-import { Provider } from "react-redux";
-import store from "./redux/store";
+import FriendsPage from "./components/FriendsPage";
+import CreatePost from "./components/CreatePost/CreateCodePost";
+
 
 import JudgeLanding from "./components/Judge/components/Landing";
-
-import "./App.css";
 import AccessEditor from "./components/Editor/AccessEditor";
 import EditorPage_HTML_CSS_JS from "./components/Editor/EditorPage_HTML_CSS_JS";
 import React from "react";
+import "./App.css";
 
 import { Toaster } from "react-hot-toast";
-import CreatePost from "./components/CreatePost/CreateCodePost";
 import SunIcon from "./images/icons/svgs/sun.svg"
 import MoonIcon from "./images/icons/svgs/moon.svg"
 import Navigation from "./components/Navigation";
@@ -34,53 +34,58 @@ function App() {
   let toggleClassCheck = btnState ? " light" : " dark";
 
   return (
-    <>
-      <Provider store={store}>
-        <ThemeProvider theme={theme}>
-          <BrowserRouter>
-            <div>
-              <Toaster
-                position="top-center"
-                toastOptions={{
-                  success: {
-                    theme: {
-                      primary: "#4aed88",
-                    },
-                  },
-                }}
-              />
-            </div>
-            <main className={`xtxt${toggleClassCheck}`}>
+            <>
 
-          
-              <Routes>
-                <Route path="posts" element={<Posts/>} />
-                <Route path="postpage" element={<PostsPage/>} />
-                <Route path="/editor" element={<AccessEditor/>} />
-                <Route path="/editor/:roomId" element={<EditorPage_HTML_CSS_JS/>} />
-                <Route path="userprofile" element={<Userprofile/>} />
-                {/* <Route path="registration" element={<Registration/>} /> */}
-                {/* <Route path="registration/validation" element={<RegistrationValidation/>} /> */}
-                <Route path="judgeeditor/" element={<JudgeLanding/>} />
-                <Route path="createpost/" element={<CreatePost/>} />
-                <Route path="login" element={<Login/>} />
-              </Routes>
+                <ThemeProvider theme={theme}>
+                  <BrowserRouter>
+                    <div>
+                      <Toaster
+                        position="top-center"
+                        toastOptions={{
+                            success: {
+                                theme: {
+                                    primary: "#4aed88",
+                                },
+                            },
+
+                        }
+                        }
+                    />
+                    </div>
+                  <main className={`xtxt${toggleClassCheck}`}>
+                    <Navigation />
+                    <Routes>
+                      <Route path="/" element={<Posts />} />
+                      <Route path="posts" element={<Posts />} />
+                      <Route path="createpost/" element={<CreatePost />} />
+                      <Route path="/find_friends" element={<FriendsPage />} />
+                      <Route path="/editor" element={<AccessEditor />} />
+                      <Route path="/editor/:roomId" element={<EditorPage_HTML_CSS_JS />} />
+                      <Route path="userprofile/" element={<Userprofile />} />
+                      <Route path="my_friends/" element={<FriendsPage/>}/>
+                      <Route path="judgeeditor/" element={<JudgeLanding />} />
+
+                      <Route path="login" element={<Login />} />
+                      <Route path="registration" element={<Registration />} />
 
 
-              <button
-                className={`btn-x${toggleClassCheck}`}
-                onClick={handleClick}
-              >
-              {!btnState ? <img className="sun-icon" src={SunIcon}/> : <img className="moon-icon" src={MoonIcon}/>}
-                
-              </button>
-            
-          </main>
-        </BrowserRouter>
-        </ThemeProvider>
-      </Provider>
-    </>
-  );
-}
+                    </Routes>
+                    <button
+                      className={`btn-x${toggleClassCheck}`}
+                      onClick={handleClick}
+                    >
+                  {!btnState ? <img className="sun-icon" src={SunIcon}/> : <img className="moon-icon" src={MoonIcon}/>}
+
+                    </button>
+                    <Footer />
+                  </main>
+
+
+                </BrowserRouter>
+                </ThemeProvider>
+
+            </>
+          );
+        }
 
 export default App;
