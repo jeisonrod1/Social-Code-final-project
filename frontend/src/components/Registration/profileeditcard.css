@@ -88,6 +88,7 @@
     cursor: pointer;
     margin-top: 345px;
     transition: all 0.3s ease;
+    color: black;
 }
 
 .PEsave {
@@ -214,6 +215,7 @@
     box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.07);
     border-radius: 30px;
     margin-left: 25px;
+    color: black;
 }
 
 .PEaddbutton:hover {
