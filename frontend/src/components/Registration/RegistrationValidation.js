@@ -22,14 +22,14 @@ import {
 
 } from "../Login/index.styled";
 import {
-  LeftSide,
-  RightSide,
+  EmailLabel,
   SignInForm,
+  RightSide,
+  LeftSide,
   SignInTitle,
   Inputs,
-  EmailLabel,
-  EmailInput,
   PasswordLabel,
+  EmailInput,
   PasswordInput,
 } from "./registration.Styles"
 
