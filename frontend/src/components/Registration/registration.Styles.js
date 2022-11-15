@@ -8,12 +8,7 @@ export const LoginContainer = styled.div`
   font-family: "Monaco";
 `;
 
-export const LeftSide = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-`;
+
 
 export const RightSide = styled.div`
   width: 50%;
