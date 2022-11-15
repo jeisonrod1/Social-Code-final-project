@@ -79,13 +79,16 @@ const Login = () => {
         <LoginForm onSubmit={handleSubmit}>
           <h2>Hello, SocialCoder</h2>
           
-            <label>email
+            <label>
+              <h3>email</h3>
               <input 
                 type="email"
-                onChange={handleEmailChange}/>
+                onChange={handleEmailChange}
+              />
             </label>
           
-            <label>password
+            <label>
+              <h3>Password</h3>
               <input
                 type="password"
                 onChange={handlePasswordChange}

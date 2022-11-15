@@ -78,61 +78,84 @@ export const InvitationContainer = styled.p`
     font-size: ${p=>p.theme.fontSizeS};
     color: white;
     position: absolute;
-    bottom: 20%;
+    bottom: 10%;
 `
 
 // FORM
 export const LoginForm = styled.form`
-    border: solid yellow;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 350px;
     height: 400px;
+    border:solid yellow;
 
     h2 {
       font-family: 'Encode Sans SC', sans-serif;
       font-size: ${p=>p.theme.fontSizeXL};
       color: white;
+      margin-bottom: 50px;
     }
 
     label {
-      font-size: ${p=>p.theme.fontSizeS};
       display: flex;
       flex-direction: column;
-      height: 40px;
-    }
+      margin-bottom: 8px;
 
-    input {
-        height: 30px;
-        width: 200px;
-        border: none;
-        border-bottom: solid white 2px;
-        color: white;
-        padding: 10px;
+      h3 {
+        margin: 0;
+        font-size: ${p=>p.theme.fontSizeXS};
+        font-weight: normal;
+      }
 
-        border-radius: 0;
-        ::placeholder {
-          color: #5e5e5e;
-        }
+      input {
+          height: 20px;
+          width: 200px;
+          border: none;
+          border-bottom: solid white 1px;
+          color: white;
+          padding: 4px;
+          border-radius: 0;
+          font-size: ${p=>p.theme.fontSizeM};
+          margin-bottom: 16px;
+
+          ::placeholder {
+            color: #5e5e5e;
+          }
+
+          :focus {
+            outline: none;
+            border-bottom: solid 2px ${p=>p.theme.purpleLight};
+            font-weight: bold;
+          }
+      }
     }
 
     button {
       background: ${p=>p.theme.purpleLight};
       color: white;
       font-size: ${p=>p.theme.fontSizeM};
-      width: 160px;
-      height: 40px;
+      width: 140px;
+      height: 36px;
       border-radius: 4px;
       border: none;
+      margin-top: 26px;
 
       :hover {
         cursor: pointer;
         font-weight: bold;
       }
     }
+
 `;
+
+
+
+
+
+
+
 
 export const ReferralContainer = styled.div`
   position: relative;
@@ -194,49 +217,10 @@ export const RightMiddleContainer = styled.div`
   margin: 0 auto;
 `;
 
-export const SignInTitle = styled.div`
-  font-size: 1.6em;
-  font-weight: 600;
-  letter-spacing: 2px;
-  padding: 25px 0 40px;
-`;
 
-export const EmailLabel = styled.img`
-  position: relative;
-  padding-right: 25px;
-  top: 35px;
-  left: 125px;
-  z-index: 100;
-`;
-export const EmailInput = styled.input`
-  width: 80%;
-  height: 22px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  font-size: 15px;
-  position: relative;
-  top: -4px;
-`;
-export const PasswordLabel = styled.img`
-  position: relative;
-  padding-right: 25px;
-  top: 35px;
-  left: 125px;
-  z-index: 100;
-`;
-export const PasswordInput = styled.input`
-  width: 80%;
-  height: 22px;
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: none;
-  outline: none;
-  font-size: 15px;
-  position: relative;
-  top: -4px;
-`;
+
+
+
 export const RightBottomContainer = styled.div`
   position: relative;
   display: flex;
