@@ -4,47 +4,14 @@ import { update_email } from "../../redux/slices/login-slice";
 
 import styled from "styled-components";
 
-import Login from "../Login";
-import {
-  LoginContainer,
-  LeftSide,
-  LeftBackground,
-  LeftTopContainer,
-  AppName,
-  Slogan,
-  LeftBottomContainer,
-  ReferralContainer,
-  ReferralText,
-  ReferralTitle,
-  ReferralForm,
-  ReferralInput,
-  SocialCodeLogo,
-  RightSide,
-  RightBackground,
-  RightTopContainer,
-  SignInText,
-  SignInIcon,
-  RightMiddleContainer,
-  SignInForm,
-  SignInTitle,
-  Inputs,
-  EmailLabel,
-  EmailInput,
-  PasswordLabel,
-  PasswordInput,
-} from "../Login/index.styled";
 
-import LeftBackgroundImg from "../../images/covers/background-login.jpg";
-import RightBackgroundImg from "../../images/covers/right-background.jpeg";
+
+
+
 import LoginIcon from "../../images/icons/icon/login.png";
-import PasswordIcon from "../../images/icons/icon/padlock.png";
-import SocialCode from "../../images/icons/svgs/logo_socialcode.jpg";
-import IconFB from "../../images/icons/icon/facebook.png";
-import IconTW from "../../images/icons/icon/twitter.png";
-import IconIG from "../../images/icons/icon/instagram.png";
-import { Left } from "../Userprofile/TopPosts/index.styled";
-import RegistrationUsername from "./RegistrationValidation";
+
 import { useNavigate } from "react-router";
+import {EmailInput, EmailLabel, Inputs, SignInForm, SignInTitle} from "./registration.Styles";
 
 // STYLED COMPONENTS -start
 
