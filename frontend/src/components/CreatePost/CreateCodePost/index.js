@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 
-// Image import
-
 // Styled Component imports
 import {
   BodyForm,

@@ -386,7 +386,7 @@ const CardMidPost = ({ post }) => {
         {/*<div className={`${toggleClassCheck}`}>*/}
         <h6>Comments:</h6>
         {post.answersToComments.map((comment) => (
-          <Comment comment={comment} />
+          <Comment key={comment.id} comment={comment} />
         ))}
       </div>
       <div className="comment"></div>
@@ -407,7 +407,7 @@ const CardMidPost = ({ post }) => {
       </div>
       <h3>Answers:</h3>
       {post.answersToCodePost.map((answers) => (
-        <Answers answers={answers} />
+        <Answers key={answers.id} answers={answers} />
       ))}
       <SocialButtons>
         <div>

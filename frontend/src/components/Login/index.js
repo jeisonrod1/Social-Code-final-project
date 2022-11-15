@@ -90,8 +90,6 @@ const Login = () => {
     }
 
      useEffect(() => {
-
-
         if (token) {
             localStorage.setItem("auth",`Bearer ${token}`);
             console.log("the token was stored to local storage");

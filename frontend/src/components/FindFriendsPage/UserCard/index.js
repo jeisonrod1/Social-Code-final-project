@@ -1,15 +1,11 @@
 import {BeingFlexed, BeingGrinded, ButtonDiv, Context, FullName, Located, UpperPart, AddFriendBtn} from "../friends-style";
 import {useLocation} from "react-router-dom";
-import {useEffect} from 'react';
+
 
 
 const UserCard = ({user}) => {
 
     const location = useLocation().pathname
-
-    useEffect(() => {
-        console.log(location)
-    })
 
     const handleFriendClick = () => {
         var myHeaders = new Headers();

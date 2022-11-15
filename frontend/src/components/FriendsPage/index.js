@@ -1,9 +1,10 @@
 import {useEffect, useState} from 'react';
-import UserCard from '../PostPage/UserCard';
+import UserCard from '../FindFriendsPage/UserCard';
 
 
 const FriendsPage = () => {
-    const [friends, setFriends] = useState([])
+    const [friends, setFriends] = useState([]);
+
     useEffect(()=> {
         fetchFriends();
     }, [])
@@ -19,8 +20,7 @@ const FriendsPage = () => {
           redirect: 'follow'
         };
 
-        fetch("\n" +
-            "https://code-media.propulsion-learn.ch/backend/friends/", requestOptions)
+        fetch("https://code-media.propulsion-learn.ch/backend/friends/", requestOptions)
           .then(response => response.json())
           .then(result => setFriends(result))
           .catch(error => console.log('error', error));

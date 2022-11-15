@@ -1,18 +1,10 @@
 import styled from "styled-components";
-import card1 from "../../images/restaurants/card-1.jpg";
-import card2 from "../../images/restaurants/card-2.jpg";
-import card3 from "../../images/restaurants/card-3.jpg";
-import card4 from "../../images/restaurants/card-4.jpg";
 import CardMidPost from "./CardMidPost/index.js";
 import CardMidNewPost from "./CardMidNewPost/index.js";
-import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
 import React, {useEffect, useState} from "react";
 import CreatePost from "../../components/CreatePost/CreateCodePost";
-import {unwrapResult} from "@reduxjs/toolkit";
-import Comment from "./Comment";
 import Spinner from "../Posts/Spinner/index";
-import comment from "./Comment";
 
 // STYLED COMPONENTS -start
 
@@ -203,7 +195,7 @@ const Posts = () => {
         <CardContainerMid>
           <CreatePost />
           <CardMidNewPost />
-{ posts.length > 0 && posts.map(post => <CardMidPost post={post}/>)}
+{ posts.length > 0 && posts.map(post => <CardMidPost key={post.id} post={post}/>)}
 
         </CardContainerMid>
         <CardContainerRight>
