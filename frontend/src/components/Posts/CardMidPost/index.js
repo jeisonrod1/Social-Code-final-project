@@ -343,7 +343,7 @@ const CardMidPost = ({ post }) => {
             />
       <div className="header">
         <div className="left">
-          <img className="image" src={post.author.image}></img>
+          <img className="image" src={post.author.avatar}></img>
         </div>
         <div className="right">
           <h5>{post.author.username}</h5>
