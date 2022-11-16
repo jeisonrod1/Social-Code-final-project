@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import './profileeditcard.css';
 import Navigation from "../Navigation";
 import Footer from "../Footer"
+import userIcon from "../../images/icons/svgs/user.svg"
+import plusIcon from "../../images/icons/svgs/plus.svg"
+import './profileeditcard.css';
+
 
 const Registration = () => {
     const [email, setEmail] = useState("")
@@ -16,6 +19,7 @@ const Registration = () => {
     const [phone, setPhone] = useState("")
     const navigate = useNavigate()
 
+
     const handleEmailChange = e => setEmail(e.target.value)
     const handlePasswordChange = e => setPassword(e.target.value)
     const handleUsernameChange = e => setUsername(e.target.value)
@@ -25,6 +29,7 @@ const Registration = () => {
     const handleAboutMeChange = e => setAbout_me(e.target.value)
     const handleCompanyChange = e => setCompany(e.target.value)
     const handlePhoneChange = e => setPhone(e.target.value)
+
 
 
     const handleSubmit = e => {
@@ -65,6 +70,10 @@ const Registration = () => {
             </div> */}
             <div className="editCard">
                 <div className="editCardLeft">
+                    <div>
+                        <img src={userIcon} className="user_icon"/>
+                        <img src={plusIcon} className="plus_icon"/>
+                    </div>
                     <button className="PEdelete">DELETE ACCOUNT</button>
                     <button className="PEsave" form='userform' type="submit">SAVE</button>
                 </div>

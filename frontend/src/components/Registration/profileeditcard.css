@@ -2,6 +2,7 @@
     height: 100vh;
     position: relative;
     background-color: #272727;
+    background-image: url("../../images/covers/lasers_transparent.jpg");
     color: white;
 }
 
@@ -40,16 +41,24 @@
     font-size:1.2em;
     background: #333333;
     color: white;
+    border-radius: 24px;
 
 }
 
-.editCardLeft img {
+.user_icon {
     width: 85px;
     height: 85px;
     border-radius: 42.5px;
     margin-top: 60px;
     font-size:1.2em;
-    background: #333333;
+    background: transparent;
+    cursor: pointer;
+}
+.plus_icon {
+    width: 25px;
+    position: absolute;
+    top:125px;
+    left: 190px;
 }
 
 .editCardLeft {
@@ -120,6 +129,7 @@
 .editCardRight {
     width: 832px;
     height: 730px;
+    background: white;
 }
 
 .cardRightTop {
