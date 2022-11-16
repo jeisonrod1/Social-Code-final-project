@@ -98,5 +98,22 @@ export const AddFriendButton = styled.button`
         cursor: pointer;
         font-weight: bold;
     }
+`
+export const RequestSendButton = styled.button`
+    background: ${p=>p.theme.purpleDesaturated};
+    color: white;
+    font-size: ${p=>p.theme.fontSizeM};
+    width: 140px;
+    height: 36px;
+    border-radius: 4px;
+    border: none;
+    margin-top: 26px;
+    position: absolute;
+    bottom: 40px;
+
+    :hover {
+        cursor: pointer;
+        font-weight: bold;
+    }
 
 `

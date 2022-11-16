@@ -17,6 +17,7 @@ export const theme = {
     red: "#df3434",
     black: "#171717",
     purpleLight: "#ad3dea",
+    purpleDesaturated: "#9d8da7",
     purpleDark: "#4f0775",
     colorSuccess: '#0CCE6B',
     colorError: '#d60801',
