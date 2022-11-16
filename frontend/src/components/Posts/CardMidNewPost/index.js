@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import styled from "styled-components";
 import card1 from "../../../images/restaurants/card-1.jpg";
 import heart from "../../../images/icons/svgs/heart.svg";
@@ -7,6 +7,7 @@ import meme from "../../../images/memes/ten-sec.jpg";
 import profile1 from "../../../images/users/profile1.jpg";
 import CreatePost from "../../CreatePost/CreateCodePost";
 import { useState } from 'react';
+import {useNavigate} from "react-router-dom";
 
 // STYLED COMPONENTS -start
 
@@ -80,18 +81,84 @@ const NewPostButtons = styled.div`
 
 const CardMidNewPost = () => {
   const [isShown, setIsShown] = useState(false);
+  const [token, setToken] = useState(localStorage.getItem("auth"));
+  const [user, setUser] = useState("");
+  const [title, setTitle] = useState("");
+  const [image, setImage] = useState("");
+  const navigate = useNavigate();
   const handleClick = event => {
     // 👇️ toggle shown state
     setIsShown(current => !current);
   }
 
+
+      const fetchProfile = () => {
+        const url = "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
+
+        const config = {
+            method: "GET",
+            headers: new Headers({
+                Authorization: token,
+            }),
+
+        }
+        if (token) {
+
+        fetch(url, config)
+            .then(response => response.json())
+            .then(result => setUser(result[0]))
+            .catch(error => console.log('error', error));
+        }
+
+      };
+
+
+  useEffect(() => {
+    fetchProfile();
+  }, [token]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const url = "https://code-media.propulsion-learn.ch/backend/codepost/";
+    const fd = new FormData();
+    fd.append("title", title);
+    fd.append("image", image);
+
+
+    const config = {
+      method: "POST",
+      headers: new Headers({
+        Authorization: token,
+      }),
+      body: fd,
+    };
+
+    fetch(url, config)
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response);
+        } else {
+          console.log(response.json());
+        }
+      })
+      // .then(setTimeout(() => navigate("/posts"), 1000));
+  };
+  const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+
+   const handleImageFileChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
   return (
     <QCard>
       <div className="body">
-        <img className="image" src={profile1}></img>
-        <form>
+        <img className="image" src={user.avatar}></img>
+        <form onSubmit={handleSubmit}>
           <label>
-            <input type="text" name="name" placeholder="What's Up?" />
+            <input type="text" name="title" onChange={handleTitleChange} placeholder="What's Up?" />
           </label>
           <input type="submit" value="Post It" />
         </form>
@@ -100,7 +167,7 @@ const CardMidNewPost = () => {
 
       <NewPostButtons>
         <div>
-          <button>[ AddImage ]</button>
+          <input type="file" onChange={handleImageFileChange} />
         </div>
         <div>
         <button onClick={handleClick}>[ ToggleCodeEditor ]</button>
