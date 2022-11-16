@@ -6,14 +6,14 @@ import { UsersListContainer } from "./styled"
 
 
 const Userprofile = () => {
-    const [users, setUsers] = useState([])
+    const [user, setUsers] = useState([])
     let token = localStorage.getItem("auth")
 
     useEffect(() => {
         fetchFriends()
     }, [])
 
-    console.log(users && users)
+
 
     const fetchFriends = () => {
         var myHeaders = new Headers()
@@ -27,11 +27,11 @@ const Userprofile = () => {
         }
 
         fetch(
-            "https://code-media.propulsion-learn.ch/backend/api/social/users/list/",
+            "https://code-media.propulsion-learn.ch/backend/api/social/users/me/",
             requestOptions
         )
             .then(response => response.json())
-            .then(result => setUsers(result))
+            .then(result => setUsers(result[0]))
             .catch(error => console.log("error", error))
     }
 
@@ -39,9 +39,7 @@ const Userprofile = () => {
         <>
             <Navigation />
             <UsersListContainer>
-                {users.map(user => (
                     <ProfileCard user={user} key={user.id} />
-                ))}
             </UsersListContainer>
             <Footer />
         </>
