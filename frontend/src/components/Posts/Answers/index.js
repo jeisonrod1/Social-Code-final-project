@@ -1,16 +1,16 @@
 import {AnswersContainer} from "./index.styled";
 
 
-const Answers = ({reply}) => {
+const PostAnswers = ({postComments}) => {
 
     return (
         <>
            <div >
-               {reply ? (
-                <div>
-                    <p>{reply.author.username}</p>
-                    <img src={reply.author.avatar} width="20px"/>
-                    <p>{reply.content}</p>
+               {postComments ? (
+                <div print={console.log(postComments)}>
+                    <p>{postComments.author.username}</p>
+                    <img src={postComments.author.avatar} width="20px"/>
+                    <p>{postComments.content}</p>
                 </div>
                ) : <h5>loading...</h5>}
            </div>
@@ -19,4 +19,4 @@ const Answers = ({reply}) => {
     )
 }
 
-export default Answers;
+export default PostAnswers;

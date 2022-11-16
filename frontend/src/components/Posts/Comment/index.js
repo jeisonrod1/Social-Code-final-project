@@ -5,7 +5,7 @@ const Comment = ({comment}) => {
     const [comments, setComments] = useState([])
     return (
         <>
-            <p>
+            <p print={console.log(comment)}>
                {comment.author.username}
             </p>
             <p>{comment.created}</p>

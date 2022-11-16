@@ -4,10 +4,10 @@ import styled from "styled-components";
 import heart from "../../../images/icons/svgs/heart.svg";
 import share from "../../../images/icons/svgs/share.svg";
 
-import content from "../../../images/content/hooray.jpg";
+
 import { useState } from "react";
 import Comment from "../Comment";
-import Answers from "../Answers";
+
 import { useNavigate } from "react-router-dom";
 import Editor from "@monaco-editor/react";
 import { defineTheme } from "../../Judge/lib/defineTheme";
@@ -17,6 +17,7 @@ import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import {languageOptions} from "../../Judge/constants/languageOptions";
 import CreateComment from "../../CreateComment";
+import PostAnswers from "../Answers";
 
 // STYLED COMPONENTS -start
 
@@ -186,7 +187,7 @@ const CustomButton = styled.button`
 const CardMidPost = ({ post }) => {
    const javascriptDefault = `// The language is set to javascript. Happy Hacking!`
    const [btnState, setBtnState] = useState(false);
-   const [comment, setComment] = useState("Leave a Comment");
+   const [answers, setAnswers] = useState("Leave an Answer");
    const [token, setToken] = useState(localStorage.getItem("auth"));
    const [theme, setTheme] = useState("");
    const [outputDetails, setOutputDetails] = useState(null);
@@ -196,12 +197,13 @@ const CardMidPost = ({ post }) => {
    const navigate = useNavigate();
 
 
-  const handleCommentSubmit = (e) => {
+  const handleAnswersSubmit = (e) => {
     e.preventDefault();
 
-    const url = "https://code-media.propulsion-learn.ch/backend/codepost/";
+    const url = `https://code-media.propulsion-learn.ch/backend/answers/create/${post.id}`;
     const fd = new FormData();
-    fd.append("content", comment);
+    fd.append("textContent", answers);
+
 
     const config = {
       method: "POST",
@@ -222,8 +224,8 @@ const CardMidPost = ({ post }) => {
       .then(setTimeout(() => navigate("/posts"), 1000));
   };
 
-  const handleCommentChange = (e) => {
-    setComment(e.target.value);
+  const handleAnswersChange= (e) => {
+    setAnswers(e.target.value);
   };
   useEffect(() => {
     defineTheme("oceanic-next").then((_) =>
@@ -385,7 +387,7 @@ const CardMidPost = ({ post }) => {
           </Div6>
           <div>
             <h6>Answers</h6>
-                <Answers key={post.id} reply={post.reply}/>
+                {/*<PostAnswers key={post.id} reply={post.postComments}/>*/}
           </div>
 
         {/*<div className={`${toggleClassCheck}`}>*/}
@@ -398,17 +400,17 @@ const CardMidPost = ({ post }) => {
       <div className="comment"></div>
 
       <div>
-        <form className="form" onSubmit={handleCommentSubmit}>
+        <form className="form" onSubmit={handleAnswersSubmit}>
           <label>
             <input
               type="text"
               name="name"
-              value={comment}
-              onChange={handleCommentChange}
-              placeholder="Post a comment"
+              value={answers}
+              onChange={handleAnswersChange}
+              placeholder="Post an Answer"
             />
           </label>
-          <input type="submit" value="Post It" />
+          <input type="submit" value="Post Answer" />
         </form>
       </div>
 
