@@ -48,6 +48,7 @@ export const Avatar = styled.div`
     }
 `
 
+
 export const CompanyLabel = styled.label`
     border: solid 1px white;
     height: 15px;
