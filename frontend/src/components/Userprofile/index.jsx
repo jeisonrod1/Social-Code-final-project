@@ -7,15 +7,15 @@ import { UsersListContainer } from "./styled"
 
 const Userprofile = () => {
     const [user, setUsers] = useState([])
-    let token = localStorage.getItem("auth")
+    const token = localStorage.getItem("auth")
 
     useEffect(() => {
-        fetchFriends()
+        fetchUser()
     }, [])
 
 
 
-    const fetchFriends = () => {
+    const fetchUser = () => {
         var myHeaders = new Headers()
         myHeaders.append("Authorization", token)
         myHeaders.append("Cookie", "csrftoken=P5a0t1xsSr5oyG3RWjUVpWo4BCzKYNkF")
