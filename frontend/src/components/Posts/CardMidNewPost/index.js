@@ -21,7 +21,7 @@ const QCard = styled.div`
   justify-content: space-between;
   flex-direction: column;
   border: 1px solid #5052632e;
-  background-color: rgba(126, 126, 126, 0.12);
+  background-color: #282828;
   border-radius: 8px;
   .wrapper {
     display: flex;
