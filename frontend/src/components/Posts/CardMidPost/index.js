@@ -350,7 +350,7 @@ const CardMidPost = ({ post }) => {
         </div>
         <div className="right">
           <h5>{post.author.username}</h5>
-          <p className="subtitle">Asked {post.created}</p>
+          <p className="subtitle">Asked {`${new Date(post.created).toLocaleDateString('en-GB', {year:"numeric", month:"numeric", day:"numeric"})} ${new Date(post.created).toLocaleTimeString('en-GB', {hour:"numeric", minute:"numeric"})} `}</p>
           <h5>{post.title}</h5>
         </div>
       </div>
