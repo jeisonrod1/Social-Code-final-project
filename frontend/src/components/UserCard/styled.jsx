@@ -32,7 +32,7 @@ export const UserCardContainer = styled.div`
 export const Avatar = styled.div`
     height: 150px;
     width: 150px;
-    border: solid #282828 4x;
+    border: solid #282828 4px;
     border-radius: 50%;
     display: flex;
     justify-content: center;

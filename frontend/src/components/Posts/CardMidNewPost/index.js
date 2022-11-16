@@ -8,6 +8,7 @@ import profile1 from "../../../images/users/profile1.jpg";
 import CreatePost from "../../CreatePost/CreateCodePost";
 import { useState } from 'react';
 import {useNavigate} from "react-router-dom";
+import {ButtonsContainer, ExpandPostButtons} from "./stlyed";
 
 // STYLED COMPONENTS -start
 
@@ -43,8 +44,8 @@ const QCard = styled.div`
   input[type=text] {
   height: 60px;
   width: 310px;
+    padding-left: 8px;
   margin-left: 8px;
-  padding-left: 8px;
   }
      input[type=file]::file-selector-button {
           border: none;
@@ -64,7 +65,7 @@ const NewPostButtons = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  margin: 20px;
+  margin: 8px;
   padding-top: 16px;
   button {
     border-radius: 30px;
@@ -86,11 +87,18 @@ const NewPostButtons = styled.div`
     align-items: center;
   }
   input {
-    margin-right: 32px;
+    margin-right: 100px;
   }
   input[type="file"] {
-  width: 210px;
+  width: 220px;
+  border-radius: 20px;  
   }
+   input[type=file]::file-selector-button {
+          background-color: #ad3dea;
+          color: #fff;
+          cursor: pointer;
+          transition: background .2s ease-in-out;
+        }
 
 `;
 
@@ -183,15 +191,18 @@ const CardMidNewPost = () => {
         </form>
 
       </div>
-
-      <NewPostButtons>
-        <div>
-          <input type="file" onChange={handleImageFileChange} />
-        </div>
-        <div>
-        <button onClick={handleClick}>[ ToggleCodeEditor ]</button>
-        </div>
-      </NewPostButtons>
+      <ButtonsContainer>
+          <NewPostButtons>
+            <div>
+              <input type="file" onChange={handleImageFileChange} />
+            </div>
+          </NewPostButtons>
+          <ExpandPostButtons>
+            <div>
+            <button onClick={handleClick}>Expand Create Post Button</button>
+            </div>
+          </ExpandPostButtons>
+      </ButtonsContainer>
       {isShown && <CreatePost />}
     </QCard>
   
