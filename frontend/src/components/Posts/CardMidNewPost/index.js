@@ -21,14 +21,14 @@ const QCard = styled.div`
   justify-content: space-between;
   flex-direction: column;
   border: 1px solid #5052632e;
-  background-color: rgba(126, 126, 126, 0.12);
+  background-color: rgba(126,126,126,0.12);
   border-radius: 8px;
   .wrapper {
     display: flex;
   }
   .image {
     border-radius: 100%;
-    width: 50px;
+    width: 80px;
     margin: 16px;
   }
   p,
@@ -42,17 +42,29 @@ const QCard = styled.div`
   }
   input[type=text] {
   height: 60px;
-  width: 350px;
+  width: 310px;
   margin-left: 8px;
   padding-left: 8px;
   }
+     input[type=file]::file-selector-button {
+          border: none;
+          background: rgba(126,126,126,0.12);
+          color: #fff;
+          cursor: pointer;
+          transition: background .2s ease-in-out;
+        }
+        
+  input[type="file"] {
+    width: 210px;
+  }
+  
 `;
 
 const NewPostButtons = styled.div`
   display: flex;
   justify-content: start;
   align-items: center;
-  margin: 8px;
+  margin: 20px;
   padding-top: 16px;
   button {
     border-radius: 30px;
@@ -73,6 +85,13 @@ const NewPostButtons = styled.div`
     display: flex;
     align-items: center;
   }
+  input {
+    margin-right: 32px;
+  }
+  input[type="file"] {
+  width: 210px;
+  }
+
 `;
 
 
