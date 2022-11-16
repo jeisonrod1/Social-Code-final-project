@@ -8,7 +8,7 @@ const Comment = ({comment}) => {
             <p print={console.log(comment)}>
                {comment.author.username}
             </p>
-            <p>{comment.created}</p>
+            <p>{`${new Date(comment.created).toLocaleDateString('en-GB', {year:"numeric", month:"numeric", day:"numeric"})} ${new Date(comment.created).toLocaleTimeString('en-GB', {hour:"numeric", minute:"numeric"})} `}</p>
             <p>
                {comment.textContent}
             </p>
