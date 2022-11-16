@@ -1,0 +1,51 @@
+import React, { useEffect, useState } from "react"
+import Footer from "../Footer"
+import Navigation from "../Navigation"
+import ProfileCard from "../ProfileCard"
+import { UsersListContainer } from "./styled"
+
+
+const Userprofile = () => {
+    const [users, setUsers] = useState([])
+    let token = localStorage.getItem("auth")
+
+    useEffect(() => {
+        fetchFriends()
+    }, [])
+
+    console.log(users && users)
+
+    const fetchFriends = () => {
+        var myHeaders = new Headers()
+        myHeaders.append("Authorization", token)
+        myHeaders.append("Cookie", "csrftoken=P5a0t1xsSr5oyG3RWjUVpWo4BCzKYNkF")
+
+        var requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: "follow",
+        }
+
+        fetch(
+            "https://code-media.propulsion-learn.ch/backend/api/social/users/list/",
+            requestOptions
+        )
+            .then(response => response.json())
+            .then(result => setUsers(result))
+            .catch(error => console.log("error", error))
+    }
+
+    return (
+        <>
+            <Navigation />
+            <UsersListContainer>
+                {users.map(user => (
+                    <ProfileCard user={user} key={user.id} />
+                ))}
+            </UsersListContainer>
+            <Footer />
+        </>
+    )
+}
+
+export default Userprofile
