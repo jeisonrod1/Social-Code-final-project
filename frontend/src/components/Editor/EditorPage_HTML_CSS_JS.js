@@ -9,6 +9,8 @@ import {
 import toast, { Toaster } from "react-hot-toast";
 import styled from "styled-components";
 
+import socialCodeLogo from "../../images/logos/social_code_logo.webp";
+
 // STYLED COMPONENTS -start
 import "./Editor_HTML_CSS_JS.css";
 
@@ -49,9 +51,45 @@ import {
 } from "@uiw/codemirror-themes-all";
 import { faHelicopterSymbol } from "@fortawesome/free-solid-svg-icons";
 
+import HomePageWrapper from "./EditorPage_HTML_CSS_JS";
+import {
+  client,
+  Logo,
+  LogoImage,
+  EditorMainWrap,
+  Aside,
+  AsideInner,
+  ClientsList,
+} from "./StyledEditorHTML_CSS_JS";
+
 // const Page = styled.div``;
 
 const EditorPage_HTML_CSS_JS = props => {
+  const [token, setToken] = useState(localStorage.getItem("auth"));
+  const [users, setUsers] = useState([]);
+
+  const fetchProfile = () => {
+    const url =
+      "https://code-media.propulsion-learn.ch/backend/api/social/users/me/";
+
+    const config = {
+      method: "GET",
+      headers: new Headers({
+        Authorization: token,
+      }),
+    };
+    if (token) {
+      fetch(url, config)
+        .then(response => response.json())
+        .then(result => setUsers(result))
+        .catch(error => console.log("error", error));
+    }
+  };
+
+  // useEffect(() => {
+  //   fetchProfile();
+  // }, [token]);
+
   const { handleUsername } = props;
   // Editor
   const [srcDoc, setSrcDoc] = useState("");
@@ -87,7 +125,6 @@ const EditorPage_HTML_CSS_JS = props => {
   const location = useLocation();
   const { roomId } = useParams();
   const reactNavigator = useNavigate();
-  const [clients, setClients] = useState([]);
   let usernames = ["Gio", "Alex", "Kitti", "Jeison", "Mads"];
 
   async function copyRoomId() {
@@ -112,35 +149,29 @@ const EditorPage_HTML_CSS_JS = props => {
     <>
       <br />
       <br />
-      <div className="mainWrap">
-        <div className="aside">
-          <div className="asideInner">
-            <div className="logo">
-              <img
+      <EditorMainWrap>
+        <Aside>
+          <AsideInner>
+            <Logo>
+              <LogoImage
                 className="logoImage"
-                src="/logo_socialcode.jpg"
+                src={socialCodeLogo}
                 alt="logo"
               />
-            </div>
+            </Logo>
             <h3>Connected</h3>
-            <div className="clientsList">
-              {/* For usernames */}
-              {usernames.map(client => (
-                <Client
-                  // onChange={handleUsername}
-                  key={client}
-                  username={client}
-                />
+            <ClientsList>
+              {users.length}
+              {users.map(client => (
+                <Client key={client.id} username={client.first_name} />
               ))}
-            </div>
-          </div>
-          <button className="Editorbtns copyBtn" onClick={copyRoomId}>
-            Copy ROOM ID
-          </button>
+            </ClientsList>
+          </AsideInner>
+          <button onClick={copyRoomId}>Copy ROOM ID</button>
           <button className="Editorbtns leaveBtn" onClick={leaveRoom}>
             Leave
           </button>
-        </div>
+        </Aside>
         <div className="editorWrap">
           <div className="pane top-pane">
             <Editor_HTML_CSS_JS
@@ -187,8 +218,9 @@ const EditorPage_HTML_CSS_JS = props => {
             />
           </div>
         </div>
-      </div>
+      </EditorMainWrap>
     </>
   );
 };
+
 export default EditorPage_HTML_CSS_JS;

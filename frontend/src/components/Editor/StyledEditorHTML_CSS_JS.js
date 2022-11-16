@@ -1,20 +1,32 @@
 import styled from "styled-components";
+import theme from "../../style/index";
 
+// example ${sc => sc.theme.}
 /* Editor HomePage */
-export const homePageWrapper = styled.div`
+export const HomePageWrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #fff;
+  justify-content: space-evenly;
+  /* color: ${c => c.theme.purple} */
   height: 100vh;
 `;
 
-export const formWrapper = styled.form`
-  background: #282a36;
+export const EnterCartWrapper = styled.div`
+  background: ${sc => sc.theme.backgroundBlackLight};
+
+  /* background: rgba(126, 126, 126, 0.12); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   padding: 20px;
   border-radius: 10px;
   width: 400px;
   max-width: 90%;
+
+  &&:hover {
+    box-shadow: ${sc => sc.theme.boxShadowDark};
+  }
 `;
 
 export const footer = styled.div`
@@ -29,22 +41,22 @@ export const footer = styled.div`
   }
 `;
 
-export const inputGroup = styled.div`
+export const MainLabelH4 = styled.h4`
+  margin-bottom: 20px;
+  margin-top: 0;
+`;
+export const InputGroup = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
-export const mainLabel = styled.div`
-  margin-bottom: 20px;
-  margin-top: 0;
+export const HomePageLogo = styled.img`
+  height: 50px;
+  margin-bottom: 10px;
+  /* object-fit: cover; */
 `;
 
-export const homePageLogo = styled.div`
-  height: 80px;
-  margin-bottom: 30px;
-`;
-
-export const inputBox = styled.div`
+export const InputBox = styled.div`
   padding: 10px;
   border-radius: 5px;
   outline: none;
@@ -55,7 +67,7 @@ export const inputBox = styled.div`
   font-weight: bold;
 `;
 
-export const btn = styled.button`
+export const Btn = styled.button`
   border: none;
   padding: 10px;
   border-radius: 5px;
@@ -64,26 +76,47 @@ export const btn = styled.button`
   cursor: pointer;
   transition: all 0.3s ease-in-out;
 `;
-export const joinBtn = styled.button`
-  background: #4aed88;
+export const JoinBtn = styled.button`
+  background: ${sc => sc.theme.purpleLight};
   width: 100px;
-  margin-left: auto;
-`;
-export const leaveBtn = styled.button`
-  background: #4aed88;
-  width: 100px;
-  margin-left: auto;
-  margin-top: 20px;
-  && :hover {
-    background: #2b824c;
+  border: 20px solid black;
+  /* margin: 0 auto; */
+  /* margin-top: auto; */
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &&:hover {
+    background: ${sc => sc.theme.backgroundBlackLight};
+    box-shadow: ${sc => sc.theme.boxShadowDark};
   }
 `;
 
-export const createInfo = styled.div`
-  margin: 0 auto;
-  margin-top: 20px;
+// backgroundBlackLight
+// borderRadiusM
+// boxShadowDark
+// boxShadowLight
+// boxShadowLighter
+// transitionNormal
+export const CreateInfo = styled.div`
+  /* margin: 0 auto; */
+  margin-top: 85px;
+
+  && a {
+    margin-left: 5px;
+    color: white;
+    text-decoration: none;
+    border-bottom: 1.45px solid ${sc => sc.theme.purpleLight};
+    transition: all 0.3s ease-in-out;
+  }
+  && a:hover {
+    border-bottom: 1.45px solid ${sc => sc.theme.purpleDark};
+  }
 `;
-export const createNewBtn = styled.button`
+export const CreateNewBtn = styled.button`
   color: #4aed88;
   text-decoration: none;
   border-bottom: 1px solid #4aed88;
@@ -94,48 +127,74 @@ export const createNewBtn = styled.button`
     border-color: #368654;
   }
 `;
+export const LeaveBtn = styled.button`
+  background: ${sc => sc.theme.purpleLight};
+  width: 100px;
+  margin-left: auto;
+  margin-top: 20px;
+  && :hover {
+    background: #2b824c;
+  }
+`;
 
-export const mainWrap = styled.div`
+export const EditorMainWrap = styled.div`
   display: grid;
   grid-template-columns: 230px 1fr;
 `;
 
-export const aside = styled.aside`
+export const Aside = styled.aside`
   background: #1c1e29;
   padding: 16px;
   color: #fff;
   display: flex;
   flex-direction: column;
 `;
-export const asideInner = styled.div`
+export const AsideInner = styled.div`
   flex: 1;
+  button {
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
 `;
 
-export const clientsList = styled.div`
+export const CoppyBttn = styled.button``;
+
+export const ClientsList = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
 `;
 
-export const client = styled.div`
+export const UserClients = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
   font-weight: bold;
+  && img {
+    object-fit: contain;
+    height: 50px;
+    border-radius: 8px;
+  }
 `;
 
-export const userName = styled.div`
+export const UserName = styled.span`
   margin-top: 10px;
+  border: 20px solid black;
 `;
 
-export const logo = styled.img`
-  border-bottom: 1px solid #424242;
+export const Logo = styled.div`
+  border-bottom: 1.45px solid ${sc => sc.theme.purpleLight};
   padding-bottom: 10px;
 `;
 
-export const logoImage = styled.img`
-  height: 45px;
+export const LogoImage = styled.img`
+  height: 28.3px;
 `;
 
 // Styled Editor Wrappers
