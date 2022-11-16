@@ -14,8 +14,21 @@ export const BodyForm = styled.form`
 
     padding: 8px;
     div {
-        margin-right: 8px;
+        margin-right: 34px;
     }
+    select{
+        background-color: ${props => props.theme.backgroundBlackLight};
+        border-radius: 20px;
+        padding: 8px 14px;
+        
+    }
+    input[type=file]::file-selector-button {
+          border: none;
+          background: rgba(126,126,126,0.12);
+          color: #fff;
+          cursor: pointer;
+          transition: background .2s ease-in-out;
+        }
 
     ;
 `;
