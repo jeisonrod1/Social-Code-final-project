@@ -204,3 +204,5 @@ EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.environ.get('EMAIL_PORT')
 
+DATETIME_FORMAT=["%Y-%m-%d%H:%M:%S"]
+# DATETIME_FORMAT="%d-%m-%Y%H:%M:"
