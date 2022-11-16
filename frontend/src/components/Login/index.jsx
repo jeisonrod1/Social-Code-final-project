@@ -42,15 +42,14 @@ const Login = () => {
         fetch("https://code-media.propulsion-learn.ch/backend/auth/token/", config)
             .then(response => response.json())
             .then(data => {
-                localStorage.setItem("auth", data.access)
-                setToken(data.access)
+                localStorage.setItem("auth", `Bearer ${data.access}`)
+                setToken(`Bearer ${data.access}`)
             })
             .catch(error => console.log(error))
     }
 
     useEffect(() => {
       if (token) {
-          localStorage.setItem("auth",`Bearer ${token}`);
           console.log("the token was stored to local storage");
           navigate("/posts")
       }

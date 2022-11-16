@@ -350,18 +350,18 @@ const CardMidPost = ({ post }) => {
         </div>
         <div className="right">
           <h5>{post.author.username}</h5>
-          <p className="subtitle">Asked {post.created}</p>
+          <p className="subtitle">Asked {`${new Date(post.created).toLocaleDateString('en-GB', {year:"numeric", month:"numeric", day:"numeric"})} ${new Date(post.created).toLocaleTimeString('en-GB', {hour:"numeric", minute:"numeric"})} `}</p>
           <h5>{post.title}</h5>
         </div>
       </div>
       <div className="body">
-        <Editor
+          {post.code ? <Editor
           height="40vh"
           width="100%"
           language={post.language || "javascript"}
           theme={theme.value}
           defaultValue={post.code}
-        />
+        />: null}
         <p>{post.description}</p>
         {/*TODO: needs to be replaced with editor*/}
         <div className="img-wrapper" style={{ width: "200px" }}>
@@ -371,20 +371,20 @@ const CardMidPost = ({ post }) => {
             src={post.image}
           ></img>
         </div>
-        <Div6>
-                <OutputWindow outputDetails={outputDetails} />
-                <Div7>
+         {post.code ?  <Div6>
+                          <OutputWindow outputDetails={outputDetails} />
+                                <Div7>
 
-                    <CustomButton
-                      onClick={handleCompile}
-                      disabled={!code}
+                                    <CustomButton
+                                      onClick={handleCompile}
+                   g                   disabled={!code}
 
-                    >
-                      {processing ? "Processing..." : "Compile and Execute"}
-                    </CustomButton>
-                </Div7>
-                {outputDetails && <OutputDetails outputDetails={outputDetails} />}
-          </Div6>
+                                    >
+                                      {processing ? "Processing..." : "Compile and Execute"}
+                                    </CustomButton>
+                                </Div7>
+                                {outputDetails && <OutputDetails outputDetails={outputDetails} />}
+                      </Div6> : null}
           <div>
             <h6>Answers</h6>
                 {/*<PostAnswers key={post.id} reply={post.postComments}/>*/}
