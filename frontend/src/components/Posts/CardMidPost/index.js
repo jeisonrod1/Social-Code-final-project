@@ -377,7 +377,7 @@ const CardMidPost = ({ post }) => {
 
                                     <CustomButton
                                       onClick={handleCompile}
-                   g                   disabled={!code}
+                                      disabled={!code}
 
                                     >
                                       {processing ? "Processing..." : "Compile and Execute"}
@@ -385,17 +385,14 @@ const CardMidPost = ({ post }) => {
                                 </Div7>
                                 {outputDetails && <OutputDetails outputDetails={outputDetails} />}
                       </Div6> : null}
-          <div>
-            <h6>Answers</h6>
-                {/*<PostAnswers key={post.id} reply={post.postComments}/>*/}
-          </div>
 
-        {/*<div className={`${toggleClassCheck}`}>*/}
+
         <h6>Comments:</h6>
-          <CreateComment/>
+          <CreateComment key={post} post={post}/>
         {post.postComments.map((comment) => (
           <Comment key={comment.id} comment={comment} />
         ))}
+
       </div>
       <div className="comment"></div>
 
