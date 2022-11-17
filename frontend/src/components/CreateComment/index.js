@@ -5,7 +5,7 @@ import { CommentContainer} from "./index.styled";
 
 
 function CreateComment({post}) {
-     const [answers, setAnswers] = useState("Leave an Comment");
+     const [answers, setAnswers] = useState("Leave a Comment...");
      const [token, setToken] = useState(localStorage.getItem("auth"));
      const navigate = useNavigate();
 
