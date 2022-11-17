@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom"
 import logo from "../../images/logos/social_code_logo.webp"
 import user_avatar from "../../images/users/profile-face.png"
+import {useEffect, useState} from "react";
 
 
 const NavigationContainer = styled.div`
@@ -122,7 +123,35 @@ const NavigationItem = styled.div`
 `
 
 const Navigation = () => {
-  const navigate = useNavigate()
+    const navigate = useNavigate()
+    const [user, setUsers] = useState([])
+    const token = localStorage.getItem("auth")
+
+    useEffect(() => {
+        fetchUser()
+    }, [])
+
+
+
+    const fetchUser = () => {
+        var myHeaders = new Headers()
+        myHeaders.append("Authorization", token)
+        myHeaders.append("Cookie", "csrftoken=P5a0t1xsSr5oyG3RWjUVpWo4BCzKYNkF")
+
+        var requestOptions = {
+            method: "GET",
+            headers: myHeaders,
+            redirect: "follow",
+        }
+
+        fetch(
+            "https://code-media.propulsion-learn.ch/backend/api/social/users/me/",
+            requestOptions
+        )
+            .then(response => response.json())
+            .then(result => setUsers(result[0]))
+            .catch(error => console.log("error", error))
+    }
 
 
   return (
@@ -135,7 +164,7 @@ const Navigation = () => {
           <NavigationItem onClick={() => navigate("/posts")}>Posts</NavigationItem>
           <NavigationItem onClick={() => navigate("/users")}>Friends</NavigationItem>
           <NavigationItem onClick={() => navigate("/editor")}>Editor</NavigationItem>
-          <NavigationItem onClick={() => navigate("/userProfile")}><img src={user_avatar}/></NavigationItem>
+          <NavigationItem onClick={() => navigate("/userProfile")}><img src={user.avatar}/></NavigationItem>
         </div>
 
           {/* <div className="orange">

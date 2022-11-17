@@ -1,12 +1,15 @@
 import { useLocation } from "react-router-dom"
-import { AddFriendButton, Avatar, CompanyLabel, Experience, LocationWrapper, UserCardContainer } from "./styled"
+import {useState} from 'react'
+import { AddFriendButton, RequestSendButton, Avatar, CompanyLabel, Experience, LocationWrapper, UserCardContainer } from "./styled"
 import avatar_placeholder from "../../images/logos/logo-color.png"
 import location_icon from "../../images/icons/svgs/location.svg"
 
 const UserCard = ({ user }) => {
     const location = useLocation().pathname
+    const [requestSent, setRequestSent] = useState(false)
 
     const handleFriendClick = () => {
+        setRequestSent(true)
         var myHeaders = new Headers()
         myHeaders.append("Accept", "application/json")
         myHeaders.append("Authorization", localStorage.getItem("auth"))
@@ -52,8 +55,7 @@ const UserCard = ({ user }) => {
                   ) : (
                   )} */}
             {/* {location != '/my_friends/' ? <button onClick={() => handleFriendClick(user.id)}> ADD FRIEND </button> : ''} */}
-
-            <AddFriendButton onClick={() => handleFriendClick(user.id)}>Add Friend</AddFriendButton>
+            {requestSent ? <RequestSendButton> Request sent </RequestSendButton> : <AddFriendButton onClick={() => handleFriendClick(user.id)}>Add Friend</AddFriendButton> }
         </UserCardContainer>
     )
 }

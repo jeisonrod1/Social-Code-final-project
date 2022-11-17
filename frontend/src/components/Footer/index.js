@@ -13,10 +13,11 @@ import "./pacman.css";
 const HeaderComponent = styled.div`
   display: flex;
   position: fixed;
-  box-shadow: 6px 6px 13px 0px;
+  //box-shadow: 6px 6px 13px 0px;
   width: 100%;
   bottom: 0;
   height: 42px;
+  background: ${p=>p.theme.backgroundBlack};
   /* .light &{
     background-color: #e2e2e2;
     transition: all 1s;

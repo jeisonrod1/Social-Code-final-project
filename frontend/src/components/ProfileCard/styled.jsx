@@ -1,12 +1,37 @@
 import styled from "styled-components";
 
+export const Info = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin: 64px;
+    h6 {
+    padding: 8px;
+    }
+`
 
-export const UserCardContainer = styled.div`
+export const Stats = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    margin: 64px;
+    padding: 32px;
+    h6 {
+    padding: 8px;
+    }
+`
+export const LeftWrapper = styled.div`
+    width: 200px;
+`
+
+export const RightWrapper = styled.div`
+    width: 600px;
+`
+
+export const ProfileCardContainer = styled.div`
     height: 360px;
-    width: 280px;
+    width: 980px;
     display: flex;
     border-radius: 8px;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     background: #282828;
@@ -32,7 +57,7 @@ export const UserCardContainer = styled.div`
 export const Avatar = styled.div`
     height: 150px;
     width: 150px;
-    border: solid #282828 4px;
+    border: solid #282828 4x;
     border-radius: 50%;
     display: flex;
     justify-content: center;
@@ -47,7 +72,6 @@ export const Avatar = styled.div`
         object-fit: cover;
     }
 `
-
 
 export const CompanyLabel = styled.label`
     border: solid 1px white;
@@ -85,23 +109,6 @@ export const Experience = styled.h2`
 
 export const AddFriendButton = styled.button`
     background: ${p=>p.theme.purpleLight};
-    color: white;
-    font-size: ${p=>p.theme.fontSizeM};
-    width: 140px;
-    height: 36px;
-    border-radius: 4px;
-    border: none;
-    margin-top: 26px;
-    position: absolute;
-    bottom: 40px;
-
-    :hover {
-        cursor: pointer;
-        font-weight: bold;
-    }
-`
-export const RequestSendButton = styled.button`
-    background: ${p=>p.theme.purpleDesaturated};
     color: white;
     font-size: ${p=>p.theme.fontSizeM};
     width: 140px;

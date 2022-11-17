@@ -16,7 +16,7 @@ class CodePost(models.Model):
     title = models.CharField(max_length=250)
     tags = models.CharField(max_length=300, blank=True)
     language = models.CharField(max_length=250, choices=LANGUAGE_CHOICES, blank=True)
-    difficulty = models.CharField(max_length=250)
+    difficulty = models.CharField(max_length=250, blank=True)
     description = models.TextField(blank=True)
     code = models.TextField(blank=True)
     image = models.ImageField(upload_to=code_directory_path, height_field=None, width_field=None, max_length=100, blank=True)

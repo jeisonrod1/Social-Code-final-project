@@ -17,6 +17,7 @@ import axios from "axios";
 import {toast, ToastContainer} from "react-toastify";
 import {languageOptions} from "../../Judge/constants/languageOptions";
 import CreateComment from "../../CreateComment";
+import Badges from "../Badges";
 import PostAnswers from "../Answers";
 
 // STYLED COMPONENTS -start
@@ -181,6 +182,21 @@ const CustomButton = styled.button`
          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06); 
          }       
 `;
+const PointsCont = styled.div`
+    display: flex;
+    justify-content: flex-end;
+    height: fit-content;
+    flex-grow: 1;
+    p {
+        border: 4px solid rgba(218,165,32);
+        background: linear-gradient(0.33turn, gold, darkgoldenrod, #f69d3c);
+        border-radius: 50px;
+        text-align: center;
+        color: white;
+        width: 100px;
+        font-weight: 500;
+    }
+`;
 
 // STYLED COMPONENTS -end
 
@@ -194,8 +210,39 @@ const CardMidPost = ({ post }) => {
    const [processing, setProcessing] = useState(null);
    const [code, setCode] = useState(javascriptDefault);
    const [language, setLanguage] = useState(languageOptions[0]);
+   const [points, setPoints] = useState(0)
+    const [gold, setGold] = useState(0)
+    const [silver, setSilver] = useState(0)
+    const [bronze, setBronze] = useState(0)
+    const [likes, setLikes] = useState(0)
    const navigate = useNavigate();
 
+
+   useEffect(() => {
+       setLikes(generateRandom(100))
+       setGold(generateRandom(5))
+       setSilver(generateRandom(7))
+       setBronze(generateRandom(10))
+
+   }, [])
+
+    useEffect(() => {
+        setPoints(calcPoints())
+    }, [likes, gold, silver, bronze])
+
+
+   const generateRandom = (max) => {
+       return Math.floor(Math.random() * max)
+   }
+
+   const calcPoints = () => {
+       let points = 0;
+       points += likes;
+       points += gold * 100;
+       points += silver * 50;
+       points += bronze * 25;
+       return points
+   }
 
   const handleAnswersSubmit = (e) => {
     e.preventDefault();
@@ -350,18 +397,19 @@ const CardMidPost = ({ post }) => {
         </div>
         <div className="right">
           <h5>{post.author.username}</h5>
-          <p className="subtitle">Asked {post.created}</p>
+          <p className="subtitle">Asked {`${new Date(post.created).toLocaleDateString('en-GB', {year:"numeric", month:"numeric", day:"numeric"})} ${new Date(post.created).toLocaleTimeString('en-GB', {hour:"numeric", minute:"numeric"})} `}</p>
           <h5>{post.title}</h5>
         </div>
+          <PointsCont><p>{points}</p></PointsCont>
       </div>
       <div className="body">
-        <Editor
+          {post.code ? <Editor
           height="40vh"
           width="100%"
           language={post.language || "javascript"}
           theme={theme.value}
           defaultValue={post.code}
-        />
+        />: null}
         <p>{post.description}</p>
         {/*TODO: needs to be replaced with editor*/}
         <div className="img-wrapper" style={{ width: "200px" }}>
@@ -371,31 +419,28 @@ const CardMidPost = ({ post }) => {
             src={post.image}
           ></img>
         </div>
-        <Div6>
-                <OutputWindow outputDetails={outputDetails} />
-                <Div7>
+         {post.code ?  <Div6>
+                          <OutputWindow outputDetails={outputDetails} />
+                                <Div7>
 
-                    <CustomButton
-                      onClick={handleCompile}
-                      disabled={!code}
+                                    <CustomButton
+                                      onClick={handleCompile}
+                                      disabled={!code}
 
-                    >
-                      {processing ? "Processing..." : "Compile and Execute"}
-                    </CustomButton>
-                </Div7>
-                {outputDetails && <OutputDetails outputDetails={outputDetails} />}
-          </Div6>
-          <div>
-            <h6>Answers</h6>
-                {/*<PostAnswers key={post.id} reply={post.postComments}/>*/}
-          </div>
+                                    >
+                                      {processing ? "Processing..." : "Compile and Execute"}
+                                    </CustomButton>
+                                </Div7>
+                                {outputDetails && <OutputDetails outputDetails={outputDetails} />}
+                      </Div6> : null}
 
-        {/*<div className={`${toggleClassCheck}`}>*/}
+        <Badges likes={likes} gold={gold} silver={silver} bronze={bronze} setters={{setLikes, setGold, setBronze, setSilver}} />
         <h6>Comments:</h6>
-          <CreateComment/>
+          <CreateComment key={post} post={post}/>
         {post.postComments.map((comment) => (
           <Comment key={comment.id} comment={comment} />
         ))}
+
       </div>
       <div className="comment"></div>
 

@@ -6,7 +6,6 @@ export const Gridding = styled.form`
 export const BodyForm = styled.form`
     height: 450px;
     width: 566px;
-    /* background-color: rgba(126, 126, 126, 0.12); */
     display: flex;
     justify-content: flex-start;
     flex-direction: row;
@@ -14,8 +13,22 @@ export const BodyForm = styled.form`
 
     padding: 8px;
     div {
-        margin-right: 8px;
+        padding-top: 5px; 
+        margin-right: 150px;
     }
+    select{
+        background-color: transparent;
+        border-radius: 20px;
+        padding: 8px 14px;
+        
+    }
+    input[type=file]::file-selector-button {
+          border: none;
+          background-color: #ad3dea;
+          color: #fff;
+          cursor: pointer;
+          transition: background .2s ease-in-out;
+        }
 
     ;
 `;
@@ -43,7 +56,7 @@ export const SubmitButtonDiv = styled.div`
 export const SubmitButtonButton = styled.button`
     height: 30px;
     width: 100px;
-    background-color: #492d71;
+    background-color: #ad3dea;
     border-radius: 28px;
 `;
 

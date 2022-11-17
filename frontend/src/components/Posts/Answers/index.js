@@ -1,22 +1,25 @@
-import {AnswersContainer} from "./index.styled";
 
 
-const PostAnswers = ({postComments}) => {
+
+const Answers = ({reply}) => {
+
+
 
     return (
         <>
            <div >
-               {postComments ? (
-                <div print={console.log(postComments)}>
-                    <p>{postComments.author.username}</p>
-                    <img src={postComments.author.avatar} width="20px"/>
-                    <p>{postComments.content}</p>
+               {reply ? (
+                <div>
+                    <p>{reply.author.username}</p>
+                    <p>{`${new Date(reply.created).toLocaleDateString('en-GB', {year:"numeric", month:"numeric", day:"numeric"})} ${new Date(reply.created).toLocaleTimeString('en-GB', {hour:"numeric", minute:"numeric"})} `}</p>
+                    <img src={reply.author.avatar} width="20px"/>
+                    <p>{reply.content}</p>
                 </div>
-               ) : <h5>loading...</h5>}
+               ) : null}
            </div>
 
         </>
     )
 }
 
-export default PostAnswers;
+export default Answers;

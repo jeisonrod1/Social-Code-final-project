@@ -33,11 +33,10 @@ border: none;
 }
 
 main {
-  background-image: url('./images/covers/bg_transparent_50.png');
   background-size: cover;
   height: 100%;
   background-attachment: fixed;
-  background-color: #2e3138;
+  background-color: #3d3d3d;
   transition: all 1s;
 }
 
@@ -102,7 +101,7 @@ input {
 }
 
 input[type="submit"] {
-  background-color: #492d71;
+  background-color: #ad3dea;
   color: white;
   width: 100px;
   height: 28px;
