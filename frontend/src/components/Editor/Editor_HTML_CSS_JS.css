@@ -49,6 +49,7 @@ footer a {
   background: #eee;
   font-size: 16px;
   font-weight: bold;
+  color: black;
 }
 
 .Editorbtns {
@@ -78,17 +79,17 @@ footer a {
   margin-top: 20px;
 }
 
-.createNewBtn {
+/* .createNewBtn {
   color: #4aed88;
   text-decoration: none;
   border-bottom: 1px solid #4aed88;
   transition: all 0.3s ease-in-out;
-}
+} */
 
 .createNewBtn:hover,
 footer a:hover {
   color: #368654;
-  border-color: #368654;
+  border-color: #3686f5;
 }
 
 .mainWrap {
@@ -119,6 +120,13 @@ footer a:hover {
   align-items: center;
   flex-direction: column;
   font-weight: bold;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.client img {
+  object-fit: contain;
+  height: 50px;
+  border-radius: 8px;
 }
 .userName {
   margin-top: 10px;
@@ -130,7 +138,7 @@ footer a:hover {
 }
 
 .logoImage {
-  height: 45px;
+  height: 30px;
 }
 
 .leaveBtn {
@@ -149,12 +157,12 @@ footer a:hover {
 
 /* Editor */
 .top-pane {
-  background-color: hsl(225, 6%, 25%);
+  /* background-color: hsl(225, 6%, 25%); */
 }
 
 .pane {
   height: 50vh;
-  background-color: hsl(225, 6%, 25%);
+  /* background-color: hsl(225, 6%, 25%); */
   display: flex;
 }
 
@@ -164,7 +172,6 @@ footer a:hover {
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
-  background-color: hsl(225, 6%, 25%);
   max-width: 500px;
   height: 100% !important;
 }
@@ -212,8 +219,8 @@ footer a:hover {
   z-index: 0;
   padding-top: 20px;
   width: 100%;
-  height: 74.5%;
-  /* height: 100%; */
+  /* height: 74.5%; */
+  height: 100%;
 }
 
 .code-mirror-wrapper {
@@ -250,4 +257,8 @@ footer a:hover {
 /* Handle on hover */
 .CodeMirror-scroll::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+
+.avatars-editor {
+  border: 20px solid black;
 }

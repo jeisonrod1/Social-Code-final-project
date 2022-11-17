@@ -4,6 +4,17 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import "./Editor_HTML_CSS_JS.css";
 import EditorPage_HTML_CSS_JS from "./EditorPage_HTML_CSS_JS";
+import { SignupForm } from "../Signup/index.styled";
+import {
+  HomePageWrapper,
+  EnterCartWrapper,
+  HomePageLogo,
+  MainLabelH4,
+  InputGroup,
+  JoinBtn,
+  CreateInfo,
+} from "./StyledEditorHTML_CSS_JS";
+import socialCodeLogo from "../../images/logos/social_code_logo.webp";
 
 const AccessEditor = props => {
   // const { handleUsername, usernames = username } = props;
@@ -38,45 +49,48 @@ const AccessEditor = props => {
     }
   };
   return (
-    <div className="homePageWrapper">
-      <div className="formWrapper">
-        <img
-          className="homePageLogo"
-          src="/logo_socialcode.jpg"
+    <HomePageWrapper>
+      <EnterCartWrapper>
+        <HomePageLogo
+          // src="../../images/logos/social_code_logo.webp"
+          src={socialCodeLogo}
           alt="social-code-logo"
         />
-        <h4 className="mainLabel">Paste invitation ROOM ID</h4>
-        <div className="inputGroup">
-          <input
-            type="text"
-            className="inputBox"
-            placeholder="ROOM ID"
-            onChange={e => setRoomId(e.target.value)}
-            value={roomId}
-            onKeyUp={handleInputEnter}
-          />
-          <input
-            type="text"
-            className="inputBox"
-            placeholder="USERNAME"
-            // onChange={e => setUsername(e.target.value)}
-            onChange={e => setUsername(e.target.value)}
-            value={username}
-            // usernames={usernames}
-            onKeyUp={handleInputEnter}
-          />
-          <button className="Editorbtns joinBtn" onClick={joinRoom}>
-            Join
-          </button>
-          <span className="createInfo">
-            If you don't have an invite then create &nbsp;
+        {/* <InputGroup> */}
+        <SignupForm style={{}}>
+          <label>
+            <input
+              type="text"
+              placeholder="ROOM ID"
+              onChange={e => setRoomId(e.target.value)}
+              value={roomId}
+              onKeyUp={handleInputEnter}
+            />
+          </label>
+          <label>
+            <input
+              type="text"
+              placeholder="USERNAME"
+              // onChange={e => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value)}
+              value={username}
+              // usernames={usernames}
+              onKeyUp={handleInputEnter}
+            />
+          </label>
+          <JoinBtn onClick={joinRoom}>Join</JoinBtn>
+          {/* <div> */}
+          {/* </div> */}
+          <CreateInfo>
+            Please create a
             <a onClick={createNewRoom} href="" className="createNewBtn">
-              new room
+              ROOM ID
             </a>
-          </span>
-        </div>
-      </div>
-    </div>
+          </CreateInfo>
+        </SignupForm>
+        {/* </InputGroup> */}
+      </EnterCartWrapper>
+    </HomePageWrapper>
   );
 };
 
