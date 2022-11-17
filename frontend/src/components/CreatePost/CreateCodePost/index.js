@@ -20,7 +20,7 @@ import { defineTheme } from "../../Judge/lib/defineTheme";
 function CreatePost() {
   // Logic
 
-  // creating local states to control the input fields
+
   const [theme, setTheme] = useState("");
   const [token, setToken] = useState(localStorage.getItem("auth"));
   const [title, setTitle] = useState("");
@@ -30,6 +30,7 @@ function CreatePost() {
   const [description, setDescription] = useState("");
   const [code, setCode] = useState("");
   const [image, setImage] = useState("");
+
 
   // handle inputs
   const handleTitleChange = (e) => {
@@ -94,9 +95,8 @@ function CreatePost() {
           console.log(response.json());
         }
       })
-      .then(setTimeout(() => navigate("/posts"), 1000));
+
   };
-  const navigate = useNavigate();
   return (
     <div>
       <BodyForm onSubmit={handleSubmit}>
@@ -143,11 +143,10 @@ function CreatePost() {
             <InputItemTitle>Image</InputItemTitle>
             <input type="file" onChange={handleImageFileChange} />
             {image ? <span>{image.name}</span> : <span></span>}
-            {/*<InputItemImageUpload value={imageFile} onChange={handleImageFileChange} type={"file"} id={"upload"}/>*/}
+
           </InputItemDiv>
           <InputItemDiv>
             <InputItemTitle>Code *</InputItemTitle>
-            {/*<InputItemInputField value={code} onChange={handleCodeChange}></InputItemInputField>*/}
             <Editor
               height="20vh"
               width={`570px`}
@@ -160,12 +159,8 @@ function CreatePost() {
           </InputItemDiv>
           <OutputItemDiv>
               <OutputCodeDiv>
-
               </OutputCodeDiv>
-
           </OutputItemDiv>
-
-          
           <SubmitButtonDiv>
             <SubmitButtonButton type="submit">Post It</SubmitButtonButton>
           </SubmitButtonDiv>

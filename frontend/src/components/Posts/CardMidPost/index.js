@@ -18,7 +18,6 @@ import {toast, ToastContainer} from "react-toastify";
 import {languageOptions} from "../../Judge/constants/languageOptions";
 import CreateComment from "../../CreateComment";
 import Badges from "../Badges";
-import PostAnswers from "../Answers";
 
 // STYLED COMPONENTS -start
 
@@ -202,7 +201,6 @@ const PointsCont = styled.div`
 
 const CardMidPost = ({ post }) => {
    const javascriptDefault = `// The language is set to javascript. Happy Hacking!`
-   const [btnState, setBtnState] = useState(false);
    const [answers, setAnswers] = useState("Leave an Answer");
    const [token, setToken] = useState(localStorage.getItem("auth"));
    const [theme, setTheme] = useState("");
@@ -215,7 +213,7 @@ const CardMidPost = ({ post }) => {
     const [silver, setSilver] = useState(0)
     const [bronze, setBronze] = useState(0)
     const [likes, setLikes] = useState(0)
-   const navigate = useNavigate();
+
 
 
    useEffect(() => {
@@ -268,7 +266,6 @@ const CardMidPost = ({ post }) => {
           console.log(response.json());
         }
       })
-      .then(setTimeout(() => navigate("/posts"), 1000));
   };
 
   const handleAnswersChange= (e) => {
@@ -374,10 +371,7 @@ const CardMidPost = ({ post }) => {
             progress: undefined,
         });
     };
-  function handleClick() {
-    setBtnState((btnState) => !btnState);
-  }
-  //let toggleClassCheck = btnState ? " comments-fold" : " comments-unfold";
+
   return (
     <QCard>
         <ToastContainer
@@ -411,7 +405,6 @@ const CardMidPost = ({ post }) => {
           defaultValue={post.code}
         />: null}
         <p>{post.description}</p>
-        {/*TODO: needs to be replaced with editor*/}
         <div className="img-wrapper" style={{ width: "200px" }}>
           <img
             className="image"
@@ -461,18 +454,9 @@ const CardMidPost = ({ post }) => {
 
       <SocialButtons>
         <div>
-          <img src={heart}></img>
-          <button>Like</button>
-          <span>[ 34 ]</span>
-        </div>
-        <div>
           <img src={share}></img>
           <button>Share</button>
         </div>
-        {/*<div className={`expander${toggleClassCheck}`} onClick={handleClick}>
-          <h5>{`${toggleClassCheck}`}</h5>
-          <span className="material-symbols-outlined">expand_more</span>
-        </div>*/}
       </SocialButtons>
     </QCard>
   );

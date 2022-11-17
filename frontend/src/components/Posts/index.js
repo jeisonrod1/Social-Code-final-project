@@ -1,17 +1,9 @@
 import styled from "styled-components";
-import card1 from "../../images/restaurants/card-1.jpg";
-import card2 from "../../images/restaurants/card-2.jpg";
-import card3 from "../../images/restaurants/card-3.jpg";
-import card4 from "../../images/restaurants/card-4.jpg";
 import CardMidPost from "./CardMidPost/index.js";
 import CardMidNewPost from "./CardMidNewPost/index.js";
-import CardRightNav from "./CardRightNav/index.js";
 import CardLeftNav from "./CardLeftNav/index.js";
 import React, {useEffect, useState} from "react";
-import {unwrapResult} from "@reduxjs/toolkit";
-import Comment from "./Comment";
 import Spinner from "../Posts/Spinner/index";
-import comment from "./Comment";
 import Navigation from "../Navigation";
 import Footer from "../Footer";
 
@@ -67,22 +59,6 @@ const CardContainerRight = styled.div`
   padding-top: 62px;
 `;
 
-const Navbar = styled.div`
-  margin: 0 auto;
-  padding-top: 96px;
-  display: flex;
-  justify-content: center;
-  p {
-    padding: 8px 32px 8px 32px;
-    margin: 8px;
-    border-bottom: 1px solid lightgrey;
-    &:hover {
-      border-bottom: 4px solid #7931e4;
-      margin-bottom: 4px;
-      transition: 0.1s all;
-    }
-  }
-`;
 
 const QCard = styled.div`
   border-top: 5px solid #492d71;
@@ -117,31 +93,7 @@ const QCard = styled.div`
   }
 `;
 
-const SocialButtons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 8px;
-  border-top: 1px dashed lightgrey;
-  padding-top: 16px;
-  button {
-    background-color: #492d71;
-    color: white;
-    padding: 6px;
-    border-radius: 16px;
-  }
-  svg {
-    fill: white;
-  }
-  img {
-    margin-right: 8px;
-    height: 20px;
-  }
-  div {
-    display: flex;
-    align-items: center;
-  }
-`;
+
 
 // STYLED COMPONENTS -end
 
@@ -170,9 +122,7 @@ const Posts = () => {
         }
 
   useEffect(() => {
-    setTimeout(() =>{
-      setLoading(false)
-    },2000)
+
     fetchPosts()
   }, [searchParam]);
 
@@ -190,6 +140,7 @@ const Posts = () => {
 https://code-media.propulsion-learn.ch/backend/codepost/search/?search=${searchParam}`, requestOptions)
         .then(response => response.json())
         .then(result => setPosts(result))
+        .then(setLoading(false))
         .catch(error => console.log('error', error));
   }
   const [loading, setLoading] = useState(true);
@@ -206,7 +157,6 @@ https://code-media.propulsion-learn.ch/backend/codepost/search/?search=${searchP
         <CardContainerMid>
           <CardMidNewPost />
         { posts.length > 0 && posts.map(post => <CardMidPost key={post.id} post={post}/>)}
-
         </CardContainerMid>
         <CardContainerRight>
               <QCard>
