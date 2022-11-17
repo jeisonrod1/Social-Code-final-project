@@ -4,7 +4,7 @@ export const Gridding = styled.form`
 `;
 
 export const BodyForm = styled.form`
-    height: 450px;
+    height: 550px;
     width: 566px;
     display: flex;
     justify-content: flex-start;
@@ -14,7 +14,7 @@ export const BodyForm = styled.form`
     padding: 8px;
     div {
         padding-top: 5px; 
-        margin-right: 183px;
+        margin-right: 210px;
     }
     select{
         background-color: transparent;
@@ -36,7 +36,7 @@ export const BodyForm = styled.form`
           transition: background .2s ease-in-out;
         }
     language{
-        border-radius: 8px;
+        border-radius: 9px;
         font-size: 16px;
     }
 
@@ -55,6 +55,7 @@ export const InputItemDiv = styled.div`
       border: solid 1px lightgrey;
       border-radius:12px;
       font-size: 12px;
+      
       
     }
 
