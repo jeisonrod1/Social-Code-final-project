@@ -20,6 +20,7 @@ import {
   faCompressAlt,
   faExpandAlt,
 } from "@fortawesome/free-solid-svg-icons";
+import { EditorContainer, EditorTitle } from "./StyledEditorHTML_CSS_JS";
 
 // Expand and Colapse Button
 
@@ -38,8 +39,10 @@ export const Editor_HTML_CSS_JS = props => {
 
   return (
     <>
-      <div className={`editor-container ${open ? "" : "collapsed"}`}>
-        <div className="editor-title">
+      <EditorContainer
+        className={`editor-container ${open ? "" : "collapsed"}`}
+      >
+        <EditorTitle>
           {displayName}
           <button
             className="expand-collapse-btn"
@@ -48,7 +51,7 @@ export const Editor_HTML_CSS_JS = props => {
           >
             <FontAwesomeIcon icon={open ? faCompressAlt : faExpandAlt} />
           </button>
-        </div>
+        </EditorTitle>
         <div className="codemirror-container">
           <CodeMirror
             className="code-mirror-wrapper"
@@ -62,7 +65,7 @@ export const Editor_HTML_CSS_JS = props => {
             roomId={roomId}
           />
         </div>
-      </div>
+      </EditorContainer>
     </>
   );
 };

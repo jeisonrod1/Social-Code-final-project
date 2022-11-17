@@ -60,6 +60,8 @@ import {
   Aside,
   AsideInner,
   ClientsList,
+  EditorPageWrap,
+  Pane,
 } from "./StyledEditorHTML_CSS_JS";
 
 // const Page = styled.div``;
@@ -161,7 +163,6 @@ const EditorPage_HTML_CSS_JS = props => {
             </Logo>
             <h3>Connected</h3>
             <ClientsList>
-              {users.length}
               {users.map(client => (
                 <Client key={client.id} username={client.first_name} />
               ))}
@@ -172,8 +173,8 @@ const EditorPage_HTML_CSS_JS = props => {
             Leave
           </button>
         </Aside>
-        <div className="editorWrap">
-          <div className="pane top-pane">
+        <EditorPageWrap>
+          <Pane>
             <Editor_HTML_CSS_JS
               displayName={"HTML"}
               // value={e => setHtmlState(e.target.value)}
@@ -207,8 +208,8 @@ const EditorPage_HTML_CSS_JS = props => {
               extensions={[hyperLink, langs.javascript()]}
               theme={xcodeDark}
             />
-          </div>
-          <div className="pane">
+          </Pane>
+          <Pane>
             <iframe
               className="iFrame"
               srcDoc={srcDoc}
@@ -216,8 +217,8 @@ const EditorPage_HTML_CSS_JS = props => {
               sandbox="allow-scripts"
               frameBorder="0"
             />
-          </div>
-        </div>
+          </Pane>
+        </EditorPageWrap>
       </EditorMainWrap>
     </>
   );

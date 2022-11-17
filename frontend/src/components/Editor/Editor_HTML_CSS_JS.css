@@ -157,7 +157,7 @@ footer a:hover {
 
 /* Editor */
 .top-pane {
-  background-color: hsl(225, 6%, 25%);
+  /* background-color: hsl(225, 6%, 25%); */
 }
 
 .pane {
@@ -172,7 +172,6 @@ footer a:hover {
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
-  background-color: hsl(225, 6%, 25%);
   max-width: 500px;
   height: 100% !important;
 }

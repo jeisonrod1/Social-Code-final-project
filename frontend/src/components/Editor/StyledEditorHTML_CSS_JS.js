@@ -138,8 +138,11 @@ export const LeaveBtn = styled.button`
 `;
 
 export const EditorMainWrap = styled.div`
-  display: grid;
-  grid-template-columns: 230px 1fr;
+  /* display: grid;
+  grid-template-columns: 230px 1fr; */
+  display: flex;
+  width: 100vw;
+  height: 90vh;
 `;
 
 export const Aside = styled.aside`
@@ -147,7 +150,16 @@ export const Aside = styled.aside`
   padding: 16px;
   color: #fff;
   display: flex;
+  width: 19.5%;
   flex-direction: column;
+`;
+
+export const EditorPageWrap = styled.div`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  /* flex: 1; */
 `;
 export const AsideInner = styled.div`
   flex: 1;
@@ -201,12 +213,12 @@ export const LogoImage = styled.img`
 
 /* Editor */
 export const TopPane = styled.div`
-  background-color: hsl(225, 6%, 25%);
+  /* background-color: hsl(225, 6%, 25%); */
 `;
 
-export const pane = styled.div`
+export const Pane = styled.div`
   height: 50vh;
-  background-color: hsl(225, 6%, 25%);
+  /* background-color: hsl(225, 6%, 25%); */
   display: flex;
 `;
 
@@ -216,7 +228,6 @@ export const EditorContainer = styled.div`
   display: flex;
   flex-direction: column;
   padding: 0.5rem;
-  background-color: hsl(225, 6%, 25%);
   max-width: 500px;
   height: 100% !important;
 `;
@@ -248,7 +259,8 @@ export const ExpandCollapseBtn = styled.button`
 export const EditorTitle = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: hsl(225, 6%, 13%);
+  background-color: ${sc => sc.theme.purpleDark};
+  font-weight: bold;
   color: white;
   padding: 0.5rem 0.5rem 0.5rem 1rem;
   border-top-right-radius: 0.5rem;
