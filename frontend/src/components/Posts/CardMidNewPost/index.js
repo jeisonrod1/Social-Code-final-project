@@ -44,14 +44,16 @@ const QCard = styled.div`
   input[type=text] {
   height: 60px;
   width: 310px;
-    padding-left: 8px;
+  padding-left: 8px;
   margin-left: 8px;
+    
   }
      input[type=file]::file-selector-button {
           border: none;
           background: rgba(126,126,126,0.12);
           color: #fff;
           cursor: pointer;
+          height: 100%;
           transition: background .2s ease-in-out;
         }
         
@@ -88,6 +90,15 @@ const NewPostButtons = styled.div`
   }
   input {
     margin-right: 100px;
+    border: 2px solid green;
+    height: 30px;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    border: solid 1px lightgrey;
+    border-radius: 12px;
+    font-size: 12px;
+    
   }
   input[type="file"] {
   width: 220px;

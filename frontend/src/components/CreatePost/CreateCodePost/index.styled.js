@@ -46,6 +46,7 @@ export const InputItemTitle = styled.p`
 
 `;
 export const InputItemInputField = styled.input`
+    
 `;
 export const InputItemImageUpload = styled.input`
 `;
