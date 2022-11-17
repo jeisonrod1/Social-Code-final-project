@@ -64,5 +64,5 @@ deploy:
     - docker-compose -f docker-compose.deploy.yml pull
     - docker-compose -f docker-compose.deploy.yml down --remove-orphans
     - docker tag "$CI_REGISTRY_IMAGE":intermediate "$CI_REGISTRY_IMAGE":"$CI_COMMIT_REF_NAME"
-#    - docker volume rm code-media_build
+    - docker volume rm code-media_build
     - docker-compose -f docker-compose.deploy.yml up -d
