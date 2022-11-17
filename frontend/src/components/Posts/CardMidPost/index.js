@@ -399,7 +399,7 @@ const CardMidPost = ({ post }) => {
           defaultValue={post.code}
         />: null}
         <p>{post.description}</p>
-        <div className="img-wrapper" style={{ width: "200px" }}>
+        <div className="img-wrapper" style={{ width: "300px" }}>
           <img
             className="image"
             style={{ height: "100%" }}
