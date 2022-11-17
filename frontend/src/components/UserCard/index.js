@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom"
+import {useLocation, useNavigate} from "react-router-dom"
 import {useState} from 'react'
 import { AddFriendButton, RequestSendButton, Avatar, CompanyLabel, Experience, LocationWrapper, UserCardContainer } from "./styled"
 import avatar_placeholder from "../../images/logos/logo-color.png"
@@ -7,6 +7,7 @@ import location_icon from "../../images/icons/svgs/location.svg"
 const UserCard = ({ user }) => {
     const location = useLocation().pathname
     const [requestSent, setRequestSent] = useState(false)
+    const navigate = useNavigate()
 
     const handleFriendClick = () => {
         setRequestSent(true)
@@ -26,8 +27,16 @@ const UserCard = ({ user }) => {
             .catch(error => console.log("error", error))
     }
 
+    const handleUserPage = () => {
+        const url = `https://code-media.propulsion-learn.ch/backend/api/social/users/${user.id}/`
+        console.log("clicked")
+        localStorage.setItem("url", url)
+        navigate("/userpage")
+    }
+
+
     return (
-        <UserCardContainer key={user.id}>
+        <UserCardContainer onClick={handleUserPage} key={user.id}>
             <Avatar>
                 <img src={user.avatar ? user.avatar : avatar_placeholder} />
             </Avatar>
