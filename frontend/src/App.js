@@ -1,10 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 import Posts from "./components/Posts";
-// import Userprofile from "./components/Userprofile/Profile/index";
 import Registration from "./components/Registration/";
 import Login from "./components/Login";
-import FriendsPage from "./components/FriendsPage";
 import CreatePost from "./components/CreatePost/CreateCodePost";
 import JudgeLanding from "./components/Judge/components/Landing";
 import EditorPage_HTML_CSS_JS from "./components/Editor/EditorPage_HTML_CSS_JS";
@@ -17,6 +15,7 @@ import { theme } from "./style";
 import Signup from "./components/Signup";
 import Users from "./components/Users";
 import Userprofile from "./components/Userprofile";
+import UsersID from "./components/FriendsPage";
 
 function App() {
   const [btnState, setBtnState] = useState(false);
@@ -38,7 +37,7 @@ function App() {
               <Route path="/users" element={<Users />} />
               <Route path="userprofile/" element={<Userprofile />} />
               <Route path="editor/" element={<EditorPage_HTML_CSS_JS />} />
-              <Route path="my_friends/" element={<FriendsPage />} />
+              <Route path="userpage/" element={<UsersID />} />
               <Route path="judgeeditor/" element={<JudgeLanding />} />
               <Route path="login" element={<Login />} />
               <Route path="registration" element={<Registration />} />
