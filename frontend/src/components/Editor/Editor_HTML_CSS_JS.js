@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import { EditorView } from "@codemirror/view";
+
 // Style
 import "./Editor_HTML_CSS_JS.css";
 
@@ -27,7 +29,7 @@ import { EditorContainer, EditorTitle } from "./StyledEditorHTML_CSS_JS";
 export const Editor_HTML_CSS_JS = props => {
   const {
     language,
-    displayName,
+    displayname,
     value,
     theme,
     socketRef,
@@ -43,7 +45,7 @@ export const Editor_HTML_CSS_JS = props => {
         className={`editor-container ${open ? "" : "collapsed"}`}
       >
         <EditorTitle>
-          {displayName}
+          {displayname}
           <button
             className="expand-collapse-btn"
             type="button"
@@ -55,14 +57,13 @@ export const Editor_HTML_CSS_JS = props => {
         <div className="codemirror-container">
           <CodeMirror
             className="code-mirror-wrapper"
-            displayName={displayName}
+            displayname={displayname}
             onChange={e => handleEditorChange(e)}
             value={value}
             height="100%"
             width="100%"
             extensions={extensions}
             theme={theme}
-            roomId={roomId}
           />
         </div>
       </EditorContainer>

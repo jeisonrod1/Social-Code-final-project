@@ -242,6 +242,7 @@ export const TopPane = styled.div`
 
 export const Pane = styled.div`
   height: 50vh;
+  width: 100vw;
   display: flex;
 `;
 
@@ -253,6 +254,7 @@ export const EditorContainer = styled.div`
   padding: 0.5rem;
   max-width: 500px;
   height: 100% !important;
+  width: 100% !important;
 `;
 
 export const EditorContainerOpened = styled.div`
