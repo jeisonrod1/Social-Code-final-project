@@ -5,13 +5,17 @@ export const CommentContainer = styled.div`
       display: flex;
       justify-content: space-between;
       padding-bottom: 20px;
+      padding-top: 15px;
       
     }
     input{
       border-radius: 18px;
       font-size: 12px;
-      border: solid 1px lightgrey;
+      border: 1px solid lightgray;
       color: white;
+      width: 360px;
+      padding: 5px;
+      
       
     }
 `;

@@ -14,6 +14,7 @@ export const ExpandPostButtons = styled.button`
   margin-top: 25px;
   margin-left: 110px;
   border: solid 1px lightgrey;
+  //border: 1px solid grey;
   border-radius: ${props => props.theme.borderRadiusXL};
   font-size: ${props => props.theme.fontSizeS};
   
