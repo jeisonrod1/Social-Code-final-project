@@ -446,12 +446,6 @@ const CardMidPost = ({ post }) => {
         </form>
       </div>
 
-      <SocialButtons>
-        <div>
-          <img src={share}></img>
-          <button>Share</button>
-        </div>
-      </SocialButtons>
     </QCard>
   );
 };

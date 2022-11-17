@@ -90,7 +90,6 @@ const NewPostButtons = styled.div`
   }
   input {
     margin-right: 100px;
-    border: 2px solid green;
     height: 30px;
     align-items: center;
     padding: 0;
