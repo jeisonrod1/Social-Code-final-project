@@ -195,7 +195,7 @@ const PointsCont = styled.div`
 
 const CardMidPost = ({ post }) => {
    const javascriptDefault = `// The language is set to javascript. Happy Hacking!`
-   const [answers, setAnswers] = useState("Leave an Answer");
+   const [answers, setAnswers] = useState("Leave a Answer");
    const [token, setToken] = useState(localStorage.getItem("auth"));
    const [theme, setTheme] = useState("");
    const [outputDetails, setOutputDetails] = useState(null);
@@ -422,30 +422,11 @@ const CardMidPost = ({ post }) => {
                       </Div6> : null}
 
         <Badges likes={likes} gold={gold} silver={silver} bronze={bronze} setters={{setLikes, setGold, setBronze, setSilver}} />
-        <h6>Comments:</h6>
           <CreateComment key={post} post={post}/>
-        {post.postComments.map((comment) => (
+                   {post.postComments.map((comment) => (
           <Comment key={comment.id} comment={comment} />
         ))}
-
       </div>
-      <div className="comment"></div>
-
-      <div>
-        <form className="form" onSubmit={handleAnswersSubmit}>
-          <label>
-            <input
-              type="text"
-              name="name"
-              value={answers}
-              onChange={handleAnswersChange}
-              placeholder="Post an Answer"
-            />
-          </label>
-          <input type="submit" value="Post Answer" />
-        </form>
-      </div>
-
     </QCard>
   );
 };

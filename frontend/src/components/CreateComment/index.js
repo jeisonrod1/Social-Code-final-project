@@ -1,7 +1,7 @@
 import {InputItemInputField, SubmitButtonButton, SubmitButtonDiv} from "../CreatePost/CreateCodePost/index.styled";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import {CommenentContainer, CommentContainer} from "./index.styled";
+import { CommentContainer} from "./index.styled";
 
 
 function CreateComment({post}) {
@@ -44,7 +44,7 @@ function CreateComment({post}) {
         <div>
             <CommentContainer>
                 <form onSubmit={handleAnswersSubmit}>
-                    <InputItemInputField onChange={handleAnswersChange}/>
+                    <InputItemInputField value={answers} onChange={handleAnswersChange}/>
                     <SubmitButtonDiv>
                         <SubmitButtonButton type="submit">Post It</SubmitButtonButton>
                     </SubmitButtonDiv>
