@@ -14,21 +14,31 @@ export const BodyForm = styled.form`
     padding: 8px;
     div {
         padding-top: 5px; 
-        margin-right: 150px;
+        margin-right: 183px;
     }
     select{
         background-color: transparent;
-        border-radius: 20px;
-        padding: 8px 14px;
+        border-radius: 12px;
+        font-size: 12px;
+        height: 30px;
+        padding: 2px;
+        padding-right: 5px;
+        border: solid 1px lightgrey;
+      
         
     }
     input[type=file]::file-selector-button {
-          border: none;
+          
+      
           background-color: #ad3dea;
           color: #fff;
           cursor: pointer;
           transition: background .2s ease-in-out;
         }
+    language{
+        border-radius: 8px;
+        font-size: 16px;
+    }
 
     ;
 `;
@@ -40,12 +50,20 @@ export const InputGridDiv = styled.div`
 
 `;
 export const InputItemDiv = styled.div`
+    input{
+      height: 28px;
+      border: solid 1px lightgrey;
+      border-radius:12px;
+      font-size: 12px;
+      
+    }
 
 `;
 export const InputItemTitle = styled.p`
 
 `;
 export const InputItemInputField = styled.input`
+    
 `;
 export const InputItemImageUpload = styled.input`
 `;

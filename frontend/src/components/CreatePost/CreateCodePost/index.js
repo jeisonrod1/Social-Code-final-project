@@ -140,10 +140,9 @@ function CreatePost() {
             ></InputItemInputField>
           </InputItemDiv>
           <InputItemDiv>
-            <InputItemTitle>Image</InputItemTitle>
-            <input type="file" onChange={handleImageFileChange} />
-            {image ? <span>{image.name}</span> : <span></span>}
-
+              <InputItemTitle>Image</InputItemTitle>
+              <input type="file" onChange={handleImageFileChange} />
+              {image ? <span>{image.name}</span> : <span></span>}
           </InputItemDiv>
           <InputItemDiv>
             <InputItemTitle>Code *</InputItemTitle>

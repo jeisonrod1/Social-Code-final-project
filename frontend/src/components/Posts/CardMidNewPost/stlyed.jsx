@@ -5,18 +5,20 @@ export const ButtonsContainer = styled.div`
     display: flex;
 `;
 
-export const ExpandPostButtons = styled.div`
+export const ExpandPostButtons = styled.button`
+  height: 30px;
+  width: fit-content;
   display: flex;
-  justify-content: start;
+  justify-content: center;
   align-items: center;
+  margin-top: 25px;
+  margin-left: 87px;
+  border: solid 1px lightgrey;
+  border-radius: ${props => props.theme.borderRadiusXL};
+  font-size: ${props => props.theme.fontSizeS};
   
-  button {
-    border-radius: 30px;
-    width: 200px;   
-    
-    display: flex;
-    span {
-      font-size: 15px;
-    }
+  :hover {
+    cursor: pointer;
   }
+
 `;

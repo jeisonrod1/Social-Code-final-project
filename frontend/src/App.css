@@ -81,11 +81,6 @@ button {
   cursor: pointer;
 }
 
-/* .dark button:hover { */
-  /* border: none; */
-  /* /~ background-color: #515160; ~/ */
-/* }' */
-
 input {
   background-color: #2d2d38;
   border: none;
