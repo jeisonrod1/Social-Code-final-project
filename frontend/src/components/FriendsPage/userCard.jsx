@@ -1,33 +1,20 @@
-import {
-  Avatar,
-  CompanyLabel,
-  Experience,
-  LocationWrapper,
-  ProfileCardContainer,
-  LeftWrapper,
-  RightWrapper,
-  Stats,
-  Info
-} from "./styled";
-import avatar_placeholder from "../../images/logos/logo-color.png";
 import location_icon from "../../images/icons/svgs/location.svg";
-import {useState} from "react";
+import {Info, LeftWrapper, ProfileCardContainer, RightWrapper, Stats} from "../ProfileCard/styled";
+import {CompanyLabel, Experience, LocationWrapper} from "../UserCard/styled";
+import {AvatarUsers} from "./styled";
 
-const ProfileCard = ({ user }) => {
-    const [input, setInput] = useState("Invite A Friend")
 
-    const handleInputChange = (e) => {
-        setInput(e.target.value)
-    }
 
+const UserPageCard = ({ user }) => {
 
 
   return (
-    <ProfileCardContainer key={user.id}>
+      <>
+      {user ? <ProfileCardContainer print={console.log(user)} key={user.id}>
       <LeftWrapper>
-        <Avatar>
-          <img src={user.avatar ? user.avatar : avatar_placeholder} />
-        </Avatar>
+        <AvatarUsers>
+          <img src={user.avatar} />
+        </AvatarUsers>
 
         <h1>
           {user.first_name} {user.last_name}
@@ -79,10 +66,10 @@ const ProfileCard = ({ user }) => {
             <h6>Following</h6>
             <h6>{user.amount_following}</h6>
         </Stats>
-          <input onChange={handleInputChange} value={input} />
-          <button>Invite</button>
       </RightWrapper>
-    </ProfileCardContainer>
+    </ProfileCardContainer>: null }
+  </>
   );
 };
-export default ProfileCard;
+
+export default UserPageCard;
