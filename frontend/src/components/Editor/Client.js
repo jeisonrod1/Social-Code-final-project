@@ -1,7 +1,6 @@
 import React from "react";
 import Avatar from "react-avatar";
 import { useEffect, useState } from "react";
-import styled from "styled-components";
 import "./Editor_HTML_CSS_JS.css";
 import { UserClients, UserName } from "./StyledEditorHTML_CSS_JS";
 
@@ -27,9 +26,9 @@ const Client = ({ username }) => {
     }
   };
 
-  // useEffect(() => {
-  //   fetchProfile();
-  // }, [token]);
+  useEffect(() => {
+    fetchProfile();
+  }, [token]);
 
   return (
     <UserClients>
