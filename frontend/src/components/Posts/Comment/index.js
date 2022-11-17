@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import Answers from "../Answers";
 import {useNavigate} from "react-router-dom";
+import {SubmitButtonButton, SubmitButtonDiv} from "../../CreatePost/CreateCodePost/index.styled";
 
 const Comment = ({comment}) => {
 
-     const [replies, setReplies] = useState("Leave an Comment");
+     const [replies, setReplies] = useState("Leave a Comment");
      const [token, setToken] = useState(localStorage.getItem("auth"));
      const navigate = useNavigate();
 
@@ -41,7 +42,6 @@ const Comment = ({comment}) => {
 
     return (
         <>
-            <div>
                 <div style={{ width: "40px"}}>
                 <img className="image" src={comment.author.avatar} ></img>
                 </div>
@@ -56,17 +56,7 @@ const Comment = ({comment}) => {
                    {comment.code}
                 </p>
                 <img src={comment.image} />
-                <form onSubmit={handleReplySubmit}>
-                    <div>
-                        <input onChange={handleReplyChange}/>
-                    </div>
-                    <button/>
-                </form>
-                <h3>Replies:</h3>
-                 {comment.replies.map((reply) => (
-                <Answers key={reply.id} reply={reply} />
-          ))}
-            </div>
+
         </>
     )
 }
