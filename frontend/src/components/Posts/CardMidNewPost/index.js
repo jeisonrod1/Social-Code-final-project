@@ -197,10 +197,8 @@ const CardMidNewPost = () => {
               <input type="file" onChange={handleImageFileChange} />
             </div>
           </NewPostButtons>
-          <ExpandPostButtons>
-            <div>
-            <button onClick={handleClick}>Expand Create Post Button</button>
-            </div>
+          <ExpandPostButtons onClick={handleClick}>
+            Expand Create Post Button
           </ExpandPostButtons>
       </ButtonsContainer>
       {isShown && <CreatePost />}
