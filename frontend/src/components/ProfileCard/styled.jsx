@@ -3,17 +3,24 @@ import styled from "styled-components";
 export const Info = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin: 64px;
+    margin: 16px;
+    padding: 16px;
     h6 {
     padding: 8px;
+    }
+    .jobwrapper {
+    display: flex;
+    }
+    h1.h1 {
+    padding-left: 8px;
     }
 `
 
 export const Stats = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin: 64px;
-    padding: 32px;
+    margin: 16px;
+    padding: 16px;
     h6 {
     padding: 8px;
     }
@@ -27,7 +34,7 @@ export const RightWrapper = styled.div`
 `
 
 export const ProfileCardContainer = styled.div`
-    height: 360px;
+    height: 460px;
     width: 980px;
     display: flex;
     border-radius: 8px;
@@ -89,9 +96,8 @@ export const CompanyLabel = styled.label`
 export const LocationWrapper = styled.div`
     display: flex;
     align-items: center;
-    width: 100%;
-    justify-content: center;
-    margin-top: 6px;
+    justify-content: left;
+    margin: 6px 0 0 12px;
     font-size: ${p=>p.theme.fontSizeS};
 
     img {
