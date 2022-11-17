@@ -27,16 +27,16 @@ const Client = ({ username }) => {
     }
   };
 
-  useEffect(() => {
-    fetchProfile();
-  }, [token]);
+  // useEffect(() => {
+  //   fetchProfile();
+  // }, [token]);
 
   return (
     <UserClients>
       {users.avatar ? (
-        <img src={users.avatar} name={username} size={50} round="14px" />
+        <img src={users.avatar} name={username} />
       ) : (
-        <Avatar name={username} size={10} round="499px" />
+        <Avatar name={username} size={50} round="14px" />
       )}
       <UserName>{username}</UserName>
     </UserClients>

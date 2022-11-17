@@ -127,22 +127,46 @@ export const CreateNewBtn = styled.button`
     border-color: #368654;
   }
 `;
+
+export const CoppyBttn = styled.button`
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background: #2b824c;
+  width: 150px;
+  background: ${sc => sc.theme.purpleDark};
+
+  :hover {
+    background: ${sc => sc.theme.purpleLight};
+  }
+`;
 export const LeaveBtn = styled.button`
-  background: ${sc => sc.theme.purpleLight};
-  width: 100px;
-  margin-left: auto;
   margin-top: 20px;
-  && :hover {
-    background: #2b824c;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background: #2b824c;
+  width: 150px;
+
+  :hover {
+    background: ${sc => sc.theme.backgroundBlackLight};
   }
 `;
 
 export const EditorMainWrap = styled.div`
-  /* display: grid;
-  grid-template-columns: 230px 1fr; */
-  display: flex;
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  /* display: flex;
   width: 100vw;
-  height: 90vh;
+  height: 100vh; */
 `;
 
 export const Aside = styled.aside`
@@ -152,6 +176,8 @@ export const Aside = styled.aside`
   display: flex;
   width: 19.5%;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const EditorPageWrap = styled.div`
@@ -173,8 +199,6 @@ export const AsideInner = styled.div`
     transition: all 0.3s ease-in-out;
   }
 `;
-
-export const CoppyBttn = styled.button``;
 
 export const ClientsList = styled.div`
   display: flex;
@@ -218,7 +242,6 @@ export const TopPane = styled.div`
 
 export const Pane = styled.div`
   height: 50vh;
-  /* background-color: hsl(225, 6%, 25%); */
   display: flex;
 `;
 

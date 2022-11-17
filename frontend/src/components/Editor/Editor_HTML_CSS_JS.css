@@ -162,7 +162,7 @@ footer a:hover {
 
 .pane {
   height: 50vh;
-  background-color: hsl(225, 6%, 25%);
+  /* background-color: hsl(225, 6%, 25%); */
   display: flex;
 }
 
@@ -219,8 +219,8 @@ footer a:hover {
   z-index: 0;
   padding-top: 20px;
   width: 100%;
-  height: 74.5%;
-  /* height: 100%; */
+  /* height: 74.5%; */
+  height: 100%;
 }
 
 .code-mirror-wrapper {
