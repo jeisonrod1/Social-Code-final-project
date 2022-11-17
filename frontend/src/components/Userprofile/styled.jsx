@@ -18,7 +18,7 @@ export const UsersListContainer = styled.div`
 
 export const Container = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: left;
   width: 100%;
   height: 100%;
   /* min-height: 100vh;
@@ -32,7 +32,7 @@ export const Main = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   /* background-color: lightgray; */
 `;
 

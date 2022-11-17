@@ -28,29 +28,41 @@ const ProfileCard = ({ user }) => {
           {user.first_name} {user.last_name}
         </h1>
         <Experience>{user.experience}</Experience>
-        <CompanyLabel>{user.company}</CompanyLabel>
-        <LocationWrapper>
-          <img src={location_icon} />
-          {user.location}
-        </LocationWrapper>
+        <div className="jobwrapper">
+            <LocationWrapper>
+                <img src={location_icon} />
+                {user.location}
+            </LocationWrapper>
+        </div>
 
 
       </LeftWrapper>
       <RightWrapper>
         <Info>
-            <h6>About</h6>
-            <h6>
+            <h1 className="h1">About</h1>
+            <h6>{user.about_me}</h6>
+            <h6>Contact info:</h6>
+               <h6>
             {user.first_name} {user.last_name}
             </h6>
-            <h6>Things i like</h6>
             <h6>{user.email}</h6>
-            <h6>{user.phone}</h6>
-            <Experience>{user.experience}</Experience>
-            <CompanyLabel>{user.company}</CompanyLabel>
-            <LocationWrapper>
-            <img src={location_icon} />
-            {user.location}
-            </LocationWrapper>
+            <div className="jobwrapper">
+                <h6>Current job:</h6>
+                <CompanyLabel>{user.company}</CompanyLabel>
+                <LocationWrapper>
+                <img src={location_icon} />
+                {user.location}
+                </LocationWrapper>
+            </div>
+            <div className="jobwrapper">
+                <h6>Linkedin:</h6>
+                <h6>https://www.linkedin.com/in/tom/</h6>
+            </div>
+            <div className="jobwrapper">
+                <h6>Github:</h6>
+                <h6>https://github.com/peter</h6>
+            </div>
+
         </Info>
         <Stats>
             <h6>Points</h6>
