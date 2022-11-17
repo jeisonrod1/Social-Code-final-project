@@ -54,19 +54,17 @@ const Badges = ({likes, gold, silver, bronze, setters}) => {
             <LikeButton onClick={() => {setters.setLikes(likes + 1)}}>{likes} Likes</LikeButton>
             <div>
                 <BadgeContainer onClick={() => {setters.setGold(gold + 1)}}>
-                    <img src={badge1} />
+                    <img src={badge1} title={"Keep Up The Great Work"} alt={"Keep Up The Great Work"} />
                     <span>{gold}</span>
                 </BadgeContainer>
                 <BadgeContainer onClick={() => {setters.setSilver(silver + 1)}}>
-                    <img src={badge2} />
+                    <img src={badge2} title={"This Is Really Funny"} alt={"This Is Really Funny"} />
                     <span>{silver}</span>
                 </BadgeContainer>
                 <BadgeContainer onClick={() => {setters.setBronze(bronze + 1)}}>
-                    <img src={badge3} />
+                    <img src={badge3} title={"This Is Really Smart"} alt={"This Is Really Smart"}/>
                     <span>{bronze}</span>
                 </BadgeContainer>
-
-
             </div>
         </BaseDiv>
     )

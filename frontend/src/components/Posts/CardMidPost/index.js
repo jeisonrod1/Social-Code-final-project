@@ -1,14 +1,8 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-
-import heart from "../../../images/icons/svgs/heart.svg";
 import share from "../../../images/icons/svgs/share.svg";
-
-
 import { useState } from "react";
 import Comment from "../Comment";
-
-import { useNavigate } from "react-router-dom";
 import Editor from "@monaco-editor/react";
 import { defineTheme } from "../../Judge/lib/defineTheme";
 import OutputWindow from "../../Judge/components/OutputWindows";
