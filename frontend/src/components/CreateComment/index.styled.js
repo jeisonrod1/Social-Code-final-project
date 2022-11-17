@@ -14,7 +14,6 @@ export const CommentContainer = styled.div`
       color: white;
       
     }
-  
 `;
 
 
