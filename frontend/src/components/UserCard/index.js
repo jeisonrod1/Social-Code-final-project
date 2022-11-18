@@ -50,20 +50,6 @@ const UserCard = ({ user }) => {
                 <img src={location_icon} />
                 {user.location}
             </LocationWrapper>
-
-            {/* {user.logged_in_user_is_following ? (
-                    <UnfollowBtn>FOLLOWING</UnfollowBtn>
-                  ) : (<FollowBtn>FOLLOW</FollowBtn>)}
-                  {user.logged_in_user_is_friends ? (
-                    <Follow_add_friend_btn_container>
-                      <FriendBtw>
-                        <img src={markDone} />
-                        &nbsp;&nbsp;FRIEND
-                      </FriendBtw>
-                    </Follow_add_friend_btn_container>
-                  ) : (
-                  )} */}
-            {/* {location != '/my_friends/' ? <button onClick={() => handleFriendClick(user.id)}> ADD FRIEND </button> : ''} */}
             {requestSent ? <RequestSendButton> Request sent </RequestSendButton> : <AddFriendButton onClick={() => handleFriendClick(user.id)}>Add Friend</AddFriendButton> }
         </UserCardContainer>
     )
