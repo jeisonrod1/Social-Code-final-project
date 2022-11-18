@@ -36,8 +36,8 @@ const UserCard = ({ user }) => {
 
 
     return (
-        <UserCardContainer onClick={handleUserPage} key={user.id}>
-            <Avatar>
+        <UserCardContainer  key={user.id}>
+            <Avatar onClick={handleUserPage}>
                 <img src={user.avatar ? user.avatar : avatar_placeholder} />
             </Avatar>
 
