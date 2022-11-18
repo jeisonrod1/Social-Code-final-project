@@ -179,7 +179,7 @@ const CardMidNewPost = () => {
           console.log(response.json());
         }
       })
-      // .then(setTimeout(() => navigate("/posts"), 1000));
+       navigate("/login")
   };
   const handleTitleChange = (e) => {
     setTitle(e.target.value);
