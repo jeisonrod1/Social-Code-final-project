@@ -15,7 +15,7 @@ import {useState} from "react";
 
 
 const ProfileCard = ({ user }) => {
-    const [input, setInput] = useState("Invite A Friend")
+    const [input, setInput] = useState("  Invite A Friend")
     const [requestSent, setRequestSent] = useState(true)
 
     const handleInputClick = (e) => {
