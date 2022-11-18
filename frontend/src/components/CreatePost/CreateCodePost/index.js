@@ -30,6 +30,7 @@ function CreatePost() {
   const [description, setDescription] = useState("");
   const [code, setCode] = useState("");
   const [image, setImage] = useState("");
+  const navigate = useNavigate()
 
 
   // handle inputs
@@ -95,7 +96,7 @@ function CreatePost() {
           console.log(response.json());
         }
       })
-
+     navigate("/login")
   };
   return (
     <div>
