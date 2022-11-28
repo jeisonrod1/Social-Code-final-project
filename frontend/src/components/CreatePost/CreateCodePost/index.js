@@ -30,7 +30,6 @@ function CreatePost() {
   const [description, setDescription] = useState("");
   const [code, setCode] = useState("");
   const [image, setImage] = useState("");
-  const navigate = useNavigate()
 
 
   // handle inputs
@@ -96,7 +95,7 @@ function CreatePost() {
           console.log(response.json());
         }
       })
-     navigate("/login")
+
   };
   return (
     <div>
@@ -142,7 +141,7 @@ function CreatePost() {
           </InputItemDiv>
           <InputItemDiv>
               <InputItemTitle>Image</InputItemTitle>
-              <input type="file" onChange={handleImageFileChange} />
+              <input type="file" onChange={handleImageFileChange} className="input-file-img"/>
               {image ? <span>{image.name}</span> : <span></span>}
           </InputItemDiv>
           <InputItemDiv>

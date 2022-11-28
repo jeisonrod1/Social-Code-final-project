@@ -86,6 +86,7 @@ const NavigationContainer = styled.div`
 
 const LogoNavigation = styled.img`
   height: 16px;
+  transition: ${p => p.theme.transitionShort};
 
   :hover {
     cursor: pointer;

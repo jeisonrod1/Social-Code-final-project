@@ -30,10 +30,11 @@ export const BodyForm = styled.form`
     input[type=file]::file-selector-button {
           
       
-          background-color: #ad3dea;
+          background-color: #c48befc4;
           color: #fff;
           cursor: pointer;
           transition: background .2s ease-in-out;
+
         }
     language{
         border-radius: 9px;
@@ -75,7 +76,7 @@ export const SubmitButtonDiv = styled.div`
 export const SubmitButtonButton = styled.button`
     height: 30px;
     width: 100px;
-    background-color: #ad3dea;
+    background-color: #c48befc4;
     border-radius: 28px;
 `;
 

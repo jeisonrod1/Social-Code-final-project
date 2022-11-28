@@ -162,8 +162,8 @@ footer a:hover {
 
 .pane {
   height: 50vh;
-  /* background-color: hsl(225, 6%, 25%); */
   display: flex;
+  padding-top: 50px;
 }
 
 .editor-container {

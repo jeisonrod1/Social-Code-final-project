@@ -36,12 +36,12 @@ const UserCard = ({ user }) => {
 
 
     return (
-        <UserCardContainer  key={user.id}>
-            <Avatar onClick={handleUserPage}>
+        <UserCardContainer onClick={handleUserPage} key={user.id}>
+            <Avatar>
                 <img src={user.avatar ? user.avatar : avatar_placeholder} />
             </Avatar>
 
-            <h1>
+            <h1 className="user-card-name">
                 {user.first_name} {user.last_name}
             </h1>
             <Experience>{user.experience}</Experience>
@@ -50,6 +50,20 @@ const UserCard = ({ user }) => {
                 <img src={location_icon} />
                 {user.location}
             </LocationWrapper>
+
+            {/* {user.logged_in_user_is_following ? (
+                    <UnfollowBtn>FOLLOWING</UnfollowBtn>
+                  ) : (<FollowBtn>FOLLOW</FollowBtn>)}
+                  {user.logged_in_user_is_friends ? (
+                    <Follow_add_friend_btn_container>
+                      <FriendBtw>
+                        <img src={markDone} />
+                        &nbsp;&nbsp;FRIEND
+                      </FriendBtw>
+                    </Follow_add_friend_btn_container>
+                  ) : (
+                  )} */}
+            {/* {location != '/my_friends/' ? <button onClick={() => handleFriendClick(user.id)}> ADD FRIEND </button> : ''} */}
             {requestSent ? <RequestSendButton> Request sent </RequestSendButton> : <AddFriendButton onClick={() => handleFriendClick(user.id)}>Add Friend</AddFriendButton> }
         </UserCardContainer>
     )

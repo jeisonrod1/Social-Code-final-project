@@ -19,8 +19,8 @@ export const Info = styled.div`
 export const Stats = styled.div`
     display: flex;
     flex-wrap: wrap;
-    margin: 0px 16px 8px 16px;
-    padding: 0px 16px 8px 16px;
+    margin: 16px;
+    padding: 16px;
     h6 {
     padding: 8px;
     }
@@ -113,17 +113,17 @@ export const Experience = styled.h2`
     margin-top: 8px;
 `
 
-export const InviteUser = styled.button`
+export const AddFriendButton = styled.button`
     background: ${p=>p.theme.purpleLight};
     color: white;
     font-size: ${p=>p.theme.fontSizeM};
-    width: 150px;
-    height: 30px;
+    width: 140px;
+    height: 36px;
     border-radius: 4px;
     border: none;
-    margin: 5px;
-    padding: 0px;
-    
+    margin-top: 26px;
+    position: absolute;
+    bottom: 40px;
 
     :hover {
         cursor: pointer;
@@ -131,17 +131,3 @@ export const InviteUser = styled.button`
     }
 
 `
-export const InputField = styled.input`
-    margin: 5px;
-    border-radius: 4px;    
-    height: 30px;
-    width: 200px;
-
-`;
-
-export const InviteContainer = styled.div`
-    margin: 0px 16px 0px 16px;
-    padding: 0px 16px 0px 16px;
-    
-
-`;

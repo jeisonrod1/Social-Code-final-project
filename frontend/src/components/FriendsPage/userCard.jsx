@@ -16,7 +16,7 @@ const UserPageCard = ({ user }) => {
           <img src={user.avatar} />
         </AvatarUsers>
 
-        <h1>
+        <h1 className="user-card-name">
           {user.first_name} {user.last_name}
         </h1>
         <Experience>{user.experience}</Experience>

@@ -1,6 +1,7 @@
 import React, {useState} from "react";
+import Answers from "../Answers";
 import {useNavigate} from "react-router-dom";
-
+import {SubmitButtonButton, SubmitButtonDiv} from "../../CreatePost/CreateCodePost/index.styled";
 
 const Comment = ({comment}) => {
 

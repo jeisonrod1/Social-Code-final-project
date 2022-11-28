@@ -1,12 +1,14 @@
 body {
   overflow: scroll;
   overflow-x: hidden;
+  transition: all 1s;
+
 }
 
 .btn-x {
   z-index: 3000;
   position: fixed;
-  top: 0px;
+  top: 5px;
   left: 134px;
   border-radius: 20px;
   border: none;
@@ -17,54 +19,83 @@ body {
   transition: all 1s;
 }
 
-.sun-icon{
+.sun-icon {
   position: relative;
-top: 0;
-width:22px;
-color: #c7bfd5;
-border: none;
+  top: 0;
+  width: 22px;
+  color: #c7bfd5;
+  border: none;
 }
 
-.moon-icon{
-  width:16px;
+.moon-icon {
+  width: 18px;
   position: absolute;
-  left: 24px;
-  top: 12px;
+  left: 22px;
+  top: 10px;
 }
 
 main {
   background-size: cover;
   height: 100%;
-  background-attachment: fixed;
-  background-color: #3d3d3d;
+  background: rgb(26, 21, 106);
+  background: linear-gradient(0deg, rgba(26, 21, 106, 1) 0%, rgba(56, 9, 121, 1) 0%, rgba(135, 133, 230, 1) 100%) no-repeat center center fixed;
+  background-size: cover;
+  object-fit: cover;
   transition: all 1s;
 }
 
 main.light {
-  background-image: url('./images/covers/bg_transparent_20.png');
+  background: rgb(26, 21, 106);
+  background: linear-gradient(0deg, rgb(46, 39, 151) 0%, rgb(96, 37, 177) 0%, rgb(176, 175, 227) 100%) no-repeat center center fixed;
   background-color: #ffffff;
   transition: all 1s;
 }
 
 .light .footer {
-  background-color: #e2e2e2 !important; 
+  background-color: #e2e2e2 !important;
 }
 
 .dark .footer.header {
-  background-color: #4e4e4e !important; 
+  background-color: #4e4e4e !important;
 }
 
-.light span, .light button, .light a, .light p, .light h1, .light h2, .light h3, .light h4, .light h5, .light h6 {
+.light span,
+.light button,
+.light a,
+.light p,
+.light h1,
+.light h2,
+.light h3,
+.light h4,
+.light h5,
+.light h6 {
   color: #302e34 !important;
   transition: all 1s;
+}
+.light .channel-items {
+  color: #a692d0 !important;
+
+}
+.light .user-card-name{
+  color: #a692d0 !important;
+
+}
+.light .plain{
+  color: #a692d0 !important;
+
+}
+.light .music{
+  color: #a692d0 !important;
+
 }
 
 .light .orange {
   background-color: #bfbfbf !important;
   transition: all 1s;
 }
+
 .dark .orange {
-  background-color: #4e4e4e !important; 
+  background-color: #4e4e4e !important;
   transition: all 1s;
 }
 
@@ -89,14 +120,14 @@ input {
 }
 
 input {
-    background-color: transparent;
-    border: 1px solid grey;
-    border-radius: 8px;
-    color: white;
+  background-color: transparent;
+  border: 1px solid grey;
+  border-radius: 8px;
+  color: white;
 }
 
 input[type="submit"] {
-  background-color: #ad3dea;
+  background-color: #c48befc4;
   color: white;
   width: 100px;
   height: 28px;
@@ -110,8 +141,7 @@ input[type="submit"] {
   font-family: "Material Symbols Outlined";
   font-style: normal;
   font-weight: 100 700;
-  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v68/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsLjBuVY.woff2)
-    format("woff2");
+  src: url(https://fonts.gstatic.com/s/materialsymbolsoutlined/v68/kJEhBvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oFsLjBuVY.woff2) format("woff2");
 }
 
 .material-symbols-outlined {
@@ -128,4 +158,3 @@ input[type="submit"] {
   -webkit-font-feature-settings: "liga";
   -webkit-font-smoothing: antialiased;
 }
-

@@ -45,6 +45,7 @@ import { faHelicopterSymbol } from "@fortawesome/free-solid-svg-icons";
 
 import HomePageWrapper from "./EditorPage_HTML_CSS_JS";
 import { client, EditorMainWrap } from "./StyledEditorHTML_CSS_JS";
+import Navigation from "../Navigation";
 
 const EditorPage_HTML_CSS_JS = props => {
   const { handleUsername } = props;
@@ -125,6 +126,7 @@ box-shadow: -5px 6px 15px 1px rgba(0,0,0,0.50);
 
   return (
     <div className="editorWrap">
+      <Navigation />
       <div className="pane top-pane">
         <Editor_HTML_CSS_JS
           displayname={"HTML"}

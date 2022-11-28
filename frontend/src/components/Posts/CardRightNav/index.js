@@ -18,8 +18,9 @@ const QCard = styled.div`
   justify-content: space-between;
   flex-direction: column;
   border: 1px solid #5052632e;
-  background-color: rgba(126, 126, 126, 0.12);
   border-radius: 8px;
+  box-shadow: 0px 0px 25px #af93d65e;
+
   .wrapper {
     display: flex;
   }

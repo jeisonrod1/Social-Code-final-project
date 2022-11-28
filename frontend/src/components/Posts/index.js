@@ -29,7 +29,7 @@ const RowWrapper = styled.div`
 `;
 
 const CardContainerLeft = styled.div`
-  width: 180px;
+  width: 225px;
   height: 100%;
   position: sticky;
   top: 0;
@@ -71,8 +71,11 @@ const QCard = styled.div`
   justify-content: space-between;
   flex-direction: column;
   border: 1px solid #5052632e;
-  background-color: rgba(126, 126, 126, 0.12);
-  border-radius: 8px;
+  background-image: url("https://storage.googleapis.com/production-hostgator-brasil-v1-0-1/691/324691/nCPPMm8D/57b67cda226a4dd48a60b74e1c4e0de1");
+    border-radius: 8px;
+    box-shadow: 0px 0px 25px #af93d65e;
+    object-fit: cover;
+    background-size: cover;
   .wrapper {
     display: flex;
   }
@@ -85,6 +88,7 @@ const QCard = styled.div`
   h3 {
     margin: 8px 8px 0 8px;
     font-weight: 500;
+    color: lightgray;
   }
   p:hover {
     font-weight: 700;
@@ -122,8 +126,10 @@ const Posts = () => {
         }
 
   useEffect(() => {
-
-    fetchPosts()
+    setTimeout(() =>{
+      fetchPosts()
+      setLoading(false)
+    },1000)
   }, [searchParam]);
 
   const fetchPosts = () => {
@@ -160,13 +166,13 @@ https://code-media.propulsion-learn.ch/backend/codepost/search/?search=${searchP
         </CardContainerMid>
         <CardContainerRight>
               <QCard>
-                <h3>Channels:</h3>
-                <p onClick={handleTagJobs}>#SwissJobs</p>
-                <p onClick={handleTagMemes}>#Memes</p>
-                <p onClick={handleTagFinalProject}>#Final Projects</p>
-                <p onClick={handleTagReact}>#React.js</p>
-                <p onClick={handleTagFrontend}>#Frontend</p>
-                <p onClick={handleTagBackend}>#Backend</p>
+                <h3 className="channel-items">Channels:</h3>
+                <p className="channel-items" onClick={handleTagJobs}>#SwissJobs</p>
+                <p className="channel-items" onClick={handleTagMemes}>#Memes</p>
+                <p className="channel-items" onClick={handleTagFinalProject}>#Final Projects</p>
+                <p className="channel-items" onClick={handleTagReact}>#React.js</p>
+                <p className="channel-items" onClick={handleTagFrontend}>#Frontend</p>
+                <p className="channel-items" onClick={handleTagBackend}>#Backend</p>
             </QCard>
         </CardContainerRight>
       </RowWrapper>

@@ -1,35 +1,26 @@
 import {
-    Avatar,
-    CompanyLabel,
-    Experience,
-    LocationWrapper,
-    ProfileCardContainer,
-    LeftWrapper,
-    RightWrapper,
-    Stats,
-    Info, InviteUser, InputField, InviteContainer
+  Avatar,
+  CompanyLabel,
+  Experience,
+  LocationWrapper,
+  ProfileCardContainer,
+  LeftWrapper,
+  RightWrapper,
+  Stats,
+  Info
 } from "./styled";
 import avatar_placeholder from "../../images/logos/logo-color.png";
 import location_icon from "../../images/icons/svgs/location.svg";
 import {useState} from "react";
 
-
 const ProfileCard = ({ user }) => {
-    const [input, setInput] = useState("  Invite A Friend")
-    const [requestSent, setRequestSent] = useState(true)
+    const [input, setInput] = useState("Invite A Friend")
 
-    const handleInputClick = (e) => {
-        setInput("")
-    }
     const handleInputChange = (e) => {
         setInput(e.target.value)
     }
 
-    const handleInvite = (e) => {
-        setRequestSent(false)
-        setInput("")
 
-    }
 
   return (
     <ProfileCardContainer key={user.id}>
@@ -88,11 +79,9 @@ const ProfileCard = ({ user }) => {
             <h6>Following</h6>
             <h6>{user.amount_following}</h6>
         </Stats>
-          <InviteContainer>
-              <InputField onClick={handleInputClick} onChange={handleInputChange} value={input} />
-              {requestSent ? <InviteUser onClick={handleInvite}>Invite User</InviteUser> : <InviteUser>Invitation Send</InviteUser>}
-          </InviteContainer>
-          </RightWrapper>
+          <input onChange={handleInputChange} value={input} />
+          <button>Invite</button>
+      </RightWrapper>
     </ProfileCardContainer>
   );
 };

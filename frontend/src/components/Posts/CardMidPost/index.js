@@ -26,12 +26,17 @@ const QCard = styled.div`
   flex-direction: column;
   border: 1px solid #5052632e;
   border-radius: 8px;
+  background-color: rgb(85 72 174 / 54%);
+    border-radius: 8px;
+    box-shadow: 0px 0px 25px #af93d65e;
+
+
   .light & {
-    background-color: rgba(126, 126, 126, 0.12);
+    /* background-color: rgba(126, 126, 126, 0.12); */
     transition: 1s all;
   }
   .dark & {
-    background-color: rgba(126, 126, 126, 0.12);
+    /* background-color: rgba(126, 126, 126, 0.12); */
     transition: 1s all;
   }
   .header {

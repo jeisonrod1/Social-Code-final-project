@@ -33,23 +33,18 @@ function CreateComment({post}) {
           console.log(response.json());
         }
       })
-
-        navigate("/login")
-
+      .then(setTimeout(() => navigate("/posts"), 1000));
   };
 
   const handleAnswersChange= (e) => {
     setAnswers(e.target.value);
   };
-  const handleInputClick = () => {
-      setAnswers("")
-  }
 
     return (
         <div>
             <CommentContainer>
                 <form onSubmit={handleAnswersSubmit}>
-                    <InputItemInputField value={answers} onClick={handleInputClick} onChange={handleAnswersChange}/>
+                    <InputItemInputField value={answers} onChange={handleAnswersChange}/>
                     <SubmitButtonDiv>
                         <SubmitButtonButton type="submit">Post It</SubmitButtonButton>
                     </SubmitButtonDiv>
